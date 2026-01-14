@@ -2,17 +2,11 @@
 import React from 'react';
 import { ViewType } from '../types';
 import { CARDS, getIcon } from '../constants';
+// Added missing imports: Mail, Linkedin, Facebook, BookOpen, Terminal
 import { 
-  Mail, 
-  Linkedin, 
-  Facebook, 
-  Github, 
   ExternalLink, 
-  Terminal, 
-  BookOpen, 
   Cpu, 
   Zap, 
-  MessageSquare, 
   Compass,
   ArrowRight,
   Code2,
@@ -25,7 +19,6 @@ import {
   Trophy,
   GraduationCap,
   Globe,
-  Coins,
   UserCheck,
   TrendingUp,
   ShieldCheck,
@@ -33,10 +26,15 @@ import {
   BookOpenCheck,
   Layers,
   Star,
-  ZapOff,
-  Briefcase,
   MousePointer2,
-  ChevronRight
+  ChevronRight,
+  Database,
+  Network,
+  Mail,
+  Linkedin,
+  Facebook,
+  BookOpen,
+  Terminal
 } from 'lucide-react';
 
 interface DetailViewProps {
@@ -51,210 +49,205 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
     switch (view) {
       case ViewType.SAIBA_MAIS:
         return (
-          <div className="space-y-20">
-            {/* Seção 1: Importância e Vantagens */}
-            <div className="bg-estacio-navy p-10 md:p-16 rounded-[3rem] text-white">
-              <div className="max-w-4xl">
+          <div className="space-y-24">
+            {/* Seção 1: O Diferencial Competitivo */}
+            <div className="bg-estacio-navy p-10 md:p-16 rounded-[3rem] text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-cyan/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+              <div className="relative z-10 max-w-4xl">
                 <div className="flex items-center gap-6 mb-8">
-                  <div className="bg-estacio-cyan p-4 rounded-3xl">
+                  <div className="bg-estacio-cyan p-4 rounded-3xl shadow-lg shadow-estacio-cyan/20">
                     <Trophy size={40} className="text-white" />
                   </div>
-                  <h3 className="text-3xl md:text-5xl font-black">Por que se certificar?</h3>
+                  <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic">Potencialize seu Currículo</h3>
                 </div>
                 <p className="text-blue-100/70 text-lg md:text-xl leading-relaxed mb-12">
-                  No mercado de tecnologia, as certificações funcionam como um **"selo de garantia"**. Elas validam sua expertise técnica perante recrutadores globais e comprovam que você domina as ferramentas que as grandes empresas utilizam.
+                  As certificações são o atalho para as melhores vagas. Elas provam que você não apenas estudou, mas foi validado pelas gigantes que criaram as tecnologias.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10">
-                    <TrendingUp className="text-estacio-cyan mb-4" size={32} />
-                    <h5 className="font-black text-lg mb-2 italic">Valorização Salarial</h5>
-                    <p className="text-blue-100/50 text-sm">Profissionais com certificações cloud ou segurança chegam a ganhar 40% mais que a média.</p>
-                  </div>
-                  <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10">
-                    <Globe className="text-estacio-cyan mb-4" size={32} />
-                    <h5 className="font-black text-lg mb-2 italic">Carreira Global</h5>
-                    <p className="text-blue-100/50 text-sm">Os selos da AWS, Azure e Google Cloud são reconhecidos em qualquer país do mundo.</p>
-                  </div>
-                  <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10">
-                    <ShieldCheck className="text-estacio-cyan mb-4" size={32} />
-                    <h5 className="font-black text-lg mb-2 italic">Credibilidade</h5>
-                    <p className="text-blue-100/50 text-sm">Reduz o tempo de triagem em processos seletivos, garantindo que você tem a base técnica necessária.</p>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    { icon: <TrendingUp />, title: "+40% Salário", desc: "Média de aumento para profissionais certificados." },
+                    { icon: <Globe />, title: "Global", desc: "Validade internacional em qualquer país." },
+                    { icon: <ShieldCheck />, title: "Autoridade", desc: "Selo de confiança para recrutadores." }
+                  ].map((item, idx) => (
+                    <div key={idx} className="bg-white/5 p-6 rounded-[2rem] border border-white/10 hover:bg-white/10 transition-colors">
+                      <div className="text-estacio-cyan mb-3">{item.icon}</div>
+                      <h5 className="font-black text-lg mb-1 italic">{item.title}</h5>
+                      <p className="text-blue-100/40 text-xs leading-relaxed">{item.desc}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Seção 2: Melhores Certificações */}
+            {/* Seção 2: Parcerias Estratégicas Estácio */}
             <div>
-              <div className="flex items-center gap-4 mb-10">
+              <div className="flex items-center gap-4 mb-12">
+                <Award className="text-estacio-cyan" size={32} />
+                <h3 className="text-3xl font-black text-estacio-navy uppercase tracking-tight">Parcerias Exclusivas</h3>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                {/* Oracle ONE Card */}
+                <div className="bg-white p-10 md:p-12 rounded-[3.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col">
+                  <div className="flex justify-between items-start mb-10">
+                    <div className="w-20 h-20 bg-red-50 rounded-3xl flex items-center justify-center text-[#f80000] group-hover:bg-[#f80000] group-hover:text-white transition-all duration-500">
+                      <Database size={40} />
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] font-black uppercase tracking-widest bg-red-100 text-[#f80000] px-4 py-2 rounded-full">Oracle ONE</span>
+                    </div>
+                  </div>
+                  <h4 className="text-3xl font-black text-estacio-navy mb-6 italic">Oracle NEXT Education</h4>
+                  <p className="text-gray-500 text-base leading-relaxed mb-10">
+                    Uma jornada completa de 6 meses. Aprenda **Java, React, SQL e Agilidade** com cursos da Alura e certificações oficiais Oracle Cloud Infrastructure (OCI).
+                  </p>
+                  <div className="grid grid-cols-2 gap-4 mb-10">
+                    <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                      <p className="text-[10px] font-black text-gray-400 uppercase mb-1">Duração</p>
+                      <p className="text-sm font-bold text-estacio-navy italic">6 Meses</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                      <p className="text-[10px] font-black text-gray-400 uppercase mb-1">Custo</p>
+                      <p className="text-sm font-bold text-green-600 italic">Gratuito p/ Alunos</p>
+                    </div>
+                  </div>
+                  <a href="https://www.oracle.com/br/education/oracle-next-education/" target="_blank" className="mt-auto flex items-center justify-center gap-3 bg-estacio-navy text-white px-10 py-5 rounded-3xl text-xs font-black uppercase tracking-widest hover:bg-estacio-cyan transition-all shadow-xl shadow-estacio-navy/20 active:scale-95">
+                    Inscrever-se no Oracle ONE <ExternalLink size={18} />
+                  </a>
+                </div>
+
+                {/* Cisco NetAcad Card */}
+                <div className="bg-white p-10 md:p-12 rounded-[3.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col">
+                  <div className="flex justify-between items-start mb-10">
+                    <div className="w-20 h-20 bg-blue-50 rounded-3xl flex items-center justify-center text-[#00bceb] group-hover:bg-[#00bceb] group-hover:text-white transition-all duration-500">
+                      <Network size={40} />
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] font-black uppercase tracking-widest bg-blue-100 text-[#00bceb] px-4 py-2 rounded-full">Cisco Academy</span>
+                    </div>
+                  </div>
+                  <h4 className="text-3xl font-black text-estacio-navy mb-6 italic">Cisco Networking Academy</h4>
+                  <p className="text-gray-500 text-base leading-relaxed mb-10">
+                    Domine as redes que movem o mundo. Cursos oficiais de **CCNA, CyberOps, Python e IoT**. Receba Badges digitais para destacar seu perfil no LinkedIn.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4 mb-10">
+                    <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                      <p className="text-[10px] font-black text-gray-400 uppercase mb-1">Foco</p>
+                      <p className="text-sm font-bold text-estacio-navy italic">Redes & Cyber</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                      <p className="text-[10px] font-black text-gray-400 uppercase mb-1">Vantagem</p>
+                      <p className="text-sm font-bold text-green-600 italic">Vouchers Desconto</p>
+                    </div>
+                  </div>
+                  <a href="https://www.netacad.com/pt-br" target="_blank" className="mt-auto flex items-center justify-center gap-3 bg-estacio-navy text-white px-10 py-5 rounded-3xl text-xs font-black uppercase tracking-widest hover:bg-estacio-cyan transition-all shadow-xl shadow-estacio-navy/20 active:scale-95">
+                    Acessar Cisco NetAcad <ExternalLink size={18} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Seção 3: Guia do SIA (Vouchers) */}
+            <div className="bg-white p-10 md:p-16 rounded-[4rem] border border-gray-100 shadow-sm relative overflow-hidden">
+              <div className="flex flex-col lg:flex-row items-center gap-16">
+                <div className="lg:w-1/3">
+                  <div className="inline-block p-4 bg-estacio-cyan/10 rounded-3xl text-estacio-cyan mb-6">
+                    <MousePointer2 size={40} />
+                  </div>
+                  <h4 className="text-3xl font-black text-estacio-navy mb-4 italic">Como resgatar seu benefício?</h4>
+                  <p className="text-gray-500 font-medium leading-relaxed">
+                    Muitos vouchers de 100% de desconto e convites para cursos extras estão "escondidos" no seu portal. Siga este roteiro para não perder nada.
+                  </p>
+                </div>
+                <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {[
+                    { step: "01", title: "Acesse o SIA", desc: "Faça login no portal do aluno Estácio." },
+                    { step: "02", title: "Atividades Comp.", desc: "Clique no menu lateral de Atividades Complementares." },
+                    { step: "03", title: "Editais & Parcerias", desc: "Procure pela aba de cursos externos e convênios." },
+                    { step: "04", title: "Gere o Código", desc: "Copie seu token ou link exclusivo de aluno." }
+                  ].map((item, idx) => (
+                    <div key={idx} className="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 flex gap-6 items-start hover:border-estacio-cyan transition-colors group">
+                      <span className="text-4xl font-black text-gray-200 group-hover:text-estacio-cyan transition-colors">{item.step}</span>
+                      <div>
+                        <h6 className="font-black text-estacio-navy mb-1 italic">{item.title}</h6>
+                        <p className="text-[11px] text-gray-400 font-bold uppercase leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Seção 4: Trilhas de Mercado (AWS & Azure) */}
+            <div>
+              <div className="flex items-center gap-4 mb-12">
                 <Layers className="text-estacio-cyan" size={32} />
-                <h3 className="text-2xl font-black text-estacio-navy uppercase tracking-tight">Trilhas de Elite no Mercado</h3>
+                <h3 className="text-3xl font-black text-estacio-navy uppercase tracking-tight">Gigantes da Nuvem</h3>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* AWS Card */}
-                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group">
-                  <div className="flex justify-between items-start mb-8">
-                    <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600">
-                      <Zap size={32} />
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all flex flex-col">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600">
+                      <Zap size={24} />
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest bg-orange-100 text-orange-700 px-4 py-1.5 rounded-full italic">Líder de Mercado</span>
+                    <h4 className="text-xl font-black text-estacio-navy italic">Amazon Web Services (AWS)</h4>
                   </div>
-                  <h4 className="text-2xl font-black text-estacio-navy mb-4 italic">AWS (Amazon Web Services)</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-8">A nuvem mais utilizada do mundo. Ideal para quem quer focar em arquitetura, DevOps e infraestrutura escalável.</p>
-                  <div className="space-y-3 mb-10">
-                    <div className="flex items-center gap-3 text-xs font-bold text-gray-700">
-                      <CheckCircle2 size={16} className="text-orange-500" /> Cloud Practitioner (Entrada)
-                    </div>
-                    <div className="flex items-center gap-3 text-xs font-bold text-gray-700">
-                      <CheckCircle2 size={16} className="text-orange-500" /> Solutions Architect Associate
-                    </div>
-                  </div>
-                  <a href="https://aws.amazon.com/pt/certification/" target="_blank" className="inline-flex items-center gap-2 text-orange-600 font-black text-[11px] uppercase tracking-widest hover:underline">
-                    Ver trilha oficial AWS <ExternalLink size={14} />
+                  <p className="text-gray-500 text-sm leading-relaxed mb-8">
+                    A plataforma de nuvem mais adotada globalmente. Ideal para arquitetura de sistemas e DevOps.
+                  </p>
+                  <ul className="space-y-3 mb-10 flex-grow">
+                    <li className="flex items-center gap-3 text-xs font-bold text-gray-600"><CheckCircle2 size={16} className="text-orange-500" /> Cloud Practitioner</li>
+                    <li className="flex items-center gap-3 text-xs font-bold text-gray-600"><CheckCircle2 size={16} className="text-orange-500" /> Solutions Architect Associate</li>
+                  </ul>
+                  <a href="https://aws.amazon.com/pt/certification/" target="_blank" className="flex items-center gap-2 text-orange-600 font-black text-[10px] uppercase tracking-widest hover:underline">
+                    Ver Exames AWS <ChevronRight size={14} />
                   </a>
                 </div>
 
-                {/* Microsoft Azure Card */}
-                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group">
-                  <div className="flex justify-between items-start mb-8">
-                    <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
-                      <Cpu size={32} />
+                {/* Azure Card */}
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all flex flex-col">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
+                      <Cpu size={24} />
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full italic">Foco Corporativo</span>
+                    <h4 className="text-xl font-black text-estacio-navy italic">Microsoft Azure</h4>
                   </div>
-                  <h4 className="text-2xl font-black text-estacio-navy mb-4 italic">Microsoft Azure</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-8">Dominante no mercado corporativo e integração com Windows/Office 365. Essencial para grandes consultorias.</p>
-                  <div className="space-y-3 mb-10">
-                    <div className="flex items-center gap-3 text-xs font-bold text-gray-700">
-                      <CheckCircle2 size={16} className="text-blue-500" /> Azure Fundamentals (AZ-900)
-                    </div>
-                    <div className="flex items-center gap-3 text-xs font-bold text-gray-700">
-                      <CheckCircle2 size={16} className="text-blue-500" /> Azure Administrator (AZ-104)
-                    </div>
-                  </div>
-                  <a href="https://learn.microsoft.com/pt-br/credentials/browse/?resource_type=certification" target="_blank" className="inline-flex items-center gap-2 text-blue-600 font-black text-[11px] uppercase tracking-widest hover:underline">
-                    Ver trilha oficial Azure <ExternalLink size={14} />
+                  <p className="text-gray-500 text-sm leading-relaxed mb-8">
+                    Foco total no mercado corporativo e integração com ecossistema Windows/Active Directory.
+                  </p>
+                  <ul className="space-y-3 mb-10 flex-grow">
+                    <li className="flex items-center gap-3 text-xs font-bold text-gray-600"><CheckCircle2 size={16} className="text-blue-500" /> Azure Fundamentals (AZ-900)</li>
+                    <li className="flex items-center gap-3 text-xs font-bold text-gray-600"><CheckCircle2 size={16} className="text-blue-500" /> Azure Admin (AZ-104)</li>
+                  </ul>
+                  <a href="https://learn.microsoft.com/pt-br/credentials/browse/?resource_type=certification" target="_blank" className="flex items-center gap-2 text-blue-600 font-black text-[10px] uppercase tracking-widest hover:underline">
+                    Ver Exames Azure <ChevronRight size={14} />
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Seção 3: Parcerias Exclusivas Estácio (COMPLEMENTADO) */}
-            <div className="bg-white p-10 md:p-16 rounded-[3rem] border border-blue-50 shadow-sm relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-estacio-cyan/5 rounded-full -mr-32 -mt-32"></div>
-              
-              <div className="relative z-10">
-                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 mb-16">
-                  <div className="bg-estacio-navy p-6 rounded-[2rem] shadow-xl shadow-estacio-navy/10 shrink-0">
-                    <GraduationCap className="text-white" size={48} />
-                  </div>
-                  <div>
-                    <h3 className="text-3xl md:text-4xl font-black text-estacio-navy mb-4 italic">Benefícios para Alunos Estácio</h3>
-                    <p className="text-gray-500 text-lg font-medium leading-relaxed max-w-3xl">
-                      A Estácio investe pesado em parcerias para que você já saia da graduação com o currículo de um profissional sênior. Fique atento aos editais no seu portal SIA (Sistema de Informações Acadêmicas).
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                  {/* Oracle ONE */}
-                  <div className="bg-[#F8FAFC] p-10 rounded-[2.5rem] border border-gray-100 flex flex-col h-full group hover:border-estacio-cyan transition-all">
-                    <div className="flex items-center gap-4 mb-8">
-                      <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-[#f80000]">
-                        <Code2 size={28} />
-                      </div>
-                      <h4 className="text-2xl font-black text-estacio-navy">Oracle NEXT Education (ONE)</h4>
-                    </div>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
-                      Programa de educação e empregabilidade que oferece trilhas de **Front-end, Java, Soft Skills e Business Agility**. Ao concluir as trilhas, você ganha acesso exclusivo a uma rede de empresas contratantes parceiras da Oracle.
-                    </p>
-                    <div className="bg-white p-5 rounded-2xl mb-8 border border-gray-100">
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">O que você ganha:</p>
-                      <ul className="text-xs font-bold text-estacio-navy space-y-2">
-                        <li className="flex items-center gap-2"><ChevronRight size={14} className="text-estacio-cyan" /> Vouchers de 100% para Certificações OCI</li>
-                        <li className="flex items-center gap-2"><ChevronRight size={14} className="text-estacio-cyan" /> Plataforma Alura liberada durante o curso</li>
-                      </ul>
-                    </div>
-                    <a href="https://www.oracle.com/br/education/oracle-next-education/" target="_blank" className="inline-flex items-center justify-center gap-3 bg-estacio-navy text-white px-8 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-estacio-cyan transition-all shadow-lg shadow-estacio-navy/10">
-                      Inscrever-se no Oracle ONE <ExternalLink size={16} />
-                    </a>
-                  </div>
-
-                  {/* Cisco Networking Academy */}
-                  <div className="bg-[#F8FAFC] p-10 rounded-[2.5rem] border border-gray-100 flex flex-col h-full group hover:border-estacio-cyan transition-all">
-                    <div className="flex items-center gap-4 mb-8">
-                      <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[#00bceb]">
-                        <Globe size={28} />
-                      </div>
-                      <h4 className="text-2xl font-black text-estacio-navy">Cisco Networking Academy</h4>
-                    </div>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
-                      Foque na base da internet. Cursos de **Redes, Segurança Cibernética, IoT e Programação (Python/C++)**. É a certificação mais respeitada para quem deseja atuar com infraestrutura de rede global.
-                    </p>
-                    <div className="bg-white p-5 rounded-2xl mb-8 border border-gray-100">
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">O que você ganha:</p>
-                      <ul className="text-xs font-bold text-estacio-navy space-y-2">
-                        <li className="flex items-center gap-2"><ChevronRight size={14} className="text-estacio-cyan" /> Descontos de até 70% no CCNA</li>
-                        <li className="flex items-center gap-2"><ChevronRight size={14} className="text-estacio-cyan" /> Emblemas digitais (Badges) para o LinkedIn</li>
-                      </ul>
-                    </div>
-                    <a href="https://www.netacad.com/pt-br" target="_blank" className="inline-flex items-center justify-center gap-3 bg-estacio-navy text-white px-8 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-estacio-cyan transition-all shadow-lg shadow-estacio-navy/10">
-                      Acessar Cisco Academy <ExternalLink size={16} />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Guia de Acesso SIA */}
-                <div className="mt-16 bg-estacio-navy p-10 rounded-[2.5rem] text-white flex flex-col md:flex-row items-center gap-10">
-                  <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center shrink-0">
-                    <MousePointer2 size={36} className="text-estacio-cyan" />
-                  </div>
-                  <div>
-                    <h5 className="text-xl font-black mb-2 italic text-estacio-cyan">Como resgatar seus benefícios no SIA?</h5>
-                    <p className="text-blue-100/60 text-sm leading-relaxed mb-6">
-                      Muitos alunos perdem prazos por não saberem onde procurar. Siga este caminho:
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                      <div className="bg-white/5 px-6 py-3 rounded-xl border border-white/10 text-xs font-bold">1. Acesse o Portal SIA</div>
-                      <div className="bg-white/5 px-6 py-3 rounded-xl border border-white/10 text-xs font-bold">2. Menu "Atividades Complementares"</div>
-                      <div className="bg-white/5 px-6 py-3 rounded-xl border border-white/10 text-xs font-bold">3. Ver "Editais e Parcerias"</div>
-                      <div className="bg-white/5 px-6 py-3 rounded-xl border border-white/10 text-xs font-bold">4. Resgate seu código</div>
-                    </div>
-                  </div>
-                </div>
+            {/* Footer de Recursos de Estudo */}
+            <div className="bg-blue-50 p-10 md:p-14 rounded-[4rem] border border-blue-100 flex flex-col md:flex-row items-center gap-12">
+              <div className="bg-white p-8 rounded-[2rem] shadow-sm shrink-0">
+                <BookOpenCheck className="text-estacio-navy" size={48} />
               </div>
-            </div>
-
-            {/* Seção 4: Dicas de Estudo */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              <div className="bg-white p-10 md:p-14 rounded-[3rem] border border-gray-100 shadow-sm">
-                <div className="flex items-center gap-4 mb-8">
-                  <BookOpenCheck className="text-estacio-cyan" size={32} />
-                  <h4 className="text-2xl font-black text-estacio-navy italic">Dicas para Aprovação</h4>
-                </div>
-                <div className="space-y-6">
-                  <div className="flex gap-5">
-                    <div className="font-black text-4xl text-gray-100">01</div>
-                    <p className="text-gray-500 text-sm leading-relaxed"><strong>Foco na Prática:</strong> Use as camadas gratuitas (Free Tier) da AWS e Azure. Certificação sem "mão na massa" perde o valor no dia a dia do trabalho.</p>
-                  </div>
-                  <div className="flex gap-5">
-                    <div className="font-black text-4xl text-gray-100">02</div>
-                    <p className="text-gray-500 text-sm leading-relaxed"><strong>Simulados:</strong> Plataformas como **Udemy** e **ExamTopics** são fundamentais para treinar o tempo de resposta e o estilo das questões.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-blue-50 p-10 md:p-14 rounded-[3rem] border border-blue-100 flex flex-col justify-center">
-                <Star className="text-yellow-500 mb-6" size={40} fill="currentColor" />
-                <h4 className="text-2xl font-black text-estacio-navy mb-6">Explore Mais Recursos</h4>
+              <div>
+                <h5 className="text-2xl font-black text-estacio-navy mb-4 italic">Bônus: Onde estudar de graça?</h5>
+                <p className="text-gray-500 font-medium leading-relaxed mb-8">
+                  Além das parcerias, explore plataformas que oferecem trilhas gratuitas e certificações de entrada reconhecidas por grandes empresas de tecnologia.
+                </p>
                 <div className="flex flex-wrap gap-4">
-                  <a href="https://www.udemy.com" target="_blank" className="bg-white px-6 py-3 rounded-2xl text-[10px] font-black uppercase text-estacio-navy shadow-sm hover:shadow-lg transition-all border border-gray-100">
-                    Udemy Study <ExternalLink size={12} />
-                  </a>
-                  <a href="https://www.coursera.org" target="_blank" className="bg-white px-6 py-3 rounded-2xl text-[10px] font-black uppercase text-estacio-navy shadow-sm hover:shadow-lg transition-all border border-gray-100">
-                    Coursera <ExternalLink size={12} />
-                  </a>
+                  {[
+                    { name: "Udemy Free", url: "https://www.udemy.com" },
+                    { name: "Coursera", url: "https://www.coursera.org" },
+                    { name: "edX", url: "https://www.edx.org" }
+                  ].map((site, i) => (
+                    <a key={i} href={site.url} target="_blank" className="bg-white px-6 py-3 rounded-2xl text-[10px] font-black uppercase text-estacio-navy shadow-sm hover:shadow-lg transition-all border border-gray-100">
+                      {site.name} <ExternalLink size={12} className="inline ml-1" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -390,7 +383,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                 <div className="space-y-12">
                   <div className="flex flex-col md:flex-row gap-8 items-start">
                     <div className="bg-estacio-cyan p-4 rounded-3xl shrink-0">
-                      <Github size={32} />
+                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     </div>
                     <div>
                       <h5 className="font-black text-xl mb-3 italic text-estacio-cyan">Seu GitHub é seu currículo</h5>
@@ -449,29 +442,6 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                 </div>
               </div>
             </div>
-
-            {/* Seção 2: Vantagens PJ */}
-            <div className="bg-white p-10 md:p-16 rounded-[3rem] border border-emerald-100 shadow-sm">
-              <div className="flex items-center gap-6 mb-12">
-                <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
-                  <UserCheck size={36} />
-                </div>
-                <div>
-                  <h3 className="text-3xl font-black text-estacio-navy">Carreira Autônoma & PJ</h3>
-                  <p className="text-emerald-600 font-bold text-sm uppercase tracking-widest">Vantagens do Empreendedorismo em TI</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="flex flex-col gap-4">
-                  <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700">
-                    <TrendingUp size={20} />
-                  </div>
-                  <h5 className="font-black text-lg text-estacio-navy italic">Maior Ganho Líquido</h5>
-                  <p className="text-gray-500 text-sm leading-relaxed">Contratos PJ geralmente oferecem valores brutos superiores ao regime CLT, com carga tributária reduzida.</p>
-                </div>
-              </div>
-            </div>
           </div>
         );
       default:
@@ -508,7 +478,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
           </div>
         </div>
         <div>
-          <h2 className="text-5xl md:text-7xl font-black text-estacio-navy tracking-tighter mb-4 leading-none">
+          <h2 className="text-5xl md:text-7xl font-black text-estacio-navy tracking-tighter mb-4 leading-none italic">
             {cardInfo?.title}
           </h2>
           <p className="text-xl md:text-2xl text-gray-400 font-medium max-w-3xl leading-relaxed">
