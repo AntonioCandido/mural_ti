@@ -32,92 +32,84 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
     };
   }, []);
 
-  // Helper para cores de destaque baseadas na categoria do card
   const getAccentColor = (colorClass: string) => {
-    if (colorClass.includes('blue-600')) return 'rgba(37, 99, 235, 0.4)';
-    if (colorClass.includes('cyan-500')) return 'rgba(6, 182, 212, 0.4)';
-    if (colorClass.includes('yellow-600')) return 'rgba(202, 138, 4, 0.4)';
-    if (colorClass.includes('blue-800')) return 'rgba(30, 64, 175, 0.4)';
-    if (colorClass.includes('orange-500')) return 'rgba(249, 115, 22, 0.4)';
-    if (colorClass.includes('purple-600')) return 'rgba(147, 51, 234, 0.4)';
-    if (colorClass.includes('green-600')) return 'rgba(22, 163, 74, 0.4)';
-    return 'rgba(0, 174, 239, 0.4)';
+    if (colorClass.includes('blue-600')) return 'rgba(37, 99, 235, 0.2)';
+    if (colorClass.includes('cyan-500')) return 'rgba(6, 182, 212, 0.2)';
+    if (colorClass.includes('yellow-600')) return 'rgba(202, 138, 4, 0.2)';
+    if (colorClass.includes('blue-800')) return 'rgba(30, 64, 175, 0.2)';
+    if (colorClass.includes('orange-500')) return 'rgba(249, 115, 22, 0.2)';
+    if (colorClass.includes('purple-600')) return 'rgba(147, 51, 234, 0.2)';
+    if (colorClass.includes('green-600')) return 'rgba(22, 163, 74, 0.2)';
+    return 'rgba(0, 51, 153, 0.1)';
   };
 
   return (
     <div className="fade-in">
-      {/* HERO SECTION - REFINED */}
-      <section className="bg-estacio-navy text-white py-20 px-4 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-cyan rounded-full mix-blend-multiply filter blur-[100px] opacity-20 -mr-48 -mt-48"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-estacio-yellow rounded-full mix-blend-multiply filter blur-[100px] opacity-10 -ml-48 -mb-48"></div>
+      {/* HERO SECTION */}
+      <section className="bg-estacio-navy text-white py-16 md:py-24 px-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-cyan rounded-full mix-blend-multiply filter blur-[120px] opacity-15 -mr-48 -mt-48"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-estacio-yellow rounded-full mix-blend-multiply filter blur-[120px] opacity-10 -ml-48 -mb-48"></div>
         
         <div className="container mx-auto relative z-10 text-center max-w-4xl">
-          <div className="inline-flex items-center gap-2 py-1.5 px-4 bg-white/10 backdrop-blur-md border border-white/20 text-estacio-cyan text-[10px] font-bold rounded-full mb-8 uppercase tracking-[0.2em]">
-            <span className="w-2 h-2 bg-estacio-cyan rounded-full animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 py-1 px-3 bg-white/5 backdrop-blur-sm border border-white/10 text-estacio-cyan text-[10px] font-semibold rounded-full mb-6 uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 bg-estacio-cyan rounded-full animate-pulse"></span>
             Engenharia de Software & TI
           </div>
-          <h2 className="text-4xl md:text-7xl font-bold mb-8 leading-[1.1] tracking-tight">
-            Seu Futuro na <br/><span className="text-estacio-cyan">Tecnologia</span> Começa Aqui.
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
+            Hub Acadêmico de <br/><span className="text-estacio-cyan">Inovação e Tecnologia</span>
           </h2>
-          <p className="text-lg md:text-2xl text-blue-100/80 mb-10 leading-relaxed max-w-2xl mx-auto font-light">
-            Recursos exclusivos, mentorias e conexões para transformar sua jornada acadêmica na Estácio.
+          <p className="text-base md:text-xl text-blue-100/70 mb-8 leading-relaxed max-w-xl mx-auto font-light">
+            Recursos exclusivos e conexões para transformar sua jornada tecnológica na Estácio.
           </p>
         </div>
       </section>
 
-      {/* CARDS GRID - PCI THEMED */}
-      <section className="container mx-auto px-4 py-16 -mt-16 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={containerRef}>
+      {/* CARDS GRID */}
+      <section className="container mx-auto px-4 py-12 -mt-10 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" ref={containerRef}>
           {CARDS.map((card, index) => (
             <div 
               key={card.id}
               onClick={() => onNavigate(card.id)}
-              className="p-8 rounded-[2rem] cursor-pointer group flex flex-col items-start reveal card-frame"
+              className="p-8 rounded-[1.5rem] cursor-pointer group flex flex-col items-start reveal card-frame"
               style={{ 
-                transitionDelay: `${index * 50}ms`,
+                transitionDelay: `${index * 30}ms`,
                 // @ts-ignore
                 '--card-accent': getAccentColor(card.color)
               } as React.CSSProperties}
             >
-              {/* Camadas PCI Dinâmicas */}
               <div className="pci-circuit-overlay"></div>
-              <div className="pci-data-scan"></div>
               <div className="mobile-glow-sphere"></div>
               
-              <div className={`p-4 rounded-2xl bg-white shadow-lg shadow-slate-200/50 mb-8 transform group-hover:-translate-y-2 group-hover:rotate-3 transition-all duration-500 ${card.color} relative z-10`}>
-                {getIcon(card.icon, 32)}
+              <div className={`p-3.5 rounded-xl bg-slate-50 border border-slate-100 mb-6 group-hover:bg-white group-hover:shadow-sm transition-all duration-300 ${card.color} relative z-10`}>
+                {getIcon(card.icon, 28)}
               </div>
               
-              <h3 className="text-xl font-bold mb-3 text-slate-800 group-hover:text-estacio-navy transition-colors relative z-10">
+              <h3 className="text-lg font-bold mb-2 text-slate-800 group-hover:text-estacio-navy transition-colors relative z-10">
                 {card.title}
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow relative z-10">
+              <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow relative z-10 font-normal">
                 {card.description}
               </p>
               
-              <div className="flex items-center text-[10px] font-black uppercase tracking-widest text-estacio-cyan group-hover:text-estacio-navy transition-colors relative z-10">
-                <span className="mr-2">Executar Módulo</span>
-                <div className="w-8 h-[2px] bg-current transform origin-left group-hover:scale-x-125 transition-transform"></div>
+              <div className="flex items-center text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 group-hover:text-estacio-cyan transition-colors relative z-10">
+                <span>Explorar Recurso</span>
+                <svg className="w-3.5 h-3.5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* FOOTER SECTION */}
-      <footer className="bg-slate-50 py-16 border-t border-slate-200/60 overflow-hidden relative">
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="mb-8 opacity-20 hover:opacity-100 transition-opacity duration-700">
-            <img 
-              src="https://www.estacio.br/assets/images/logo-estacio.svg" 
-              alt="Estácio" 
-              className="h-10 mx-auto"
-              onError={(e) => (e.currentTarget.style.display = 'none')}
-            />
-          </div>
-          <p className="text-slate-400 text-[11px] uppercase tracking-[0.3em] font-bold">
+      {/* FOOTER */}
+      <footer className="bg-white py-12 border-t border-slate-100">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-2">
             Mural Tecnológico Estácio • 2025
           </p>
+          <div className="w-8 h-1 bg-estacio-cyan/30 mx-auto rounded-full"></div>
         </div>
       </footer>
     </div>
