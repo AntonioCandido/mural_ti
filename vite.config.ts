@@ -6,12 +6,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-      },
-    },
+    // Utilizamos o 'esbuild' que é o padrão do Vite e não requer instalação extra
+    minify: 'esbuild',
+  },
+  // Mantemos a funcionalidade de remover consoles e debuggers usando as configurações do esbuild
+  esbuild: {
+    drop: ['console', 'debugger'],
   },
   server: {
     port: 3000,
