@@ -84,6 +84,9 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-1">
               <div className="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100 text-center h-full flex flex-col justify-center items-center">
+                
+                {/* O elemento de imagem foi removido conforme solicitado */}
+
                 <h4 className="font-extrabold text-2xl md:text-3xl text-estacio-navy leading-tight mb-4 px-2">Prof. Antônio Cândido de O. Filho</h4>
                 <p className="text-sm md:text-base text-gray-500 mb-10 px-4 leading-relaxed font-medium max-w-[280px]">Coordenador de Análise e Desenvolvimento de Sistemas - ADS e Ciência da Computação - CC</p>
                 
@@ -110,6 +113,18 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </div>
                     <span className="text-blue-700 font-bold truncate group-hover:text-blue-900 transition-colors">LinkedIn Perfil</span>
+                  </a>
+
+                  <a 
+                    href="https://www.facebook.com/candidorj" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 text-sm md:text-base text-slate-600 group p-3 transition-all duration-300 rounded-2xl border border-transparent hover:border-blue-100 hover:bg-blue-50 hover:shadow-md"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </div>
+                    <span className="text-blue-600 font-bold truncate group-hover:text-blue-800 transition-colors">Facebook Perfil</span>
                   </a>
                 </div>
               </div>
