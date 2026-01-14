@@ -1,19 +1,11 @@
 
 export enum ViewType {
-  HOME = 'home',
-  DICAS = 'dicas',
-  APP_EXEMPLO = 'app_exemplo',
-  ESTAGIOS = 'estagios',
-  SAIBA_MAIS = 'saiba_mais',
-  CONCURSOS = 'concursos',
-  PROJETOS = 'projetos',
-  FALE_COORDENADOR = 'fale_coordenador'
-}
-
-export interface CardConfig {
-  id: ViewType;
-  title: string;
-  description: string;
-  icon: string;
-  color: string;
+  HOME = 'HOME',
+  DICAS = 'DICAS',
+  APP_EXEMPLO = 'APP_EXEMPLO',
+  ESTAGIOS = 'ESTAGIOS',
+  SAIBA_MAIS = 'SAIBA_MAIS',
+  CONCURSOS = 'CONCURSOS',
+  PROJETOS = 'PROJETOS',
+  COORDENADOR = 'COORDENADOR'
 }

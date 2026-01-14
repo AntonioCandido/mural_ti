@@ -1,30 +1,32 @@
 
 import React, { useState } from 'react';
 import Layout from './components/Layout';
-import Home from './components/Home';
-import DetailView from './components/DetailView';
+import HeroSection from './components/HeroSection';
+import CardsGrid from './components/CardsGrid';
+import DetailView from './screens/DetailView';
 import { ViewType } from './types';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>(ViewType.HOME);
 
-  const handleNavigate = (view: ViewType) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const navigateTo = (view: ViewType) => {
     setCurrentView(view);
-  };
-
-  const renderCurrentView = () => {
-    switch (currentView) {
-      case ViewType.HOME:
-        return <Home onNavigate={handleNavigate} />;
-      default:
-        return <DetailView view={currentView} onBack={() => handleNavigate(ViewType.HOME)} />;
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <Layout currentView={currentView} onNavigate={handleNavigate}>
-      {renderCurrentView()}
+    <Layout currentView={currentView} onNavigate={navigateTo}>
+      {currentView === ViewType.HOME ? (
+        <div className="fade-in">
+          <HeroSection />
+          <CardsGrid onNavigate={navigateTo} />
+        </div>
+      ) : (
+        <DetailView 
+          view={currentView} 
+          onBack={() => navigateTo(ViewType.HOME)} 
+        />
+      )}
     </Layout>
   );
 };

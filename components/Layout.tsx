@@ -10,24 +10,25 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigate }) => {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* HEADER */}
-      <header className="bg-estacio-navy text-white shadow-lg sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+    <div className="min-h-screen flex flex-col font-sans">
+      <header className="bg-estacio-navy sticky top-0 z-50 shadow-md">
+        <div className="container mx-auto px-6 h-24 flex justify-between items-center">
           <div 
-            className="flex items-center cursor-pointer hover:opacity-90 transition-opacity"
+            className="flex flex-col cursor-pointer group"
             onClick={() => onNavigate(ViewType.HOME)}
           >
-            <div className="block">
-              <h1 className="text-xl font-bold leading-tight">Mural tecnológico</h1>
-              <p className="text-xs text-estacio-cyan uppercase tracking-widest font-semibold">Recursos Acadêmicos</p>
-            </div>
+            <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight group-hover:text-estacio-cyan transition-colors">
+              Mural tecnológico
+            </h1>
+            <p className="text-[10px] md:text-xs text-estacio-cyan font-bold uppercase tracking-[0.2em] leading-none mt-1">
+              RECURSOS ACADÊMICOS
+            </p>
           </div>
 
-          <nav className="flex gap-4 md:gap-8">
+          <nav className="flex items-center">
             <button 
               onClick={() => onNavigate(ViewType.HOME)}
-              className={`text-sm font-medium hover:text-estacio-cyan transition-colors ${currentView === ViewType.HOME ? 'text-estacio-cyan' : ''}`}
+              className={`text-base md:text-lg font-bold transition-colors ${currentView === ViewType.HOME ? 'text-estacio-cyan' : 'text-white hover:text-estacio-cyan'}`}
             >
               Início
             </button>
@@ -35,8 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigate }) =>
         </div>
       </header>
 
-      {/* MAIN CONTENT */}
-      <main className="flex-grow">
+      <main className="flex-grow bg-white">
         {children}
       </main>
     </div>
