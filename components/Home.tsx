@@ -71,14 +71,25 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               className="p-8 rounded-2xl cursor-pointer group flex flex-col items-start reveal card-frame"
               style={{ transitionDelay: `${index * 50}ms` }}
             >
-              <div className={`p-4 rounded-xl bg-gray-50 mb-6 group-hover:bg-blue-50 transition-colors ${card.color}`}>
+              {/* Elementos criativos de fundo */}
+              <div className="card-bg-glow"></div>
+              <div className="card-pattern">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 10H20M10 20H30M10 30H15M80 80H90M70 90H90M85 70H90" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <circle cx="50" cy="50" r="2" fill="currentColor"/>
+                  <circle cx="20" cy="80" r="2" fill="currentColor"/>
+                  <circle cx="80" cy="20" r="2" fill="currentColor"/>
+                </svg>
+              </div>
+
+              <div className={`p-4 rounded-xl bg-gray-50 mb-6 group-hover:bg-blue-50 transition-colors ${card.color} relative z-10`}>
                 {getIcon(card.icon)}
               </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-estacio-navy transition-colors">{card.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed flex-grow">
+              <h3 className="text-xl font-bold mb-3 group-hover:text-estacio-navy transition-colors relative z-10">{card.title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed flex-grow relative z-10">
                 {card.description}
               </p>
-              <div className="mt-6 flex items-center text-sm font-semibold text-estacio-cyan opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
+              <div className="mt-6 flex items-center text-sm font-semibold text-estacio-cyan opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0 relative z-10">
                 Acessar seção
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
               </div>
@@ -92,11 +103,13 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="md:w-1/2 reveal">
-              <div className="p-2 bg-gradient-to-tr from-estacio-navy to-estacio-cyan rounded-[2rem] shadow-2xl">
+              <div className="p-2 bg-gradient-to-tr from-estacio-navy to-estacio-cyan rounded-[2rem] shadow-2xl relative">
+                {/* Glow decorativo na imagem */}
+                <div className="absolute inset-0 bg-blue-400 filter blur-[80px] opacity-10 rounded-full"></div>
                 <img 
                   src="https://raw.githubusercontent.com/fabiomariz/estacio-ti-portal/main/estacio-dica-secreta.jpg" 
                   alt="Cartaz Estácio Dica Secreta" 
-                  className="rounded-[1.8rem] w-full h-auto object-cover transform hover:scale-[1.01] transition-transform duration-500"
+                  className="rounded-[1.8rem] w-full h-auto object-cover transform hover:scale-[1.01] transition-transform duration-500 relative z-10"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80";
                   }}
