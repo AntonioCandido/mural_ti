@@ -68,7 +68,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <div 
               key={card.id}
               onClick={() => onNavigate(card.id)}
-              className="bg-white border-2 border-transparent p-8 rounded-2xl shadow-sm card-hover cursor-pointer group flex flex-col items-start reveal"
+              className="p-8 rounded-2xl cursor-pointer group flex flex-col items-start reveal card-frame"
               style={{ transitionDelay: `${index * 50}ms` }}
             >
               <div className={`p-4 rounded-xl bg-gray-50 mb-6 group-hover:bg-blue-50 transition-colors ${card.color}`}>
@@ -92,14 +92,16 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="md:w-1/2 reveal">
-              <img 
-                src="https://raw.githubusercontent.com/fabiomariz/estacio-ti-portal/main/estacio-dica-secreta.jpg" 
-                alt="Cartaz Estácio Dica Secreta" 
-                className="rounded-3xl shadow-2xl w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80";
-                }}
-              />
+              <div className="p-2 bg-gradient-to-tr from-estacio-navy to-estacio-cyan rounded-[2rem] shadow-2xl">
+                <img 
+                  src="https://raw.githubusercontent.com/fabiomariz/estacio-ti-portal/main/estacio-dica-secreta.jpg" 
+                  alt="Cartaz Estácio Dica Secreta" 
+                  className="rounded-[1.8rem] w-full h-auto object-cover transform hover:scale-[1.01] transition-transform duration-500"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80";
+                  }}
+                />
+              </div>
             </div>
             <div className="md:w-1/2 space-y-8">
               <h2 className="text-3xl md:text-4xl font-bold text-estacio-navy mb-4 reveal">Por que usar o Mural tecnológico?</h2>
