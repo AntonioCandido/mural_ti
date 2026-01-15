@@ -34,7 +34,8 @@ import {
   Linkedin,
   Facebook,
   BookOpen,
-  Terminal
+  Terminal,
+  MousePointerClick
 } from 'lucide-react';
 
 interface DetailViewProps {
@@ -177,77 +178,110 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                 </div>
               </div>
             </div>
-
-            {/* Seção 4: Trilhas de Mercado (AWS & Azure) */}
+          </div>
+        );
+      case ViewType.DICAS:
+        return (
+          <div className="space-y-24">
+            {/* Seção 1: Trilhas e Roadmaps (Complementada) */}
             <div>
               <div className="flex items-center gap-4 mb-12">
-                <Layers className="text-estacio-cyan" size={32} />
-                <h3 className="text-3xl font-black text-estacio-navy uppercase tracking-tight">Gigantes da Nuvem</h3>
+                <Compass className="text-estacio-cyan" size={32} />
+                <h3 className="text-3xl font-black text-estacio-navy uppercase tracking-tight">Onde Começar?</h3>
               </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* AWS Card */}
-                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all flex flex-col">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600">
-                      <Zap size={24} />
-                    </div>
-                    <h4 className="text-xl font-black text-estacio-navy italic">Amazon Web Services (AWS)</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* 1. Roadmap.sh */}
+                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-400 transition-all group flex flex-col border-b-4 border-b-blue-500">
+                  <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <Compass size={28} />
                   </div>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-8">
-                    A plataforma de nuvem mais adotada globalmente. Ideal para arquitetura de sistemas e DevOps.
-                  </p>
-                  <ul className="space-y-3 mb-10 flex-grow">
-                    <li className="flex items-center gap-3 text-xs font-bold text-gray-600"><CheckCircle2 size={16} className="text-orange-500" /> Cloud Practitioner</li>
-                    <li className="flex items-center gap-3 text-xs font-bold text-gray-600"><CheckCircle2 size={16} className="text-orange-500" /> Solutions Architect Associate</li>
-                  </ul>
-                  <a href="https://aws.amazon.com/pt/certification/" target="_blank" className="flex items-center gap-2 text-orange-600 font-black text-[10px] uppercase tracking-widest hover:underline">
-                    Ver Exames AWS <ChevronRight size={14} />
+                  <h4 className="font-black text-xl text-estacio-navy mb-4 italic">Roadmap.sh</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">A jornada visual definitiva. Escolha sua trilha (Frontend, Backend, DevOps) e saiba exatamente o que estudar.</p>
+                  <a href="https://roadmap.sh" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-black text-xs uppercase tracking-widest hover:underline">
+                    Ver Roadmaps <ExternalLink size={14} />
                   </a>
                 </div>
 
-                {/* Azure Card */}
-                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all flex flex-col">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
-                      <Cpu size={24} />
-                    </div>
-                    <h4 className="text-xl font-black text-estacio-navy italic">Microsoft Azure</h4>
+                {/* 2. MDN Web Docs (Novo) */}
+                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-black transition-all group flex flex-col border-b-4 border-b-black">
+                  <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-black mb-6 group-hover:bg-black group-hover:text-white transition-all">
+                    <Layout size={28} />
                   </div>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-8">
-                    Foco total no mercado corporativo e integração com ecossistema Windows/Active Directory.
-                  </p>
-                  <ul className="space-y-3 mb-10 flex-grow">
-                    <li className="flex items-center gap-3 text-xs font-bold text-gray-600"><CheckCircle2 size={16} className="text-blue-500" /> Azure Fundamentals (AZ-900)</li>
-                    <li className="flex items-center gap-3 text-xs font-bold text-gray-600"><CheckCircle2 size={16} className="text-blue-500" /> Azure Admin (AZ-104)</li>
-                  </ul>
-                  <a href="https://learn.microsoft.com/pt-br/credentials/browse/?resource_type=certification" target="_blank" className="flex items-center gap-2 text-blue-600 font-black text-[10px] uppercase tracking-widest hover:underline">
-                    Ver Exames Azure <ChevronRight size={14} />
+                  <h4 className="font-black text-xl text-estacio-navy mb-4 italic">MDN Web Docs</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">A "bíblia" do desenvolvimento web. Documentação completa e atualizada sobre HTML, CSS e APIs do JavaScript.</p>
+                  <a href="https://developer.mozilla.org/" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-black text-xs uppercase tracking-widest hover:underline">
+                    Documentação MDN <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 3. W3Schools (Novo) */}
+                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-green-500 transition-all group flex flex-col border-b-4 border-b-green-500">
+                  <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:bg-green-600 group-hover:text-white transition-all">
+                    <BookOpen size={28} />
+                  </div>
+                  <h4 className="font-black text-xl text-estacio-navy mb-4 italic">W3Schools</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">O maior tutorial interativo do mundo. Simples, direto e com editores de código integrados para prática imediata.</p>
+                  <a href="https://www.w3schools.com/" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-black text-xs uppercase tracking-widest hover:underline">
+                    Aprender Agora <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 4. Exercism */}
+                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-500 transition-all group flex flex-col border-b-4 border-b-purple-500">
+                  <div className="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                    <Terminal size={28} />
+                  </div>
+                  <h4 className="font-black text-xl text-estacio-navy mb-4 italic">Exercism</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">Pratique lógica de programação em 67 linguagens com feedback de mentores reais. 100% gratuito e open source.</p>
+                  <a href="https://exercism.org" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-black text-xs uppercase tracking-widest hover:underline">
+                    Treinar Lógica <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 5. FreeCodeCamp */}
+                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-orange-500 transition-all group flex flex-col border-b-4 border-b-orange-600">
+                  <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-6 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                    <Zap size={28} />
+                  </div>
+                  <h4 className="font-black text-xl text-estacio-navy mb-4 italic">FreeCodeCamp</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">Certificações gratuitas em Web Design, Ciência de Dados e Segurança da Informação. Aprenda construindo projetos.</p>
+                  <a href="https://freecodecamp.org" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-black text-xs uppercase tracking-widest hover:underline">
+                    Obter Certificado <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 6. Codewars (Novo) */}
+                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-red-600 transition-all group flex flex-col border-b-4 border-b-red-700">
+                  <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:bg-red-600 group-hover:text-white transition-all">
+                    <Award size={28} />
+                  </div>
+                  <h4 className="font-black text-xl text-estacio-navy mb-4 italic">Codewars</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">Treine como um samurai resolvendo desafios chamados "Katas". Evolua seus níveis e domine sua linguagem favorita.</p>
+                  <a href="https://www.codewars.com/" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-black text-xs uppercase tracking-widest hover:underline">
+                    Desafiar Lógica <ExternalLink size={14} />
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Footer de Recursos de Estudo */}
-            <div className="bg-blue-50 p-10 md:p-14 rounded-[4rem] border border-blue-100 flex flex-col md:flex-row items-center gap-12">
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm shrink-0">
-                <BookOpenCheck className="text-estacio-navy" size={48} />
-              </div>
-              <div>
-                <h5 className="text-2xl font-black text-estacio-navy mb-4 italic">Bônus: Onde estudar de graça?</h5>
-                <p className="text-gray-500 font-medium leading-relaxed mb-8">
-                  Além das parcerias, explore plataformas que oferecem trilhas gratuitas e certificações de entrada reconhecidas por grandes empresas de tecnologia.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  {[
-                    { name: "Udemy Free", url: "https://www.udemy.com" },
-                    { name: "Coursera", url: "https://www.coursera.org" },
-                    { name: "edX", url: "https://www.edx.org" }
-                  ].map((site, i) => (
-                    <a key={i} href={site.url} target="_blank" className="bg-white px-6 py-3 rounded-2xl text-[10px] font-black uppercase text-estacio-navy shadow-sm hover:shadow-lg transition-all border border-gray-100">
-                      {site.name} <ExternalLink size={12} className="inline ml-1" />
-                    </a>
-                  ))}
+            {/* Seção 2: Carreira & Visibilidade */}
+            <div className="bg-estacio-navy p-10 md:p-16 rounded-[4rem] text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-estacio-cyan/10 rounded-full -mr-32 -mt-32 blur-2xl"></div>
+              <div className="max-w-4xl relative z-10">
+                <h3 className="text-4xl font-black mb-10 tracking-tighter">Dicas de Carreira</h3>
+                <div className="space-y-12">
+                  <div className="flex flex-col md:flex-row gap-8 items-start">
+                    <div className="bg-estacio-cyan p-5 rounded-[2rem] shrink-0 shadow-lg shadow-estacio-cyan/20">
+                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </div>
+                    <div>
+                      <h5 className="font-black text-2xl mb-4 italic text-estacio-cyan">Seu GitHub é seu currículo</h5>
+                      <p className="text-blue-100/70 text-lg leading-relaxed mb-8">Documentação é o que separa um dev amador de um profissional. Projetos com README detalhados recebem muito mais atenção em processos seletivos.</p>
+                      <a href="https://github.com/matiassingers/awesome-readme" target="_blank" className="inline-flex items-center gap-3 bg-white/10 px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-estacio-cyan transition-colors">
+                        Guia: Awesome README <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -331,73 +365,6 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
             </div>
           </div>
         );
-      case ViewType.DICAS:
-        return (
-          <div className="space-y-20">
-            {/* Seção 1: Trilhas e Roadmaps */}
-            <div>
-              <div className="flex items-center gap-4 mb-10">
-                <Compass className="text-estacio-cyan" size={32} />
-                <h3 className="text-2xl font-black text-estacio-navy uppercase tracking-tight">Onde Começar?</h3>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-estacio-cyan/30 transition-all group">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
-                    <BookOpen size={24} />
-                  </div>
-                  <h4 className="font-black text-lg text-estacio-navy mb-3">Roadmap.sh</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">Guias visuais completos para trilhas de Front-end, Back-end e DevOps. Indispensável para sua evolução.</p>
-                  <a href="https://roadmap.sh" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-bold text-xs uppercase tracking-widest hover:underline">
-                    Explorar Trilhas <ExternalLink size={14} />
-                  </a>
-                </div>
-
-                <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-estacio-cyan/30 transition-all group">
-                  <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform">
-                    <Terminal size={24} />
-                  </div>
-                  <h4 className="font-black text-lg text-estacio-navy mb-3">Exercism</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">Pratique lógica de programação em mais de 60 linguagens com feedback de mentores reais.</p>
-                  <a href="https://exercism.org" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-bold text-xs uppercase tracking-widest hover:underline">
-                    Praticar Código <ExternalLink size={14} />
-                  </a>
-                </div>
-
-                <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-estacio-cyan/30 transition-all group">
-                  <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform">
-                    <Zap size={24} />
-                  </div>
-                  <h4 className="font-black text-lg text-estacio-navy mb-3">FreeCodeCamp</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">Certificações gratuitas em Web Design, Data Science e Segurança da Informação reconhecidas pelo mercado.</p>
-                  <a href="https://freecodecamp.org" target="_blank" className="inline-flex items-center gap-2 text-estacio-cyan font-bold text-xs uppercase tracking-widest hover:underline">
-                    Obter Certificado <ExternalLink size={14} />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Seção 2: Carreira & Visibilidade */}
-            <div className="bg-estacio-navy p-10 md:p-16 rounded-[3rem] text-white">
-              <div className="max-w-4xl">
-                <h3 className="text-3xl md:text-4xl font-black mb-10">Dicas de Carreira</h3>
-                <div className="space-y-12">
-                  <div className="flex flex-col md:flex-row gap-8 items-start">
-                    <div className="bg-estacio-cyan p-4 rounded-3xl shrink-0">
-                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </div>
-                    <div>
-                      <h5 className="font-black text-xl mb-3 italic text-estacio-cyan">Seu GitHub é seu currículo</h5>
-                      <p className="text-blue-100/70 leading-relaxed mb-6">Documentação é o que separa um dev amador de um profissional. Projetos com README detalhados recebem muito mais atenção em processos seletivos.</p>
-                      <a href="https://github.com/matiassingers/awesome-readme" target="_blank" className="inline-flex items-center gap-2 bg-white/10 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-estacio-cyan transition-colors">
-                        Guia: Awesome README <ExternalLink size={14} />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
       case ViewType.ESTAGIOS:
         return (
           <div className="space-y-20">
@@ -405,7 +372,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
             <div>
               <div className="flex items-center gap-4 mb-10">
                 <Compass className="text-estacio-cyan" size={32} />
-                <h3 className="text-2xl font-black text-estacio-navy uppercase tracking-tight">Onde Encontrar Vagas?</h3>
+                <h3 className="text-2xl font-black text-estacio-navy uppercase tracking-tight">Onde Começar?</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Encontre sua Vaga */}
