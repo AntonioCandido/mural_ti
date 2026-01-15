@@ -1,22 +1,17 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { ViewType } from '../types';
 import { CARDS, getIcon } from '../constants';
 import { 
   ExternalLink, 
   ArrowRight, 
-  CheckCircle2, 
   Sparkles, 
-  Trophy, 
-  Github, 
   Globe, 
   Plane, 
   ChevronRight, 
   Mail, 
   Linkedin, 
   Facebook, 
-  Clock, 
-  MapPin, 
   Users,
   Smartphone,
   Code2,
@@ -44,13 +39,9 @@ import {
   FlaskConical,
   Puzzle,
   Link2,
-  Search,
-  Target,
-  FileText,
   Medal,
   Zap,
-  Star,
-  X
+  Star
 } from 'lucide-react';
 
 interface DetailViewProps {
@@ -63,203 +54,39 @@ interface AwesomeCategory {
   icon: React.ReactNode;
   link: string;
   desc: string;
-  longDesc: string;
 }
 
 const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
-  const [selectedCategory, setSelectedCategory] = useState<AwesomeCategory | null>(null);
   const cardInfo = CARDS.find(c => c.id === view);
 
   const awesomeCategories: AwesomeCategory[] = [
-    { 
-      title: "Plataformas", 
-      icon: <Smartphone />, 
-      link: "https://github.com/sindresorhus/awesome#platforms", 
-      desc: "iOS, Android, Cloud e ecossistemas OS.",
-      longDesc: "Explore guias completos para desenvolvimento mobile nativo e multiplataforma, além de recursos para as principais plataformas de cloud do mercado."
-    },
-    { 
-      title: "Linguagens", 
-      icon: <Code2 />, 
-      link: "https://github.com/sindresorhus/awesome#programming-languages", 
-      desc: "Os pilares da lógica moderna.",
-      longDesc: "De C++ a Rust, encontre repositórios curados com as melhores práticas, frameworks e bibliotecas para as linguagens mais demandadas do mundo."
-    },
-    { 
-      title: "Front-End", 
-      icon: <Layout />, 
-      link: "https://github.com/sindresorhus/awesome#front-end-development", 
-      desc: "Interfaces ricas e UX de alta performance.",
-      longDesc: "Tudo sobre o ecossistema Web: React, Vue, Angular, CSS moderno, WebGL e ferramentas para criar experiências visuais incríveis."
-    },
-    { 
-      title: "Back-End", 
-      icon: <Terminal />, 
-      link: "https://github.com/sindresorhus/awesome#back-end-development", 
-      desc: "Escalabilidade e lógica de servidor.",
-      longDesc: "Recursos para Node.js, Python, Go, Ruby e Java. Foque em arquitetura de microsserviços, mensageria e alta disponibilidade."
-    },
-    { 
-      title: "Ciência da Comp.", 
-      icon: <Cpu />, 
-      link: "https://github.com/sindresorhus/awesome#computer-science", 
-      desc: "Fundamentos e algoritmos clássicos.",
-      longDesc: "A base de tudo. Estude estruturas de dados, algoritmos, teoria da computação e conceitos que definem um engenheiro de software de elite."
-    },
-    { 
-      title: "Big Data", 
-      icon: <PieChart />, 
-      link: "https://github.com/sindresorhus/awesome#big-data", 
-      desc: "Processamento massivo e análise de dados.",
-      longDesc: "Ferramentas como Hadoop, Spark e ecossistemas para lidar com volumes de dados em escala petabyte."
-    },
-    { 
-      title: "Teoria", 
-      icon: <Library />, 
-      link: "https://github.com/sindresorhus/awesome#theory", 
-      desc: "Lógica formal e tipos computacionais.",
-      longDesc: "Mergulhe na teoria das categorias, tipos e lógica matemática aplicada à computação."
-    },
-    { 
-      title: "Livros", 
-      icon: <Book />, 
-      link: "https://github.com/sindresorhus/awesome#books", 
-      desc: "As bíblias do desenvolvimento.",
-      longDesc: "Uma lista curada de livros essenciais, muitos deles gratuitos, que cobrem desde Clean Code até Design Patterns."
-    },
-    { 
-      title: "Editores", 
-      icon: <PenTool />, 
-      link: "https://github.com/sindresorhus/awesome#editors", 
-      desc: "Maximize sua produtividade no código.",
-      longDesc: "Configurações e plugins para VS Code, Vim, Emacs e as melhores IDEs do mercado para acelerar seu fluxo."
-    },
-    { 
-      title: "Jogos", 
-      icon: <Gamepad2 />, 
-      link: "https://github.com/sindresorhus/awesome#gaming", 
-      desc: "Engines e design de games.",
-      longDesc: "Recursos para Unity, Unreal, Godot e desenvolvimento de jogos indie, incluindo assets e tutoriais de game design."
-    },
-    { 
-      title: "Ambiente de Dev", 
-      icon: <Settings />, 
-      link: "https://github.com/sindresorhus/awesome#development-environment", 
-      desc: "Docker, Dotfiles e automação.",
-      longDesc: "Aprenda a configurar sua máquina como um profissional. Automação de shell, containers e fluxos de trabalho produtivos."
-    },
-    { 
-      title: "Entretenimento", 
-      icon: <Activity />, 
-      link: "https://github.com/sindresorhus/awesome#entertainment", 
-      desc: "O lado criativo da tecnologia.",
-      longDesc: "Podcasts de TI, música para focar, vlogs e comunidades que tornam a jornada do desenvolvedor mais leve."
-    },
-    { 
-      title: "Bancos de Dados", 
-      icon: <Database />, 
-      link: "https://github.com/sindresorhus/awesome#databases", 
-      desc: "SQL, NoSQL e persistência moderna.",
-      longDesc: "Tudo sobre PostgreSQL, MongoDB, Redis e novas tendências como bancos de dados vetoriais e distribuídos."
-    },
-    { 
-      title: "Mídia", 
-      icon: <Tv />, 
-      link: "https://github.com/sindresorhus/awesome#media", 
-      desc: "Processamento de vídeo e áudio.",
-      longDesc: "FFmpeg, processamento de imagem, streaming e ferramentas de edição digital via código."
-    },
-    { 
-      title: "Aprender", 
-      icon: <GraduationCap />, 
-      link: "https://github.com/sindresorhus/awesome#learn", 
-      desc: "Plataformas de educação e cursos.",
-      longDesc: "Roadmaps de estudo, plataformas de cursos gratuitos e comunidades focadas no aprendizado contínuo."
-    },
-    { 
-      title: "Segurança", 
-      icon: <ShieldCheck />, 
-      link: "https://github.com/sindresorhus/awesome#security", 
-      desc: "Cybersecurity e defesa digital.",
-      longDesc: "Pentesting, criptografia, segurança em aplicações web e como proteger seus sistemas contra vulnerabilidades comuns."
-    },
-    { 
-      title: "CMS", 
-      icon: <Box />, 
-      link: "https://github.com/sindresorhus/awesome#content-management-systems", 
-      desc: "WordPress, Strapi e Headless CMS.",
-      longDesc: "Sistemas de gerenciamento de conteúdo modernos para blogs, e-commerces e sites corporativos."
-    },
-    { 
-      title: "Hardware", 
-      icon: <Microchip />, 
-      link: "https://github.com/sindresorhus/awesome#hardware", 
-      desc: "Arduino, IoT e eletrônica.",
-      longDesc: "A ponte entre código e o mundo físico. Sensores, placas de desenvolvimento e robótica para iniciantes."
-    },
-    { 
-      title: "Negócios", 
-      icon: <Briefcase />, 
-      link: "https://github.com/sindresorhus/awesome#business", 
-      desc: "Startups e gestão de produtos.",
-      longDesc: "Como gerenciar times, entender o modelo de negócio por trás do software e dicas de empreendedorismo tech."
-    },
-    { 
-      title: "Trabalhar", 
-      icon: <TrendingUp />, 
-      link: "https://github.com/sindresorhus/awesome#work", 
-      desc: "Carreira, currículos e entrevistas.",
-      longDesc: "Recursos para se preparar para entrevistas técnicas nas Big Techs, dicas de currículo e sites de vagas remotas."
-    },
-    { 
-      title: "Redes", 
-      icon: <Users />, 
-      link: "https://github.com/sindresorhus/awesome#networking", 
-      desc: "Comunidades e fóruns globais.",
-      longDesc: "Onde os desenvolvedores se encontram: Slack, Discord, Reddit e conferências mundiais."
-    },
-    { 
-      title: "Descentralizados", 
-      icon: <Globe2 />, 
-      link: "https://github.com/sindresorhus/awesome#decentralized-systems", 
-      desc: "Web3, Blockchain e P2P.",
-      longDesc: "O futuro da internet: contratos inteligentes, protocolos descentralizados e arquiteturas resilientes."
-    },
-    { 
-      title: "Saúde & Sociais", 
-      icon: <HeartPulse />, 
-      link: "https://github.com/sindresorhus/awesome#health-and-social-science", 
-      desc: "Tecnologia com impacto humano.",
-      longDesc: "Softwares para saúde, bioinformática e projetos open-source que resolvem problemas sociais."
-    },
-    { 
-      title: "Eventos", 
-      icon: <CalendarDays />, 
-      link: "https://github.com/sindresorhus/awesome#events", 
-      desc: "Hackathons e conferências.",
-      longDesc: "Calendário global de eventos de tecnologia, maratonas de programação e encontros locais."
-    },
-    { 
-      title: "Testando", 
-      icon: <FlaskConical />, 
-      link: "https://github.com/sindresorhus/awesome#testing", 
-      desc: "Unitários, E2E e QA.",
-      longDesc: "Garantia de qualidade de software: Jest, Cypress, Selenium e técnicas de TDD/BDD."
-    },
-    { 
-      title: "Variado", 
-      icon: <Puzzle />, 
-      link: "https://github.com/sindresorhus/awesome#miscellaneous", 
-      desc: "Pérolas raras do mundo open source.",
-      longDesc: "Repositórios que não se encaixam em uma categoria específica, mas são úteis para qualquer dev."
-    },
-    { 
-      title: "Relacionado", 
-      icon: <Link2 />, 
-      link: "https://github.com/sindresorhus/awesome#related", 
-      desc: "Outras listas 'Awesome'.",
-      longDesc: "Extensões da curadoria original e diretórios focados em nichos específicos de tecnologia."
-    }
+    { title: "Plataformas", icon: <Smartphone />, link: "https://github.com/sindresorhus/awesome#platforms", desc: "iOS, Android, Cloud e ecossistemas OS." },
+    { title: "Linguagens", icon: <Code2 />, link: "https://github.com/sindresorhus/awesome#programming-languages", desc: "Os pilares da lógica moderna." },
+    { title: "Front-End", icon: <Layout />, link: "https://github.com/sindresorhus/awesome#front-end-development", desc: "Interfaces ricas e UX de alta performance." },
+    { title: "Back-End", icon: <Terminal />, link: "https://github.com/sindresorhus/awesome#back-end-development", desc: "Escalabilidade e lógica de servidor." },
+    { title: "Ciência da Comp.", icon: <Cpu />, link: "https://github.com/sindresorhus/awesome#computer-science", desc: "Fundamentos e algoritmos clássicos." },
+    { title: "Big Data", icon: <PieChart />, link: "https://github.com/sindresorhus/awesome#big-data", desc: "Processamento massivo e análise de dados." },
+    { title: "Teoria", icon: <Library />, link: "https://github.com/sindresorhus/awesome#theory", desc: "Lógica formal e tipos computacionais." },
+    { title: "Livros", icon: <Book />, link: "https://github.com/sindresorhus/awesome#books", desc: "As bíblias do desenvolvimento." },
+    { title: "Editores", icon: <PenTool />, link: "https://github.com/sindresorhus/awesome#editors", desc: "Maximize sua produtividade no código." },
+    { title: "Jogos", icon: <Gamepad2 />, link: "https://github.com/sindresorhus/awesome#gaming", desc: "Engines e design de games." },
+    { title: "Ambiente de Dev", icon: <Settings />, link: "https://github.com/sindresorhus/awesome#development-environment", desc: "Docker, Dotfiles e automação." },
+    { title: "Entretenimento", icon: <Activity />, link: "https://github.com/sindresorhus/awesome#entertainment", desc: "O lado criativo da tecnologia." },
+    { title: "Bancos de Dados", icon: <Database />, link: "https://github.com/sindresorhus/awesome#databases", desc: "SQL, NoSQL e persistência moderna." },
+    { title: "Mídia", icon: <Tv />, link: "https://github.com/sindresorhus/awesome#media", desc: "Processamento de vídeo e áudio." },
+    { title: "Aprender", icon: <GraduationCap />, link: "https://github.com/sindresorhus/awesome#learn", desc: "Plataformas de educação e cursos." },
+    { title: "Segurança", icon: <ShieldCheck />, link: "https://github.com/sindresorhus/awesome#security", desc: "Cybersecurity e defesa digital." },
+    { title: "CMS", icon: <Box />, link: "https://github.com/sindresorhus/awesome#content-management-systems", desc: "WordPress, Strapi e Headless CMS." },
+    { title: "Hardware", icon: <Microchip />, link: "https://github.com/sindresorhus/awesome#hardware", desc: "Arduino, IoT e eletrônica." },
+    { title: "Negócios", icon: <Briefcase />, link: "https://github.com/sindresorhus/awesome#business", desc: "Startups e gestão de produtos." },
+    { title: "Trabalhar", icon: <TrendingUp />, link: "https://github.com/sindresorhus/awesome#work", desc: "Carreira, currículos e entrevistas." },
+    { title: "Redes", icon: <Users />, link: "https://github.com/sindresorhus/awesome#networking", desc: "Comunidades e fóruns globais." },
+    { title: "Descentralizados", icon: <Globe2 />, link: "https://github.com/sindresorhus/awesome#decentralized-systems", desc: "Web3, Blockchain e P2P." },
+    { title: "Saúde & Sociais", icon: <HeartPulse />, link: "https://github.com/sindresorhus/awesome#health-and-social-science", desc: "Tecnologia com impacto humano." },
+    { title: "Eventos", icon: <CalendarDays />, link: "https://github.com/sindresorhus/awesome#events", desc: "Hackathons e conferências." },
+    { title: "Testando", icon: <FlaskConical />, link: "https://github.com/sindresorhus/awesome#testing", desc: "Unitários, E2E e QA." },
+    { title: "Variado", icon: <Puzzle />, link: "https://github.com/sindresorhus/awesome#miscellaneous", desc: "Pérolas raras do mundo open source." },
+    { title: "Relacionado", icon: <Link2 />, link: "https://github.com/sindresorhus/awesome#related", desc: "Outras listas 'Awesome'." }
   ];
 
   const CoordinatorTip = ({ message }: { message: string }) => (
@@ -319,9 +146,11 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
           <div className="space-y-16 relative">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {awesomeCategories.map((cat, i) => (
-                <button 
+                <a 
                   key={i} 
-                  onClick={() => setSelectedCategory(cat)}
+                  href={cat.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-white p-6 sm:p-8 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col h-full text-left overflow-hidden"
                 >
                   <div className="flex items-center gap-4 mb-4">
@@ -332,58 +161,11 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                   </div>
                   <p className="text-gray-400 text-[10px] sm:text-xs font-medium mb-8 flex-grow line-clamp-2">{cat.desc}</p>
                   <div className="mt-auto flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-estacio-cyan">
-                    Ver Detalhes <ArrowRight size={14} />
+                    Acessar Recurso <ExternalLink size={14} />
                   </div>
-                </button>
+                </a>
               ))}
             </div>
-
-            {selectedCategory && (
-              <div className="fixed inset-0 z-[100] bg-estacio-navy/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-300">
-                <div className="bg-white rounded-[2.5rem] sm:rounded-[3.4rem] max-w-2xl w-full p-8 sm:p-12 relative shadow-2xl overflow-y-auto max-h-[90vh] animate-in zoom-in-95 duration-300">
-                  <button 
-                    onClick={() => setSelectedCategory(null)}
-                    className="absolute top-6 right-6 sm:top-10 sm:right-10 text-gray-400 hover:text-estacio-navy transition-colors p-2"
-                  >
-                    <X size={28} />
-                  </button>
-                  
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8 sm:mb-12">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-estacio-navy rounded-[1.8rem] flex items-center justify-center text-estacio-cyan shadow-lg shrink-0">
-                      {React.cloneElement(selectedCategory.icon as React.ReactElement, { size: 36 })}
-                    </div>
-                    <div>
-                      <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic uppercase leading-tight text-balance break-words">{selectedCategory.title}</h3>
-                      <p className="text-estacio-cyan font-bold uppercase text-[9px] sm:text-[10px] tracking-widest mt-2">Recurso de Desenvolvimento</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6 sm:space-y-8 mb-10 sm:mb-14">
-                    <p className="text-gray-600 text-base sm:text-lg leading-relaxed font-medium">
-                      {selectedCategory.longDesc}
-                    </p>
-                    <div className="p-6 sm:p-10 bg-gray-50 rounded-[2rem] border border-gray-100">
-                      <h5 className="font-black text-estacio-navy text-[10px] sm:text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
-                        <Sparkles size={16} className="text-estacio-cyan" /> Por que explorar?
-                      </h5>
-                      <p className="text-xs sm:text-sm text-gray-500 leading-relaxed font-medium">
-                        Esta categoria faz parte da "Awesome List", a curadoria definitiva de tecnologia no GitHub. Dominar estes recursos coloca você à frente no mercado de trabalho.
-                      </p>
-                    </div>
-                  </div>
-
-                  <a 
-                    href={selectedCategory.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-full py-5 sm:py-7 bg-estacio-navy text-white rounded-2xl font-black uppercase tracking-widest text-[10px] sm:text-xs flex items-center justify-center gap-3 hover:bg-estacio-cyan transition-all shadow-xl shadow-estacio-navy/20 active:scale-95"
-                  >
-                    Acessar Repositório Oficial <ExternalLink size={18} />
-                  </a>
-                </div>
-              </div>
-            )}
-
             <CoordinatorTip message="Não tente aprender tudo de uma vez. O repositório 'Awesome' é uma biblioteca: use quando precisar. Foque em dominar os fundamentos antes de pular para o framework da moda." />
           </div>
         );
