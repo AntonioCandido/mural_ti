@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ViewType } from './types';
 import { 
@@ -78,13 +77,26 @@ export const CARDS: CardData[] = [
     id: ViewType.COORDENADOR,
     title: 'Fale com o coordenador',
     description: 'Suporte acadêmico e orientações com o Prof. Antônio Cândido.',
-    icon: 'Megaphone',
+    icon: 'CoordinatorImage',
     color: 'text-cyan-600',
   },
 ];
 
 export const getIcon = (name: string, size: number = 24) => {
   switch (name) {
+    case 'CoordinatorImage':
+      return (
+        <div className="overflow-hidden rounded-full shadow-sm" style={{ width: size, height: size }}>
+          <img 
+            src="./candido.png" 
+            alt="Coordenador" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff';
+            }}
+          />
+        </div>
+      );
     case 'Lightbulb': return <Lightbulb size={size} />;
     case 'Smartphone': return <Smartphone size={size} />;
     case 'Briefcase': return <Briefcase size={size} />;

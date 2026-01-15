@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CARDS, getIcon } from '../constants';
 import { ViewType } from '../types';
@@ -21,8 +20,8 @@ const CardsGrid: React.FC<CardsGridProps> = ({ onNavigate }) => {
             <div className="absolute top-0 left-0 w-full h-1 bg-gray-100 group-hover:bg-estacio-cyan transition-colors duration-300"></div>
             
             <div className="w-full">
-              <div className={`w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center ${card.color} mb-4 transition-all group-hover:bg-estacio-navy group-hover:text-white group-hover:scale-105 shadow-inner`}>
-                {getIcon(card.icon, 20)}
+              <div className={`w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center ${card.color} mb-4 transition-all group-hover:bg-estacio-navy group-hover:text-white group-hover:scale-105 shadow-inner overflow-hidden`}>
+                {getIcon(card.icon, card.id === ViewType.COORDENADOR ? 48 : 24)}
               </div>
               
               <h4 className="text-base font-extrabold mb-2 text-estacio-navy group-hover:text-estacio-cyan transition-colors leading-snug">
