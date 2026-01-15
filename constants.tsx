@@ -8,7 +8,8 @@ import {
   Info, 
   Medal, 
   Users, 
-  Megaphone 
+  Megaphone,
+  Rocket
 } from 'lucide-react';
 
 export interface CardData {
@@ -63,6 +64,13 @@ export const CARDS: CardData[] = [
     color: 'text-orange-500',
   },
   {
+    id: ViewType.EMPREENDEDOR,
+    title: 'Seja um Empreendedor',
+    description: 'Transforme suas ideias em negócios reais com suporte e inovação.',
+    icon: 'Rocket',
+    color: 'text-amber-500',
+  },
+  {
     id: ViewType.COORDENADOR,
     title: 'Fale com o coordenador',
     description: 'Dúvidas acadêmicas e orientações com o Prof. Antônio Cândido.',
@@ -80,6 +88,7 @@ export const getIcon = (name: string, size: number = 24) => {
     case 'Medal': return <Medal size={size} />;
     case 'Users': return <Users size={size} />;
     case 'Megaphone': return <Megaphone size={size} />;
+    case 'Rocket': return <Rocket size={size} />;
     default: return <Info size={size} />;
   }
 };
