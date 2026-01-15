@@ -265,15 +265,15 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
   const CoordinatorTip = ({ message }: { message: string }) => (
     <div className="bg-estacio-navy p-10 md:p-14 rounded-[3rem] text-white flex flex-col lg:flex-row items-center gap-10 shadow-2xl relative overflow-hidden mt-20">
       <div className="absolute top-0 right-0 w-64 h-64 bg-estacio-cyan/10 rounded-full blur-3xl"></div>
-      <div className="lg:w-1/4 text-center">
-        <div className="w-24 h-24 bg-white/10 rounded-full mx-auto flex items-center justify-center mb-4 border border-white/20">
-          <Users size={48} className="text-estacio-cyan" />
+      <div className="lg:w-1/4 text-center shrink-0">
+        <div className="w-20 h-20 bg-white/10 rounded-full mx-auto flex items-center justify-center mb-4 border border-white/20">
+          <Users size={40} className="text-estacio-cyan" />
         </div>
-        <h4 className="font-black italic text-lg leading-tight">Dica do Coordenador</h4>
-        <p className="text-[10px] uppercase font-bold text-estacio-cyan mt-1">Prof. Antônio Cândido</p>
+        <h4 className="font-black italic text-base leading-tight">Dica do Coordenador</h4>
+        <p className="text-[9px] uppercase font-bold text-estacio-cyan mt-1">Prof. Antônio Cândido</p>
       </div>
       <div className="lg:w-3/4">
-        <p className="text-xl italic font-medium leading-relaxed">"{message}"</p>
+        <p className="text-lg md:text-xl italic font-medium leading-relaxed">"{message}"</p>
       </div>
     </div>
   );
@@ -284,7 +284,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
         return (
           <div className="space-y-16">
             <div className="bg-white p-10 md:p-16 rounded-[4rem] border border-gray-100 shadow-sm leading-relaxed">
-              <h3 className="text-3xl font-black text-estacio-navy italic mb-8 uppercase">A área de TI vale a pena?</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic mb-8 uppercase">A área de TI vale a pena?</h3>
               <p className="text-gray-600 text-lg mb-8">
                 Vivemos na era da transformação digital. Atuar em TI hoje não é apenas sobre "consertar computadores", é sobre criar o futuro. Com salários acima da média e flexibilidade global, é uma das carreiras mais resilientes do mundo.
               </p>
@@ -338,7 +338,6 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
               ))}
             </div>
 
-            {/* Modal de Detalhes da Categoria */}
             {selectedCategory && (
               <div className="fixed inset-0 z-[100] bg-estacio-navy/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-300">
                 <div className="bg-white rounded-[2.5rem] sm:rounded-[3.4rem] max-w-2xl w-full p-8 sm:p-12 relative shadow-2xl overflow-y-auto max-h-[90vh] animate-in zoom-in-95 duration-300">
@@ -354,7 +353,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                       {React.cloneElement(selectedCategory.icon as React.ReactElement, { size: 36 })}
                     </div>
                     <div>
-                      <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic uppercase leading-tight text-balance">{selectedCategory.title}</h3>
+                      <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic uppercase leading-tight text-balance break-words">{selectedCategory.title}</h3>
                       <p className="text-estacio-cyan font-bold uppercase text-[9px] sm:text-[10px] tracking-widest mt-2">Recurso de Desenvolvimento</p>
                     </div>
                   </div>
@@ -394,7 +393,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
           <div className="space-y-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               <div className="bg-white p-12 rounded-[4rem] border border-gray-100 shadow-sm flex flex-col h-full">
-                <h3 className="text-3xl font-black text-estacio-navy italic mb-8 uppercase flex items-center gap-3"><Globe size={28} className="text-blue-500" /> Brasil</h3>
+                <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic mb-8 uppercase flex items-center gap-3"><Globe size={28} className="text-blue-500" /> Brasil</h3>
                 <div className="space-y-6 flex-grow">
                   <a href="https://www.encontresuavaga.com.br/" target="_blank" className="block p-8 bg-gray-50 rounded-3xl hover:bg-estacio-cyan/10 transition-colors group">
                     <h4 className="font-black text-estacio-navy mb-2 flex justify-between items-center">Encontre sua Vaga <ExternalLink size={16} className="opacity-40 group-hover:opacity-100" /></h4>
@@ -408,7 +407,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
               </div>
               <div className="bg-estacio-navy p-12 rounded-[4rem] text-white flex flex-col h-full relative overflow-hidden">
                 <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
-                <h3 className="text-3xl font-black italic mb-8 uppercase flex items-center gap-3"><Plane size={28} className="text-estacio-cyan" /> Exterior</h3>
+                <h3 className="text-2xl sm:text-3xl font-black italic mb-8 uppercase flex items-center gap-3"><Plane size={28} className="text-estacio-cyan" /> Exterior</h3>
                 <p className="text-blue-100/60 mb-10 text-lg leading-relaxed font-medium">Trabalhar para empresas dos EUA ou Europa do Brasil é a realidade de muitos devs. Ganhe em moeda forte e viva no Brasil.</p>
                 <a href="https://remote.com/" target="_blank" className="mt-auto block p-8 bg-white/5 rounded-3xl hover:bg-white/10 border border-white/10 transition-colors group">
                   <h4 className="font-black mb-2 flex justify-between items-center">Remote.com <ExternalLink size={16} className="opacity-40 group-hover:opacity-100" /></h4>
@@ -424,7 +423,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
         return (
           <div className="space-y-16">
             <div className="bg-white p-12 rounded-[4rem] border border-gray-100 shadow-sm">
-              <h3 className="text-3xl font-black text-estacio-navy italic mb-8 uppercase flex items-center gap-3"><Medal size={28} className="text-purple-500" /> Carreira Pública</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic mb-8 uppercase flex items-center gap-3"><Medal size={28} className="text-purple-500" /> Carreira Pública</h3>
               <p className="text-gray-600 mb-10 text-lg">Estabilidade e projetos de impacto nacional. Órgãos como SERPRO, DATAPREV e Bancos Públicos buscam talentos constantemente.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <a href="https://www.pciconcursos.com.br/" target="_blank" className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl hover:bg-purple-50 transition-colors group">
@@ -445,7 +444,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
         return (
           <div className="space-y-16">
             <div className="bg-white p-12 rounded-[4rem] border border-gray-100 shadow-sm">
-              <h3 className="text-3xl font-black text-estacio-navy italic mb-10 uppercase flex items-center gap-3"><CalendarDays size={28} className="text-pink-500" /> Próximos Eventos</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic mb-10 uppercase flex items-center gap-3"><CalendarDays size={28} className="text-pink-500" /> Próximos Eventos</h3>
               <div className="space-y-8">
                 {[
                   { name: "Web Summit Rio", date: "Abril 2024", type: "Híbrido", desc: "O maior evento de tecnologia do mundo no Rio de Janeiro.", url: "https://rio.websummit.com/" },
@@ -477,7 +476,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
               <div className="w-24 h-24 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-8">
                 <Users size={48} className="text-orange-500" />
               </div>
-              <h3 className="text-3xl font-black text-estacio-navy italic mb-4 uppercase">Em Construção</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic mb-4 uppercase">Em Construção</h3>
               <p className="text-gray-400 font-medium max-w-md mx-auto">Estamos preparando um espaço incrível para que você possa encontrar parceiros de projetos e trocar experiências reais de código.</p>
             </div>
             <CoordinatorTip message="Grandes sistemas nunca são construídos sozinhos. Aprenda a trabalhar em equipe e a usar Git de forma profissional. O código é secundário à colaboração." />
@@ -488,47 +487,47 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
         return (
           <div className="space-y-16">
             <div className="bg-white p-12 md:p-16 rounded-[4rem] border border-gray-100 shadow-xl text-center">
-              <div className="w-40 h-40 bg-gray-50 rounded-full mx-auto flex items-center justify-center mb-10 border-4 border-white shadow-inner">
+              <div className="w-40 h-40 bg-gray-50 rounded-full mx-auto flex items-center justify-center mb-10 border-4 border-white shadow-inner shrink-0">
                 <Users size={80} className="text-estacio-navy" />
               </div>
-              <h3 className="text-4xl font-black text-estacio-navy mb-4 italic">Prof. Antônio Cândido de O. Filho</h3>
-              <p className="text-gray-500 font-bold uppercase text-xs tracking-widest mb-12">Coordenador ADS & Ciência da Computação</p>
+              <h3 className="text-2xl sm:text-4xl font-black text-estacio-navy mb-4 italic leading-tight">Prof. Antônio Cândido de O. Filho</h3>
+              <p className="text-gray-500 font-bold uppercase text-[10px] sm:text-xs tracking-widest mb-12">Coordenador ADS & Ciência da Computação</p>
               
               <div className="flex flex-wrap justify-center gap-4 mb-16">
                 <a href="mailto:antonio.filho@estacio.br" className="flex items-center gap-3 px-8 py-4 bg-gray-50 rounded-2xl hover:bg-estacio-cyan/10 border border-gray-100 transition-all group">
                   <Mail size={20} className="text-estacio-navy group-hover:text-estacio-cyan" />
-                  <span className="text-xs font-black text-estacio-navy">antonio.filho@estacio.br</span>
+                  <span className="text-[10px] sm:text-xs font-black text-estacio-navy">antonio.filho@estacio.br</span>
                 </a>
                 <a href="https://www.linkedin.com/in/antonio-candido-oliveira-filho-b2028336" target="_blank" className="flex items-center gap-3 px-8 py-4 bg-gray-50 rounded-2xl hover:bg-blue-50 border border-gray-100 transition-all group">
                   <Linkedin size={20} className="text-blue-600" />
-                  <span className="text-xs font-black text-estacio-navy">LinkedIn</span>
+                  <span className="text-[10px] sm:text-xs font-black text-estacio-navy">LinkedIn</span>
                 </a>
                 <a href="https://www.facebook.com/candidorj" target="_blank" className="flex items-center gap-3 px-8 py-4 bg-gray-50 rounded-2xl hover:bg-blue-100 border border-gray-100 transition-all group">
                   <Facebook size={20} className="text-blue-800" />
-                  <span className="text-xs font-black text-estacio-navy">Facebook</span>
+                  <span className="text-[10px] sm:text-xs font-black text-estacio-navy">Facebook</span>
                 </a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                <div className="p-10 bg-gray-50 rounded-[3rem] border border-gray-100">
-                  <h4 className="font-black text-estacio-navy uppercase text-[10px] tracking-widest mb-8">TOM JOBIM - BARRA</h4>
+                <div className="p-8 sm:p-10 bg-gray-50 rounded-[2.5rem] sm:rounded-[3rem] border border-gray-100">
+                  <h4 className="font-black text-estacio-navy uppercase text-[9px] sm:text-[10px] tracking-widest mb-8">TOM JOBIM - BARRA</h4>
                   <ul className="space-y-6">
-                    <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-estacio-cyan"></div><span className="text-sm font-medium"><strong>Presencial:</strong> Quarta, 09h às 19h</span></li>
-                    <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-blue-400"></div><span className="text-sm font-medium"><strong>Remoto (Teams):</strong> Sexta, 09h às 12h</span></li>
+                    <li className="flex items-start sm:items-center gap-4"><div className="w-2 h-2 rounded-full bg-estacio-cyan shrink-0 mt-1.5 sm:mt-0"></div><span className="text-xs sm:text-sm font-medium leading-relaxed"><strong>Presencial:</strong> Quarta, 09h às 19h</span></li>
+                    <li className="flex items-start sm:items-center gap-4"><div className="w-2 h-2 rounded-full bg-blue-400 shrink-0 mt-1.5 sm:mt-0"></div><span className="text-xs sm:text-sm font-medium leading-relaxed"><strong>Remoto (Teams):</strong> Sexta, 09h às 12h</span></li>
                   </ul>
                 </div>
-                <div className="p-10 bg-gray-50 rounded-[3rem] border border-gray-100">
-                  <h4 className="font-black text-estacio-navy uppercase text-[10px] tracking-widest mb-8">R9 - TAQUARA</h4>
+                <div className="p-8 sm:p-10 bg-gray-50 rounded-[2.5rem] sm:rounded-[3rem] border border-gray-100">
+                  <h4 className="font-black text-estacio-navy uppercase text-[9px] sm:text-[10px] tracking-widest mb-8">R9 - TAQUARA</h4>
                   <ul className="space-y-6">
-                    <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-estacio-cyan"></div><span className="text-sm font-medium"><strong>Presencial:</strong> Quinta, 09h às 19h</span></li>
-                    <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-blue-400"></div><span className="text-sm font-medium"><strong>Remoto (Teams):</strong> Sexta, 13h às 16h</span></li>
+                    <li className="flex items-start sm:items-center gap-4"><div className="w-2 h-2 rounded-full bg-estacio-cyan shrink-0 mt-1.5 sm:mt-0"></div><span className="text-xs sm:text-sm font-medium leading-relaxed"><strong>Presencial:</strong> Quinta, 09h às 19h</span></li>
+                    <li className="flex items-start sm:items-center gap-4"><div className="w-2 h-2 rounded-full bg-blue-400 shrink-0 mt-1.5 sm:mt-0"></div><span className="text-xs sm:text-sm font-medium leading-relaxed"><strong>Remoto (Teams):</strong> Sexta, 13h às 16h</span></li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div className="bg-estacio-navy p-16 rounded-[4rem] text-white text-center shadow-2xl">
-              <Sparkles size={48} className="text-estacio-cyan mx-auto mb-8" />
-              <p className="text-2xl italic font-medium max-w-2xl mx-auto leading-relaxed">"Meu papel é garantir que sua jornada acadêmica seja o trampolim para o seu sucesso profissional. Minha porta está sempre aberta."</p>
+            <div className="bg-estacio-navy p-12 sm:p-16 rounded-[3.5rem] sm:rounded-[4rem] text-white text-center shadow-2xl">
+              <Sparkles size={40} className="text-estacio-cyan mx-auto mb-8" />
+              <p className="text-xl sm:text-2xl italic font-medium max-w-2xl mx-auto leading-relaxed">"Meu papel é garantir que sua jornada acadêmica seja o trampolim para o seu sucesso profissional. Minha porta está sempre aberta."</p>
             </div>
           </div>
         );
@@ -546,25 +545,25 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
     <div className="fade-in container mx-auto px-6 py-12">
       <button 
         onClick={onBack}
-        className="group flex items-center gap-4 text-gray-400 font-black uppercase tracking-widest text-[11px] hover:text-estacio-navy mb-16 transition-all"
+        className="group flex items-center gap-4 text-gray-400 font-black uppercase tracking-widest text-[9px] sm:text-[11px] hover:text-estacio-navy mb-12 sm:mb-16 transition-all"
       >
-        <span className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-estacio-navy group-hover:bg-estacio-navy group-hover:text-white transition-all">
-          <ChevronRight className="w-5 h-5 rotate-180" />
+        <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-estacio-navy group-hover:bg-estacio-navy group-hover:text-white transition-all">
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 rotate-180" />
         </span>
         Voltar para a Home
       </button>
 
-      <div className="flex flex-col md:flex-row md:items-center gap-10 mb-20 border-l-[12px] border-estacio-cyan pl-10">
-        <div className="p-8 bg-white shadow-2xl shadow-gray-200 rounded-[2.5rem] flex-shrink-0">
+      <div className="flex flex-col md:flex-row md:items-center gap-8 sm:gap-10 mb-16 sm:mb-20 border-l-[8px] sm:border-l-[12px] border-estacio-cyan pl-6 sm:pl-10">
+        <div className="p-6 sm:p-8 bg-white shadow-2xl shadow-gray-200 rounded-[2rem] sm:rounded-[2.5rem] flex-shrink-0 w-max">
           <div className={`${cardInfo?.color || 'text-estacio-navy'}`}>
-            {getIcon(cardInfo?.icon || 'Info', 64)}
+            {getIcon(cardInfo?.icon || 'Info', 56)}
           </div>
         </div>
-        <div>
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-estacio-navy tracking-tighter mb-4 leading-none italic uppercase">
+        <div className="overflow-hidden">
+          <h2 className="text-2xl sm:text-5xl md:text-7xl font-black text-estacio-navy tracking-tighter mb-3 sm:mb-4 leading-[1.1] italic uppercase break-words">
             {cardInfo?.title}
           </h2>
-          <p className="text-xl md:text-2xl text-gray-400 font-medium max-w-3xl leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-400 font-medium max-w-3xl leading-relaxed line-clamp-2 sm:line-clamp-none">
             {cardInfo?.description}
           </p>
         </div>
