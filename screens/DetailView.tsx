@@ -4,61 +4,52 @@ import { ViewType } from '../types';
 import { CARDS, getIcon } from '../constants';
 import { 
   ExternalLink, 
-  Cpu, 
-  Zap, 
-  Compass,
-  ArrowRight,
+  ArrowRight, 
+  CheckCircle2, 
+  Sparkles, 
+  Trophy, 
+  Github, 
+  Globe, 
+  Plane, 
+  ChevronRight, 
+  Mail, 
+  Linkedin, 
+  Facebook, 
+  Clock, 
+  MapPin, 
+  Users,
+  Smartphone,
   Code2,
   Layout,
-  Search,
-  Sparkles,
-  Link2,
-  CheckCircle2,
-  Trophy,
-  GraduationCap,
-  Globe,
-  TrendingUp,
-  ShieldCheck,
-  Award,
-  ChevronRight,
-  Database,
-  Network,
-  Mail,
-  Linkedin,
-  Facebook,
   Terminal,
-  Smartphone,
-  Monitor,
-  Box,
-  Github,
-  Rocket,
-  Lightbulb,
-  Target,
-  FileText,
-  Library,
-  Medal,
-  Users,
-  Coins,
-  Briefcase,
-  Gem,
+  Cpu,
   PieChart,
-  Building2,
-  HandCoins,
-  Gavel,
-  History,
-  Bug,
-  ShieldAlert,
-  Settings,
-  FlaskConical,
-  Activity,
-  Infinity,
-  Gamepad2,
+  Library,
   Book,
   PenTool,
-  Wifi,
-  Stethoscope,
+  Gamepad2,
+  Settings,
+  Activity,
+  Database,
+  Tv,
+  GraduationCap,
+  ShieldCheck,
+  Box,
+  Microchip,
+  Briefcase,
+  TrendingUp,
+  Globe2,
+  HeartPulse,
   CalendarDays,
-  HardDrive
+  FlaskConical,
+  Puzzle,
+  Link2,
+  Search,
+  Target,
+  FileText,
+  Medal,
+  Zap,
+  Star
 } from 'lucide-react';
 
 interface DetailViewProps {
@@ -68,334 +59,245 @@ interface DetailViewProps {
 
 const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
   const cardInfo = CARDS.find(c => c.id === view);
-  
+
+  const CoordinatorTip = ({ message }: { message: string }) => (
+    <div className="bg-estacio-navy p-10 md:p-14 rounded-[3rem] text-white flex flex-col lg:flex-row items-center gap-10 shadow-2xl relative overflow-hidden mt-20">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-estacio-cyan/10 rounded-full blur-3xl"></div>
+      <div className="lg:w-1/4 text-center">
+        <div className="w-24 h-24 bg-white/10 rounded-full mx-auto flex items-center justify-center mb-4 border border-white/20">
+          <Users size={48} className="text-estacio-cyan" />
+        </div>
+        <h4 className="font-black italic text-lg leading-tight">Dica do Coordenador</h4>
+        <p className="text-[10px] uppercase font-bold text-estacio-cyan mt-1">Prof. Antônio Cândido</p>
+      </div>
+      <div className="lg:w-3/4">
+        <p className="text-xl italic font-medium leading-relaxed">"{message}"</p>
+      </div>
+    </div>
+  );
+
   const renderContent = () => {
     switch (view) {
-      case ViewType.EMPREENDEDOR:
+      case ViewType.PROFISSIONAIS:
         return (
-          <div className="space-y-24">
-            {/* Hero Empreendedor */}
-            <div className="bg-gradient-to-br from-[#f59e0b] via-[#ea580c] to-[#c2410c] p-12 md:p-24 rounded-[4rem] text-white relative overflow-hidden shadow-3xl">
-              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full -mr-40 -mt-40 blur-[100px] animate-pulse"></div>
-              <div className="relative z-10 max-w-4xl">
-                <div className="flex items-center gap-6 mb-10">
-                  <div className="bg-white/20 backdrop-blur-md p-5 rounded-3xl border border-white/30">
-                    <Rocket size={48} className="text-white" />
-                  </div>
-                  <span className="text-xs font-black uppercase tracking-[0.4em] text-orange-200 italic">Startup Hub Estácio</span>
+          <div className="space-y-16">
+            <div className="bg-white p-10 md:p-16 rounded-[4rem] border border-gray-100 shadow-sm leading-relaxed">
+              <h3 className="text-3xl font-black text-estacio-navy italic mb-8 uppercase">A área de TI vale a pena?</h3>
+              <p className="text-gray-600 text-lg mb-8">
+                Vivemos na era da transformação digital. Atuar em TI hoje não é apenas sobre "consertar computadores", é sobre criar o futuro. Com salários acima da média e flexibilidade global, é uma das carreiras mais resilientes do mundo.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div className="p-8 bg-blue-50 rounded-3xl border border-blue-100">
+                  <h4 className="font-black text-estacio-navy mb-4 flex items-center gap-2 italic"><Zap size={20} className="text-yellow-500" /> Os Desafios</h4>
+                  <ul className="space-y-3 text-sm text-gray-500 font-medium">
+                    <li>• Aprendizado contínuo (Obsolescência rápida)</li>
+                    <li>• Gestão de expectativas e prazos</li>
+                    <li>• Resolução de problemas complexos sob pressão</li>
+                  </ul>
                 </div>
-                <h3 className="text-5xl md:text-8xl font-black tracking-tighter italic mb-8 leading-none">
-                  STARTUP <br/> <span className="text-yellow-300">STUDIO</span>.
-                </h3>
-                <p className="text-orange-100 text-xl md:text-2xl leading-relaxed mb-12 max-w-2xl font-medium">
-                  Não seja apenas um executor de tarefas, seja o arquiteto do seu próprio futuro. No mundo da TI, a distância entre uma ideia e um negócio global é apenas uma linha de código.
-                </p>
+                <div className="p-8 bg-green-50 rounded-3xl border border-green-100">
+                  <h4 className="font-black text-estacio-navy mb-4 flex items-center gap-2 italic"><Star size={20} className="text-green-500" /> As Recompensas</h4>
+                  <ul className="space-y-3 text-sm text-gray-500 font-medium">
+                    <li>• Alta demanda global (Carreira sem fronteiras)</li>
+                    <li>• Salários competitivos e benefícios</li>
+                    <li>• Impacto real na vida de milhões de pessoas</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="bg-estacio-navy/5 p-8 rounded-3xl border border-estacio-navy/10 italic text-gray-700">
+                <strong>Caso de Sucesso:</strong> Alunos da Estácio hoje lideram times de engenharia em unicórnios como iFood, Nubank e até gigantes como Google e Amazon. O limite é o seu esforço.
               </div>
             </div>
-            {/* ... Rest of Empreendedor Content ... */}
+            <CoordinatorTip message="A área de TI exige curiosidade eterna. Não se contente com o 'como', busque o 'porquê'. O mercado valoriza solucionadores de problemas, não apenas digitadores de código." />
           </div>
         );
 
       case ViewType.APP_EXEMPLO:
-        const awesomeClusters = [
-          {
-            category: "Core Development",
-            icon: <Code2 />,
-            links: [
-              { name: "Plataformas", desc: "Sistemas operacionais, nuvem e ecossistemas de software.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#platforms" },
-              { name: "Linguagens", desc: "A base de tudo: de Rust a Python, explore as sintaxes do futuro.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#programming-languages" },
-              { name: "Front-End", desc: "Interfaces incríveis e experiências de usuário memoráveis.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#front-end-development" },
-              { name: "Back-End", desc: "A lógica por trás da cortina: servidores, APIs e performance.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#back-end-development" }
-            ]
-          },
-          {
-            category: "Science & Data",
-            icon: <Database />,
-            links: [
-              { name: "Ciência da Computação", desc: "Algoritmos, estruturas de dados e fundamentos teóricos.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#computer-science" },
-              { name: "Big Data & Databases", desc: "Onde o dado vive e como ele é processado em escala.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#big-data" },
-              { name: "Sistemas Descentralizados", desc: "Web3, Blockchain e arquiteturas distribuídas.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#decentralized-systems" }
-            ]
-          },
-          {
-            category: "Environment & Tools",
-            icon: <Settings />,
-            links: [
-              { name: "Editores & Ambientes", desc: "VS Code, Vim e como tunar sua máquina de guerra.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#editors" },
-              { name: "Testando", desc: "Qualidade de software: de unitários a testes de carga.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#testing" },
-              { name: "Segurança", desc: "Hacking ético, defesa e criptografia.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#security" }
-            ]
-          },
-          {
-            category: "Career & Knowledge",
-            icon: <Briefcase />,
-            links: [
-              { name: "Aprender & Livros", desc: "O caminho do autodidata: recursos gratuitos e leituras de elite.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#learn" },
-              { name: "Negócios & Trabalho", desc: "Soft skills, vagas remotas e como gerir sua carreira.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#work" },
-              { name: "Eventos & Networking", desc: "Conferências e comunidades que você deve participar.", url: "https://github.com/sindresorhus/awesome?tab=readme-ov-file#events" }
-            ]
-          }
+        const awesomeCategories = [
+          { title: "Plataformas", icon: <Smartphone />, link: "https://github.com/sindresorhus/awesome#platforms", desc: "iOS, Android, Cloud e muito mais." },
+          { title: "Linguagens", icon: <Code2 />, link: "https://github.com/sindresorhus/awesome#programming-languages", desc: "Rust, Go, Python, JS: os pilares do software." },
+          { title: "Front-End", icon: <Layout />, link: "https://github.com/sindresorhus/awesome#front-end-development", desc: "Interfaces ricas e experiências únicas." },
+          { title: "Back-End", icon: <Terminal />, link: "https://github.com/sindresorhus/awesome#back-end-development", desc: "A lógica por trás das cortinas." },
+          { title: "Ciência da Comp.", icon: <Cpu />, link: "https://github.com/sindresorhus/awesome#computer-science", desc: "Algoritmos e bases teóricas sólidas." },
+          { title: "Big Data", icon: <PieChart />, link: "https://github.com/sindresorhus/awesome#big-data", desc: "Extraindo valor de volumes massivos." },
+          { title: "Livros", icon: <Book />, link: "https://github.com/sindresorhus/awesome#books", desc: "As bíblias do desenvolvimento." },
+          { title: "Segurança", icon: <ShieldCheck />, link: "https://github.com/sindresorhus/awesome#security", desc: "Protegendo o mundo digital." },
+          { title: "Testando", icon: <FlaskConical />, link: "https://github.com/sindresorhus/awesome#testing", desc: "Qualidade de software acima de tudo." },
+          { title: "Bancos de Dados", icon: <Database />, link: "https://github.com/sindresorhus/awesome#databases", desc: "Onde o dado mora." },
+          { title: "IoT & Hardware", icon: <Microchip />, link: "https://github.com/sindresorhus/awesome#hardware", desc: "Arduino, Raspberry e robótica." },
+          { title: "Jogos", icon: <Gamepad2 />, link: "https://github.com/sindresorhus/awesome#gaming", desc: "Engines e design de games." }
         ];
 
         return (
-          <div className="space-y-24">
-            {/* Hero Awesome Explorer */}
-            <div className="bg-[#0f172a] p-12 md:p-24 rounded-[4rem] text-white relative overflow-hidden shadow-3xl border border-white/5">
-              <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-estacio-cyan/10 rounded-full -mr-60 -mt-60 blur-[120px] animate-pulse"></div>
-              <div className="relative z-10 max-w-4xl">
-                <div className="flex items-center gap-6 mb-10">
-                  <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl border border-white/10">
-                    <Infinity size={48} className="text-estacio-cyan" />
-                  </div>
-                  <span className="text-xs font-black uppercase tracking-[0.4em] text-blue-200 italic">The Ultimate Resource Directory</span>
-                </div>
-                <h3 className="text-5xl md:text-8xl font-black tracking-tighter italic mb-8 leading-none">
-                  AWESOME <br/> <span className="text-estacio-cyan">EXPLORER</span>.
-                </h3>
-                <p className="text-blue-100 text-xl md:text-2xl leading-relaxed mb-12 max-w-3xl font-medium">
-                  Domine o ecossistema tecnológico mundial. Baseado na curadoria de <strong>Sindre Sorhus</strong>, este hub centraliza o que há de melhor em cada nicho da computação para os alunos da Estácio.
-                </p>
-              </div>
-            </div>
-
-            {/* Clusters de Links */}
-            <div className="space-y-20">
-              {awesomeClusters.map((cluster, idx) => (
-                <div key={idx} className="fade-in">
-                  <div className="flex items-center gap-4 mb-10">
-                    <div className="w-12 h-12 bg-estacio-navy rounded-2xl flex items-center justify-center text-estacio-cyan shadow-lg">
-                      {React.cloneElement(cluster.icon as React.ReactElement, { size: 24 })}
+          <div className="space-y-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {awesomeCategories.map((cat, i) => (
+                <a key={i} href={cat.link} target="_blank" className="bg-white p-8 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col h-full">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-estacio-navy group-hover:bg-estacio-cyan group-hover:text-white transition-all">
+                      {cat.icon}
                     </div>
-                    <h3 className="text-3xl font-black text-estacio-navy uppercase tracking-tight italic">{cluster.category}</h3>
+                    <h4 className="font-black text-estacio-navy italic group-hover:text-estacio-cyan transition-colors">{cat.title}</h4>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {cluster.links.map((link, lIdx) => (
-                      <a 
-                        key={lIdx} 
-                        href={link.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all group flex flex-col h-full"
-                      >
-                        <h5 className="font-black text-estacio-navy text-lg mb-3 italic group-hover:text-estacio-cyan transition-colors">{link.name}</h5>
-                        <p className="text-gray-400 text-xs font-medium leading-relaxed mb-8 flex-grow">{link.desc}</p>
-                        <div className="mt-auto flex items-center gap-2 text-estacio-cyan font-black text-[9px] uppercase tracking-widest">
-                          Explorar Categoria <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </a>
-                    ))}
+                  <p className="text-gray-400 text-xs font-medium mb-8 flex-grow">{cat.desc}</p>
+                  <div className="mt-auto flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-estacio-cyan">
+                    Explorar <ArrowRight size={14} />
                   </div>
-                </div>
+                </a>
               ))}
             </div>
-
-            {/* Vantagens do Profissional de Sucesso */}
-            <div className="bg-estacio-navy p-12 md:p-24 rounded-[4rem] text-white relative overflow-hidden">
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-estacio-cyan/10 rounded-full blur-[100px]"></div>
-              <div className="text-center mb-16">
-                <h3 className="text-4xl font-black italic uppercase mb-4">O Caminho do Sucesso</h3>
-                <p className="text-blue-200 font-bold text-sm uppercase tracking-[0.2em]">Por que dominar estas ferramentas?</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                {[
-                  { icon: <Gem />, title: "Diferenciação Absoluta", desc: "A maioria dos profissionais conhece apenas o básico. Ao dominar recursos 'Awesome', você entra no top 1% técnico." },
-                  { icon: <Globe />, title: "Padrão Internacional", desc: "Estas listas são usadas em empresas como Google, Meta e Netflix. Você aprende o padrão global de engenharia." },
-                  { icon: <Trophy />, title: "Velocidade de Entrega", desc: "Saber qual ferramenta certa usar economiza meses de trabalho. Tempo é a moeda mais cara da TI." }
-                ].map((item, i) => (
-                  <div key={i} className="flex flex-col items-center text-center group">
-                    <div className="w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center text-estacio-cyan mb-8 border border-white/10 group-hover:bg-estacio-cyan group-hover:text-estacio-navy transition-all duration-500">
-                      {React.cloneElement(item.icon as React.ReactElement, { size: 40 })}
-                    </div>
-                    <h4 className="text-2xl font-black mb-4 italic">{item.title}</h4>
-                    <p className="text-blue-100/60 text-sm leading-relaxed max-w-xs font-medium">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Roteiro do Aluno TI Estácio */}
-            <div>
-              <div className="flex items-center gap-4 mb-16">
-                <div className="w-2 h-10 bg-estacio-cyan rounded-full"></div>
-                <h3 className="text-4xl font-black text-estacio-navy tracking-tight uppercase italic">Roadmap do Estudante</h3>
-              </div>
-              <div className="space-y-12">
-                {[
-                  { step: "01", title: "Fundamentação", desc: "Comece por Computer Science e Programming Languages. Entenda o porquê antes do como." },
-                  { step: "02", title: "Especialização", desc: "Escolha entre Front-end, Back-end ou Big Data. Tente ser mestre em uma trilha antes de pular para outra." },
-                  { step: "03", title: "Infraestrutura & Qualidade", desc: "Estude Testing e Platforms. É o que separa o programador amador do engenheiro sênior." },
-                  { step: "04", title: "Career Focus", desc: "Explore Work e Business. Aprenda a gerir sua imagem e entender o negócio por trás do código." }
-                ].map((item, i) => (
-                  <div key={i} className="flex flex-col md:flex-row items-center gap-8 bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
-                    <div className="w-16 h-16 bg-estacio-navy text-estacio-cyan rounded-2xl flex items-center justify-center font-black text-2xl shrink-0 group-hover:bg-estacio-cyan group-hover:text-estacio-navy transition-colors">
-                      {item.step}
-                    </div>
-                    <div>
-                      <h4 className="text-2xl font-black text-estacio-navy mb-2 italic">{item.title}</h4>
-                      <p className="text-gray-500 font-medium leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Dica do Coordenador Especial */}
-            <div className="bg-[#f0f9ff] p-12 md:p-20 rounded-[4rem] border border-blue-100 flex flex-col lg:flex-row items-center gap-16 shadow-2xl relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
-               <div className="lg:w-1/3 text-center lg:text-left">
-                  <div className="w-32 h-32 bg-estacio-navy rounded-full mx-auto lg:mx-0 flex items-center justify-center text-white mb-8 shadow-xl border-8 border-white overflow-hidden relative group">
-                     <Users size={64} className="group-hover:scale-110 transition-transform" />
-                  </div>
-                  <h4 className="text-2xl font-black italic text-estacio-navy">Fala, Coordenador!</h4>
-                  <p className="text-estacio-cyan font-bold uppercase text-[10px] tracking-widest mt-2">Prof. Antônio Cândido</p>
-               </div>
-               <div className="lg:w-2/3">
-                  <div className="bg-white p-10 rounded-[3rem] shadow-sm border border-blue-50 relative">
-                    <Sparkles className="absolute -top-4 -right-4 text-estacio-cyan" size={40} />
-                    <p className="text-xl italic font-medium leading-relaxed text-gray-700">
-                      "Alunos, o repositório 'Awesome' é como uma biblioteca infinita. O segredo não é ler tudo, mas saber onde procurar a resposta certa para cada problema. **Sejam curiosos, mas mantenham o foco**. Escolham um link por semana para explorar e testar. Isso construirá um repertório que nenhum currículo padrão consegue competir."
-                    </p>
-                    <div className="mt-8 flex gap-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Curadoria Ativa</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Sucesso Profissional</span>
-                      </div>
-                    </div>
-                  </div>
-               </div>
-            </div>
-          </div>
-        );
-
-      case ViewType.COORDENADOR:
-        return (
-          <div className="grid grid-cols-1 gap-12">
-            <div className="bg-white p-12 md:p-16 rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-200/40 text-center flex flex-col items-center">
-              <h3 className="text-3xl md:text-5xl font-black text-estacio-navy mb-6">
-                Prof. Antônio Cândido de O. Filho
-              </h3>
-              
-              <div className="text-gray-500 font-semibold text-base md:text-xl leading-relaxed max-w-2xl mb-12">
-                Coordenador de Análise e Desenvolvimento de Sistemas 
-                <br /> - ADS e Ciência da Computação - CC
-              </div>
-
-              <div className="w-full max-w-lg space-y-6 text-left">
-                <div className="flex items-center gap-5 p-2 group cursor-pointer">
-                  <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-500 transition-transform group-hover:scale-110">
-                    <Mail size={24} />
-                  </div>
-                  <span className="text-lg md:text-xl font-bold text-gray-700">antonio.filho@estacio.br</span>
-                </div>
-
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-5 p-2 group cursor-pointer hover:no-underline">
-                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 transition-transform group-hover:scale-110">
-                    <Linkedin size={24} fill="currentColor" stroke="none" />
-                  </div>
-                  <span className="text-lg md:text-xl font-bold text-blue-600">LinkedIn Perfil</span>
-                </a>
-
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-5 p-2 group cursor-pointer hover:no-underline">
-                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 transition-transform group-hover:scale-110">
-                    <Facebook size={24} fill="currentColor" stroke="none" />
-                  </div>
-                  <span className="text-lg md:text-xl font-bold text-blue-600">Facebook Perfil</span>
-                </a>
-              </div>
-            </div>
-            {/* ... Rest of Coordinator Content ... */}
-          </div>
-        );
-
-      case ViewType.DICAS:
-        return (
-          <div className="space-y-24">
-            {/* Hero Tech Elite */}
-            <div className="bg-gradient-to-br from-estacio-navy via-[#001d5a] to-estacio-cyan p-12 md:p-24 rounded-[4rem] text-white relative overflow-hidden shadow-3xl">
-              <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -mr-60 -mt-60 blur-[120px] animate-pulse"></div>
-              <div className="relative z-10 max-w-4xl">
-                <div className="flex items-center gap-6 mb-10">
-                  <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl border border-white/20">
-                    <Terminal size={48} className="text-estacio-cyan" />
-                  </div>
-                  <span className="text-xs font-black uppercase tracking-[0.4em] text-blue-200 italic">Engineering Excellence</span>
-                </div>
-                <h3 className="text-5xl md:text-8xl font-black tracking-tighter italic mb-8 leading-none">
-                  BECOME <br/> <span className="text-estacio-cyan">TOP 1%</span>.
-                </h3>
-                <p className="text-blue-100 text-xl md:text-2xl leading-relaxed mb-12 max-w-3xl font-medium">
-                  O conhecimento técnico é sua maior moeda. No mercado de TI, a curiosidade infinita e a base sólida em algoritmos são o que separam os codificadores dos verdadeiros engenheiros.
-                </p>
-              </div>
-            </div>
-            {/* ... Rest of Tips Content ... */}
-          </div>
-        );
-
-      case ViewType.CONCURSOS:
-        return (
-          <div className="space-y-20">
-            {/* Introdução Motivacional */}
-            <div className="bg-gradient-to-br from-estacio-navy to-[#001a4d] p-10 md:p-20 rounded-[4rem] text-white relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-yellow/10 rounded-full -mr-48 -mt-48 blur-3xl animate-pulse"></div>
-              <div className="relative z-10 max-w-4xl">
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="bg-estacio-yellow p-4 rounded-3xl shadow-lg shadow-estacio-yellow/20">
-                    <Trophy size={40} className="text-estacio-navy" />
-                  </div>
-                  <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic uppercase">Carreira Pública em TI</h3>
-                </div>
-                <p className="text-blue-100/70 text-lg md:text-xl leading-relaxed mb-8">
-                  Estabilidade, ótimos salários e a chance de trabalhar em projetos de impacto nacional.
-                </p>
-              </div>
-            </div>
-            {/* ... Rest of Concursos Content ... */}
+            <CoordinatorTip message="Não tente aprender tudo de uma vez. O repositório 'Awesome' é uma biblioteca: use quando precisar. Foque em dominar os fundamentos antes de pular para o framework da moda." />
           </div>
         );
 
       case ViewType.ESTAGIOS:
         return (
-          <div className="space-y-20">
-            {/* Portais de Oportunidades */}
-            <div>
-              <div className="flex items-center gap-4 mb-10">
-                <Compass className="text-estacio-cyan" size={32} />
-                <h3 className="text-2xl font-black text-estacio-navy uppercase tracking-tight">Onde Encontrar Vagas?</h3>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group border-l-8 border-l-blue-500">
-                  <div className="flex items-center gap-6 mb-6">
-                    <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                      <Search size={32} />
-                    </div>
-                    <div>
-                      <h4 className="font-black text-xl text-estacio-navy">Encontre sua Vaga</h4>
-                      <p className="text-xs text-blue-500 font-bold uppercase tracking-widest">Parceiro Estácio</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-8">Portal exclusivo para alunos e egressos da Estácio. Milhares de vagas de estágio direto com empresas parceiras.</p>
-                  <a href="https://www.encontresuavaga.com.br" target="_blank" className="inline-flex items-center gap-3 bg-estacio-navy text-white px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-estacio-cyan transition-all">
-                    Acessar Portal <ExternalLink size={14} />
+          <div className="space-y-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <div className="bg-white p-12 rounded-[4rem] border border-gray-100 shadow-sm flex flex-col h-full">
+                <h3 className="text-3xl font-black text-estacio-navy italic mb-8 uppercase flex items-center gap-3"><Globe size={28} className="text-blue-500" /> Brasil</h3>
+                <div className="space-y-6 flex-grow">
+                  <a href="https://www.encontresuavaga.com.br/" target="_blank" className="block p-8 bg-gray-50 rounded-3xl hover:bg-estacio-cyan/10 transition-colors group">
+                    <h4 className="font-black text-estacio-navy mb-2 flex justify-between items-center">Encontre sua Vaga <ExternalLink size={16} className="opacity-40 group-hover:opacity-100" /></h4>
+                    <p className="text-xs text-gray-500 font-medium">Portal oficial Estácio para estágios e vagas diretas.</p>
+                  </a>
+                  <a href="https://portal.ciee.org.br/" target="_blank" className="block p-8 bg-gray-50 rounded-3xl hover:bg-estacio-cyan/10 transition-colors group">
+                    <h4 className="font-black text-estacio-navy mb-2 flex justify-between items-center">CIEE <ExternalLink size={16} className="opacity-40 group-hover:opacity-100" /></h4>
+                    <p className="text-xs text-gray-500 font-medium">O maior integrador de estágios do Brasil.</p>
                   </a>
                 </div>
               </div>
+              <div className="bg-estacio-navy p-12 rounded-[4rem] text-white flex flex-col h-full relative overflow-hidden">
+                <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+                <h3 className="text-3xl font-black italic mb-8 uppercase flex items-center gap-3"><Plane size={28} className="text-estacio-cyan" /> Exterior</h3>
+                <p className="text-blue-100/60 mb-10 text-lg leading-relaxed font-medium">Trabalhar para empresas dos EUA ou Europa do Brasil é a realidade de muitos devs. Ganhe em moeda forte e viva no Brasil.</p>
+                <a href="https://remote.com/" target="_blank" className="mt-auto block p-8 bg-white/5 rounded-3xl hover:bg-white/10 border border-white/10 transition-colors group">
+                  <h4 className="font-black mb-2 flex justify-between items-center">Remote.com <ExternalLink size={16} className="opacity-40 group-hover:opacity-100" /></h4>
+                  <p className="text-xs text-blue-200/50 font-medium">Vagas globais 100% remotas para engenheiros de software.</p>
+                </a>
+              </div>
+            </div>
+            <CoordinatorTip message="O estágio é o momento de errar barato. Busque empresas que tenham mentoria. O valor do seu primeiro estágio não está no salário, mas no quanto você vai aprender." />
+          </div>
+        );
+
+      case ViewType.CONCURSOS:
+        return (
+          <div className="space-y-16">
+            <div className="bg-white p-12 rounded-[4rem] border border-gray-100 shadow-sm">
+              <h3 className="text-3xl font-black text-estacio-navy italic mb-8 uppercase flex items-center gap-3"><Medal size={28} className="text-purple-500" /> Carreira Pública</h3>
+              <p className="text-gray-600 mb-10 text-lg">Estabilidade e projetos de impacto nacional. Órgãos como SERPRO, DATAPREV e Bancos Públicos buscam talentos constantemente.</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href="https://www.pciconcursos.com.br/" target="_blank" className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl hover:bg-purple-50 transition-colors group">
+                  <span className="font-black text-estacio-navy italic">PCI Concursos</span>
+                  <ExternalLink size={16} className="text-purple-500 opacity-40 group-hover:opacity-100" />
+                </a>
+                <a href="https://folhadirigida.com.br/" target="_blank" className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl hover:bg-purple-50 transition-colors group">
+                  <span className="font-black text-estacio-navy italic">Folha Dirigida</span>
+                  <ExternalLink size={16} className="text-purple-500 opacity-40 group-hover:opacity-100" />
+                </a>
+              </div>
+            </div>
+            <CoordinatorTip message="Estudar para concurso exige disciplina. Foque em Português e Raciocínio Lógico tanto quanto em TI. Muitos bons técnicos reprovam por negligenciar as matérias base." />
+          </div>
+        );
+
+      case ViewType.EVENTOS:
+        return (
+          <div className="space-y-16">
+            <div className="bg-white p-12 rounded-[4rem] border border-gray-100 shadow-sm">
+              <h3 className="text-3xl font-black text-estacio-navy italic mb-10 uppercase flex items-center gap-3"><CalendarDays size={28} className="text-pink-500" /> Próximos Eventos</h3>
+              <div className="space-y-8">
+                {[
+                  { name: "Web Summit Rio", date: "Abril 2024", type: "Híbrido", desc: "O maior evento de tecnologia do mundo no Rio de Janeiro.", url: "https://rio.websummit.com/" },
+                  { name: "Google I/O", date: "Maio 2024", type: "Remoto", desc: "Novidades do ecossistema Google e Android.", url: "https://io.google/" },
+                  { name: "AWS Re:Invent", date: "Dezembro 2024", type: "Remoto/Presencial", desc: "O encontro definitivo para Cloud Computing.", url: "https://reinvent.awsevents.com/" }
+                ].map((ev, i) => (
+                  <div key={i} className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 bg-gray-50 rounded-3xl border border-transparent hover:border-pink-200 transition-all">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="px-3 py-1 bg-pink-500 text-white text-[9px] font-black uppercase rounded-full">{ev.type}</span>
+                        <h4 className="font-black text-estacio-navy italic text-xl">{ev.name}</h4>
+                      </div>
+                      <p className="text-gray-500 text-xs font-medium mb-1">{ev.desc}</p>
+                      <p className="text-pink-600 text-xs font-bold uppercase tracking-widest">{ev.date}</p>
+                    </div>
+                    <a href={ev.url} target="_blank" className="px-8 py-3 bg-estacio-navy text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-estacio-cyan transition-colors text-center">Inscrição</a>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <CoordinatorTip message="Eventos são os melhores lugares para fazer networking. Não vá apenas para assistir palestras, vá para conversar com pessoas. Um contato pode valer mais que um diploma." />
+          </div>
+        );
+
+      case ViewType.PROJETOS:
+        return (
+          <div className="space-y-16">
+            <div className="bg-white p-24 rounded-[4rem] border-4 border-dashed border-gray-100 text-center">
+              <div className="w-24 h-24 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-8">
+                <Users size={48} className="text-orange-500" />
+              </div>
+              <h3 className="text-3xl font-black text-estacio-navy italic mb-4 uppercase">Em Construção</h3>
+              <p className="text-gray-400 font-medium max-w-md mx-auto">Estamos preparando um espaço incrível para que você possa encontrar parceiros de projetos e trocar experiências reais de código.</p>
+            </div>
+            <CoordinatorTip message="Grandes sistemas nunca são construídos sozinhos. Aprenda a trabalhar em equipe e a usar Git de forma profissional. O código é secundário à colaboração." />
+          </div>
+        );
+
+      case ViewType.COORDENADOR:
+        return (
+          <div className="space-y-16">
+            <div className="bg-white p-12 md:p-16 rounded-[4rem] border border-gray-100 shadow-xl text-center">
+              <div className="w-40 h-40 bg-gray-50 rounded-full mx-auto flex items-center justify-center mb-10 border-4 border-white shadow-inner">
+                <Users size={80} className="text-estacio-navy" />
+              </div>
+              <h3 className="text-4xl font-black text-estacio-navy mb-4 italic">Prof. Antônio Cândido de O. Filho</h3>
+              <p className="text-gray-500 font-bold uppercase text-xs tracking-widest mb-12">Coordenador ADS & Ciência da Computação</p>
+              
+              <div className="flex flex-wrap justify-center gap-4 mb-16">
+                <a href="mailto:antonio.filho@estacio.br" className="flex items-center gap-3 px-8 py-4 bg-gray-50 rounded-2xl hover:bg-estacio-cyan/10 border border-gray-100 transition-all group">
+                  <Mail size={20} className="text-estacio-navy group-hover:text-estacio-cyan" />
+                  <span className="text-xs font-black text-estacio-navy">antonio.filho@estacio.br</span>
+                </a>
+                <a href="https://www.linkedin.com/in/antonio-candido-oliveira-filho-b2028336" target="_blank" className="flex items-center gap-3 px-8 py-4 bg-gray-50 rounded-2xl hover:bg-blue-50 border border-gray-100 transition-all group">
+                  <Linkedin size={20} className="text-blue-600" />
+                  <span className="text-xs font-black text-estacio-navy">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/candidorj" target="_blank" className="flex items-center gap-3 px-8 py-4 bg-gray-50 rounded-2xl hover:bg-blue-100 border border-gray-100 transition-all group">
+                  <Facebook size={20} className="text-blue-800" />
+                  <span className="text-xs font-black text-estacio-navy">Facebook</span>
+                </a>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                <div className="p-10 bg-gray-50 rounded-[3rem] border border-gray-100">
+                  <h4 className="font-black text-estacio-navy uppercase text-[10px] tracking-widest mb-8">TOM JOBIM - BARRA</h4>
+                  <ul className="space-y-6">
+                    <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-estacio-cyan"></div><span className="text-sm font-medium"><strong>Presencial:</strong> Quarta, 09h às 19h</span></li>
+                    <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-blue-400"></div><span className="text-sm font-medium"><strong>Remoto (Teams):</strong> Sexta, 09h às 12h</span></li>
+                  </ul>
+                </div>
+                <div className="p-10 bg-gray-50 rounded-[3rem] border border-gray-100">
+                  <h4 className="font-black text-estacio-navy uppercase text-[10px] tracking-widest mb-8">R9 - TAQUARA</h4>
+                  <ul className="space-y-6">
+                    <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-estacio-cyan"></div><span className="text-sm font-medium"><strong>Presencial:</strong> Quinta, 09h às 19h</span></li>
+                    <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-blue-400"></div><span className="text-sm font-medium"><strong>Remoto (Teams):</strong> Sexta, 13h às 16h</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="bg-estacio-navy p-16 rounded-[4rem] text-white text-center shadow-2xl">
+              <Sparkles size={48} className="text-estacio-cyan mx-auto mb-8" />
+              <p className="text-2xl italic font-medium max-w-2xl mx-auto leading-relaxed">"Meu papel é garantir que sua jornada acadêmica seja o trampolim para o seu sucesso profissional. Minha porta está sempre aberta."</p>
             </div>
           </div>
         );
 
       default:
         return (
-          <div className="bg-gray-50 p-24 rounded-3xl text-center border-4 border-dashed border-gray-200">
-            <div className="max-w-md mx-auto">
-              <div className="text-6xl mb-6">🚀</div>
-              <h3 className="text-2xl font-black text-estacio-navy mb-4">Em Construção</h3>
-              <p className="text-gray-500 font-medium">Estamos preparando conteúdos exclusivos para esta seção.</p>
-            </div>
+          <div className="bg-gray-50 p-24 rounded-[4rem] text-center border-4 border-dashed border-gray-200">
+            <p className="text-xl text-gray-400 font-black italic">Seção em Construção.</p>
           </div>
         );
     }
@@ -405,7 +307,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
     <div className="fade-in container mx-auto px-6 py-12">
       <button 
         onClick={onBack}
-        className="group flex items-center gap-5 text-gray-400 font-black uppercase tracking-widest text-[11px] hover:text-estacio-navy mb-16 transition-all"
+        className="group flex items-center gap-4 text-gray-400 font-black uppercase tracking-widest text-[11px] hover:text-estacio-navy mb-16 transition-all"
       >
         <span className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-estacio-navy group-hover:bg-estacio-navy group-hover:text-white transition-all">
           <ChevronRight className="w-5 h-5 rotate-180" />
@@ -416,7 +318,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
       <div className="flex flex-col md:flex-row md:items-center gap-10 mb-20 border-l-[12px] border-estacio-cyan pl-10">
         <div className="p-8 bg-white shadow-2xl shadow-gray-200 rounded-[2.5rem] flex-shrink-0">
           <div className={`${cardInfo?.color || 'text-estacio-navy'}`}>
-            {getIcon(cardInfo?.icon || 'Info', 72)}
+            {getIcon(cardInfo?.icon || 'Info', 64)}
           </div>
         </div>
         <div>
