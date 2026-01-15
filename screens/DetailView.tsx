@@ -2,7 +2,6 @@
 import React from 'react';
 import { ViewType } from '../types';
 import { CARDS, getIcon } from '../constants';
-// Added missing imports: Mail, Linkedin, Facebook, BookOpen, Terminal
 import { 
   ExternalLink, 
   Cpu, 
@@ -35,7 +34,12 @@ import {
   Facebook,
   BookOpen,
   Terminal,
-  MousePointerClick
+  MousePointerClick,
+  Smartphone,
+  TestTube2,
+  Monitor,
+  Box,
+  Github
 } from 'lucide-react';
 
 interface DetailViewProps {
@@ -48,6 +52,156 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
   
   const renderContent = () => {
     switch (view) {
+      case ViewType.APP_EXEMPLO:
+        return (
+          <div className="space-y-24">
+            {/* Seção 1: Introdução ao Conceito Awesome */}
+            <div className="bg-estacio-navy p-10 md:p-16 rounded-[3rem] text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-cyan/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+              <div className="relative z-10 max-w-4xl">
+                <div className="flex items-center gap-6 mb-8">
+                  <div className="bg-estacio-cyan p-4 rounded-3xl shadow-lg shadow-estacio-cyan/20">
+                    <Github size={40} className="text-white" />
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic">Inspiração e Exemplos</h3>
+                </div>
+                <p className="text-blue-100/70 text-lg md:text-xl leading-relaxed mb-8">
+                  Para aprender a criar grandes aplicações, é preciso ver o que já foi feito. Abaixo, organizamos as melhores referências da famosa curadoria <strong>"Awesome"</strong> do GitHub, focada em ferramentas reais utilizadas no mercado.
+                </p>
+                <div className="inline-flex items-center gap-2 bg-white/10 px-6 py-3 rounded-2xl border border-white/10 text-xs font-bold italic">
+                  <Sparkles size={16} className="text-estacio-cyan" /> Recursos selecionados para turbinar seu portfólio
+                </div>
+              </div>
+            </div>
+
+            {/* Seção 2: Categorias de Projetos e Ferramentas */}
+            <div>
+              <div className="flex items-center gap-4 mb-12">
+                <Box className="text-estacio-cyan" size={32} />
+                <h3 className="text-3xl font-black text-estacio-navy uppercase tracking-tight">Bibliotecas de Sucesso</h3>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* 1. Testing (Especial solicitado) */}
+                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-red-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all">
+                      <TestTube2 size={24} />
+                    </div>
+                    <h4 className="font-black text-xl text-estacio-navy">Testes e QA</h4>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
+                    Tudo sobre <strong>Jest, Cypress, Playwright</strong> e metodologias de teste unitário, integração e E2E.
+                  </p>
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#testing" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-red-50 transition-colors">
+                    Ver Awesome Testing <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 2. Front-end Frameworks */}
+                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-blue-400">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-400 group-hover:bg-blue-400 group-hover:text-white transition-all">
+                      <Monitor size={24} />
+                    </div>
+                    <h4 className="font-black text-xl text-estacio-navy">Front-end Web</h4>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
+                    Explore projetos em <strong>React, Vue, Angular</strong> e as melhores bibliotecas de UI/UX para web.
+                  </p>
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#front-end-development" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-blue-50 transition-colors">
+                    Ver Awesome Front-end <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 3. Mobile Development */}
+                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-purple-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                      <Smartphone size={24} />
+                    </div>
+                    <h4 className="font-black text-xl text-estacio-navy">Mobile Apps</h4>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
+                    Desenvolvimento nativo e híbrido com <strong>React Native, Flutter, Swift e Android (Kotlin)</strong>.
+                  </p>
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#mobile" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-purple-50 transition-colors">
+                    Ver Awesome Mobile <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 4. Backend & Databases */}
+                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-green-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all">
+                      <Database size={24} />
+                    </div>
+                    <h4 className="font-black text-xl text-estacio-navy">Back-end & APIs</h4>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
+                    Linguagens de servidor (Node, Go, Python), <strong>Bancos de Dados</strong> e arquitetura de sistemas.
+                  </p>
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#back-end-development" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-green-50 transition-colors">
+                    Ver Awesome Back-end <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 5. UI/UX Design Assets */}
+                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-orange-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                      <Sparkles size={24} />
+                    </div>
+                    <h4 className="font-black text-xl text-estacio-navy">Design & Assets</h4>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
+                    Ícones, fontes, paletas de cores e ferramentas de <strong>Figma</strong> para criar interfaces modernas.
+                  </p>
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#design--ui" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-orange-50 transition-colors">
+                    Ver Awesome Design <ExternalLink size={14} />
+                  </a>
+                </div>
+
+                {/* 6. Security (Cybersecurity) */}
+                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-estacio-navy">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-estacio-navy group-hover:bg-estacio-navy group-hover:text-white transition-all">
+                      <ShieldCheck size={24} />
+                    </div>
+                    <h4 className="font-black text-xl text-estacio-navy">Segurança</h4>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
+                    Recursos sobre <strong>Ethical Hacking, Criptografia</strong> e proteção de infraestrutura digital.
+                  </p>
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#security" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-blue-100 transition-colors">
+                    Ver Awesome Security <ExternalLink size={14} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Dica de Ouro: Como usar esses exemplos? */}
+            <div className="bg-blue-50 p-10 md:p-14 rounded-[4rem] border border-blue-100 flex flex-col md:flex-row items-center gap-12">
+              <div className="bg-white p-8 rounded-[2.5rem] shadow-sm shrink-0">
+                <Layout className="text-estacio-navy" size={48} />
+              </div>
+              <div>
+                <h5 className="text-2xl font-black text-estacio-navy mb-4 italic">Dica de Aprendizado</h5>
+                <p className="text-gray-500 font-medium leading-relaxed mb-6">
+                  Não tente aprender tudo de uma vez. Escolha <strong>uma categoria</strong>, abra a lista Awesome e procure por projetos marcados como "Good First Issue" para começar a contribuir e aprender na prática.
+                </p>
+                <div className="flex gap-4">
+                  <div className="flex items-center gap-2 text-xs font-bold text-estacio-navy">
+                    <CheckCircle2 size={16} className="text-estacio-cyan" /> Leia o código de outros devs
+                  </div>
+                  <div className="flex items-center gap-2 text-xs font-bold text-estacio-navy">
+                    <CheckCircle2 size={16} className="text-estacio-cyan" /> Replique funcionalidades
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
       case ViewType.SAIBA_MAIS:
         return (
           <div className="space-y-24">
