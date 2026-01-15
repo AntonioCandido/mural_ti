@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ViewType } from '../types';
 import { CARDS, getIcon } from '../constants';
@@ -86,8 +87,12 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
       <div className="absolute top-0 right-0 w-64 h-64 bg-estacio-cyan/10 rounded-full blur-3xl"></div>
       <div className="lg:w-1/4 text-center shrink-0">
         <div className="w-24 h-24 bg-white/10 rounded-full mx-auto flex items-center justify-center mb-4 border border-white/20 overflow-hidden shadow-lg">
+         
+     <img src="/candido.png" alt="Coordenador" />
+         
+         
           <img 
-            src="./candido.png" 
+            src="/candido.png" 
             alt="Prof. Antônio Cândido" 
             className="w-full h-full object-cover"
             onError={(e) => {
@@ -174,7 +179,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                 <div className="absolute inset-0 bg-estacio-cyan rounded-full blur-2xl opacity-20"></div>
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-gradient-to-br from-estacio-navy to-estacio-cyan flex items-center justify-center">
                   <img 
-                    src="./candido.png" 
+                    src="/candido.png" 
                     alt="Prof. Antônio Cândido de O. Filho" 
                     className="w-full h-full object-cover"
                     onError={(e) => {

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ViewType } from './types';
 import { 
@@ -86,13 +87,13 @@ export const getIcon = (name: string, size: number = 24) => {
   switch (name) {
     case 'CoordinatorImage':
       return (
-        <div className="overflow-hidden rounded-full shadow-sm" style={{ width: size, height: size }}>
+        <div className="overflow-hidden rounded-full shadow-sm bg-white" style={{ width: size, height: size }}>
           <img 
-            src="./candido.png" 
-            alt="Coordenador" 
+            src="/candido.png" 
+            alt="Coordenador Antônio Cândido" 
             className="w-full h-full object-cover"
             onError={(e) => {
-              (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff';
+              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff&size=${size}`;
             }}
           />
         </div>
