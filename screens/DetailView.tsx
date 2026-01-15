@@ -39,7 +39,10 @@ import {
   TestTube2,
   Monitor,
   Box,
-  Github
+  Github,
+  Rocket,
+  Lightbulb,
+  Heart
 } from 'lucide-react';
 
 interface DetailViewProps {
@@ -54,150 +57,165 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
     switch (view) {
       case ViewType.APP_EXEMPLO:
         return (
-          <div className="space-y-24">
-            {/* Seção 1: Introdução ao Conceito Awesome */}
-            <div className="bg-estacio-navy p-10 md:p-16 rounded-[3rem] text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-cyan/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
-              <div className="relative z-10 max-w-4xl">
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="bg-estacio-cyan p-4 rounded-3xl shadow-lg shadow-estacio-cyan/20">
-                    <Github size={40} className="text-white" />
+          <div className="space-y-20">
+            {/* Boas-vindas Didático */}
+            <div className="bg-gradient-to-br from-estacio-navy to-blue-900 p-10 md:p-16 rounded-[3rem] text-white relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-estacio-cyan/20 rounded-full -mr-40 -mt-40 blur-3xl animate-pulse"></div>
+              <div className="relative z-10 max-w-3xl">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="bg-estacio-cyan p-3 rounded-2xl shadow-lg">
+                    <Rocket size={32} className="text-white" />
                   </div>
-                  <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic">Inspiração e Exemplos</h3>
+                  <span className="text-[11px] font-black uppercase tracking-[0.3em] text-estacio-cyan">Guia de Iniciação</span>
                 </div>
-                <p className="text-blue-100/70 text-lg md:text-xl leading-relaxed mb-8">
-                  Para aprender a criar grandes aplicações, é preciso ver o que já foi feito. Abaixo, organizamos as melhores referências da famosa curadoria <strong>"Awesome"</strong> do GitHub, focada em ferramentas reais utilizadas no mercado.
+                <h3 className="text-4xl md:text-6xl font-black tracking-tighter italic mb-6">Comece a Criar Agora</h3>
+                <p className="text-blue-100/70 text-lg md:text-xl leading-relaxed">
+                  Você não precisa ser um expert para começar. Selecionamos o "Caminho das Pedras" com os melhores exemplos e ferramentas do mundo para você se inspirar e aprender na prática.
                 </p>
-                <div className="inline-flex items-center gap-2 bg-white/10 px-6 py-3 rounded-2xl border border-white/10 text-xs font-bold italic">
-                  <Sparkles size={16} className="text-estacio-cyan" /> Recursos selecionados para turbinar seu portfólio
-                </div>
               </div>
             </div>
 
-            {/* Seção 2: Categorias de Projetos e Ferramentas */}
+            {/* O que é uma lista "Awesome"? */}
+            <div className="flex flex-col md:flex-row gap-8 items-center bg-blue-50/50 p-8 rounded-[2.5rem] border border-blue-100/50">
+              <div className="bg-white p-5 rounded-2xl shadow-sm">
+                <Lightbulb size={32} className="text-estacio-navy" />
+              </div>
+              <div>
+                <h4 className="font-black text-estacio-navy text-xl mb-1 italic">Dica: O que é "Awesome"?</h4>
+                <p className="text-gray-500 text-sm font-medium leading-relaxed">
+                  No mundo da TI, chamamos de <strong>Awesome</strong> as listas de "ouro" criadas pela comunidade. São repositórios onde especialistas guardam as melhores ferramentas para que você não precise procurar no Google do zero.
+                </p>
+              </div>
+            </div>
+
+            {/* Grid de Descoberta */}
             <div>
               <div className="flex items-center gap-4 mb-12">
-                <Box className="text-estacio-cyan" size={32} />
-                <h3 className="text-3xl font-black text-estacio-navy uppercase tracking-tight">Bibliotecas de Sucesso</h3>
+                <div className="w-1.5 h-8 bg-estacio-cyan rounded-full"></div>
+                <h3 className="text-3xl font-black text-estacio-navy uppercase tracking-tight">Escolha sua Área de Interesse</h3>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* 1. Testing (Especial solicitado) */}
-                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-red-500">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all">
-                      <TestTube2 size={24} />
-                    </div>
-                    <h4 className="font-black text-xl text-estacio-navy">Testes e QA</h4>
+                {/* Card 1: Testes (QA) - Foco Didático */}
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 px-6 py-2 bg-red-500 text-white text-[9px] font-black uppercase tracking-widest rounded-bl-2xl">Essencial</div>
+                  <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-8 group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
+                    <TestTube2 size={32} />
                   </div>
+                  <h4 className="font-black text-2xl text-estacio-navy mb-4 italic">Garantia de Qualidade</h4>
+                  <p className="text-[11px] font-bold text-red-600/60 uppercase mb-4 tracking-wider">Para que serve?</p>
                   <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
-                    Tudo sobre <strong>Jest, Cypress, Playwright</strong> e metodologias de teste unitário, integração e E2E.
+                    Imagine construir um prédio e não testar se os pilares aguentam o peso. Testes de software garantem que seu App não pare de funcionar quando um usuário clicar num botão.
                   </p>
-                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#testing" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-red-50 transition-colors">
-                    Ver Awesome Testing <ExternalLink size={14} />
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#testing" target="_blank" className="mt-auto flex items-center justify-center gap-3 bg-gray-50 text-estacio-navy py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all group-hover:shadow-lg">
+                    Conhecer Ferramentas <ArrowRight size={14} />
                   </a>
                 </div>
 
-                {/* 2. Front-end Frameworks */}
-                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-blue-400">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-400 group-hover:bg-blue-400 group-hover:text-white transition-all">
-                      <Monitor size={24} />
-                    </div>
-                    <h4 className="font-black text-xl text-estacio-navy">Front-end Web</h4>
+                {/* Card 2: Front-end - A cara do App */}
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 px-6 py-2 bg-blue-400 text-white text-[9px] font-black uppercase tracking-widest rounded-bl-2xl">Iniciante</div>
+                  <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-400 mb-8 group-hover:bg-blue-400 group-hover:text-white transition-all duration-500">
+                    <Monitor size={32} />
                   </div>
+                  <h4 className="font-black text-2xl text-estacio-navy mb-4 italic">O Visual (Front-end)</h4>
+                  <p className="text-[11px] font-bold text-blue-400 uppercase mb-4 tracking-wider">Para que serve?</p>
                   <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
-                    Explore projetos em <strong>React, Vue, Angular</strong> e as melhores bibliotecas de UI/UX para web.
+                    É a parte que o usuário vê e interage. Se você gosta de design, cores e interatividade, aqui você encontrará os melhores caminhos para criar sites incríveis.
                   </p>
-                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#front-end-development" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-blue-50 transition-colors">
-                    Ver Awesome Front-end <ExternalLink size={14} />
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#front-end-development" target="_blank" className="mt-auto flex items-center justify-center gap-3 bg-gray-50 text-estacio-navy py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-400 hover:text-white transition-all group-hover:shadow-lg">
+                    Explorar o Front <ArrowRight size={14} />
                   </a>
                 </div>
 
-                {/* 3. Mobile Development */}
-                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-purple-500">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all">
-                      <Smartphone size={24} />
-                    </div>
-                    <h4 className="font-black text-xl text-estacio-navy">Mobile Apps</h4>
+                {/* Card 3: Back-end - O Cérebro */}
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 px-6 py-2 bg-green-500 text-white text-[9px] font-black uppercase tracking-widest rounded-bl-2xl">Poderoso</div>
+                  <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-8 group-hover:bg-green-600 group-hover:text-white transition-all duration-500">
+                    <Database size={32} />
                   </div>
+                  <h4 className="font-black text-2xl text-estacio-navy mb-4 italic">O Cérebro (Back-end)</h4>
+                  <p className="text-[11px] font-bold text-green-600 uppercase mb-4 tracking-wider">Para que serve?</p>
                   <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
-                    Desenvolvimento nativo e híbrido com <strong>React Native, Flutter, Swift e Android (Kotlin)</strong>.
+                    Aqui é onde a lógica acontece. Como salvar um usuário? Como processar um pagamento? O Back-end é o motor invisível que faz tudo funcionar.
                   </p>
-                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#mobile" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-purple-50 transition-colors">
-                    Ver Awesome Mobile <ExternalLink size={14} />
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#back-end-development" target="_blank" className="mt-auto flex items-center justify-center gap-3 bg-gray-50 text-estacio-navy py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-green-600 hover:text-white transition-all group-hover:shadow-lg">
+                    Ver Regras de Negócio <ArrowRight size={14} />
                   </a>
                 </div>
 
-                {/* 4. Backend & Databases */}
-                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-green-500">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all">
-                      <Database size={24} />
-                    </div>
-                    <h4 className="font-black text-xl text-estacio-navy">Back-end & APIs</h4>
+                {/* Card 4: Mobile - Celulares */}
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 px-6 py-2 bg-purple-500 text-white text-[9px] font-black uppercase tracking-widest rounded-bl-2xl">Tendência</div>
+                  <div className="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mb-8 group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
+                    <Smartphone size={32} />
                   </div>
+                  <h4 className="font-black text-2xl text-estacio-navy mb-4 italic">Apps de Celular</h4>
+                  <p className="text-[11px] font-bold text-purple-500 uppercase mb-4 tracking-wider">Para que serve?</p>
                   <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
-                    Linguagens de servidor (Node, Go, Python), <strong>Bancos de Dados</strong> e arquitetura de sistemas.
+                    Quer criar o próximo Instagram ou Uber? Aqui você aprende sobre as tecnologias que rodam diretamente no Android e no iPhone.
                   </p>
-                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#back-end-development" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-green-50 transition-colors">
-                    Ver Awesome Back-end <ExternalLink size={14} />
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#mobile" target="_blank" className="mt-auto flex items-center justify-center gap-3 bg-gray-50 text-estacio-navy py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-purple-600 hover:text-white transition-all group-hover:shadow-lg">
+                    Criar para Celular <ArrowRight size={14} />
                   </a>
                 </div>
 
-                {/* 5. UI/UX Design Assets */}
-                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-orange-500">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
-                      <Sparkles size={24} />
-                    </div>
-                    <h4 className="font-black text-xl text-estacio-navy">Design & Assets</h4>
+                {/* Card 5: Design e UX */}
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 px-6 py-2 bg-orange-500 text-white text-[9px] font-black uppercase tracking-widest rounded-bl-2xl">Visual</div>
+                  <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-8 group-hover:bg-orange-600 group-hover:text-white transition-all duration-500">
+                    <Sparkles size={32} />
                   </div>
+                  <h4 className="font-black text-2xl text-estacio-navy mb-4 italic">Beleza & Facilidade</h4>
+                  <p className="text-[11px] font-bold text-orange-500 uppercase mb-4 tracking-wider">Para que serve?</p>
                   <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
-                    Ícones, fontes, paletas de cores e ferramentas de <strong>Figma</strong> para criar interfaces modernas.
+                    Um App pode ser funcional, mas se for feio ou difícil de usar, ninguém usará. Aprenda as regras de design que tornam um App amado pelos usuários.
                   </p>
-                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#design--ui" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-orange-50 transition-colors">
-                    Ver Awesome Design <ExternalLink size={14} />
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#design--ui" target="_blank" className="mt-auto flex items-center justify-center gap-3 bg-gray-50 text-estacio-navy py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-500 hover:text-white transition-all group-hover:shadow-lg">
+                    Melhorar o Visual <ArrowRight size={14} />
                   </a>
                 </div>
 
-                {/* 6. Security (Cybersecurity) */}
-                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col border-t-8 border-t-estacio-navy">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-estacio-navy group-hover:bg-estacio-navy group-hover:text-white transition-all">
-                      <ShieldCheck size={24} />
-                    </div>
-                    <h4 className="font-black text-xl text-estacio-navy">Segurança</h4>
+                {/* Card 6: Networking / API */}
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 px-6 py-2 bg-estacio-cyan text-white text-[9px] font-black uppercase tracking-widest rounded-bl-2xl">Conexão</div>
+                  <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-estacio-cyan mb-8 group-hover:bg-estacio-cyan group-hover:text-white transition-all duration-500">
+                    <Network size={32} />
                   </div>
+                  <h4 className="font-black text-2xl text-estacio-navy mb-4 italic">Conectando Mundos</h4>
+                  <p className="text-[11px] font-bold text-estacio-cyan uppercase mb-4 tracking-wider">Para que serve?</p>
                   <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
-                    Recursos sobre <strong>Ethical Hacking, Criptografia</strong> e proteção de infraestrutura digital.
+                    Como o App do tempo sabe a previsão? Ele pergunta para outro computador. Aqui você entende como os Apps "conversam" entre si através da internet.
                   </p>
-                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#security" target="_blank" className="flex items-center justify-between bg-gray-50 px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-estacio-navy hover:bg-blue-100 transition-colors">
-                    Ver Awesome Security <ExternalLink size={14} />
+                  <a href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#networking" target="_blank" className="mt-auto flex items-center justify-center gap-3 bg-gray-50 text-estacio-navy py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-estacio-cyan hover:text-white transition-all group-hover:shadow-lg">
+                    Aprender Conexões <ArrowRight size={14} />
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Dica de Ouro: Como usar esses exemplos? */}
-            <div className="bg-blue-50 p-10 md:p-14 rounded-[4rem] border border-blue-100 flex flex-col md:flex-row items-center gap-12">
-              <div className="bg-white p-8 rounded-[2.5rem] shadow-sm shrink-0">
-                <Layout className="text-estacio-navy" size={48} />
-              </div>
-              <div>
-                <h5 className="text-2xl font-black text-estacio-navy mb-4 italic">Dica de Aprendizado</h5>
-                <p className="text-gray-500 font-medium leading-relaxed mb-6">
-                  Não tente aprender tudo de uma vez. Escolha <strong>uma categoria</strong>, abra a lista Awesome e procure por projetos marcados como "Good First Issue" para começar a contribuir e aprender na prática.
-                </p>
-                <div className="flex gap-4">
-                  <div className="flex items-center gap-2 text-xs font-bold text-estacio-navy">
-                    <CheckCircle2 size={16} className="text-estacio-cyan" /> Leia o código de outros devs
-                  </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-estacio-navy">
-                    <CheckCircle2 size={16} className="text-estacio-cyan" /> Replique funcionalidades
-                  </div>
+            {/* Guia do Sucesso */}
+            <div className="bg-blue-950 p-12 md:p-20 rounded-[4rem] text-white flex flex-col lg:flex-row items-center gap-16 shadow-2xl">
+              <div className="lg:w-1/2">
+                <div className="inline-block p-4 bg-white/10 rounded-3xl mb-8">
+                  <Heart size={48} className="text-red-400 fill-current" />
                 </div>
+                <h4 className="text-4xl font-black italic mb-6 leading-tight">Como aproveitar este material?</h4>
+                <p className="text-blue-100/60 text-lg leading-relaxed">
+                  Não se assuste com a quantidade de informação. A TI é um oceano, mas você só precisa de um copo d'água por dia para crescer.
+                </p>
+              </div>
+              <div className="lg:w-1/2 grid grid-cols-1 gap-4">
+                {[
+                  { title: "Escolha uma caixinha", desc: "Não clique em tudo. Escolha UMA área que você achou legal hoje." },
+                  { title: "Veja os exemplos", desc: "Procure por links que dizem 'Examples' ou 'Showcase'." },
+                  { title: "Tente copiar", desc: "O melhor jeito de aprender é tentar fazer um site IGUAL ao que você viu." }
+                ].map((tip, i) => (
+                  <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-3xl hover:bg-white/10 transition-colors">
+                    <h6 className="font-black text-estacio-cyan italic mb-1">{tip.title}</h6>
+                    <p className="text-xs text-blue-100/40 leading-relaxed font-medium uppercase tracking-wider">{tip.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -526,7 +544,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
             <div>
               <div className="flex items-center gap-4 mb-10">
                 <Compass className="text-estacio-cyan" size={32} />
-                <h3 className="text-2xl font-black text-estacio-navy uppercase tracking-tight">Onde Começar?</h3>
+                <h3 className="text-2xl font-black text-estacio-navy uppercase tracking-tight">Onde Encontrar Vagas?</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Encontre sua Vaga */}
