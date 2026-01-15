@@ -322,15 +322,15 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                 <button 
                   key={i} 
                   onClick={() => setSelectedCategory(cat)}
-                  className="bg-white p-8 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col h-full text-left"
+                  className="bg-white p-6 sm:p-8 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col h-full text-left overflow-hidden"
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-estacio-navy group-hover:bg-estacio-cyan group-hover:text-white transition-all">
-                      {cat.icon}
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-estacio-navy group-hover:bg-estacio-cyan group-hover:text-white transition-all shrink-0">
+                      {React.cloneElement(cat.icon as React.ReactElement, { size: 22 })}
                     </div>
-                    <h4 className="font-black text-estacio-navy italic group-hover:text-estacio-cyan transition-colors">{cat.title}</h4>
+                    <h4 className="font-black text-estacio-navy italic group-hover:text-estacio-cyan transition-colors text-base sm:text-lg line-clamp-1">{cat.title}</h4>
                   </div>
-                  <p className="text-gray-400 text-xs font-medium mb-8 flex-grow">{cat.desc}</p>
+                  <p className="text-gray-400 text-[10px] sm:text-xs font-medium mb-8 flex-grow line-clamp-2">{cat.desc}</p>
                   <div className="mt-auto flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-estacio-cyan">
                     Ver Detalhes <ArrowRight size={14} />
                   </div>
@@ -340,34 +340,34 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
 
             {/* Modal de Detalhes da Categoria */}
             {selectedCategory && (
-              <div className="fixed inset-0 z-[100] bg-estacio-navy/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300">
-                <div className="bg-white rounded-[3rem] max-w-2xl w-full p-10 relative shadow-2xl overflow-y-auto max-h-[90vh] animate-in zoom-in-95 duration-300">
+              <div className="fixed inset-0 z-[100] bg-estacio-navy/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-300">
+                <div className="bg-white rounded-[2.5rem] sm:rounded-[3.4rem] max-w-2xl w-full p-8 sm:p-12 relative shadow-2xl overflow-y-auto max-h-[90vh] animate-in zoom-in-95 duration-300">
                   <button 
                     onClick={() => setSelectedCategory(null)}
-                    className="absolute top-8 right-8 text-gray-400 hover:text-estacio-navy transition-colors"
+                    className="absolute top-6 right-6 sm:top-10 sm:right-10 text-gray-400 hover:text-estacio-navy transition-colors p-2"
                   >
-                    <X size={24} />
+                    <X size={28} />
                   </button>
                   
-                  <div className="flex items-center gap-6 mb-10">
-                    <div className="w-20 h-20 bg-estacio-navy rounded-[2rem] flex items-center justify-center text-estacio-cyan shadow-lg">
-                      {React.cloneElement(selectedCategory.icon as React.ReactElement, { size: 40 })}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8 sm:mb-12">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-estacio-navy rounded-[1.8rem] flex items-center justify-center text-estacio-cyan shadow-lg shrink-0">
+                      {React.cloneElement(selectedCategory.icon as React.ReactElement, { size: 36 })}
                     </div>
                     <div>
-                      <h3 className="text-3xl font-black text-estacio-navy italic uppercase leading-none">{selectedCategory.title}</h3>
-                      <p className="text-estacio-cyan font-bold uppercase text-[10px] tracking-widest mt-2">Recurso de Desenvolvimento</p>
+                      <h3 className="text-2xl sm:text-3xl font-black text-estacio-navy italic uppercase leading-tight text-balance">{selectedCategory.title}</h3>
+                      <p className="text-estacio-cyan font-bold uppercase text-[9px] sm:text-[10px] tracking-widest mt-2">Recurso de Desenvolvimento</p>
                     </div>
                   </div>
 
-                  <div className="space-y-8 mb-12">
-                    <p className="text-gray-600 text-lg leading-relaxed font-medium">
+                  <div className="space-y-6 sm:space-y-8 mb-10 sm:mb-14">
+                    <p className="text-gray-600 text-base sm:text-lg leading-relaxed font-medium">
                       {selectedCategory.longDesc}
                     </p>
-                    <div className="p-8 bg-gray-50 rounded-[2rem] border border-gray-100">
-                      <h5 className="font-black text-estacio-navy text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <div className="p-6 sm:p-10 bg-gray-50 rounded-[2rem] border border-gray-100">
+                      <h5 className="font-black text-estacio-navy text-[10px] sm:text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                         <Sparkles size={16} className="text-estacio-cyan" /> Por que explorar?
                       </h5>
-                      <p className="text-sm text-gray-500 leading-relaxed font-medium">
+                      <p className="text-xs sm:text-sm text-gray-500 leading-relaxed font-medium">
                         Esta categoria faz parte da "Awesome List", a curadoria definitiva de tecnologia no GitHub. Dominar estes recursos coloca você à frente no mercado de trabalho.
                       </p>
                     </div>
@@ -377,7 +377,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
                     href={selectedCategory.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-full py-6 bg-estacio-navy text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-estacio-cyan transition-all shadow-xl shadow-estacio-navy/20"
+                    className="w-full py-5 sm:py-7 bg-estacio-navy text-white rounded-2xl font-black uppercase tracking-widest text-[10px] sm:text-xs flex items-center justify-center gap-3 hover:bg-estacio-cyan transition-all shadow-xl shadow-estacio-navy/20 active:scale-95"
                   >
                     Acessar Repositório Oficial <ExternalLink size={18} />
                   </a>
@@ -561,7 +561,7 @@ const DetailView: React.FC<DetailViewProps> = ({ view, onBack }) => {
           </div>
         </div>
         <div>
-          <h2 className="text-5xl md:text-7xl font-black text-estacio-navy tracking-tighter mb-4 leading-none italic uppercase">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-estacio-navy tracking-tighter mb-4 leading-none italic uppercase">
             {cardInfo?.title}
           </h2>
           <p className="text-xl md:text-2xl text-gray-400 font-medium max-w-3xl leading-relaxed">
