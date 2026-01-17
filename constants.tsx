@@ -1,115 +1,72 @@
-
 import React from 'react';
-import { ViewType } from './types';
 import { 
-  Lightbulb, 
-  Smartphone, 
+  UserCog, 
+  Code, 
   Briefcase, 
-  Info, 
-  Medal, 
+  Gavel, 
+  Lightbulb, 
   Users, 
-  Megaphone,
-  Rocket,
-  Code2,
-  Cpu,
-  CalendarDays,
-  UserCheck
+  Calendar, 
+  UserCheck 
 } from 'lucide-react';
+import { ViewType } from './types';
 
-export interface CardData {
-  id: ViewType;
-  title: string;
-  description: string;
-  icon: string;
-  color: string;
-}
-
-export const CARDS: CardData[] = [
-  {
-    id: ViewType.PROFISSIONAIS,
-    title: 'Profissionais de TI',
-    description: 'Carreira, desafios e motivação para o mercado de tecnologia.',
-    icon: 'UserCheck',
-    color: 'text-cyan-500',
-  },
-  {
-    id: ViewType.APP_EXEMPLO,
-    title: 'Desenvolvimento',
-    description: 'A maior curadoria de recursos (Awesome List) para desenvolvedores.',
-    icon: 'Code2',
-    color: 'text-blue-400',
-  },
-  {
-    id: ViewType.ESTAGIOS,
-    title: 'Estágios e Empregos',
-    description: 'Carreira nacional, internacional e dicas para sua primeira vaga.',
-    icon: 'Briefcase',
-    color: 'text-blue-600',
-  },
-  {
-    id: ViewType.CONCURSOS,
-    title: 'Concursos Públicos',
-    description: 'Editais de TI, dicas de estudo e estabilidade na carreira pública.',
-    icon: 'Medal',
-    color: 'text-purple-500',
-  },
-  {
-    id: ViewType.EVENTOS,
-    title: 'Eventos de TI',
-    description: 'Calendário de conferências nacionais e internacionais remotas.',
-    icon: 'CalendarDays',
-    color: 'text-pink-500',
-  },
-  {
-    id: ViewType.PROJETOS,
-    title: 'Grupo e Projetos',
-    description: 'Espaço de colaboração e troca de experiências entre alunos.',
-    icon: 'Users',
-    color: 'text-orange-500',
-  },
-  {
-    id: ViewType.EMPREENDEDOR,
-    title: 'Empreendedorismo',
-    description: 'Transforme suas ideias em startups e negócios reais.',
-    icon: 'Rocket',
-    color: 'text-amber-500',
-  },
-  {
-    id: ViewType.COORDENADOR,
-    title: 'Fale com o coordenador',
-    description: 'Suporte acadêmico e orientações com o Prof. Antônio Cândido.',
-    icon: 'CoordinatorImage',
-    color: 'text-cyan-600',
-  },
+export const CARDS_DATA = [
+  { id: ViewType.PROFISSIONAIS, title: 'Profissionais de TI', desc: 'Mercado, desafios e remuneração real.', icon: UserCog, color: 'group-hover:border-blue-500' },
+  { id: ViewType.DESENVOLVIMENTO, title: 'Como Desenvolver', desc: 'Trilhas de estudo e recursos Awesome.', icon: Code, color: 'group-hover:border-estacio-cyan' },
+  { id: ViewType.ESTAGIOS, title: 'Estágios e Empregos', desc: 'Sua primeira vaga e jobs remotos.', icon: Briefcase, color: 'group-hover:border-emerald-500' },
+  { id: ViewType.CONCURSOS, title: 'Concursos', desc: 'Editais abertos e previstos para TI.', icon: Gavel, color: 'group-hover:border-estacio-amber' },
+  { id: ViewType.EMPREENDEDOR, title: 'Empreendedorismo', desc: 'Transforme ideias em startups reais.', icon: Lightbulb, color: 'group-hover:border-purple-500' },
+  { id: ViewType.PROJETOS, title: 'Grupo e Projetos', desc: 'Espaço de colaboração entre alunos.', icon: Users, color: 'group-hover:border-orange-500' },
+  { id: ViewType.EVENTOS, title: 'Eventos de TI', desc: 'Calendário de conferências 2026.', icon: Calendar, color: 'group-hover:border-pink-500' },
+  { id: ViewType.COORDENADOR, title: 'Fale com o coordenador', desc: 'Atendimento e suporte acadêmico.', icon: UserCheck, color: 'group-hover:border-estacio-navy' },
 ];
 
-export const getIcon = (name: string, size: number = 24) => {
-  switch (name) {
-    case 'CoordinatorImage':
-      return (
-        <div className="overflow-hidden rounded-full shadow-sm bg-white" style={{ width: size, height: size }}>
+export const CoordinatorWidget = () => {
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.location.hash = ViewType.COORDENADOR;
+  };
+
+  return (
+    <div className="mt-20 relative">
+      <div className="absolute inset-0 bg-estacio-navy/5 blur-3xl rounded-full"></div>
+      <div className="relative bg-white border border-slate-100 rounded-[3rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 flex flex-col md:flex-row items-center gap-8 max-w-5xl mx-auto overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-estacio-cyan/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+        
+        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg shrink-0 ring-4 ring-estacio-cyan/20">
           <img 
             src="/candido.png" 
             alt="Coordenador Antônio Cândido" 
             className="w-full h-full object-cover"
             onError={(e) => {
-              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff&size=${size}`;
+              (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff&size=200';
             }}
           />
         </div>
-      );
-    case 'Lightbulb': return <Lightbulb size={size} />;
-    case 'Smartphone': return <Smartphone size={size} />;
-    case 'Briefcase': return <Briefcase size={size} />;
-    case 'Info': return <Info size={size} />;
-    case 'Medal': return <Medal size={size} />;
-    case 'Users': return <Users size={size} />;
-    case 'Megaphone': return <Megaphone size={size} />;
-    case 'Rocket': return <Rocket size={size} />;
-    case 'Code2': return <Code2 size={size} />;
-    case 'Cpu': return <Cpu size={size} />;
-    case 'CalendarDays': return <CalendarDays size={size} />;
-    case 'UserCheck': return <UserCheck size={size} />;
-    default: return <Info size={size} />;
-  }
+        
+        <div className="flex-grow text-center md:text-left">
+          <div className="inline-block px-4 py-1 bg-estacio-navy/10 rounded-full mb-4">
+            <h4 className="text-estacio-navy font-black text-[10px] uppercase tracking-[0.2em]">Dica do Coordenador</h4>
+          </div>
+          <p className="text-slate-700 italic font-semibold text-lg md:text-xl leading-relaxed mb-4">
+            "Meu papel é garantir que sua jornada acadêmica seja o trampolim para o seu sucesso profissional."
+          </p>
+          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            <p className="font-black text-estacio-navy text-sm italic uppercase tracking-tight">ANTONIO CANDIDO DE OLIVEIRA FILHO</p>
+            <span className="hidden md:block w-1.5 h-1.5 bg-estacio-cyan rounded-full"></span>
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Coordenação ADS & Ciência da Computação</p>
+          </div>
+        </div>
+        
+        <a 
+          href="#/fale-com-o-coordenador" 
+          onClick={handleNav}
+          className="shrink-0 bg-estacio-navy text-white px-8 py-4 rounded-2xl font-black uppercase italic tracking-widest text-xs hover:bg-black hover:scale-105 transition-all shadow-lg shadow-estacio-navy/20"
+        >
+          Agendar Conversa
+        </a>
+      </div>
+    </div>
+  );
 };

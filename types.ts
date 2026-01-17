@@ -1,14 +1,11 @@
-
 export enum ViewType {
-  HOME = 'HOME',
-  DICAS = 'DICAS',
-  PROFISSIONAIS = 'PROFISSIONAIS',
-  APP_EXEMPLO = 'APP_EXEMPLO', // Atua como "Desenvolvimento"
-  ESTAGIOS = 'ESTAGIOS',
-  SAIBA_MAIS = 'SAIBA_MAIS',
-  CONCURSOS = 'CONCURSOS',
-  PROJETOS = 'PROJETOS',
-  EVENTOS = 'EVENTOS',
-  COORDENADOR = 'COORDENADOR',
-  EMPREENDEDOR = 'EMPREENDEDOR'
+  HOME = '#/home',
+  PROFISSIONAIS = '#/profissionais-ti',
+  DESENVOLVIMENTO = '#/como-desenvolver',
+  ESTAGIOS = '#/estagios-empregos',
+  CONCURSOS = '#/concursos',
+  EMPREENDEDOR = '#/empreendedorismo',
+  PROJETOS = '#/grupos-projetos',
+  EVENTOS = '#/eventos-ti',
+  COORDENADOR = '#/fale-com-o-coordenador'
 }

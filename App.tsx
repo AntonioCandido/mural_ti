@@ -1,56 +1,60 @@
-
 import React, { useState, useEffect } from 'react';
-import Layout from './components/Layout';
-import HeroSection from './components/HeroSection';
-import CardsGrid from './components/CardsGrid';
-import DetailView from './screens/DetailView';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './screens/Home';
+import ProfissionaisTI from './screens/ProfissionaisTI';
+import ComoDesenvolver from './screens/ComoDesenvolver';
+import EstagiosEmpregos from './screens/EstagiosEmpregos';
+import Concursos from './screens/Concursos';
+import Empreendedorismo from './screens/Empreendedorismo';
+import GruposProjetos from './screens/GruposProjetos';
+import EventosTI from './screens/EventosTI';
+import FaleCoordenador from './screens/FaleCoordenador';
 import { ViewType } from './types';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<ViewType>(ViewType.HOME);
+  const [currentRoute, setCurrentRoute] = useState<string>(window.location.hash || '#/home');
 
-  // Sincroniza o estado da aplicação com o botão voltar do dispositivo
   useEffect(() => {
-    const handlePopState = (event: PopStateEvent) => {
-      if (event.state && event.state.view) {
-        setCurrentView(event.state.view);
-      } else {
-        setCurrentView(ViewType.HOME);
-      }
+    const handleHashChange = () => {
+      const hash = window.location.hash || '#/home';
+      setCurrentRoute(hash);
+      window.scrollTo(0, 0);
     };
 
-    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
     
-    // Define o estado inicial se não houver um
-    if (!window.history.state) {
-      window.history.replaceState({ view: ViewType.HOME }, '');
+    // Initial redirect if hash is empty
+    if (!window.location.hash) {
+      window.location.hash = '#/home';
     }
 
-    return () => window.removeEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (view: ViewType) => {
-    if (view !== currentView) {
-      setCurrentView(view);
-      window.history.pushState({ view }, '', view === ViewType.HOME ? '/' : `#${view.toLowerCase()}`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  const renderScreen = () => {
+    switch (currentRoute) {
+      case '#/home': return <Home />;
+      case '#/profissionais-ti': return <ProfissionaisTI />;
+      case '#/como-desenvolver': return <ComoDesenvolver />;
+      case '#/estagios-empregos': return <EstagiosEmpregos />;
+      case '#/concursos': return <Concursos />;
+      case '#/empreendedorismo': return <Empreendedorismo />;
+      case '#/grupos-projetos': return <GruposProjetos />;
+      case '#/eventos-ti': return <EventosTI />;
+      case '#/fale-com-o-coordenador': return <FaleCoordenador />;
+      default: return <Home />;
     }
   };
 
   return (
-    <Layout currentView={currentView} onNavigate={navigateTo}>
-      {currentView === ViewType.HOME ? (
-        <div className="fade-in">
-          <HeroSection />
-          <CardsGrid onNavigate={navigateTo} />
-        </div>
-      ) : (
-        <DetailView 
-          view={currentView} 
-          onBack={() => navigateTo(ViewType.HOME)} 
-        />
-      )}
-    </Layout>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow pt-24 pb-12">
+        {renderScreen()}
+      </main>
+      <Footer />
+    </div>
   );
 };
 
