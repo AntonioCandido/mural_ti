@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CARDS_DATA } from '../constants';
 import { MapPin } from 'lucide-react';
@@ -36,7 +35,7 @@ const Home: React.FC = () => {
               <div className="flex items-center gap-2">
                 <MapPin size={12} className="text-estacio-cyan/60" />
                 <span className="text-[10px] md:text-[11px] font-bold text-estacio-navy/60 uppercase tracking-wider whitespace-nowrap">
-                  Tom Jobim - <span className="text-estacio-cyan font-black italic">Barra da Tijuca</span>
+                  Tom Jobim - <span className="text-estacio-cyan font-black italic">Barra</span>
                 </span>
               </div>
             </div>
