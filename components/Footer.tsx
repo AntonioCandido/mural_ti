@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-sm leading-relaxed mb-6 opacity-70">
-              O ecossistema digital definitivo para o estudante de tecnologia da Estácio de Sá. Centralizando oportunidades e conhecimento.
+              O ecossistema digital de apoio ao estudante de tecnologia da Estácio de Sá. Centralizando oportunidades e conhecimento.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-estacio-cyan hover:text-estacio-navy transition-all">
