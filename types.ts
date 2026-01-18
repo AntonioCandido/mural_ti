@@ -1,3 +1,4 @@
+
 export enum ViewType {
   HOME = '#/home',
   PROFISSIONAIS = '#/profissionais-ti',
@@ -7,5 +8,6 @@ export enum ViewType {
   EMPREENDEDOR = '#/empreendedorismo',
   PROJETOS = '#/grupos-projetos',
   EVENTOS = '#/eventos-ti',
+  GALERIA = '#/galeria-fotos',
   COORDENADOR = '#/fale-com-o-coordenador'
 }
