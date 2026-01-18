@@ -25,12 +25,12 @@ const EstagiosEmpregos: React.FC = () => {
             <p className="text-xs text-slate-400 font-bold">Portal oficial para contratação de estagiários no Brasil.</p>
           </a>
 
-          <a href="https://www.encontresuavaga.com.br/" target="_blank" rel="noopener noreferrer" className="bg-white p-10 rounded-[4rem] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:border-estacio-cyan transition-all text-center flex flex-col items-center justify-center min-h-[320px]">
-            <div className="w-20 h-20 bg-cyan-50/50 rounded-[2rem] flex items-center justify-center text-estacio-cyan mb-8">
-              <Globe size={40} />
+          <a href="https://www.encontresuavaga.com.br/" target="_blank" rel="noopener noreferrer" className="bg-white p-10 rounded-[5rem] border border-slate-100 shadow-2xl shadow-slate-200/40 hover:shadow-cyan-100 hover:border-estacio-cyan transition-all text-center flex flex-col items-center justify-center min-h-[340px]">
+            <div className="w-20 h-20 bg-cyan-50/70 rounded-[2.5rem] flex items-center justify-center text-estacio-cyan mb-10">
+              <Globe size={44} />
             </div>
-            <h4 className="font-black text-estacio-navy text-xl mb-4 italic uppercase tracking-tight">Vagas Estácio</h4>
-            <p className="text-[13px] text-slate-400 font-bold max-w-[200px] leading-relaxed">Encontre Sua Vaga - Exclusivo para alunos e parceiros.</p>
+            <h4 className="font-black text-estacio-navy text-2xl mb-5 italic uppercase tracking-tighter">Vagas Estácio</h4>
+            <p className="text-[14px] text-slate-400 font-bold max-w-[220px] leading-relaxed">Encontre Sua Vaga - Exclusivo para alunos e parceiros.</p>
           </a>
 
           <a href="https://www.workana.com/pt/jobs?country=BR" target="_blank" rel="noopener noreferrer" className="bg-white p-10 rounded-[3rem] border-2 border-slate-50 shadow-sm hover:shadow-2xl hover:border-amber-500 transition-all text-center">

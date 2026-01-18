@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         <div className="flex flex-col items-center mb-10 gap-5">
           <div className="inline-flex items-center bg-estacio-navy rounded-full p-1 pr-6 shadow-2xl border border-white/10 group hover:scale-105 transition-transform">
             <div className="bg-estacio-cyan px-4 py-2 rounded-full shadow-inner">
-              <span className="text-estacio-navy font-black text-[11px] uppercase tracking-widest italic">Mural Ti</span>
+              <span className="text-estacio-navy font-black text-[10px] uppercase tracking-widest italic">Mural</span>
             </div>
             <span className="text-white/40 font-black text-[9px] uppercase tracking-[0.2em] ml-4 italic">Tecnologia da Informação</span>
           </div>

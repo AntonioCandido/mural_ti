@@ -51,7 +51,7 @@ const Header: React.FC = () => {
             aria-label="Ir para o início"
           >
             <h1 className="font-black text-xl md:text-2xl tracking-tighter leading-none italic uppercase group-hover:text-estacio-cyan transition-colors">
-              Mural Ti - Tecnologia da Informação
+              Mural Ti
             </h1>
             <span className="text-[10px] font-bold tracking-[0.2em] text-estacio-cyan uppercase opacity-80">
               Estácio de Sá
