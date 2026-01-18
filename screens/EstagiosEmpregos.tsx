@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CoordinatorWidget } from '../constants';
 import { ChevronLeft, Target, Globe } from 'lucide-react';
@@ -24,12 +25,12 @@ const EstagiosEmpregos: React.FC = () => {
             <p className="text-xs text-slate-400 font-bold">Portal oficial para contratação de estagiários no Brasil.</p>
           </a>
 
-          <a href="https://encontresuavaga.com.br/" target="_blank" rel="noopener noreferrer" className="bg-white p-10 rounded-[3rem] border-2 border-slate-50 shadow-sm hover:shadow-2xl hover:border-estacio-cyan transition-all text-center">
-            <div className="w-16 h-16 bg-cyan-50 rounded-2xl flex items-center justify-center text-estacio-cyan mx-auto mb-6">
-              <Globe size={32} />
+          <a href="https://www.encontresuavaga.com.br/" target="_blank" rel="noopener noreferrer" className="bg-white p-10 rounded-[4rem] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:border-estacio-cyan transition-all text-center flex flex-col items-center justify-center min-h-[320px]">
+            <div className="w-20 h-20 bg-cyan-50/50 rounded-[2rem] flex items-center justify-center text-estacio-cyan mb-8">
+              <Globe size={40} />
             </div>
-            <h4 className="font-black text-estacio-navy mb-4 italic uppercase">Vagas Estácio</h4>
-            <p className="text-xs text-slate-400 font-bold">Encontre Sua Vaga - Exclusivo para alunos e parceiros.</p>
+            <h4 className="font-black text-estacio-navy text-xl mb-4 italic uppercase tracking-tight">Vagas Estácio</h4>
+            <p className="text-[13px] text-slate-400 font-bold max-w-[200px] leading-relaxed">Encontre Sua Vaga - Exclusivo para alunos e parceiros.</p>
           </a>
 
           <a href="https://www.workana.com/pt/jobs?country=BR" target="_blank" rel="noopener noreferrer" className="bg-white p-10 rounded-[3rem] border-2 border-slate-50 shadow-sm hover:shadow-2xl hover:border-amber-500 transition-all text-center">
