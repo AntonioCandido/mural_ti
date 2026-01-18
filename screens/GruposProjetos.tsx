@@ -23,7 +23,7 @@ const GruposProjetos: React.FC = () => {
           </p>
         </div>
 
-        <CoordinatorWidget />
+        <CoordinatorWidget tip="O networking feito na faculdade pode render parcerias para a vida toda. Participe de projetos extracurriculares e conecte-se com seus colegas hoje!" />
       </div>
     </div>
   );

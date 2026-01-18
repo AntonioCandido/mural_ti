@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ViewType } from '../types';
 import { Menu, X, Home, Calendar, UserCheck } from 'lucide-react';
@@ -45,6 +46,9 @@ const Header: React.FC = () => {
             </span>
             <span className="text-[10px] font-bold tracking-[0.2em] text-estacio-cyan uppercase opacity-80">
               Estácio de Sá
+            </span>
+            <span className="text-[7px] md:text-[8px] font-bold tracking-[0.1em] text-white/50 uppercase leading-tight">
+              Unidade R9 - Taquara / Tom Jobim - Barra da Tijuca
             </span>
           </div>
         </a>
@@ -103,6 +107,7 @@ const Header: React.FC = () => {
         <div className="mt-auto mb-12 border-t border-white/10 pt-8">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-2">Coordenação de TI</p>
           <p className="text-xs font-bold text-estacio-cyan">Antônio Cândido de O. Filho</p>
+          <p className="text-[8px] font-medium text-white/30 uppercase mt-1">R9 - Taquara / Tom Jobim - Barra</p>
         </div>
       </div>
     </header>

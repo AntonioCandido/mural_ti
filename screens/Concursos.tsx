@@ -1,6 +1,6 @@
 import React from 'react';
 import { CoordinatorWidget } from '../constants';
-import { ChevronLeft, Info, ExternalLink, ShieldCheck } from 'lucide-react';
+import { ChevronLeft, ExternalLink, ShieldCheck } from 'lucide-react';
 
 const CONCURSOS_LIST = [
   { orgao: 'TCE-SC', status: 'Publicado', salario: 'R$ 18.984,72', local: 'Santa Catarina', link: 'https://www.estrategiaconcursos.com.br/blog/concursos-ti/' },
@@ -67,7 +67,7 @@ const Concursos: React.FC = () => {
           ))}
         </div>
 
-        <CoordinatorWidget />
+        <CoordinatorWidget tip="A disciplina supera o talento. Crie uma rotina de estudos constante e foque nos editais que valorizam a base teórica sólida de computação e algoritmos." />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronLeft, Mail, Linkedin, Facebook, MapPin, Clock, ExternalLink, Globe, Monitor } from 'lucide-react';
+import { ChevronLeft, Mail, Linkedin, Facebook, MapPin, Clock, Monitor } from 'lucide-react';
 
 const FaleCoordenador: React.FC = () => {
   return (
@@ -54,7 +54,7 @@ const FaleCoordenador: React.FC = () => {
 
           {/* Lado Direito - Conteúdo */}
           <div className="lg:w-3/5 p-12 md:p-20 bg-white">
-            <section className="mb-20">
+            <section>
               <div className="flex items-center gap-4 mb-12">
                 <div className="w-1.5 h-10 bg-estacio-cyan rounded-full"></div>
                 <h3 className="text-3xl font-black text-estacio-navy italic uppercase tracking-tight">Atendimento</h3>
@@ -95,26 +95,6 @@ const FaleCoordenador: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </section>
-
-            <section>
-              <div className="p-10 bg-estacio-navy rounded-[3rem] text-white flex flex-col md:flex-row items-center gap-8 shadow-xl shadow-estacio-navy/20">
-                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center shrink-0">
-                  <ExternalLink size={24} className="text-estacio-cyan" />
-                </div>
-                <div className="text-center md:text-left">
-                  <h4 className="font-black uppercase text-xs tracking-[0.2em] mb-2">Canal do Teams</h4>
-                  <p className="text-sm font-medium opacity-70 mb-6">Entre na sala de espera virtual durante os horários de atendimento remoto.</p>
-                  <a 
-                    href="https://teams.microsoft.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block px-8 py-3 bg-estacio-cyan text-estacio-navy font-black uppercase text-[10px] tracking-widest rounded-xl hover:bg-white hover:scale-105 transition-all text-center"
-                  >
-                    Acessar Atendimento Virtual
-                  </a>
                 </div>
               </div>
             </section>

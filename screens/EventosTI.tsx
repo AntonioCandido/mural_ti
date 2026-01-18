@@ -37,7 +37,7 @@ const EventosTI: React.FC = () => {
           </a>
         </div>
 
-        <CoordinatorWidget />
+        <CoordinatorWidget tip="Eventos são as melhores janelas para o futuro. Participe para entender as novas tendências antes que elas virem padrão no mercado corporativo." />
       </div>
     </div>
   );

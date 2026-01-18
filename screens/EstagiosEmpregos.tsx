@@ -59,7 +59,7 @@ const EstagiosEmpregos: React.FC = () => {
           </div>
         </div>
 
-        <CoordinatorWidget />
+        <CoordinatorWidget tip="O estágio é a melhor fase para errar e aprender. Não tenha medo de fazer perguntas 'bobas', a curiosidade acelera seu crescimento exponencialmente." />
       </div>
     </div>
   );

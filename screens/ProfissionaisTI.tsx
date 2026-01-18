@@ -93,7 +93,7 @@ const ProfissionaisTI: React.FC = () => {
           </div>
         </section>
 
-        <CoordinatorWidget />
+        <CoordinatorWidget tip="Mantenha seu LinkedIn atualizado e foque em soft skills tanto quanto em hard skills. O mercado valoriza quem sabe se comunicar e trabalhar em equipe." />
       </div>
     </div>
   );

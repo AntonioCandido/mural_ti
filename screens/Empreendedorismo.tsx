@@ -50,7 +50,7 @@ const Empreendedorismo: React.FC = () => {
           </div>
         </div>
 
-        <CoordinatorWidget />
+        <CoordinatorWidget tip="Toda grande solução nasce de um problema real. Antes de codar, valide se sua ideia resolve uma dor latente do mercado. Escute o seu cliente primeiro." />
       </div>
     </div>
   );

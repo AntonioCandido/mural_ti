@@ -55,7 +55,7 @@ const ComoDesenvolver: React.FC = () => {
           </a>
         </div>
 
-        <CoordinatorWidget />
+        <CoordinatorWidget tip="Não tente aprender tudo de uma vez. Escolha uma trilha, domine os fundamentos sólidos e construa projetos reais para validar seu aprendizado." />
       </div>
     </div>
   );
