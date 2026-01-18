@@ -43,18 +43,15 @@ export const CoordinatorWidget: React.FC<CoordinatorWidgetProps> = ({
         {/* Avatar Circle */}
         <div className="relative shrink-0">
           <div className="absolute inset-0 bg-estacio-cyan/10 blur-xl rounded-full scale-125"></div>
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-estacio-navy flex items-center justify-center ring-8 ring-estacio-cyan/5">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-slate-100 flex items-center justify-center ring-8 ring-estacio-cyan/5">
             <img 
-              src="/candido_sf.png" 
+              src="candido.png" 
               alt="Coordenador Antônio Cândido" 
               className="w-full h-full object-cover"
               onError={(e) => {
-                const target = e.target as HTMLElement;
-                target.style.display = 'none';
-                if (target.nextElementSibling) (target.nextElementSibling as HTMLElement).style.display = 'flex';
+                (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff&size=256';
               }}
             />
-            <span className="hidden text-white font-black text-4xl md:text-5xl italic tracking-tighter">AC</span>
           </div>
         </div>
         
