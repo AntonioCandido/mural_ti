@@ -3,6 +3,8 @@ import React from 'react';
 import { ChevronLeft, Mail, Linkedin, Facebook, MapPin, Clock, Monitor } from 'lucide-react';
 
 const FaleCoordenador: React.FC = () => {
+  const coordinatorPhoto = "https://media.licdn.com/dms/image/v2/D4D03AQH1HQJvGVGLrw/profile-displayphoto-crop_800_800/B4DZutPuDRJMAI-/0/1768138139079?e=1770249600&v=beta&t=kAVGLV8YKILR76nahJqDR6avuXQGoiuNy4kea4AMvd4";
+
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
       <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest mb-16 transition-all">
@@ -22,7 +24,7 @@ const FaleCoordenador: React.FC = () => {
               <div className="absolute inset-0 bg-estacio-cyan/20 blur-3xl rounded-full"></div>
               <div className="relative w-56 h-56 rounded-full overflow-hidden border-[12px] border-white/10 shadow-2xl bg-slate-100 flex items-center justify-center">
                 <img 
-                  src="candido.png" 
+                  src={coordinatorPhoto} 
                   alt="Antonio Candido" 
                   className="w-full h-full object-cover"
                   onError={(e) => {

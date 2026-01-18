@@ -24,9 +24,6 @@ const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center">
-                <span className="text-white font-bold italic">E</span>
-              </div>
               <span className="text-white font-black italic uppercase tracking-tighter text-lg">Mural TI</span>
             </div>
             <p className="text-sm leading-relaxed mb-6 opacity-70">

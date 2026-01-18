@@ -50,9 +50,6 @@ const Header: React.FC = () => {
             className="flex items-center gap-3 group"
             aria-label="Ir para o início"
           >
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transform group-hover:rotate-6 transition-transform">
-              <span className="text-estacio-navy font-black text-xl italic leading-none">E</span>
-            </div>
             <div className="flex flex-col">
               <span className="font-black text-xl tracking-tighter leading-none italic uppercase group-hover:text-estacio-cyan transition-colors">
                 Mural TI

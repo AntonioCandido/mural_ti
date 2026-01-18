@@ -37,6 +37,8 @@ export const CoordinatorWidget: React.FC<CoordinatorWidgetProps> = ({
     window.location.hash = ViewType.COORDENADOR;
   };
 
+  const coordinatorPhoto = "https://media.licdn.com/dms/image/v2/D4D03AQH1HQJvGVGLrw/profile-displayphoto-crop_800_800/B4DZutPuDRJMAI-/0/1768138139079?e=1770249600&v=beta&t=kAVGLV8YKILR76nahJqDR6avuXQGoiuNy4kea4AMvd4";
+
   return (
     <div className="mt-20 relative">
       <div className="absolute inset-0 bg-estacio-navy/5 blur-3xl rounded-full"></div>
@@ -47,7 +49,7 @@ export const CoordinatorWidget: React.FC<CoordinatorWidgetProps> = ({
           <div className="absolute inset-0 bg-estacio-cyan/10 blur-xl rounded-full scale-125"></div>
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-slate-100 flex items-center justify-center ring-8 ring-estacio-cyan/5">
             <img 
-              src="candido.png" 
+              src={coordinatorPhoto} 
               alt="Coordenador Antônio Cândido" 
               className="w-full h-full object-cover"
               onError={(e) => {
