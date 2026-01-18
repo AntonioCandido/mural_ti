@@ -1,19 +1,31 @@
 
 import React, { useState, useEffect } from 'react';
 import { ViewType } from '../types';
-import { Menu, X, Home, Calendar, UserCheck } from 'lucide-react';
+import { Menu, X, Home, Calendar, UserCheck, WifiOff } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [currentHash, setCurrentHash] = useState(window.location.hash || ViewType.HOME);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOffline, setIsOffline] = useState(!navigator.onLine);
 
   useEffect(() => {
     const handleHashChange = () => {
       setCurrentHash(window.location.hash || ViewType.HOME);
       setIsMobileMenuOpen(false);
     };
+
+    const handleOnline = () => setIsOffline(false);
+    const handleOffline = () => setIsOffline(true);
+
     window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
@@ -31,27 +43,34 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 h-20 bg-estacio-navy text-white shadow-2xl z-50 flex items-center transition-all duration-300">
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo / Brand */}
-        <a 
-          href={ViewType.HOME} 
-          onClick={(e) => handleLinkClick(e, ViewType.HOME)}
-          className="flex items-center gap-3 group"
-          aria-label="Ir para o início"
-        >
-          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transform group-hover:rotate-6 transition-transform">
-            <span className="text-estacio-navy font-black text-xl italic leading-none">E</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-black text-xl tracking-tighter leading-none italic uppercase group-hover:text-estacio-cyan transition-colors">
-              Mural TI
-            </span>
-            <span className="text-[10px] font-bold tracking-[0.2em] text-estacio-cyan uppercase opacity-80">
-              Estácio de Sá
-            </span>
-            <span className="text-[7px] md:text-[8px] font-bold tracking-[0.1em] text-white/50 uppercase leading-tight">
-              Unidade R9 - Taquara / Tom Jobim - Barra da Tijuca
-            </span>
-          </div>
-        </a>
+        <div className="flex items-center gap-4">
+          <a 
+            href={ViewType.HOME} 
+            onClick={(e) => handleLinkClick(e, ViewType.HOME)}
+            className="flex items-center gap-3 group"
+            aria-label="Ir para o início"
+          >
+            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transform group-hover:rotate-6 transition-transform">
+              <span className="text-estacio-navy font-black text-xl italic leading-none">E</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-black text-xl tracking-tighter leading-none italic uppercase group-hover:text-estacio-cyan transition-colors">
+                Mural TI
+              </span>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-estacio-cyan uppercase opacity-80">
+                Estácio de Sá
+              </span>
+            </div>
+          </a>
+          
+          {/* Offline Badge */}
+          {isOffline && (
+            <div className="hidden sm:flex items-center gap-2 bg-amber-500 text-estacio-navy px-3 py-1 rounded-full animate-pulse shadow-lg">
+              <WifiOff size={12} strokeWidth={3} />
+              <span className="text-[9px] font-black uppercase tracking-widest">Modo Offline</span>
+            </div>
+          )}
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
@@ -66,7 +85,7 @@ const Header: React.FC = () => {
             >
               {link.label}
               {currentHash === link.href && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-estacio-cyan rounded-full animate-pulse"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-estacio-cyan rounded-full"></span>
               )}
             </a>
           ))}
@@ -74,22 +93,30 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden p-2 text-white hover:text-estacio-cyan transition-colors"
+          className="md:hidden p-2 text-white hover:text-estacio-cyan transition-colors flex items-center gap-3"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-expanded={isMobileMenuOpen}
-          aria-label="Abrir menu"
         >
+          {isOffline && <WifiOff size={20} className="text-amber-500" />}
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Sidebar Navigation */}
+      {/* Mobile Sidebar */}
       <div 
         className={`fixed inset-0 bg-estacio-navy/95 backdrop-blur-md z-40 transition-transform duration-500 md:hidden flex flex-col pt-24 px-8 ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="flex flex-col gap-6">
+          {isOffline && (
+            <div className="bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl mb-4 flex items-center gap-3">
+              <WifiOff size={20} className="text-amber-500" />
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-widest text-amber-500">Visualização Offline</p>
+                <p className="text-xs text-white/60">Conecte-se para ver as últimas vagas.</p>
+              </div>
+            </div>
+          )}
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -103,11 +130,6 @@ const Header: React.FC = () => {
               {link.label}
             </a>
           ))}
-        </div>
-        <div className="mt-auto mb-12 border-t border-white/10 pt-8">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-2">Coordenação de TI</p>
-          <p className="text-xs font-bold text-estacio-cyan">Antônio Cândido de O. Filho</p>
-          <p className="text-[8px] font-medium text-white/30 uppercase mt-1">R9 - Taquara / Tom Jobim - Barra</p>
         </div>
       </div>
     </header>

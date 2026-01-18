@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RestorePoint from './components/RestorePoint';
 import Home from './screens/Home';
 import ProfissionaisTI from './screens/ProfissionaisTI';
 import ComoDesenvolver from './screens/ComoDesenvolver';
@@ -12,26 +11,32 @@ import Empreendedorismo from './screens/Empreendedorismo';
 import GruposProjetos from './screens/GruposProjetos';
 import EventosTI from './screens/EventosTI';
 import FaleCoordenador from './screens/FaleCoordenador';
-import { ViewType } from './types';
 
 const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>(window.location.hash || '#/home');
+  const [isOffline, setIsOffline] = useState(!navigator.onLine);
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash || '#/home';
-      setCurrentRoute(hash);
+      setCurrentRoute(window.location.hash || '#/home');
       window.scrollTo(0, 0);
     };
 
+    const handleNetworkChange = () => setIsOffline(!navigator.onLine);
+
     window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('online', handleNetworkChange);
+    window.addEventListener('offline', handleNetworkChange);
     
-    // Initial redirect if hash is empty
     if (!window.location.hash) {
       window.location.hash = '#/home';
     }
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('online', handleNetworkChange);
+      window.removeEventListener('offline', handleNetworkChange);
+    };
   }, []);
 
   const renderScreen = () => {
@@ -52,11 +57,20 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
-      <main className="flex-grow pt-24 pb-12">
+      
+      {/* Global Offline Bar (Mobile Focus) */}
+      {isOffline && (
+        <div className="fixed top-20 left-0 right-0 bg-amber-500 text-estacio-navy text-center py-1.5 z-[45] shadow-md border-b border-amber-600/20">
+          <p className="text-[9px] font-black uppercase tracking-[0.2em] italic">
+            Você está navegando sem internet • Conteúdo Carregado do Cache
+          </p>
+        </div>
+      )}
+
+      <main className={`flex-grow ${isOffline ? 'pt-28' : 'pt-24'} pb-12 transition-all duration-500`}>
         {renderScreen()}
       </main>
       <Footer />
-      <RestorePoint />
     </div>
   );
 };
