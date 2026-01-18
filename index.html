@@ -1,10 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mural TI - Estácio</title>
     <meta name="description" content="Portal de recursos e informações para alunos de Tecnologia da Informação da Estácio.">
+    
+    <!-- PWA / Mobile Meta Tags -->
+    <meta name="theme-color" content="#003399">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mural TI">
+    <link rel="apple-touch-icon" href="https://ui-avatars.com/api/?name=Mural+TI&background=003399&color=fff&size=192">
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Open Graph (Vercel/Social) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mural TI - Estácio">
+    <meta property="og:description" content="Hub de Carreira & Recursos para estudantes de TI.">
+    <meta property="og:image" content="https://ui-avatars.com/api/?name=Mural+TI&background=003399&color=fff&size=512">
+
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -28,11 +44,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Montserrat', sans-serif; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: contain;
+        }
         .fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        /* Otimização para modo PWA/APK */
+        @media (display-mode: standalone) {
+            body { padding-top: env(safe-area-inset-top); }
         }
     </style>
 <script type="importmap">
@@ -48,7 +72,6 @@
 </head>
 <body class="bg-gray-50 text-slate-900 selection:bg-estacio-cyan/30">
     <div id="root"></div>
-    <!-- Alterado de /index.tsx para ./index.tsx para compatibilidade -->
     <script type="module" src="./index.tsx"></script>
 </body>
 </html>

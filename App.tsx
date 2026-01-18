@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import RestorePoint from './components/RestorePoint';
 import Home from './screens/Home';
 import ProfissionaisTI from './screens/ProfissionaisTI';
 import ComoDesenvolver from './screens/ComoDesenvolver';
@@ -48,12 +50,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
       <Header />
       <main className="flex-grow pt-24 pb-12">
         {renderScreen()}
       </main>
       <Footer />
+      <RestorePoint />
     </div>
   );
 };

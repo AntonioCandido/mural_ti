@@ -1,0 +1,24 @@
+
+{
+  "name": "Mural TI Estácio",
+  "short_name": "Mural TI",
+  "description": "Portal de recursos para alunos de TI da Estácio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#003399",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://ui-avatars.com/api/?name=M+TI&background=003399&color=fff&size=192",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://ui-avatars.com/api/?name=M+TI&background=003399&color=fff&size=512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
