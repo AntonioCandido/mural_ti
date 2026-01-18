@@ -40,29 +40,29 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-20 bg-estacio-navy text-white shadow-2xl z-50 flex items-center transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 h-20 bg-estacio-navy text-white shadow-2xl z-50 flex items-center transition-all duration-300 border-b border-white/5">
       <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo / Brand */}
+        {/* Nova Identidade Visual - Logo Estilo Bloco */}
         <div className="flex items-center gap-4">
           <a 
             href={ViewType.HOME} 
             onClick={(e) => handleLinkClick(e, ViewType.HOME)}
-            className="flex flex-col group"
-            aria-label="Ir para o início"
+            className="group flex flex-col items-start leading-[0.85] transition-transform hover:scale-105 active:scale-95"
+            aria-label="Ir para o início - Mural TI Estácio"
           >
-            <h1 className="font-black text-xl md:text-2xl tracking-tighter leading-none italic uppercase group-hover:text-estacio-cyan transition-colors">
-              Mural Ti
-            </h1>
-            <span className="text-[10px] font-bold tracking-[0.2em] text-estacio-cyan uppercase opacity-80">
-              Estácio de Sá
+            <span className="text-white font-black text-2xl md:text-3xl italic uppercase tracking-tighter">
+              MURAL TI
+            </span>
+            <span className="text-estacio-cyan font-bold text-[9px] md:text-[11px] uppercase tracking-[0.15em] mt-1 ml-0.5">
+              ESTÁCIO DE SÁ
             </span>
           </a>
           
           {/* Offline Badge */}
           {isOffline && (
             <div className="hidden sm:flex items-center gap-2 bg-amber-500 text-estacio-navy px-3 py-1 rounded-full animate-pulse shadow-lg ml-4">
-              <WifiOff size={12} strokeWidth={3} />
-              <span className="text-[9px] font-black uppercase tracking-widest">Modo Offline</span>
+              <WifiOff size={10} strokeWidth={3} />
+              <span className="text-[8px] font-black uppercase tracking-widest">Offline</span>
             </div>
           )}
         </div>
@@ -98,7 +98,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Sidebar */}
       <div 
-        className={`fixed inset-0 bg-estacio-navy/95 backdrop-blur-md z-40 transition-transform duration-500 md:hidden flex flex-col pt-24 px-8 ${
+        className={`fixed inset-0 bg-estacio-navy/98 backdrop-blur-xl z-40 transition-transform duration-500 md:hidden flex flex-col pt-24 px-8 ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

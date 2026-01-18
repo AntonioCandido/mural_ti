@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { CARDS_DATA } from '../constants';
+import { MapPin } from 'lucide-react';
 
 const Home: React.FC = () => {
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
@@ -9,23 +10,53 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
-      <header className="max-w-5xl mb-24 text-center mx-auto">
-        <div className="flex flex-col items-center mb-10 gap-5">
-          <div className="inline-flex items-center bg-estacio-navy rounded-full p-1 pr-6 shadow-2xl border border-white/10 group hover:scale-105 transition-transform">
-            <div className="bg-estacio-cyan px-4 py-2 rounded-full shadow-inner">
-              <span className="text-estacio-navy font-black text-[10px] uppercase tracking-widest italic">Mural</span>
+    <div className="container mx-auto px-6 pt-4 pb-12 fade-in">
+      <header className="max-w-5xl mb-16 text-center mx-auto flex flex-col items-center">
+        
+        {/* Unidades - Design de Linha Única com Texto Atualizado */}
+        <div className="mb-12 group">
+          <div className="inline-flex items-center gap-4 bg-white/40 backdrop-blur-md border border-slate-200/60 px-5 py-2.5 rounded-full shadow-sm group-hover:shadow-md group-hover:border-estacio-cyan/30 transition-all duration-500">
+            
+            {/* Tag de Contexto */}
+            <span className="bg-estacio-amber text-estacio-navy text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full italic">
+              Unidades
+            </span>
+
+            {/* Texto das Unidades em Linha Única */}
+            <div className="flex items-center gap-3 md:gap-5">
+              <div className="flex items-center gap-2">
+                <MapPin size={12} className="text-estacio-navy/40" />
+                <span className="text-[10px] md:text-[11px] font-bold text-estacio-navy/60 uppercase tracking-wider whitespace-nowrap">
+                  R9 - <span className="font-black italic text-estacio-navy">Taquara</span>
+                </span>
+              </div>
+
+              <span className="w-px h-3 bg-slate-300"></span>
+
+              <div className="flex items-center gap-2">
+                <MapPin size={12} className="text-estacio-cyan/60" />
+                <span className="text-[10px] md:text-[11px] font-bold text-estacio-navy/60 uppercase tracking-wider whitespace-nowrap">
+                  Tom Jobim - <span className="text-estacio-cyan font-black italic">Barra da Tijuca</span>
+                </span>
+              </div>
             </div>
-            <span className="text-white/40 font-black text-[9px] uppercase tracking-[0.2em] ml-4 italic">Tecnologia da Informação</span>
           </div>
-          <span className="text-[10px] md:text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] italic bg-slate-100 px-6 py-2 rounded-xl">
-            Taquara R9 • Barra Tom Jobim
-          </span>
         </div>
-        <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter leading-none mb-10">
-          Hub de <span className="text-estacio-cyan">Carreira</span><br/>& <span className="text-estacio-amber">Recursos</span>
+        
+        {/* Heading Section */}
+        <h2 className="flex flex-col items-center gap-0 leading-[0.82] mb-10">
+          <span className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter">
+            HUB DE
+          </span>
+          <span className="text-6xl md:text-9xl font-black text-estacio-cyan italic uppercase tracking-tighter">
+            CARREIRA
+          </span>
+          <span className="text-5xl md:text-8xl font-black text-estacio-amber italic uppercase tracking-tighter">
+            & RECURSOS
+          </span>
         </h2>
-        <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto">
+
+        <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
           Centralizamos trilhas de estudo, vagas, concursos e suporte acadêmico para impulsionar seu futuro na tecnologia.
         </p>
       </header>
