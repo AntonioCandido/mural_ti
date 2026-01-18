@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   UserCog, 
@@ -44,7 +45,7 @@ export const CoordinatorWidget: React.FC<CoordinatorWidgetProps> = ({
           <div className="absolute inset-0 bg-estacio-cyan/10 blur-xl rounded-full scale-125"></div>
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-estacio-navy flex items-center justify-center ring-8 ring-estacio-cyan/5">
             <img 
-              src="/candido.png" 
+              src="/candido_sf.png" 
               alt="Coordenador Antônio Cândido" 
               className="w-full h-full object-cover"
               onError={(e) => {

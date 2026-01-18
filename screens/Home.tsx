@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CARDS_DATA } from '../constants';
 
@@ -10,8 +11,13 @@ const Home: React.FC = () => {
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
       <div className="max-w-5xl mb-24 text-center mx-auto">
-        <div className="inline-block px-4 py-1.5 bg-estacio-cyan/10 rounded-full mb-8">
-          <span className="text-estacio-navy font-black text-[11px] uppercase tracking-[0.3em]">Portal Universitário 2026</span>
+        <div className="flex flex-col items-center mb-8 gap-3">
+          <div className="inline-block px-4 py-1.5 bg-estacio-cyan/10 rounded-full">
+            <span className="text-estacio-navy font-black text-[11px] uppercase tracking-[0.3em]">Mural de Ti Digital 2026</span>
+          </div>
+          <span className="text-[9px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] italic">
+            Unidade R9 - Taquara / Tom Jobim - Barra da Tijuca
+          </span>
         </div>
         <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter leading-none mb-8">
           Hub de <span className="text-estacio-cyan">Carreira</span><br/>& <span className="text-estacio-amber">Recursos</span>

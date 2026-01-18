@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ChevronLeft, Mail, Linkedin, Facebook, MapPin, Clock, Monitor } from 'lucide-react';
 
@@ -19,13 +20,14 @@ const FaleCoordenador: React.FC = () => {
             
             <div className="relative mb-10">
               <div className="absolute inset-0 bg-estacio-cyan/20 blur-3xl rounded-full"></div>
-              <div className="relative w-56 h-56 rounded-full overflow-hidden border-[12px] border-white/10 shadow-2xl bg-slate-800">
+              <div className="relative w-56 h-56 rounded-full overflow-hidden border-[12px] border-white/10 shadow-2xl bg-slate-900 flex items-center justify-center">
                 <img 
-                  src="/candido.png" 
+                  src="/candido_sf.png" 
                   alt="Antonio Candido" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff&size=400';
+                    // Fallback visualmente agradável caso a imagem local não carregue
+                    (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff&size=512';
                   }}
                 />
               </div>
