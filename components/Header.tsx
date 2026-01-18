@@ -47,22 +47,20 @@ const Header: React.FC = () => {
           <a 
             href={ViewType.HOME} 
             onClick={(e) => handleLinkClick(e, ViewType.HOME)}
-            className="flex items-center gap-3 group"
+            className="flex flex-col group"
             aria-label="Ir para o início"
           >
-            <div className="flex flex-col">
-              <span className="font-black text-xl tracking-tighter leading-none italic uppercase group-hover:text-estacio-cyan transition-colors">
-                Mural TI
-              </span>
-              <span className="text-[10px] font-bold tracking-[0.2em] text-estacio-cyan uppercase opacity-80">
-                Estácio de Sá
-              </span>
-            </div>
+            <h1 className="font-black text-xl md:text-2xl tracking-tighter leading-none italic uppercase group-hover:text-estacio-cyan transition-colors">
+              Mural Ti - Tecnologia da Informação
+            </h1>
+            <span className="text-[10px] font-bold tracking-[0.2em] text-estacio-cyan uppercase opacity-80">
+              Estácio de Sá
+            </span>
           </a>
           
           {/* Offline Badge */}
           {isOffline && (
-            <div className="hidden sm:flex items-center gap-2 bg-amber-500 text-estacio-navy px-3 py-1 rounded-full animate-pulse shadow-lg">
+            <div className="hidden sm:flex items-center gap-2 bg-amber-500 text-estacio-navy px-3 py-1 rounded-full animate-pulse shadow-lg ml-4">
               <WifiOff size={12} strokeWidth={3} />
               <span className="text-[9px] font-black uppercase tracking-widest">Modo Offline</span>
             </div>
@@ -105,15 +103,6 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="flex flex-col gap-6">
-          {isOffline && (
-            <div className="bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl mb-4 flex items-center gap-3">
-              <WifiOff size={20} className="text-amber-500" />
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-amber-500">Visualização Offline</p>
-                <p className="text-xs text-white/60">Conecte-se para ver as últimas vagas.</p>
-              </div>
-            </div>
-          )}
           {navLinks.map((link) => (
             <a
               key={link.href}

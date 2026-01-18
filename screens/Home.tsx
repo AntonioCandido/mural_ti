@@ -11,15 +11,18 @@ const Home: React.FC = () => {
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
       <header className="max-w-5xl mb-24 text-center mx-auto">
-        <div className="flex flex-col items-center mb-8 gap-3">
-          <div className="inline-block px-4 py-1.5 bg-estacio-cyan/10 rounded-full">
-            <span className="text-estacio-navy font-black text-[11px] uppercase tracking-[0.3em]">Mural de Ti Digital 2026</span>
+        <div className="flex flex-col items-center mb-10 gap-5">
+          <div className="inline-flex items-center bg-estacio-navy rounded-full p-1 pr-6 shadow-2xl border border-white/10 group hover:scale-105 transition-transform">
+            <div className="bg-estacio-cyan px-4 py-2 rounded-full shadow-inner">
+              <span className="text-estacio-navy font-black text-[11px] uppercase tracking-widest italic">Mural Ti</span>
+            </div>
+            <span className="text-white/40 font-black text-[9px] uppercase tracking-[0.2em] ml-4 italic">Tecnologia da Informação</span>
           </div>
-          <span className="text-[9px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] italic">
-            Unidade R9 - Taquara / Tom Jobim - Barra da Tijuca
+          <span className="text-[10px] md:text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] italic bg-slate-100 px-6 py-2 rounded-xl">
+            Taquara R9 • Barra Tom Jobim
           </span>
         </div>
-        <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter leading-none mb-8">
+        <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter leading-none mb-10">
           Hub de <span className="text-estacio-cyan">Carreira</span><br/>& <span className="text-estacio-amber">Recursos</span>
         </h2>
         <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto">

@@ -24,10 +24,12 @@ const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-white font-black italic uppercase tracking-tighter text-lg">Mural TI</span>
+              <span className="text-white font-black italic uppercase tracking-tighter text-lg leading-tight">
+                Mural Ti - Tecnologia da Informação
+              </span>
             </div>
             <p className="text-sm leading-relaxed mb-6 opacity-70">
-              O Mural digital para o aluno de TI da Estácio. Informação centralizada para o seu sucesso.
+              O ecossistema digital definitivo para o estudante de tecnologia da Estácio de Sá. Centralizando oportunidades e conhecimento.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-estacio-cyan hover:text-estacio-navy transition-all">
@@ -44,8 +46,8 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div className="col-span-1">
-            <h4 className="text-white font-black uppercase text-xs tracking-widest mb-6 italic border-l-2 border-estacio-cyan pl-4">Acesso Rápido</h4>
-            <ul className="space-y-4 text-sm font-bold uppercase tracking-tight">
+            <h4 className="text-white font-black uppercase text-xs tracking-widest mb-6 italic border-l-2 border-estacio-cyan pl-4">Navegação</h4>
+            <ul className="space-y-4 text-xs font-bold uppercase tracking-tight">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a 
@@ -64,28 +66,28 @@ const Footer: React.FC = () => {
           {/* Resources */}
           <div className="col-span-1">
             <h4 className="text-white font-black uppercase text-xs tracking-widest mb-6 italic border-l-2 border-estacio-amber pl-4">Recursos</h4>
-            <ul className="space-y-4 text-sm font-bold uppercase tracking-tight">
+            <ul className="space-y-4 text-xs font-bold uppercase tracking-tight">
               <li><a href={ViewType.DESENVOLVIMENTO} onClick={(e) => handleLinkClick(e, ViewType.DESENVOLVIMENTO)} className="hover:text-estacio-amber transition-colors">Trilhas de Estudo</a></li>
               <li><a href={ViewType.EVENTOS} onClick={(e) => handleLinkClick(e, ViewType.EVENTOS)} className="hover:text-estacio-amber transition-colors">Eventos 2026</a></li>
-              <li><a href={ViewType.EMPREENDEDOR} onClick={(e) => handleLinkClick(e, ViewType.EMPREENDEDOR)} className="hover:text-estacio-amber transition-colors">Startups e Negócios</a></li>
+              <li><a href={ViewType.EMPREENDEDOR} onClick={(e) => handleLinkClick(e, ViewType.EMPREENDEDOR)} className="hover:text-estacio-amber transition-colors">Startup Hub</a></li>
             </ul>
           </div>
 
           {/* Contact / Coordination */}
           <div className="col-span-1">
-            <h4 className="text-white font-black uppercase text-xs tracking-widest mb-6 italic border-l-2 border-white/20 pl-4">Coordenação</h4>
-            <p className="text-sm mb-2 font-medium">ADS e Ciência da Computação</p>
-            <p className="text-sm font-black text-estacio-cyan italic mb-4">ANTONIO CANDIDO DE OLIVEIRA FILHO</p>
+            <h4 className="text-white font-black uppercase text-xs tracking-widest mb-6 italic border-l-2 border-white/20 pl-4">Acadêmico</h4>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">ADS e Ciência da Computação</p>
+            <p className="text-sm font-black text-white italic mb-4">ANTONIO CANDIDO FILHO</p>
             <div className="bg-white/5 p-4 rounded-2xl border border-white/5">
-              <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">E-mail Acadêmico</p>
-              <p className="text-xs font-bold text-white">antonio.filho@estacio.br</p>
+              <p className="text-[9px] font-black uppercase tracking-widest text-estacio-cyan mb-1">E-mail Acadêmico</p>
+              <p className="text-xs font-bold text-white/80">antonio.filho@estacio.br</p>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-slate-800 flex flex-col items-center">
-          <p className="text-[10px] font-bold text-white/30 text-center leading-relaxed max-w-4xl">
+          <p className="text-[10px] font-bold text-slate-500 text-center leading-relaxed max-w-4xl opacity-50">
             Este projeto foi desenvolvido exclusivamente para fins de estudo e exercício acadêmico. A instituição Estácio de Sá não detém responsabilidade editorial sobre as informações e opiniões publicadas nesta página.
           </p>
         </div>
