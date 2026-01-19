@@ -12,7 +12,6 @@ import GruposProjetos from './screens/GruposProjetos';
 import EventosTI from './screens/EventosTI';
 import GaleriaFotos from './screens/GaleriaFotos';
 import FaleCoordenador from './screens/FaleCoordenador';
-import VideosObrigatorios from './screens/VideosObrigatorios';
 
 const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>(window.location.hash || '#/home');
@@ -53,7 +52,6 @@ const App: React.FC = () => {
       case '#/eventos-ti': return <EventosTI />;
       case '#/galeria-fotos': return <GaleriaFotos />;
       case '#/fale-com-o-coordenador': return <FaleCoordenador />;
-      case '#/videos-obrigatorios': return <VideosObrigatorios />;
       default: return <Home />;
     }
   };

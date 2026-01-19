@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { ViewType } from '../types';
-import { ExternalLink, Linkedin, Mail, PlayCircle, Globe, BookOpen } from 'lucide-react';
+import { ExternalLink, Linkedin, Mail, Globe, BookOpen } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const quickLinks = [
@@ -89,12 +89,6 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-black uppercase text-xs tracking-[0.2em] mb-8 italic border-l-4 border-estacio-amber pl-4">Recursos</h4>
             <ul className="space-y-5 text-[11px] font-black uppercase tracking-widest">
-              <li>
-                <a href={ViewType.VIDEOS} onClick={(e) => handleLinkClick(e, ViewType.VIDEOS)} className="hover:text-estacio-amber transition-colors flex items-center gap-3 group">
-                  <PlayCircle size={16} className="text-red-500" />
-                  Vídeos Obrigatórios
-                </a>
-              </li>
               <li>
                 <a href={ViewType.DESENVOLVIMENTO} onClick={(e) => handleLinkClick(e, ViewType.DESENVOLVIMENTO)} className="hover:text-estacio-amber transition-colors flex items-center gap-3 group">
                   <BookOpen size={16} className="text-estacio-cyan" />

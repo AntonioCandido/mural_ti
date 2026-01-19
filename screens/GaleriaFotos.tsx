@@ -63,20 +63,20 @@ const GaleriaFotos: React.FC = () => {
 
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-8 mb-24">
           {PHOTOS.map((photo, i) => (
-            <div key={i} className="break-inside-avoid group relative bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all border border-slate-100">
+            <div key={i} className="break-inside-avoid relative bg-white rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-100">
               <div className="aspect-video overflow-hidden">
                 <img 
                   src={photo.url} 
                   alt={photo.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover scale-110 transition-transform duration-700"
                 />
               </div>
               <div className="p-8">
                 <h4 className="font-black text-estacio-navy italic uppercase text-lg mb-2">{photo.title}</h4>
                 <p className="text-xs text-slate-400 font-bold leading-relaxed">{photo.desc}</p>
               </div>
-              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-indigo-500 shadow-xl">
+              <div className="absolute top-4 right-4">
+                <div className="w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-indigo-500 shadow-xl border border-white/20">
                   <ExternalLink size={16} />
                 </div>
               </div>

@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { CARDS_DATA } from '../constants';
-import { MapPin } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const Home: React.FC = () => {
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
@@ -8,85 +9,86 @@ const Home: React.FC = () => {
     window.location.hash = target;
   };
 
+  // Mapeamento de cores sólidas e vibrantes (antigos estados de hover)
+  const colorMap: Record<string, { bg: string, text: string, icon: string }> = {
+    'group-hover:border-blue-500': { bg: 'bg-blue-600', text: 'text-white', icon: 'text-blue-600' },
+    'group-hover:border-estacio-cyan': { bg: 'bg-estacio-cyan', text: 'text-estacio-navy', icon: 'text-estacio-cyan' },
+    'group-hover:border-emerald-500': { bg: 'bg-emerald-600', text: 'text-white', icon: 'text-emerald-600' },
+    'group-hover:border-estacio-amber': { bg: 'bg-estacio-amber', text: 'text-estacio-navy', icon: 'text-estacio-amber' },
+    'group-hover:border-purple-500': { bg: 'bg-purple-600', text: 'text-white', icon: 'text-purple-600' },
+    'group-hover:border-orange-500': { bg: 'bg-orange-600', text: 'text-white', icon: 'text-orange-600' },
+    'group-hover:border-pink-500': { bg: 'bg-pink-600', text: 'text-white', icon: 'text-pink-600' },
+    'group-hover:border-indigo-500': { bg: 'bg-indigo-600', text: 'text-white', icon: 'text-indigo-600' },
+    'group-hover:border-estacio-navy': { bg: 'bg-estacio-navy', text: 'text-white', icon: 'text-estacio-navy' },
+  };
+
   return (
-    <div className="container mx-auto px-6 pt-4 pb-12 fade-in">
+    <div className="container mx-auto px-6 pt-4 pb-20 fade-in">
       <header className="max-w-5xl mb-16 text-center mx-auto flex flex-col items-center">
         
-        {/* Unidades - Design de Linha Única com Texto Atualizado */}
-        <div className="mb-12 group">
-          <div className="inline-flex items-center gap-4 bg-white/40 backdrop-blur-md border border-slate-200/60 px-5 py-2.5 rounded-full shadow-sm group-hover:shadow-md group-hover:border-estacio-cyan/30 transition-all duration-500">
-            
-            {/* Tag de Contexto */}
-            <span className="bg-estacio-amber text-estacio-navy text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full italic">
-              Unidades
+        {/* Unidades Badge */}
+        <div className="mb-10">
+          <div className="inline-flex items-center gap-4 bg-white border border-slate-200/60 px-4 py-2 rounded-2xl shadow-sm transition-all duration-500">
+            <span className="bg-estacio-navy text-white text-[7px] font-black uppercase tracking-widest px-2 py-1 rounded-lg italic">
+              Campus
             </span>
-
-            {/* Texto das Unidades em Linha Única */}
-            <div className="flex items-center gap-3 md:gap-5">
-              <div className="flex items-center gap-2">
-                <MapPin size={12} className="text-estacio-navy/40" />
-                <span className="text-[10px] md:text-[11px] font-bold text-estacio-navy/60 uppercase tracking-wider whitespace-nowrap">
-                  R9 - <span className="font-black italic text-estacio-navy">Taquara</span>
-                </span>
-              </div>
-
-              <span className="w-px h-3 bg-slate-300"></span>
-
-              <div className="flex items-center gap-2">
-                <MapPin size={12} className="text-estacio-cyan/60" />
-                <span className="text-[10px] md:text-[11px] font-bold text-estacio-navy/60 uppercase tracking-wider whitespace-nowrap">
-                  Tom Jobim - <span className="text-estacio-cyan font-black italic">Barra</span>
-                </span>
-              </div>
+            <div className="flex items-center gap-4">
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">
+                R9 <span className="text-estacio-navy font-black">Taquara</span>
+              </span>
+              <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">
+                Tom Jobim <span className="text-estacio-cyan font-black">Barra</span>
+              </span>
             </div>
           </div>
         </div>
         
-        {/* Heading Section */}
-        <h2 className="flex flex-col items-center gap-0 leading-[0.82] mb-10">
-          <span className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter">
-            HUB DE
-          </span>
-          <span className="text-6xl md:text-9xl font-black text-estacio-cyan italic uppercase tracking-tighter">
-            CARREIRA
-          </span>
-          <span className="text-5xl md:text-8xl font-black text-estacio-amber italic uppercase tracking-tighter">
-            & RECURSOS
-          </span>
-        </h2>
-
-        <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
-          Centralizamos trilhas de estudo, vagas, concursos e suporte acadêmico para impulsionar seu futuro na tecnologia.
-        </p>
+        {/* Title Section */}
+        <div className="relative mb-8">
+          <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter leading-[0.85] text-center">
+            HUB DE <span className="text-estacio-cyan">CARREIRA</span>
+          </h2>
+          <p className="text-sm md:text-lg text-slate-400 font-semibold mt-6 max-w-xl mx-auto leading-relaxed">
+            Seus atalhos essenciais para o sucesso acadêmico e profissional em Tecnologia da Informação.
+          </p>
+        </div>
       </header>
 
-      <nav aria-label="Menu Principal de Recursos" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Shortcut Grid com visual Permanente 'Ativo' */}
+      <nav aria-label="Atalhos de Navegação" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
         {CARDS_DATA.map((card) => {
           const Icon = card.icon;
+          const styles = colorMap[card.color] || colorMap['group-hover:border-estacio-navy'];
+          
           return (
-            <article key={card.id}>
+            <article key={card.id} className="h-full">
               <a 
                 href={card.id}
                 onClick={(e) => handleNavigation(e, card.id)}
-                className={`group relative bg-white p-10 rounded-[3.5rem] border-2 border-slate-50 ${card.color} shadow-sm hover:shadow-2xl hover:shadow-slate-200 hover:-translate-y-2 transition-all flex flex-col items-center text-center overflow-hidden h-full`}
-                aria-label={`Ver informações sobre ${card.title}`}
+                className={`relative h-full p-6 md:p-8 rounded-[2.5rem] border border-white/20 flex flex-col items-center text-center overflow-hidden shadow-2xl shadow-slate-200/50 -translate-y-1 transition-transform duration-300 ${styles.bg}`}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-full -mr-12 -mt-12 group-hover:bg-estacio-navy/5 transition-colors"></div>
+                {/* Visual Glass Shine */}
+                <div className="absolute inset-0 bg-white/10"></div>
                 
-                <div className="relative w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-estacio-navy mb-8 group-hover:scale-110 group-hover:bg-estacio-navy group-hover:text-white transition-all shadow-inner">
-                  <Icon size={36} aria-hidden="true" />
+                {/* Permanent Active Icon Box */}
+                <div className={`relative w-14 h-14 md:w-16 md:h-16 rounded-[1.5rem] flex items-center justify-center bg-white shadow-xl mb-6 rotate-[6deg] scale-105 ${styles.icon}`}>
+                  <Icon size={28} md:size={32} strokeWidth={2.5} aria-hidden="true" />
                 </div>
                 
-                <h3 className="relative font-black text-estacio-navy text-xl leading-[1.1] mb-4 uppercase italic tracking-tighter">
+                <h3 className={`relative z-10 font-black text-xs md:text-sm leading-tight mb-2 uppercase italic tracking-tighter ${styles.text}`}>
                   {card.title}
                 </h3>
                 
-                <p className="relative text-[11px] text-slate-400 font-bold leading-relaxed uppercase tracking-wider">
+                <p className={`relative z-10 text-[9px] font-bold leading-tight uppercase tracking-wider line-clamp-2 opacity-90 ${styles.text}`}>
                   {card.desc}
                 </p>
 
-                <div className="mt-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-8 h-1 bg-estacio-cyan rounded-full"></div>
+                {/* Permanent Action Indicator */}
+                <div className="mt-auto pt-6 relative z-10">
+                   <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white">
+                      <ArrowUpRight size={14} strokeWidth={3} />
+                   </div>
                 </div>
               </a>
             </article>

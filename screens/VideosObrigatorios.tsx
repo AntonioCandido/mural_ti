@@ -23,7 +23,7 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   {
     topic: 'computing',
     title: "A História da Computação",
-    desc: "Do ábaco aos supercomputadores. O guia definitivo narrado por Gustavo Guanabara.",
+    desc: "Do ábaco aos supercomputadores. O guia definitivo narrado por Gustavo Guanabara do Curso em Vídeo.",
     duration: "25 min",
     category: "Educação BR",
     link: "https://www.youtube.com/watch?v=Of7i9Yf60mU",
@@ -32,18 +32,18 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'computing',
-    title: "Steve Jobs: O Visionário",
-    desc: "A biografia detalhada do fundador da Apple e a criação do Macintosh. Produção TecMundo.",
+    title: "Steve Jobs e a Apple",
+    desc: "A história completa do gênio que mudou o mundo com o Macintosh e o iPhone. Produção TecMundo.",
     duration: "18 min",
     category: "Documentário",
-    link: "https://www.youtube.com/watch?v=p6l3lY0yB_8",
-    videoId: "p6l3lY0yB_8",
+    link: "https://www.youtube.com/watch?v=m-5p1I2m2h8",
+    videoId: "m-5p1I2m2h8",
     featured: true
   },
   {
     topic: 'computing',
     title: "Bill Gates e a Microsoft",
-    desc: "A história do homem que democratizou o software e o Windows. Código Fonte TV.",
+    desc: "A trajetória do homem que democratizou o computador pessoal e o software. Código Fonte TV.",
     duration: "15 min",
     category: "Biografias",
     link: "https://www.youtube.com/watch?v=R_9O8VlU38A",
@@ -53,7 +53,7 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   {
     topic: 'computing',
     title: "Evolução dos Computadores",
-    desc: "Iberê Thenório explica visualmente como as máquinas encolheram e ficaram poderosas.",
+    desc: "Iberê Thenório explica visualmente como saímos de válvulas gigantes para microchips poderosos.",
     duration: "12 min",
     category: "Manual do Mundo",
     link: "https://www.youtube.com/watch?v=F1PAtHnO8-U",
@@ -62,8 +62,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'computing',
-    title: "Alan Turing e Enigma",
-    desc: "Como o pai da computação quebrou códigos nazistas e salvou milhões de vidas.",
+    title: "Alan Turing e o Enigma",
+    desc: "Como o pai da computação moderna quebrou o código nazista e salvou milhões de vidas.",
     duration: "10 min",
     category: "Pioneiros",
     link: "https://www.youtube.com/watch?v=U6fJ849O0n8",
@@ -73,7 +73,7 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   {
     topic: 'computing',
     title: "O Nascimento da Internet",
-    desc: "Pedro Loos explica como a ARPANET se tornou a rede mundial que usamos hoje.",
+    desc: "Pedro Loos explica como a ARPANET se transformou na rede global que conecta o planeta hoje.",
     duration: "14 min",
     category: "Ciência Todo Dia",
     link: "https://www.youtube.com/watch?v=9MIs9uL0UWA",
@@ -82,18 +82,18 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'computing',
-    title: "Deep Blue: Homem vs Máquina",
-    desc: "O momento histórico em que Garry Kasparov foi derrotado pela IA da IBM no xadrez.",
-    duration: "9 min",
-    category: "IA Clássica",
-    link: "https://www.youtube.com/watch?v=mRz4pA9FwNo",
-    videoId: "mRz4pA9FwNo",
+    title: "A História da IBM",
+    desc: "Conheça a gigante azul, a empresa que definiu os padrões da computação corporativa mundial.",
+    duration: "11 min",
+    category: "Corporativo",
+    link: "https://www.youtube.com/watch?v=K0Bw9h1wK8M",
+    videoId: "K0Bw9h1wK8M",
     featured: false
   },
   {
     topic: 'computing',
     title: "Origem do Vale do Silício",
-    desc: "Como uma região da Califórnia se tornou o berço das maiores empresas de tecnologia.",
+    desc: "Como uma região agrícola se tornou o epicentro global da inovação tecnológica.",
     duration: "13 min",
     category: "História",
     link: "https://www.youtube.com/watch?v=v_G60Vl9K-c",
@@ -102,18 +102,18 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'computing',
-    title: "ENIAC: O Primeiro Gigante",
-    desc: "Uma análise detalhada do primeiro computador eletrônico programável da história.",
-    duration: "7 min",
+    title: "A Revolução do PC",
+    desc: "Como o Altair e o Apple II deram início à era dos computadores domésticos. TecMundo.",
+    duration: "10 min",
     category: "Hardware Antigo",
-    link: "https://www.youtube.com/watch?v=M_Gf5-O25y4",
-    videoId: "M_Gf5-O25y4",
+    link: "https://www.youtube.com/watch?v=k_2I7Eitd2I",
+    videoId: "k_2I7Eitd2I",
     featured: true
   },
   {
     topic: 'computing',
-    title: "A Revolução do Smartphone",
-    desc: "De telefones tijolos ao primeiro iPhone: a história da mobilidade tecnológica.",
+    title: "História do Smartphone",
+    desc: "Do lançamento do Simon ao impacto cultural do primeiro iPhone. Por TecMundo.",
     duration: "11 min",
     category: "Era Mobile",
     link: "https://www.youtube.com/watch?v=7XfB_8fKqG0",
@@ -124,8 +124,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   // TOPIC 2: HISTÓRIA DA PROGRAMAÇÃO (10 VÍDEOS REAIS PT-BR)
   {
     topic: 'programming',
-    title: "A Importância do Código",
-    desc: "Bill Gates e Zuckerberg explicam por que aprender a programar é essencial hoje.",
+    title: "Por que Programar?",
+    desc: "Grandes líderes da tecnologia explicam a importância vital do código no século 21.",
     duration: "6 min",
     category: "Motivacional",
     link: "https://www.youtube.com/watch?v=nKIu9yen5jk",
@@ -135,7 +135,7 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   {
     topic: 'programming',
     title: "História das Linguagens",
-    desc: "A árvore genealógica das linguagens de programação, do Fortran ao Python.",
+    desc: "A evolução completa das linguagens de programação, do Fortran ao Python moderno.",
     duration: "35 min",
     category: "Curso em Vídeo",
     link: "https://www.youtube.com/watch?v=p6fA_vX_BwQ",
@@ -144,8 +144,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'programming',
-    title: "A Criação do JavaScript",
-    desc: "Como a linguagem da web foi criada em 10 dias e dominou o mundo. Código Fonte TV.",
+    title: "JavaScript: A História",
+    desc: "Como o JS surgiu para animar páginas simples e se tornou a linguagem mais usada do mundo.",
     duration: "12 min",
     category: "Web History",
     link: "https://www.youtube.com/watch?v=6Y9K0wE69qA",
@@ -154,18 +154,18 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'programming',
-    title: "Dennis Ritchie: Linguagem C",
-    desc: "A fundação dos sistemas operacionais e da programação moderna. História em PT-BR.",
-    duration: "10 min",
+    title: "A Linguagem C e Unix",
+    desc: "Entenda por que o C é a base de quase tudo o que usamos hoje na computação. Código Fonte TV.",
+    duration: "11 min",
     category: "Sistemas",
-    link: "https://www.youtube.com/watch?v=M8_U8p8yE8Q",
-    videoId: "M8_U8p8yE8Q",
+    link: "https://www.youtube.com/watch?v=hE3I1j6jNlI",
+    videoId: "hE3I1j6jNlI",
     featured: false
   },
   {
     topic: 'programming',
     title: "Ada Lovelace: A Primeira",
-    desc: "Iberê Thenório conta a história da mulher que escreveu o primeiro algoritmo.",
+    desc: "A história da condessa de Lovelace e como ela previu o futuro da computação.",
     duration: "8 min",
     category: "Biografias",
     link: "https://www.youtube.com/watch?v=8_X6X6YfLNo",
@@ -174,8 +174,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'programming',
-    title: "Linux e o Open Source",
-    desc: "Como Linus Torvalds criou o kernel que roda o mundo. História pelo Código Fonte TV.",
+    title: "O Nascimento do Linux",
+    desc: "Como Linus Torvalds criou o kernel que hoje roda a internet e os supercomputadores.",
     duration: "14 min",
     category: "Filosofia",
     link: "https://www.youtube.com/watch?v=9id-DREO7vY",
@@ -184,8 +184,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'programming',
-    title: "Clean Code na Prática",
-    desc: "Princípios fundamentais para escrever códigos sustentáveis e profissionais.",
+    title: "Clean Code: Os Princípios",
+    desc: "Aprenda a escrever código limpo e sustentável seguindo os ensinamentos de Uncle Bob.",
     duration: "15 min",
     category: "Código Fonte TV",
     link: "https://www.youtube.com/watch?v=zS3S_AByOUE",
@@ -194,8 +194,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'programming',
-    title: "Por que Python conquistou tudo?",
-    desc: "A trajetória da linguagem que se tornou padrão em IA e Ciência de Dados.",
+    title: "História do Python",
+    desc: "Como a linguagem de Guido van Rossum se tornou a favorita para Ciência de Dados e IA.",
     duration: "13 min",
     category: "Linguagens",
     link: "https://www.youtube.com/watch?v=8mSgR_U_w7E",
@@ -204,8 +204,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'programming',
-    title: "Evolução da IA Generativa",
-    desc: "Pedro Loos explica como saímos dos algoritmos básicos para o ChatGPT.",
+    title: "A Evolução da IA",
+    desc: "Como saímos dos sistemas especialistas para as redes neurais generativas modernas.",
     duration: "18 min",
     category: "IA",
     link: "https://www.youtube.com/watch?v=NJarxpYyoFI",
@@ -214,8 +214,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'programming',
-    title: "Lógica: O Segredo de Tudo",
-    desc: "A base matemática e lógica por trás de cada linha de código que você escreve.",
+    title: "Lógica de Programação",
+    desc: "A base de tudo: como pensar algoritmicamente para resolver qualquer problema técnico.",
     duration: "12 min",
     category: "Lógica",
     link: "https://www.youtube.com/watch?v=X6XnO_f7M-E",
@@ -226,8 +226,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   // TOPIC 3: COMO HARDWARE É FEITO (10 VÍDEOS REAIS PT-BR)
   {
     topic: 'hardware',
-    title: "Como nasce um Processador",
-    desc: "Visita à fábrica para ver o processo incrível de fabricação de chips de silício.",
+    title: "Como Processadores são feitos",
+    desc: "Uma visita rara à linha de produção para entender como o silício vira inteligência pura.",
     duration: "15 min",
     category: "Fábrica BR",
     link: "https://www.youtube.com/watch?v=2eW683UrS_o",
@@ -236,8 +236,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'hardware',
-    title: "Litografia ASML (NanoChips)",
-    desc: "Conheça as máquinas de bilhões de dólares que criam os chips de 3 nanômetros.",
+    title: "O Poder da ASML",
+    desc: "As máquinas de litografia UV Extremo que permitem criar chips de nanômetros. TecMundo.",
     duration: "11 min",
     category: "Tecnologia",
     link: "https://www.youtube.com/watch?v=f0gMdGrVteI",
@@ -246,8 +246,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'hardware',
-    title: "Fábrica de Placas de Vídeo",
-    desc: "O processo automatizado de montagem de GPUs de alta performance. TecMundo.",
+    title: "Fabricação de Placas de Vídeo",
+    desc: "Veja como a soldagem de precisão e montagem transformam componentes em GPUs de elite.",
     duration: "9 min",
     category: "Componentes",
     link: "https://www.youtube.com/watch?v=YpC8G_8YyD4",
@@ -256,8 +256,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'hardware',
-    title: "Memória RAM no Brasil",
-    desc: "Iberê mostra como os módulos de memória são fabricados em solo nacional.",
+    title: "Como Memória RAM é Feita",
+    desc: "Iberê mostra a produção de módulos de memória RAM em uma fábrica brasileira.",
     duration: "8 min",
     category: "Manufatura",
     link: "https://www.youtube.com/watch?v=fU9H_W3mP_U",
@@ -266,8 +266,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'hardware',
-    title: "Como funciona um HDD",
-    desc: "A mecânica de precisão dentro dos discos rígidos. Por dentro do Manual do Mundo.",
+    title: "Funcionamento do HDD",
+    desc: "Por dentro dos discos rígidos: agulhas magnéticas e discos que giram a 7200 RPM.",
     duration: "10 min",
     category: "Armazenamento",
     link: "https://www.youtube.com/watch?v=3icS_m0M494",
@@ -276,8 +276,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'hardware',
-    title: "Produção de Placas PCB",
-    desc: "Como as trilhas de cobre são impressas em placas eletrônicas complexas.",
+    title: "Criação de Placas de Circuito",
+    desc: "Entenda como os desenhos das trilhas elétricas são impressos em placas de fibra de vidro.",
     duration: "12 min",
     category: "Eletrônica",
     link: "https://www.youtube.com/watch?v=4asfG69V64M",
@@ -286,8 +286,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'hardware',
-    title: "TSMC: O Coração dos Chips",
-    desc: "Documentário sobre a maior fabricante de chips do mundo em Taiwan. TecMundo.",
+    title: "TSMC e a Guerra dos Chips",
+    desc: "Conheça a empresa mais importante de Taiwan e sua dominância no mercado global de chips.",
     duration: "14 min",
     category: "Semicondutores",
     link: "https://www.youtube.com/watch?v=p6v6zY_H6Qk",
@@ -296,8 +296,8 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'hardware',
-    title: "Fibra Óptica: Como é Feita",
-    desc: "O processo de fabricação dos cabos que sustentam a internet global. Manual do Mundo.",
+    title: "A Ciência da Fibra Óptica",
+    desc: "Como fios de vidro levam internet na velocidade da luz por milhares de quilômetros.",
     duration: "13 min",
     category: "Infraestrutura",
     link: "https://www.youtube.com/watch?v=Q_Vn69-P8lA",
@@ -307,7 +307,7 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   {
     topic: 'hardware',
     title: "Supercomputadores no Brasil",
-    desc: "Conheça o Santos Dumont e outros clusters massivos de hardware nacionais.",
+    desc: "Conheça o Santos Dumont, o computador mais rápido da América Latina focado em ciência.",
     duration: "16 min",
     category: "HPC",
     link: "https://www.youtube.com/watch?v=TfV95_o8r1U",
@@ -316,24 +316,22 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'hardware',
-    title: "Hardware Quântico",
-    desc: "A engenharia por trás do processamento em escala atômica. Ciência Todo Dia.",
+    title: "Computação Quântica",
+    desc: "A física por trás do processamento em escala atômica explicado de forma simples. Ciência Todo Dia.",
     duration: "10 min",
     category: "Futurismo",
     link: "https://www.youtube.com/watch?v=-ZNEzzDcllU",
-    videoId: "-ZNEzzDclU",
+    videoId: "-ZNEzzDcllU",
     featured: true
   }
 ];
 
-// Helper para extrair ID do YouTube
 const extractVideoId = (url: string): string => {
   const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
   const match = url.match(regExp);
   return (match && match[7].length === 11) ? match[7] : '';
 };
 
-// Componente para Miniatura Dinâmica do YouTube com Lazy Loading Avançado
 const YouTubeThumbnail: React.FC<{ videoUrl: string; alt: string }> = ({ videoUrl, alt }) => {
   const videoId = useMemo(() => extractVideoId(videoUrl), [videoUrl]);
   const qualities = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault'];
@@ -410,7 +408,6 @@ const VideosObrigatorios: React.FC = () => {
     }
   }, []);
 
-  // Bloquear scroll do body quando o modal estiver aberto
   useEffect(() => {
     if (selectedVideoId) {
       document.body.style.overflow = 'hidden';
@@ -435,7 +432,7 @@ const VideosObrigatorios: React.FC = () => {
     }, 1500);
   };
 
-  const handlePlayVideo = (e: React.MouseEvent, videoId: string) => {
+  const handleOpenPlayer = (e: React.MouseEvent, videoId: string) => {
     e.preventDefault();
     setSelectedVideoId(videoId);
   };
@@ -462,7 +459,6 @@ const VideosObrigatorios: React.FC = () => {
         }
       `}</style>
 
-      {/* Top Navigation */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-12 md:mb-20 max-w-6xl mx-auto gap-6">
         <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest transition-all">
           <span className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center group-hover:bg-estacio-navy group-hover:text-white group-hover:border-estacio-navy shadow-sm transition-all duration-300">
@@ -489,7 +485,6 @@ const VideosObrigatorios: React.FC = () => {
           </p>
         </header>
 
-        {/* Tabs Navigation */}
         <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-16">
           {tabs.map((tab) => (
             <button
@@ -507,7 +502,6 @@ const VideosObrigatorios: React.FC = () => {
           ))}
         </div>
 
-        {/* Dynamic Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-32 min-h-[600px]">
           {filteredVideos.map((video, i) => {
             const isDownloaded = downloadedVideos.includes(video.videoId);
@@ -518,14 +512,12 @@ const VideosObrigatorios: React.FC = () => {
                 key={`${activeTopic}-${i}`}
                 className="group relative flex flex-col h-full bg-white rounded-[3.5rem] overflow-hidden shadow-sm hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] transition-all duration-700 border border-slate-100 animate-in fade-in slide-in-from-bottom-4 cursor-pointer"
                 style={{ animationDelay: `${i * 100}ms` }}
-                onClick={(e) => handlePlayVideo(e, video.videoId)}
+                onClick={(e) => handleOpenPlayer(e, video.videoId)}
               >
                 <div className="flex flex-col h-full">
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <YouTubeThumbnail videoUrl={video.link} alt={video.title} />
-                    
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-90 group-hover:opacity-60 transition-opacity z-[5]"></div>
-                    
                     <div className="absolute top-6 left-6 flex items-center gap-2 z-[15]">
                         <span className="px-4 py-2 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl text-[9px] font-black uppercase tracking-widest text-white shadow-xl flex items-center gap-3">
                             {video.featured && <Sparkles size={12} className="text-amber-400" />}
@@ -571,11 +563,9 @@ const VideosObrigatorios: React.FC = () => {
                     <h4 className="text-2xl font-black text-estacio-navy italic uppercase tracking-tight mb-4 group-hover:text-red-600 transition-colors duration-300 leading-[1.1]">
                       {video.title}
                     </h4>
-                    
                     <p className="text-sm text-slate-500 font-medium leading-relaxed mb-10 line-clamp-3 italic opacity-80">
                       "{video.desc}"
                     </p>
-                    
                     <div className="mt-auto flex items-center justify-between pt-8 border-t border-slate-50">
                       <div className="flex items-center gap-3 text-[10px] font-black uppercase text-red-600 tracking-[0.2em] group-hover:gap-5 transition-all">
                           {isDownloaded ? 'ASSISTIR OFFLINE' : 'ASSISTIR NO PLAYER'} <Play size={14} fill="currentColor" />

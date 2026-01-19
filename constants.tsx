@@ -9,15 +9,13 @@ import {
   Users, 
   Calendar, 
   UserCheck,
-  Images,
-  Play
+  Images
 } from 'lucide-react';
 import { ViewType } from './types';
 
 export const CARDS_DATA = [
   { id: ViewType.PROFISSIONAIS, title: 'Profissionais de TI', desc: 'Mercado, desafios e remuneração real.', icon: UserCog, color: 'group-hover:border-blue-500' },
   { id: ViewType.DESENVOLVIMENTO, title: 'Como Desenvolver', desc: 'Trilhas de estudo e recursos Awesome.', icon: Code, color: 'group-hover:border-estacio-cyan' },
-  { id: ViewType.VIDEOS, title: 'Vídeos Obrigatórios', desc: 'Filtramos o que impacta sua carreira e seu código.', icon: Play, color: 'group-hover:border-red-500' },
   { id: ViewType.ESTAGIOS, title: 'Estágios e Empregos', desc: 'Sua primeira vaga e jobs remotos.', icon: Briefcase, color: 'group-hover:border-emerald-500' },
   { id: ViewType.CONCURSOS, title: 'Concursos', desc: 'Editais abertos e previstos para TI.', icon: Gavel, color: 'group-hover:border-estacio-amber' },
   { id: ViewType.EMPREENDEDOR, title: 'Empreendedorismo', desc: 'Transforme ideias em startups reais.', icon: Lightbulb, color: 'group-hover:border-purple-500' },
