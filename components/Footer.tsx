@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { ViewType } from '../types';
-import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
+import { ExternalLink, Linkedin, Mail, PlayCircle, Globe, BookOpen } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const quickLinks = [
@@ -14,49 +14,71 @@ const Footer: React.FC = () => {
     if (target.startsWith('#')) {
       e.preventDefault();
       window.location.hash = target;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   return (
-    <footer className="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-slate-950 text-slate-400 py-20 border-t border-white/5 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-estacio-navy/10 blur-[150px] rounded-full pointer-events-none"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+          
           {/* Brand Info */}
-          <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-white font-black italic uppercase tracking-tighter text-lg leading-tight">
-                Mural Ti - Tecnologia da Informação
+          <div className="flex flex-col items-start">
+            <div className="mb-8">
+              <span className="text-white font-black italic uppercase tracking-tighter text-2xl leading-tight block">
+                Mural Ti
+              </span>
+              <span className="text-estacio-cyan font-bold text-[10px] uppercase tracking-[0.3em] mt-1 block">
+                Estácio de Sá
               </span>
             </div>
-            <p className="text-sm leading-relaxed mb-6 opacity-70">
-              O ecossistema digital de apoio ao estudante de tecnologia da Estácio de Sá. Centralizando oportunidades e conhecimento.
+            <p className="text-sm leading-relaxed mb-8 opacity-60 font-medium">
+              O hub de apoio ao estudante de tecnologia, conectando você às melhores trilhas, vagas e conhecimentos do mercado global.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-estacio-cyan hover:text-estacio-navy transition-all">
-                <OpenSourceIcon size={18} />
+              <a 
+                href="https://github.com/sindresorhus/awesome" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-white hover:text-estacio-navy transition-all duration-300 border border-white/5"
+              >
+                <OpenSourceIcon size={20} />
               </a>
-              <a href="https://www.linkedin.com/in/antonio-candido-oliveira-filho-b2028336" target="_blank" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
-                <Linkedin size={18} />
+              <a 
+                href="https://www.linkedin.com/in/antonio-candido-oliveira-filho-b2028336" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 border border-white/5"
+              >
+                <Linkedin size={20} />
               </a>
-              <a href="mailto:antonio.filho@estacio.br" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-estacio-amber hover:text-estacio-navy transition-all">
-                <Mail size={18} />
+              <a 
+                href="mailto:antonio.filho@estacio.br" 
+                className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-estacio-amber hover:text-estacio-navy transition-all duration-300 border border-white/5"
+              >
+                <Mail size={20} />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="col-span-1">
-            <h4 className="text-white font-black uppercase text-xs tracking-widest mb-6 italic border-l-2 border-estacio-cyan pl-4">Navegação</h4>
-            <ul className="space-y-4 text-xs font-bold uppercase tracking-tight">
+          <div>
+            <h4 className="text-white font-black uppercase text-xs tracking-[0.2em] mb-8 italic border-l-4 border-estacio-cyan pl-4">Explorar</h4>
+            <ul className="space-y-5 text-[11px] font-black uppercase tracking-widest">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a 
                     href={link.href} 
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="hover:text-estacio-cyan transition-colors flex items-center gap-2 group"
+                    className="hover:text-estacio-cyan transition-colors flex items-center gap-3 group"
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-800 group-hover:bg-estacio-cyan transition-colors"></span>
                     {link.label}
-                    <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                   </a>
                 </li>
               ))}
@@ -64,31 +86,53 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Resources */}
-          <div className="col-span-1">
-            <h4 className="text-white font-black uppercase text-xs tracking-widest mb-6 italic border-l-2 border-estacio-amber pl-4">Recursos</h4>
-            <ul className="space-y-4 text-xs font-bold uppercase tracking-tight">
-              <li><a href={ViewType.DESENVOLVIMENTO} onClick={(e) => handleLinkClick(e, ViewType.DESENVOLVIMENTO)} className="hover:text-estacio-amber transition-colors">Trilhas de Estudo</a></li>
-              <li><a href={ViewType.EVENTOS} onClick={(e) => handleLinkClick(e, ViewType.EVENTOS)} className="hover:text-estacio-amber transition-colors">Eventos 2026</a></li>
-              <li><a href={ViewType.EMPREENDEDOR} onClick={(e) => handleLinkClick(e, ViewType.EMPREENDEDOR)} className="hover:text-estacio-amber transition-colors">Startup Hub</a></li>
+          <div>
+            <h4 className="text-white font-black uppercase text-xs tracking-[0.2em] mb-8 italic border-l-4 border-estacio-amber pl-4">Recursos</h4>
+            <ul className="space-y-5 text-[11px] font-black uppercase tracking-widest">
+              <li>
+                <a href={ViewType.VIDEOS} onClick={(e) => handleLinkClick(e, ViewType.VIDEOS)} className="hover:text-estacio-amber transition-colors flex items-center gap-3 group">
+                  <PlayCircle size={16} className="text-red-500" />
+                  Vídeos Obrigatórios
+                </a>
+              </li>
+              <li>
+                <a href={ViewType.DESENVOLVIMENTO} onClick={(e) => handleLinkClick(e, ViewType.DESENVOLVIMENTO)} className="hover:text-estacio-amber transition-colors flex items-center gap-3 group">
+                  <BookOpen size={16} className="text-estacio-cyan" />
+                  Trilhas Awesome
+                </a>
+              </li>
+              <li>
+                <a href={ViewType.EVENTOS} onClick={(e) => handleLinkClick(e, ViewType.EVENTOS)} className="hover:text-estacio-amber transition-colors flex items-center gap-3 group">
+                  <Globe size={16} className="text-estacio-amber" />
+                  Agenda Tech 2026
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Contact / Coordination */}
-          <div className="col-span-1">
-            <h4 className="text-white font-black uppercase text-xs tracking-widest mb-6 italic border-l-2 border-white/20 pl-4">Acadêmico</h4>
-            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">ADS e Ciência da Computação</p>
-            <p className="text-sm font-black text-white italic mb-4">ANTONIO CANDIDO FILHO</p>
-            <div className="bg-white/5 p-4 rounded-2xl border border-white/5">
-              <p className="text-[9px] font-black uppercase tracking-widest text-estacio-cyan mb-1">E-mail Acadêmico</p>
-              <p className="text-xs font-bold text-white/80">antonio.filho@estacio.br</p>
+          {/* Academic Info */}
+          <div className="lg:pl-8">
+            <h4 className="text-white font-black uppercase text-xs tracking-[0.2em] mb-8 italic border-l-4 border-white/20 pl-4">Coordenação</h4>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-3">Sistemas & Computação</p>
+            <p className="text-lg font-black text-white italic mb-6 tracking-tighter uppercase leading-none">
+              ANTONIO CANDIDO FILHO
+            </p>
+            <div className="bg-white/5 p-6 rounded-[2rem] border border-white/5 backdrop-blur-sm group hover:border-estacio-cyan/30 transition-all">
+              <p className="text-[9px] font-black uppercase tracking-widest text-estacio-cyan mb-2">Suporte Acadêmico</p>
+              <p className="text-xs font-bold text-white/80 group-hover:text-white transition-colors">antonio.filho@estacio.br</p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-12 border-t border-slate-800 flex flex-col items-center">
-          <p className="text-[10px] font-bold text-slate-500 text-center leading-relaxed max-w-4xl opacity-50">
-            Este projeto foi desenvolvido exclusivamente para fins de estudo e exercício acadêmico. A instituição Estácio de Sá não detém responsabilidade editorial sobre as informações e opiniões publicadas nesta página.
+        {/* Bottom Section */}
+        <div className="pt-12 border-t border-white/5 flex flex-col items-center">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 text-[9px] font-black uppercase tracking-[0.3em] text-slate-600">
+             <span>© 2026 MURAL TI</span>
+             <span className="hidden md:block opacity-30">|</span>
+             <span>DESENVOLVIDO PARA FINS ACADÊMICOS</span>
+          </div>
+          <p className="text-[10px] font-bold text-slate-700 text-center leading-relaxed max-w-4xl italic">
+            "Este projeto foi desenvolvido exclusivamente para fins de estudo. A instituição Estácio de Sá não detém responsabilidade editorial sobre as informações publicadas."
           </p>
         </div>
       </div>
@@ -103,7 +147,7 @@ const OpenSourceIcon = ({ size }: { size: number }) => (
     viewBox="0 0 24 24" 
     fill="none" 
     stroke="currentColor" 
-    strokeWidth="2" 
+    strokeWidth="2.5" 
     strokeLinecap="round" 
     strokeLinejoin="round"
   >
