@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'muralti-v2-offline';
+const CACHE_NAME = 'muralti-v3-offline';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -32,23 +32,24 @@ self.addEventListener('activate', (event) => {
 });
 
 // Interceptação de requisições: Stale-While-Revalidate
+// Ideal para thumbnails do YouTube e metadados
 self.addEventListener('fetch', (event) => {
-  // Ignorar requisições que não sejam GET ou de esquemas que não suportamos (ex: chrome-extension)
   if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) return;
 
   event.respondWith(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.match(event.request).then((cachedResponse) => {
         const fetchPromise = fetch(event.request).then((networkResponse) => {
-          // Atualiza o cache com a nova versão
-          cache.put(event.request, networkResponse.clone());
+          // Armazena cópia no cache para uso futuro offline
+          if (networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
           return networkResponse;
         }).catch(() => {
-          // Se falhar o fetch (offline total) e não houver cache, retorna erro amigável ou nada
+          // Fallback silencioso para o que estiver em cache
           return cachedResponse;
         });
 
-        // Retorna o cache imediatamente se houver, ou espera a rede
         return cachedResponse || fetchPromise;
       });
     })
