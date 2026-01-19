@@ -1,182 +1,200 @@
 
 import React from 'react';
 import { CoordinatorWidget } from '../constants';
-import { ChevronLeft, Play, Youtube, ExternalLink, Clock, Info } from 'lucide-react';
+import { ChevronLeft, Play, Youtube, ExternalLink, Clock, Info, Bookmark, Sparkles } from 'lucide-react';
 
 const RECOMMENDED_VIDEOS = [
   {
-    title: "Clean Code - Uncle Bob - Lesson 1",
-    desc: "A aula inaugural do criador do Clean Code, Robert C. Martin. Essencial para entender a filosofia por trás de softwares robustos e profissionais.",
-    duration: "1h 12min",
-    category: "Engenharia",
-    link: "https://youtu.be/pAN9tLbYNH8?si=UPVDSF45rMTYu-BX",
-    videoId: "pAN9tLbYNH8"
-  },
-  {
-    title: "What is Generative AI? | Generative AI Explained",
-    desc: "Um mergulho técnico e acessível sobre o funcionamento das IAs Generativas e como elas estão redefinindo a criação de valor na tecnologia.",
-    duration: "14 min",
-    category: "Inovação",
-    link: "https://youtu.be/DjUB-yVWT2A?si=1-I5oYN2r6rULcdv",
-    videoId: "DjUB-yVWT2A"
-  },
-  {
-    title: "TI: Guia de Carreira (O que estudar? Qual área escolher?)",
-    desc: "Um mapa completo para quem está começando, discutindo trilhas de especialização e as demandas reais das empresas atuais.",
-    duration: "21 min",
-    category: "Carreira",
-    link: "https://youtu.be/JaM5zJ5ckI8?si=ADZgWUVCYCMkkO0y",
-    videoId: "JaM5zJ5ckI8"
-  },
-  {
-    title: "MERCADO DE TI: SALÁRIOS, VAGAS E O FUTURO DA ÁREA",
-    desc: "Análise realista sobre as flutuações do mercado, expectativas salariais por nível e as profissões que serão tendência nos próximos anos.",
-    duration: "25 min",
-    category: "Mercado",
-    link: "https://youtu.be/O9-0RFvjvzw?si=rfSl4zbNa9EOkEfM",
-    videoId: "O9-0RFvjvzw"
-  },
-  {
-    title: "O que é Cybersecurity? (Guia para iniciantes)",
-    desc: "Os pilares da segurança da informação explicados de forma simples, focando no que um desenvolvedor precisa saber para proteger seus dados.",
-    duration: "12 min",
-    category: "Segurança",
-    link: "https://youtu.be/DaeJJo0VyX0?si=1p9Amx3SGLADxMBx",
-    videoId: "DaeJJo0VyX0"
-  },
-  {
-    title: "Como conseguir o primeiro emprego em TI",
-    desc: "Estratégias práticas de currículo, portfólio e postura em entrevistas para quem busca quebrar a barreira da primeira contratação.",
-    duration: "18 min",
-    category: "Empregabilidade",
-    link: "https://youtu.be/1s8o3lZ6keY?si=LsCpRWdS0lF7aktx",
-    videoId: "1s8o3lZ6keY"
-  },
-  {
-    title: "Como estudar programação do jeito certo",
-    desc: "Fuja da 'paralisia por tutorial'. Aprenda métodos de estudo ativo que realmente fixam o conhecimento técnico e aceleram sua evolução.",
+    title: "Intel 4004: O Microprocessador que Mudou o Mundo",
+    desc: "A fascinante história do primeiro microprocessador comercial. Descubra como um pequeno chip de silício deu início à revolução digital que vivemos hoje.",
     duration: "15 min",
-    category: "Educação",
-    link: "https://youtu.be/gb2btn2skFU?si=_ExgmziDOc6XK_b1",
-    videoId: "gb2btn2skFU"
+    category: "Hardware & História",
+    link: "https://youtu.be/pAN9tLbYNH8",
+    videoId: "pAN9tLbYNH8",
+    featured: false
+  },
+  {
+    title: "QUAL a MELHOR LINGUAGEM para PROGRAMAÇÃO?",
+    desc: "A pergunta de um milhão de dólares. Analisamos o mercado, ecossistemas e tendências para ajudar você a escolher sua próxima stack estratégica.",
+    duration: "14 min",
+    category: "Carreira & Dev",
+    link: "https://youtu.be/zTMvVEBh9mY",
+    videoId: "zTMvVEBh9mY",
+    featured: false
+  },
+  {
+    title: "Como CRIAR UMA INTRANET completa em 20 MINUTOS!",
+    desc: "Mão na massa com HumHub. Aprenda a configurar uma rede social corporativa completa utilizando ferramentas open-source de alto nível.",
+    duration: "21 min",
+    category: "Sistemas & Infra",
+    link: "https://youtu.be/6Q0R9m7o6Kk",
+    videoId: "6Q0R9m7o6Kk",
+    featured: false
+  },
+  {
+    title: "Jobs - filme completo (dublado)",
+    desc: "Jobs- O filme conta a história de Steve Jobs, que criou a Apple começando em uma garagem e uma visão de futuro pra negócios muito aguçada.",
+    duration: "128 min",
+    category: "Cine Biografia",
+    link: "https://youtu.be/O9-0RFvjvzw?si=5PYB1Vv-P9IKkbEY",
+    videoId: "O9-0RFvjvzw",
+    featured: true
+  },
+  {
+    title: "Piratas do Vale do Silício",
+    desc: "O duelo épico entre Jobs e Gates. Entenda como a disputa entre Apple e Microsoft moldou a interface gráfica e o conceito moderno de computador pessoal.",
+    duration: "95 min",
+    category: "História & Cinema",
+    link: "https://www.youtube.com/watch?v=X-XoXp_XwXw",
+    videoId: "X-XoXp_XwXw",
+    featured: true
   }
 ];
 
 const VideosObrigatorios: React.FC = () => {
   return (
-    <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
-      {/* Botão Voltar */}
-      <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest mb-16 transition-all">
-        <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-estacio-navy transition-colors">
-          <ChevronLeft size={14} />
-        </span>
-        Voltar para a Home
-      </a>
+    <div className="container mx-auto px-6 py-12 md:py-20 fade-in bg-slate-50/40">
+      {/* Navegação Superior */}
+      <div className="flex flex-col md:flex-row justify-between items-center mb-20 max-w-6xl mx-auto gap-6">
+        <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest transition-all">
+          <span className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center group-hover:bg-estacio-navy group-hover:text-white group-hover:border-estacio-navy shadow-sm transition-all duration-300">
+            <ChevronLeft size={18} />
+          </span>
+          Voltar para Home
+        </a>
+        <div className="flex items-center gap-3 bg-red-600/10 px-6 py-3 rounded-2xl border border-red-600/20">
+          <Youtube size={18} className="text-red-600 animate-pulse" />
+          <span className="text-[10px] font-black text-red-700 uppercase tracking-[0.2em]">Curadoria Acadêmica</span>
+        </div>
+      </div>
 
       <div className="max-w-6xl mx-auto">
-        {/* Header da Seção */}
-        <header className="mb-20">
-          <div className="flex items-center gap-5 mb-8">
-            <div className="w-14 h-14 bg-red-600 rounded-[1.25rem] flex items-center justify-center text-white shadow-xl shadow-red-600/20 rotate-3 group-hover:rotate-0 transition-transform">
-              <Play size={28} fill="currentColor" />
-            </div>
-            <div>
-              <h2 className="text-4xl md:text-7xl font-black text-estacio-navy italic uppercase tracking-tighter leading-none">
-                Vídeos <span className="text-red-600">Obrigatórios</span>
-              </h2>
-            </div>
+        {/* Header Hero Design */}
+        <header className="mb-24 relative text-center md:text-left">
+          <div className="absolute -top-12 -left-12 w-48 h-48 bg-red-600/5 blur-[80px] rounded-full"></div>
+          <div className="flex items-center gap-6 mb-8 justify-center md:justify-start">
+             <div className="w-2 h-12 bg-red-600 rounded-full"></div>
+             <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter leading-none">
+              Vídeos <span className="text-red-600">Obrigatórios</span>
+            </h2>
           </div>
-          <p className="text-xl text-slate-500 font-medium max-w-3xl leading-relaxed flex items-start gap-4">
-            <Info className="text-red-600 shrink-0 mt-1" size={20} />
-            Utilizamos os títulos oficiais do YouTube para facilitar sua busca. Sinopses curadas pela coordenação para otimizar seu tempo.
+          <p className="text-xl md:text-2xl text-slate-400 font-medium max-w-3xl leading-relaxed mx-auto md:mx-0">
+            Seleção técnica da <span className="text-estacio-navy font-black italic underline decoration-red-600 decoration-4 underline-offset-8">Coordenação de TI</span> para impulsionar sua carreira.
           </p>
         </header>
 
-        {/* Grid de Vídeos */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-24">
+        {/* Cinematic Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-32">
           {RECOMMENDED_VIDEOS.map((video, i) => (
             <a 
               key={i} 
               href={video.link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group bg-white rounded-[4rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all flex flex-col sm:flex-row h-full"
+              className="group relative flex flex-col h-full bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] transition-all duration-500 border border-slate-100"
             >
-              {/* Miniatura do Vídeo */}
-              <div className="sm:w-[45%] aspect-video sm:aspect-auto bg-slate-900 flex items-center justify-center relative overflow-hidden">
+              {/* Image Section */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
                 <img 
                   src={`https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`} 
                   alt={video.title}
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out"
                   onError={(e) => {
-                    // Fallback para hqdefault se maxres não existir
                     (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`;
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
                 
-                {/* Botão de Play Central */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl scale-75 group-hover:scale-100 transition-transform">
-                      <Play size={32} fill="currentColor" />
-                   </div>
+                {/* Visual Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                
+                {/* Floating Tags */}
+                <div className="absolute top-6 left-6 flex flex-col gap-2">
+                    <span className="px-4 py-1.5 bg-white/20 backdrop-blur-xl border border-white/20 rounded-xl text-[8px] font-black uppercase tracking-widest text-white shadow-xl flex items-center gap-2">
+                        {video.featured && <Sparkles size={10} className="text-amber-400" />}
+                        {video.category}
+                    </span>
                 </div>
 
-                {/* Badge de Duração */}
-                <div className="absolute bottom-6 left-6 bg-black/80 backdrop-blur-md px-4 py-2 rounded-2xl flex items-center gap-2 border border-white/10 shadow-xl z-10">
+                {/* Duration Badge */}
+                <div className="absolute bottom-6 left-6 flex items-center gap-3 px-4 py-2 bg-black/40 backdrop-blur-lg border border-white/10 rounded-2xl">
                   <Clock size={12} className="text-red-500" />
-                  <span className="text-[10px] text-white font-black uppercase tracking-widest">{video.duration}</span>
+                  <span className="text-[10px] text-white font-black tracking-widest">{video.duration}</span>
+                </div>
+
+                {/* Animated Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500 shadow-2xl shadow-red-600/40">
+                        <Play size={28} fill="currentColor" className="ml-1" />
+                    </div>
                 </div>
               </div>
 
-              {/* Conteúdo / Sinopse */}
-              <div className="p-10 sm:w-[55%] flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-4">
-                   <span className="w-8 h-[2px] bg-red-600"></span>
-                   <span className="text-[9px] font-black uppercase tracking-widest text-red-600">{video.category}</span>
-                </div>
-                
-                <h4 className="font-black text-estacio-navy italic uppercase text-xl mb-4 leading-[1.1] group-hover:text-red-600 transition-colors">
+              {/* Text Section */}
+              <div className="p-10 flex flex-col flex-grow relative">
+                <h4 className="text-2xl font-black text-estacio-navy italic uppercase tracking-tight mb-4 group-hover:text-red-600 transition-colors duration-300 leading-[1.1]">
                   {video.title}
                 </h4>
                 
-                <p className="text-xs text-slate-500 font-bold leading-relaxed mb-8 italic">
+                <p className="text-sm text-slate-500 font-medium leading-relaxed mb-10 line-clamp-3 italic opacity-80">
                   "{video.desc}"
                 </p>
                 
-                <div className="mt-auto flex items-center gap-3 text-[10px] font-black uppercase text-red-600 tracking-[0.2em] group-hover:gap-5 transition-all">
-                  Assistir no YouTube <ExternalLink size={14} />
+                <div className="mt-auto flex items-center justify-between pt-8 border-t border-slate-50">
+                   <div className="flex items-center gap-3 text-[10px] font-black uppercase text-red-600 tracking-[0.2em] group-hover:gap-5 transition-all">
+                      ASSISTIR AGORA <ExternalLink size={14} />
+                   </div>
                 </div>
               </div>
+
+              {/* Feature Indicator */}
+              {video.featured && (
+                <div className="absolute top-0 right-0 w-2 h-full bg-red-600/20"></div>
+              )}
             </a>
           ))}
         </div>
 
-        {/* Footer de Destaque */}
-        <div className="bg-slate-900 rounded-[5rem] p-12 md:p-20 text-center text-white mb-20 relative overflow-hidden border border-white/5">
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full"></div>
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-estacio-cyan/5 blur-[120px] rounded-full"></div>
+        {/* Info Banner */}
+        <div className="bg-estacio-navy rounded-[4rem] p-12 md:p-24 text-white relative overflow-hidden mb-24 shadow-2xl">
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-red-600/20 to-transparent"></div>
+          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-estacio-cyan/10 blur-[120px] rounded-full"></div>
           
-          <h3 className="text-3xl md:text-4xl font-black italic uppercase mb-6 tracking-tighter relative z-10">
-            Conhecimento que <span className="text-red-600 underline decoration-wavy underline-offset-8">liberta</span>
-          </h3>
-          <p className="text-white/50 font-medium mb-12 max-w-xl mx-auto text-sm leading-relaxed relative z-10">
-            Esta seleção foi feita para que você não perca tempo com conteúdos superficiais. Cada vídeo aqui é uma peça fundamental do seu quebra-cabeça profissional.
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-6 relative z-10">
-             <div className="px-8 py-4 border border-white/10 rounded-3xl bg-white/5 flex items-center gap-3 backdrop-blur-sm">
-                <Youtube size={18} className="text-red-600" />
-                <span className="text-[10px] font-black uppercase tracking-widest">Títulos Oficiais</span>
-             </div>
-             <div className="px-8 py-4 border border-white/10 rounded-3xl bg-white/5 flex items-center gap-3 backdrop-blur-sm">
-                <Play size={18} className="text-red-600" />
-                <span className="text-[10px] font-black uppercase tracking-widest">Acesso Direto</span>
-             </div>
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-2/3">
+                <div className="inline-flex items-center gap-3 mb-8 px-5 py-2 bg-white/10 rounded-full border border-white/10 backdrop-blur-md">
+                    <Info className="text-estacio-cyan" size={18} />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-estacio-cyan">Dica de Estudo</span>
+                </div>
+                <h3 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-8 leading-none">
+                  Filtramos o ruído para <span className="text-red-600">você focar.</span>
+                </h3>
+                <p className="text-xl text-white/50 font-medium leading-relaxed mb-12 max-w-2xl">
+                  O YouTube está cheio de conteúdo. Aqui, selecionamos apenas o que realmente vai moldar seu pensamento crítico como engenheiro.
+                </p>
+            </div>
+            
+            <div className="lg:w-1/3 w-full">
+                <div className="p-10 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[3rem] shadow-inner">
+                    <h5 className="font-black italic uppercase tracking-widest text-lg mb-8 text-estacio-cyan border-b border-white/10 pb-4">Checklist</h5>
+                    <ul className="space-y-6">
+                        {[
+                            "Assista em velocidade 1.25x para otimizar.",
+                            "Tome notas sobre as stacks mencionadas.",
+                            "Analise as decisões de UI/UX apresentadas.",
+                            "Compartilhe insights com sua turma."
+                        ].map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-4 text-sm font-bold text-white/70 italic">
+                                <div className="mt-1.5 w-2 h-2 rounded-full bg-red-600 shrink-0"></div>
+                                <span>{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
           </div>
         </div>
 
-        <CoordinatorWidget tip="Assista aos vídeos de Clean Code e Arquitetura com papel e caneta na mão. Os conceitos apresentados pelo Uncle Bob são a base de qualquer sistema de larga escala." />
+        <CoordinatorWidget tip="A tecnologia muda todo dia, mas a história da inovação se repete. Aprenda com os pioneiros para construir sua própria jornada de sucesso." />
       </div>
     </div>
   );
