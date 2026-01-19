@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 export interface EventItem {
@@ -21,22 +22,31 @@ const Timeline: React.FC<TimelineProps> = ({ events }) => {
         {events.map((event, i) => (
           <div key={i} className={`relative flex flex-col md:flex-row items-center ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
             {/* Dot */}
-            <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-estacio-cyan rounded-full transform -translate-x-1/2 z-10 hidden md:block border-4 border-white"></div>
+            <div className="absolute left-0 md:left-1/2 w-6 h-6 bg-estacio-cyan rounded-full transform -translate-x-1/2 z-10 hidden md:block border-4 border-white shadow-lg"></div>
             
-            {/* Content Card */}
+            {/* Content Card - Always Active */}
             <div className="w-full md:w-5/12 ml-6 md:ml-0">
               <a 
                 href={event.link} 
                 target="_blank"
-                className="block bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
+                className={`block p-8 rounded-[2.5rem] border shadow-2xl -translate-y-1 transition-all relative overflow-hidden ${
+                  event.tba ? 'bg-estacio-amber border-amber-400' : 'bg-estacio-navy border-blue-800'
+                }`}
               >
-                <div className="flex justify-between items-start mb-4">
-                  <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full ${event.tba ? 'bg-amber-100 text-amber-600' : 'bg-blue-100 text-blue-600'}`}>
+                <div className="absolute inset-0 bg-white/10"></div>
+                <div className="relative z-10 flex justify-between items-start mb-4">
+                  <span className={`text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-white shadow-sm ${
+                    event.tba ? 'text-estacio-amber' : 'text-estacio-navy'
+                  }`}>
                     {event.date}
                   </span>
                 </div>
-                <h4 className="font-black text-estacio-navy italic text-xl mb-3 uppercase tracking-tight">{event.name}</h4>
-                <p className="text-xs text-slate-400 font-bold leading-relaxed">{event.desc}</p>
+                <h4 className={`relative z-10 font-black italic text-xl mb-3 uppercase tracking-tight ${
+                   event.tba ? 'text-estacio-navy' : 'text-white'
+                }`}>{event.name}</h4>
+                <p className={`relative z-10 text-[10px] font-bold leading-relaxed opacity-80 ${
+                   event.tba ? 'text-estacio-navy/70' : 'text-white/70'
+                }`}>{event.desc}</p>
               </a>
             </div>
             
