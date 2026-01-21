@@ -131,16 +131,6 @@ const ALL_VIDEOS: RecommendedVideo[] = [
   },
   {
     topic: 'essenciais',
-    title: "Google e o Cérebro do Mundo",
-    desc: "A história do projeto ambicioso do Google de digitalizar todos os livros e os dilemas éticos envolvidos.",
-    duration: "01:30:00",
-    category: "Documentário",
-    link: "https://www.youtube.com/watch?v=v_G60Vl9K-c",
-    videoId: "v_G60Vl9K-c",
-    featured: false
-  },
-  {
-    topic: 'essenciais',
     title: "Deep Web: O documentário",
     desc: "Uma exploração sobre as camadas ocultas da internet, privacidade e segurança digital.",
     duration: "01:30:00",
@@ -157,16 +147,6 @@ const ALL_VIDEOS: RecommendedVideo[] = [
     category: "Segurança",
     link: "https://www.youtube.com/watch?v=oOr0_Y_LU30",
     videoId: "oOr0_Y_LU30",
-    featured: false
-  },
-  {
-    topic: 'essenciais',
-    title: "História do Computador (Kids)",
-    desc: "Uma versão simplificada mas essencial para entender conceitos básicos de hardware e binário.",
-    duration: "00:10:00",
-    category: "Kids / Conceito",
-    link: "https://www.youtube.com/watch?v=xxnHfwfEZ60",
-    videoId: "xxnHfwfEZ60",
     featured: false
   }
 ];
@@ -274,7 +254,7 @@ const VideosObrigatorios: React.FC = () => {
           animation: shimmer 1.5s infinite linear;
         }
         .text-stroke-red {
-          -webkit-text-stroke: 1px #dc2626;
+          -webkit-text-stroke: 1px #FF0033;
         }
       `}</style>
 
@@ -286,24 +266,20 @@ const VideosObrigatorios: React.FC = () => {
           </span>
           Voltar ao Mural
         </a>
-        <div className="flex items-center gap-4 bg-red-600/5 px-8 py-4 rounded-[2rem] border border-red-600/10 shadow-sm">
-          <Globe size={20} className="text-red-600 animate-pulse" />
-          <span className="text-[11px] font-black text-red-700 uppercase tracking-[0.2em]">Curadoria Validada • PT-BR</span>
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <header className="mb-24 md:mb-32 relative text-center md:text-left">
-          <div className="inline-flex items-center gap-3 bg-red-600 text-white px-5 py-2 rounded-full mb-8 font-black text-[9px] uppercase tracking-[0.3em] shadow-lg shadow-red-600/20">
+          <div className="inline-flex items-center gap-3 bg-brand-red text-white px-5 py-2 rounded-full mb-8 font-black text-[9px] uppercase tracking-[0.3em] shadow-lg shadow-brand-red/20">
             <Play size={12} fill="currentColor" /> Audiovisual Fundamental
           </div>
           <h2 className="text-6xl md:text-9xl font-black text-estacio-navy italic uppercase tracking-tighter leading-[0.85] mb-12">
-            Vídeos <span className="text-red-600 text-stroke-red text-transparent">Essenciais</span>
+            Vídeos <span className="text-brand-red text-stroke-red text-transparent">Essenciais</span>
           </h2>
           <div className="max-w-4xl p-10 md:p-14 bg-white border border-slate-100 rounded-[3.5rem] shadow-2xl shadow-slate-200/50 relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/5 rounded-bl-[4rem]"></div>
-             <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed italic border-l-8 border-red-600 pl-8">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-red/5 rounded-bl-[4rem]"></div>
+             <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed italic border-l-8 border-brand-red pl-8">
               Para um aluno de TI, entender a história e os fundamentos da tecnologia é tão importante quanto aprender a programar. temos uma lista com vídeos essenciais (documentários, filmes e aulas) dublados ou em português do Brasil:
              </p>
           </div>
@@ -329,13 +305,14 @@ const VideosObrigatorios: React.FC = () => {
                   {/* Overlays */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700"></div>
                   
-                  {/* Category & Badge */}
-                  <div className="absolute top-6 left-6 flex items-center gap-2 z-20">
-                      <span className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-[1.25rem] text-[9px] font-black uppercase tracking-widest text-white shadow-2xl flex items-center gap-3">
-                          {video.featured && <Sparkles size={14} className="text-amber-400 animate-pulse" />}
-                          {video.category}
-                      </span>
-                  </div>
+                  {/* Featured Icon Only */}
+                  {video.featured && (
+                    <div className="absolute top-6 left-6 flex items-center gap-2 z-20">
+                      <div className="w-10 h-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl flex items-center justify-center text-white shadow-2xl">
+                          <Sparkles size={18} className="text-amber-400 animate-pulse" />
+                      </div>
+                    </div>
+                  )}
 
                   {/* Offline Action */}
                   <button 
@@ -344,7 +321,7 @@ const VideosObrigatorios: React.FC = () => {
                     className={`absolute top-6 right-6 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 z-20 ${
                       isDownloading 
                       ? 'bg-amber-500 text-white shadow-lg' 
-                      : 'bg-white/10 backdrop-blur-xl text-white hover:bg-white hover:text-red-600 border border-white/20 shadow-2xl'
+                      : 'bg-white/10 backdrop-blur-xl text-white hover:bg-white hover:text-brand-red border border-white/20 shadow-2xl'
                     }`}
                     title="Salvar em cache para offline"
                   >
@@ -353,21 +330,21 @@ const VideosObrigatorios: React.FC = () => {
 
                   {/* Play Button Center (Visible on Hover) */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                      <div className="w-24 h-24 bg-red-600 text-white rounded-full flex items-center justify-center scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700 shadow-[0_0_50px_rgba(220,38,38,0.5)]">
+                      <div className="w-24 h-24 bg-brand-red text-white rounded-full flex items-center justify-center scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700 shadow-[0_0_50px_rgba(255,0,51,0.5)]">
                           <Play size={40} fill="currentColor" className="ml-2" />
                       </div>
                   </div>
 
                   {/* Duration Badge */}
                   <div className="absolute bottom-6 left-6 flex items-center gap-3 px-5 py-2.5 bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl z-20">
-                    <Clock size={14} className="text-red-500" />
+                    <Clock size={14} className="text-brand-red" />
                     <span className="text-[11px] text-white font-black tracking-widest">{video.duration}</span>
                   </div>
                 </div>
 
                 {/* Content Layer */}
                 <div className="p-10 md:p-12 flex flex-col flex-grow bg-white group-hover:bg-slate-50 transition-colors duration-700">
-                  <h4 className="text-2xl font-black text-estacio-navy italic uppercase tracking-tighter mb-4 leading-[1.1] group-hover:text-red-600 transition-colors duration-500">
+                  <h4 className="text-2xl font-black text-estacio-navy italic uppercase tracking-tighter mb-4 leading-[1.1] group-hover:text-brand-red transition-colors duration-500">
                     {video.title}
                   </h4>
                   <p className="text-sm text-slate-400 font-bold leading-relaxed mb-10 line-clamp-3 italic opacity-80 group-hover:text-slate-600 transition-colors">
@@ -376,11 +353,8 @@ const VideosObrigatorios: React.FC = () => {
                   
                   {/* CTA Footer */}
                   <div className="mt-auto pt-8 border-t border-slate-100 flex items-center justify-between">
-                    <div className="flex items-center gap-4 text-[10px] font-black uppercase text-red-600 tracking-[0.25em] group-hover:gap-6 transition-all duration-500">
+                    <div className="flex items-center gap-4 text-[10px] font-black uppercase text-brand-red tracking-[0.25em] group-hover:gap-6 transition-all duration-500">
                         ABRIR NO YOUTUBE <Play size={16} fill="currentColor" />
-                    </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        <ExternalLink size={18} className="text-slate-300" />
                     </div>
                   </div>
                 </div>
@@ -392,18 +366,18 @@ const VideosObrigatorios: React.FC = () => {
         {/* Closing Highlight Section */}
         <section className="bg-estacio-navy p-12 md:p-24 rounded-[4rem] text-white shadow-2xl mb-32 relative overflow-hidden group">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full group-hover:bg-red-600/20 transition-all duration-1000"></div>
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-red/10 blur-[120px] rounded-full group-hover:bg-brand-red/20 transition-all duration-1000"></div>
           
           <div className="relative z-10 max-w-5xl">
             <div className="flex items-center gap-6 mb-12">
-               <div className="w-16 h-16 bg-red-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-red-600/40 rotate-[10deg] group-hover:rotate-0 transition-transform duration-700">
+               <div className="w-16 h-16 bg-brand-red rounded-3xl flex items-center justify-center shadow-2xl shadow-brand-red/40 rotate-[10deg] group-hover:rotate-0 transition-transform duration-700">
                   <CheckCircle2 size={36} />
                </div>
-               <h3 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none">Visão de Mercado <br/> & <span className="text-red-600">Fundamentos</span></h3>
+               <h3 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none">Visão de Mercado <br/> & <span className="text-brand-red">Fundamentos</span></h3>
             </div>
             
             <div className="space-y-12">
-              <p className="text-xl md:text-2xl text-white/70 font-medium leading-relaxed italic border-l-4 border-red-600/40 pl-10">
+              <p className="text-xl md:text-2xl text-white/70 font-medium leading-relaxed italic border-l-4 border-brand-red pl-10">
                 Este conteúdo ajudará a formar uma base sólida tanto em hardware e software quanto em visão de mercado.
               </p>
               
@@ -413,7 +387,7 @@ const VideosObrigatorios: React.FC = () => {
                 rel="noopener noreferrer" 
                 className="group/link inline-flex flex-col md:flex-row md:items-center gap-6 bg-white/5 border border-white/10 p-10 rounded-[3rem] hover:bg-white hover:text-estacio-navy transition-all duration-700 shadow-xl"
               >
-                <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl shrink-0 group-hover/link:scale-110 transition-transform">
+                <div className="w-20 h-20 bg-brand-red rounded-full flex items-center justify-center text-white shadow-2xl shrink-0 group-hover/link:scale-110 transition-transform">
                    <Film size={32} />
                 </div>
                 <div>

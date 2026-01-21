@@ -21,6 +21,7 @@ const Home: React.FC = () => {
     'group-hover:border-indigo-500': { bg: 'bg-indigo-600', text: 'text-white', icon: 'text-indigo-600', border: 'border-indigo-400/30' },
     'group-hover:border-teal-500': { bg: 'bg-teal-600', text: 'text-white', icon: 'text-teal-600', border: 'border-teal-400/30' },
     'group-hover:border-estacio-navy': { bg: 'bg-estacio-navy', text: 'text-white', icon: 'text-estacio-navy', border: 'border-white/10' },
+    'group-hover:border-red-500': { bg: 'bg-brand-red', text: 'text-white', icon: 'text-brand-red', border: 'border-brand-red/30' },
   };
 
   return (
