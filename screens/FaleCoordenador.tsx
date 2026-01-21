@@ -55,36 +55,63 @@ const FaleCoordenador: React.FC = () => {
             </div>
           </div>
 
-          {/* Atendimento - Direita */}
-          <div className="lg:w-3/5 p-12 md:p-20 bg-white">
-            <section>
-              <div className="flex items-center gap-4 mb-12">
-                <div className="w-1.5 h-10 bg-estacio-cyan rounded-full"></div>
-                <h3 className="text-3xl font-black text-estacio-navy italic uppercase tracking-tight">Atendimento</h3>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="p-10 bg-estacio-navy rounded-[3.5rem] shadow-2xl border border-white/10 text-white relative overflow-hidden">
-                  <div className="absolute inset-0 bg-white/5"></div>
-                  <h4 className="relative z-10 font-black text-estacio-cyan uppercase text-[11px] tracking-widest mb-6 flex items-center gap-3">
-                    <MapPin size={16} /> TOM JOBIM - BARRA
+          {/* Atendimento - Direita (VISUAL REFINADO) */}
+          <div className="lg:w-3/5 p-8 md:p-14 bg-gray-50/30 flex items-center justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+              
+              {/* Card Tom Jobim */}
+              <div className="bg-[#003399] p-10 rounded-[4rem] shadow-xl text-white flex flex-col gap-8 relative overflow-hidden">
+                <div className="flex gap-4 items-center">
+                  <MapPin size={18} className="text-[#00BFFF] shrink-0" />
+                  <h4 className="font-bold text-[#00BFFF] uppercase text-[13px] tracking-[0.05em] italic whitespace-nowrap">
+                    TOM JOBIM - BARRA
                   </h4>
-                  <div className="relative z-10 space-y-4 text-sm font-bold opacity-90">
-                    <div className="flex items-center gap-3"><Clock size={16} className="text-estacio-cyan" /> <span>Presencial: Quarta, 09h às 19h</span></div>
-                    <div className="flex items-center gap-3"><Monitor size={16} className="text-estacio-cyan" /> <span>Remoto: Sexta, 09h às 12h</span></div>
+                </div>
+                
+                <div className="space-y-5">
+                  <div className="flex gap-4 items-center">
+                    <Clock size={18} className="text-[#00BFFF] shrink-0" />
+                    <p className="text-[12px] font-normal leading-tight">
+                      Presencial: <span className="block opacity-80 mt-1 italic text-[11px]">Quarta, 09h às 19h</span>
+                    </p>
+                  </div>
+                  
+                  <div className="flex gap-4 items-center">
+                    <Monitor size={18} className="text-[#00BFFF] shrink-0" />
+                    <p className="text-[12px] font-normal leading-tight">
+                      Remoto: <span className="block opacity-80 mt-1 italic text-[11px]">Sexta, 09h às 12h</span>
+                    </p>
                   </div>
                 </div>
-                <div className="p-10 bg-estacio-amber rounded-[3.5rem] shadow-2xl border border-white/10 text-estacio-navy relative overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10"></div>
-                  <h4 className="relative z-10 font-black text-estacio-navy uppercase text-[11px] tracking-widest mb-6 flex items-center gap-3">
-                    <MapPin size={16} /> R9 - TAQUARA
+              </div>
+
+              {/* Card R9 */}
+              <div className="bg-[#FFBF00] p-10 rounded-[4rem] shadow-xl text-[#003399] flex flex-col gap-8 relative overflow-hidden">
+                <div className="flex gap-4 items-center">
+                  <MapPin size={18} className="text-[#003399] shrink-0" />
+                  <h4 className="font-bold text-[#003399] uppercase text-[13px] tracking-[0.05em] italic whitespace-nowrap">
+                    R9 - TAQUARA
                   </h4>
-                  <div className="relative z-10 space-y-4 text-sm font-bold opacity-90">
-                    <div className="flex items-center gap-3"><Clock size={16} /> <span>Presencial: Quinta, 09h às 19h</span></div>
-                    <div className="flex items-center gap-3"><Monitor size={16} /> <span>Remoto: Sexta, 13h às 16h</span></div>
+                </div>
+                
+                <div className="space-y-5">
+                  <div className="flex gap-4 items-center">
+                    <Clock size={18} className="text-[#003399] shrink-0" />
+                    <p className="text-[12px] font-normal leading-tight text-[#003399]">
+                      Presencial: <span className="block opacity-80 mt-1 italic text-[11px]">Quinta, 09h às 19h</span>
+                    </p>
+                  </div>
+                  
+                  <div className="flex gap-4 items-center">
+                    <Monitor size={18} className="text-[#003399] shrink-0" />
+                    <p className="text-[12px] font-normal leading-tight text-[#003399]">
+                      Remoto: <span className="block opacity-80 mt-1 italic text-[11px]">Sexta, 13h às 16h</span>
+                    </p>
                   </div>
                 </div>
               </div>
-            </section>
+
+            </div>
           </div>
         </div>
 
