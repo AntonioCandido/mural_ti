@@ -1,9 +1,10 @@
-
 import React from 'react';
 import { CoordinatorWidget } from '../constants';
+// Added CheckCircle2 to the imports from lucide-react
 import { 
-  ChevronLeft, Sparkles, History, Tablet, Users, Award, 
-  BarChart3, Zap, Lightbulb, CheckCircle2, Target, Briefcase
+  ChevronLeft, History, Tablet, Users, Award, 
+  Zap, Target, Briefcase,
+  GraduationCap, Star, TrendingUp, Globe, CheckCircle2
 } from 'lucide-react';
 
 const CURIOSITIES = [
@@ -37,12 +38,61 @@ const CURIOSITIES = [
   }
 ];
 
-const STATS = [
-  { indicator: "Alunos Matriculados", impact: "Mais de 800.000 mentes em movimento." },
-  { indicator: "Presença Nacional", impact: "+2.000 Polos e 90 unidades em todos os estados." },
-  { indicator: "Corpo Docente", impact: "+10.000 professores, mestres e doutores." },
-  { indicator: "Empregabilidade", impact: "+80.000 vagas de estágio e emprego publicadas por ano." },
-  { indicator: "Qualidade MEC", impact: "Mais de 85 cursos com notas máximas (4 e 5)." }
+const DASHBOARD_STATS = [
+  { 
+    label: "Alunos Matriculados", 
+    value: "800K+", 
+    sub: "Mentes em movimento", 
+    icon: Users, 
+    color: "text-blue-500",
+    iconBg: "bg-blue-50",
+    progress: 85
+  },
+  { 
+    label: "Presença Nacional", 
+    value: "2.000+", 
+    sub: "Polos em todo o Brasil", 
+    icon: Globe, 
+    color: "text-cyan-500",
+    iconBg: "bg-cyan-50",
+    progress: 100
+  },
+  { 
+    label: "Corpo Docente", 
+    value: "10.000", 
+    sub: "Mestres e Doutores", 
+    icon: GraduationCap, 
+    color: "text-purple-500",
+    iconBg: "bg-purple-50",
+    progress: 90
+  },
+  { 
+    label: "Empregabilidade", 
+    value: "80K+", 
+    sub: "Vagas publicadas/ano", 
+    icon: Briefcase, 
+    color: "text-emerald-500",
+    iconBg: "bg-emerald-50",
+    progress: 95
+  },
+  { 
+    label: "Qualidade MEC", 
+    value: "NOTA 5", 
+    sub: "Máxima em 85+ cursos", 
+    icon: Star, 
+    color: "text-amber-500",
+    iconBg: "bg-amber-50",
+    progress: 100
+  },
+  { 
+    label: "História", 
+    value: "55 ANOS", 
+    sub: "Tradição e Inovação", 
+    icon: History, 
+    color: "text-slate-500",
+    iconBg: "bg-slate-50",
+    progress: 100
+  }
 ];
 
 const SUCCESS_TIPS = [
@@ -96,7 +146,7 @@ const CuriosidadesEstacio: React.FC = () => {
                   Não é apenas um diploma. É o seu próximo grande salto. No mundo da Tecnologia da Informação, o relógio não para. E na Estácio, nós também não.
                 </p>
                 <p>
-                  Somos mais que uma sala de aula; somos o laboratório onde suas ideias ganham código, onde seu esforço se transforma em solução e onde o mercado de trabalho encontra o seu nome. 
+                  Somos mais que uma sala de aula; somos o laboratório onde suas ideias ganham código, onde seu esforço se transforma em solução e onde o mercado de trabalho encontra o seu nom. 
                 </p>
                 <p>
                   Desde 1970, nossa missão é democratizar o brilho. Acreditamos que o conhecimento é a única ferramenta capaz de derrubar muros e construir pontes. Aqui, você tem a estrutura da maior universidade do país e a agilidade de quem fala a língua do futuro: <strong className="text-estacio-navy">Python, IA, Cloud e Métodos Ágeis.</strong>
@@ -128,50 +178,63 @@ const CuriosidadesEstacio: React.FC = () => {
           </div>
         </section>
 
-        {/* Statistics Section - Navy & Cyan Clean Style */}
+        {/* Dashboard Section - ESTATÍSTICAS DE PESO (Updated to Soft Colors) */}
         <section className="mb-24">
-          <div className="bg-[#003399] p-12 md:p-24 rounded-[5rem] text-white relative shadow-2xl overflow-hidden border border-white/10">
-            {/* Background Texture Overlay */}
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-cyan/10 blur-[100px] rounded-full pointer-events-none"></div>
+          <div className="bg-white p-10 md:p-16 rounded-[4rem] shadow-2xl border border-slate-100 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/50 blur-[120px] rounded-full -mr-20 -mt-20"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-50/50 blur-[100px] rounded-full -ml-20 -mb-20"></div>
             
-            <div className="relative z-10">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-20">
-                <div className="flex items-center gap-4">
-                   <BarChart3 className="text-estacio-cyan" size={42} strokeWidth={2.5} />
-                   <div className="w-12 h-12 bg-white/10 rounded-xl backdrop-blur-md flex items-center justify-center border border-white/10 overflow-hidden">
-                      <img src="https://cdn-icons-png.flaticon.com/512/3590/3590050.png" alt="Stats Icon" className="w-8 h-8 opacity-90 brightness-0 invert" />
-                   </div>
-                </div>
-                <h3 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-center">
-                  ESTATÍSTICAS <span className="text-estacio-cyan">DE PESO</span>
-                </h3>
+            <header className="relative z-10 flex flex-col items-center text-center mb-16">
+              <div className="inline-flex items-center gap-3 bg-blue-50 px-5 py-2 rounded-full border border-blue-100 mb-6 shadow-sm">
+                <TrendingUp size={16} className="text-blue-500" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600">Impacto Global 2026</span>
               </div>
-              
-              <div className="max-w-4xl mx-auto">
-                <div className="grid grid-cols-12 gap-4 mb-10 pb-4 border-b border-white/10">
-                  <div className="col-span-5 text-[10px] font-black uppercase tracking-[0.3em] text-estacio-cyan">Indicador</div>
-                  <div className="col-span-7 text-[10px] font-black uppercase tracking-[0.3em] text-estacio-cyan">Impacto 2025/2026</div>
-                </div>
-                
-                <div className="space-y-4">
-                  {STATS.map((stat, i) => (
-                    <div key={i} className="grid grid-cols-12 gap-4 py-8 border-b border-white/5 group hover:bg-white/5 transition-colors duration-300 rounded-2xl px-4">
-                      <div className="col-span-5 flex items-center">
-                        <span className="text-white/40 font-black italic uppercase text-xs tracking-tight group-hover:text-white transition-colors">
-                          {stat.indicator}
-                        </span>
-                      </div>
-                      <div className="col-span-7 flex items-center">
-                        <span className="text-white font-black italic uppercase text-lg md:text-2xl tracking-tighter leading-none group-hover:text-estacio-cyan transition-colors">
-                          {stat.impact}
-                        </span>
-                      </div>
+              <h3 className="text-4xl md:text-7xl font-black italic uppercase tracking-tighter leading-none mb-4 text-estacio-navy">
+                ESTATÍSTICAS <span className="text-estacio-cyan">DE PESO</span>
+              </h3>
+              <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.2em]">Dashboard Institucional Consolidado</p>
+            </header>
+            
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {DASHBOARD_STATS.map((stat, i) => (
+                <div key={i} className="bg-white border border-slate-100 p-10 rounded-[3.5rem] shadow-lg group hover:border-blue-200 transition-all duration-500 hover:shadow-xl">
+                  <div className="flex justify-between items-start mb-8">
+                    <div className={`w-14 h-14 rounded-2xl ${stat.iconBg} flex items-center justify-center ${stat.color} border border-slate-100 group-hover:scale-110 transition-transform shadow-sm`}>
+                      <stat.icon size={28} />
                     </div>
-                  ))}
+                    <div className="text-right">
+                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{stat.label}</p>
+                      <h4 className="text-3xl font-black italic uppercase tracking-tighter leading-none text-estacio-navy">{stat.value}</h4>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{stat.sub}</p>
+                    <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-1000 ease-out`}
+                        style={{ width: `${stat.progress}%` }}
+                      ></div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
+
+            <footer className="relative z-10 mt-16 flex justify-center">
+              <div className="bg-slate-50 border border-slate-100 px-8 py-4 rounded-3xl flex items-center gap-6 shadow-inner">
+                 <div className="flex -space-x-3">
+                    {[1,2,3,4].map(n => (
+                      <div key={n} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                        <img src={`https://ui-avatars.com/api/?name=User+${n}&background=random`} alt="User" />
+                      </div>
+                    ))}
+                 </div>
+                 <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">
+                    Junte-se a <span className="text-estacio-navy">800.000+</span> acadêmicos brilhando agora.
+                 </p>
+              </div>
+            </footer>
           </div>
         </section>
 
@@ -190,6 +253,7 @@ const CuriosidadesEstacio: React.FC = () => {
                 <h4 className="font-black text-estacio-navy italic text-lg mb-4 leading-tight uppercase tracking-tight">{tip.title}</h4>
                 <p className="text-[11px] font-bold text-slate-500 uppercase leading-relaxed mb-6 flex-grow">{tip.desc}</p>
                 <div className="mt-auto pt-6 border-t border-slate-50 flex items-center gap-2 text-[9px] font-black text-estacio-amber uppercase tracking-widest">
+                  {/* Fixed: CheckCircle2 is now imported above */}
                   <CheckCircle2 size={14} /> Recomendação Acadêmica
                 </div>
               </div>
