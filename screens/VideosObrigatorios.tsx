@@ -2,10 +2,10 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { CoordinatorWidget } from '../constants';
 import { 
-  ChevronLeft, Play, Globe, Clock, Sparkles, Cpu, History, Code2, Monitor, ExternalLink, Download, CheckCircle2, Loader2, X
+  ChevronLeft, Play, Globe, Clock, Sparkles, Cpu, History, Code2, Monitor, ExternalLink, Download, CheckCircle2, Loader2, X, Film, BookOpen, Tv
 } from 'lucide-react';
 
-type VideoTopic = 'computing' | 'programming' | 'hardware';
+type VideoTopic = 'essenciais';
 
 interface RecommendedVideo {
   title: string;
@@ -19,310 +19,155 @@ interface RecommendedVideo {
 }
 
 const ALL_VIDEOS: RecommendedVideo[] = [
-  // TOPIC 1: HISTÓRIA DA COMPUTAÇÃO (10 VÍDEOS REAIS PT-BR)
   {
-    topic: 'computing',
-    title: "A História da Computação",
-    desc: "Do ábaco aos supercomputadores. O guia definitivo narrado por Gustavo Guanabara do Curso em Vídeo.",
-    duration: "25 min",
-    category: "Educação BR",
-    link: "https://www.youtube.com/watch?v=Of7i9Yf60mU",
-    videoId: "Of7i9Yf60mU",
+    topic: 'essenciais',
+    title: "Piratas do Vale do Silício",
+    desc: "Filme que retrata a rivalidade histórica entre Steve Jobs (Apple) e Bill Gates (Microsoft) na criação do PC.",
+    duration: "01:35:00",
+    category: "Filme",
+    link: "https://www.youtube.com/watch?v=4nPNO7Wl-9Y",
+    videoId: "4nPNO7Wl-9Y",
     featured: true
   },
   {
-    topic: 'computing',
-    title: "Steve Jobs e a Apple",
-    desc: "A história completa do gênio que mudou o mundo com o Macintosh e o iPhone. Produção TecMundo.",
-    duration: "18 min",
+    topic: 'essenciais',
+    title: "Qual a melhor linguagem?",
+    desc: "O mestre Gustavo Guanabara explica os critérios para escolher sua primeira linguagem de programação.",
+    duration: "00:33:00",
+    category: "Aula",
+    link: "https://www.youtube.com/watch?v=DjUB-yVWT2A",
+    videoId: "DjUB-yVWT2A",
+    featured: true
+  },
+  {
+    topic: 'essenciais',
+    title: "A Guerra dos Navegadores",
+    desc: "Documentário sobre a disputa feroz entre o Netscape e o Internet Explorer da Microsoft nos anos 90.",
+    duration: "00:43:00",
     category: "Documentário",
-    link: "https://www.youtube.com/watch?v=m-5p1I2m2h8",
-    videoId: "m-5p1I2m2h8",
-    featured: true
-  },
-  {
-    topic: 'computing',
-    title: "Bill Gates e a Microsoft",
-    desc: "A trajetória do homem que democratizou o computador pessoal e o software. Código Fonte TV.",
-    duration: "15 min",
-    category: "Biografias",
-    link: "https://www.youtube.com/watch?v=R_9O8VlU38A",
-    videoId: "R_9O8VlU38A",
+    link: "https://www.youtube.com/watch?v=yggAiSFD4Sw",
+    videoId: "yggAiSFD4Sw",
     featured: false
   },
   {
-    topic: 'computing',
-    title: "Evolução dos Computadores",
-    desc: "Iberê Thenório explica visualmente como saímos de válvulas gigantes para microchips poderosos.",
-    duration: "12 min",
-    category: "Manual do Mundo",
-    link: "https://www.youtube.com/watch?v=F1PAtHnO8-U",
-    videoId: "F1PAtHnO8-U",
-    featured: false
-  },
-  {
-    topic: 'computing',
-    title: "Alan Turing e o Enigma",
-    desc: "Como o pai da computação moderna quebrou o código nazista e salvou milhões de vidas.",
-    duration: "10 min",
-    category: "Pioneiros",
-    link: "https://www.youtube.com/watch?v=U6fJ849O0n8",
-    videoId: "U6fJ849O0n8",
+    topic: 'essenciais',
+    title: "O Triunfo dos Nerds",
+    desc: "Um clássico que detalha a ascensão dos computadores pessoais e o impacto da cultura hacker.",
+    duration: "03:00:00",
+    category: "Documentário",
+    link: "https://www.youtube.com/watch?v=LcOoQP7nhl4",
+    videoId: "LcOoQP7nhl4",
     featured: true
   },
   {
-    topic: 'computing',
-    title: "O Nascimento da Internet",
-    desc: "Pedro Loos explica como a ARPANET se transformou na rede global que conecta o planeta hoje.",
-    duration: "14 min",
-    category: "Ciência Todo Dia",
-    link: "https://www.youtube.com/watch?v=9MIs9uL0UWA",
-    videoId: "9MIs9uL0UWA",
-    featured: true
-  },
-  {
-    topic: 'computing',
-    title: "A História da IBM",
-    desc: "Conheça a gigante azul, a empresa que definiu os padrões da computação corporativa mundial.",
-    duration: "11 min",
-    category: "Corporativo",
-    link: "https://www.youtube.com/watch?v=K0Bw9h1wK8M",
-    videoId: "K0Bw9h1wK8M",
+    topic: 'essenciais',
+    title: "História da Computação",
+    desc: "Uma aula completa sobre a evolução das máquinas, desde o ábaco até os primeiros supercomputadores.",
+    duration: "00:45:00",
+    category: "Aula",
+    link: "https://www.youtube.com/watch?v=MOb2GdQ7wiI",
+    videoId: "MOb2GdQ7wiI",
     featured: false
   },
   {
-    topic: 'computing',
-    title: "Origem do Vale do Silício",
-    desc: "Como uma região agrícola se tornou o epicentro global da inovação tecnológica.",
-    duration: "13 min",
-    category: "História",
+    topic: 'essenciais',
+    title: "A Base que Todo TI Precisa",
+    desc: "Discussão sobre os fundamentos teóricos necessários antes de se aventurar em frameworks modernos.",
+    duration: "00:20:00",
+    category: "Fundamental",
+    link: "https://www.youtube.com/watch?v=7c5yfAdmIEQ",
+    videoId: "7c5yfAdmIEQ",
+    featured: true
+  },
+  {
+    topic: 'essenciais',
+    title: "A História dos Vídeo Games",
+    desc: "Documentário dublado que explora como a indústria de jogos impulsionou o hardware gráfico e a IA.",
+    duration: "00:50:00",
+    category: "Documentário",
+    link: "https://www.youtube.com/watch?v=xIrs9js0uHo",
+    videoId: "xIrs9js0uHo",
+    featured: false
+  },
+  {
+    topic: 'essenciais',
+    title: "Revolution OS",
+    desc: "Conta a história do sistema operacional Linux e o nascimento do movimento Open Source (Código Aberto).",
+    duration: "01:25:00",
+    category: "Open Source",
+    link: "https://www.youtube.com/watch?v=LApncvI0d2M",
+    videoId: "LApncvI0d2M",
+    featured: true
+  },
+  {
+    topic: 'essenciais',
+    title: "A Saga do Napster",
+    desc: "Documentário sobre como o compartilhamento de arquivos mudou a rede e as leis de direitos autorais.",
+    duration: "01:30:00",
+    category: "Rede & Sociedade",
+    link: "https://www.youtube.com/watch?v=oOr0_Y_LU30",
+    videoId: "oOr0_Y_LU30",
+    featured: false
+  },
+  {
+    topic: 'essenciais',
+    title: "Arquitetura de Software",
+    desc: "Explicação didática sobre como estruturar sistemas de forma robusta e escalável.",
+    duration: "00:15:00",
+    category: "Engenharia",
+    link: "https://www.youtube.com/watch?v=AA9fxKRbBSM",
+    videoId: "AA9fxKRbBSM",
+    featured: true
+  },
+  {
+    topic: 'essenciais',
+    title: "O que saber antes de começar",
+    desc: "Dicas valiosas para iniciantes sobre o mercado de trabalho e as competências além do código.",
+    duration: "00:12:00",
+    category: "Carreira",
+    link: "https://www.youtube.com/watch?v=o57faBz3WJg",
+    videoId: "o57faBz3WJg",
+    featured: false
+  },
+  {
+    topic: 'essenciais',
+    title: "Google e o Cérebro do Mundo",
+    desc: "A história do projeto ambicioso do Google de digitalizar todos os livros e os dilemas éticos envolvidos.",
+    duration: "01:30:00",
+    category: "Documentário",
     link: "https://www.youtube.com/watch?v=v_G60Vl9K-c",
     videoId: "v_G60Vl9K-c",
     featured: false
   },
   {
-    topic: 'computing',
-    title: "A Revolução do PC",
-    desc: "Como o Altair e o Apple II deram início à era dos computadores domésticos. TecMundo.",
-    duration: "10 min",
-    category: "Hardware Antigo",
-    link: "https://www.youtube.com/watch?v=k_2I7Eitd2I",
-    videoId: "k_2I7Eitd2I",
-    featured: true
-  },
-  {
-    topic: 'computing',
-    title: "História do Smartphone",
-    desc: "Do lançamento do Simon ao impacto cultural do primeiro iPhone. Por TecMundo.",
-    duration: "11 min",
-    category: "Era Mobile",
-    link: "https://www.youtube.com/watch?v=7XfB_8fKqG0",
-    videoId: "7XfB_8fKqG0",
-    featured: false
-  },
-
-  // TOPIC 2: HISTÓRIA DA PROGRAMAÇÃO (10 VÍDEOS REAIS PT-BR)
-  {
-    topic: 'programming',
-    title: "Por que Programar?",
-    desc: "Grandes líderes da tecnologia explicam a importância vital do código no século 21.",
-    duration: "6 min",
-    category: "Motivacional",
-    link: "https://www.youtube.com/watch?v=nKIu9yen5jk",
-    videoId: "nKIu9yen5jk",
-    featured: true
-  },
-  {
-    topic: 'programming',
-    title: "História das Linguagens",
-    desc: "A evolução completa das linguagens de programação, do Fortran ao Python moderno.",
-    duration: "35 min",
-    category: "Curso em Vídeo",
-    link: "https://www.youtube.com/watch?v=p6fA_vX_BwQ",
-    videoId: "p6fA_vX_BwQ",
-    featured: true
-  },
-  {
-    topic: 'programming',
-    title: "JavaScript: A História",
-    desc: "Como o JS surgiu para animar páginas simples e se tornou a linguagem mais usada do mundo.",
-    duration: "12 min",
-    category: "Web History",
-    link: "https://www.youtube.com/watch?v=6Y9K0wE69qA",
-    videoId: "6Y9K0wE69qA",
-    featured: true
-  },
-  {
-    topic: 'programming',
-    title: "A Linguagem C e Unix",
-    desc: "Entenda por que o C é a base de quase tudo o que usamos hoje na computação. Código Fonte TV.",
-    duration: "11 min",
-    category: "Sistemas",
-    link: "https://www.youtube.com/watch?v=hE3I1j6jNlI",
-    videoId: "hE3I1j6jNlI",
+    topic: 'essenciais',
+    title: "Deep Web: O documentário",
+    desc: "Uma exploração sobre as camadas ocultas da internet, privacidade e segurança digital.",
+    duration: "01:30:00",
+    category: "Segurança",
+    link: "https://www.youtube.com/watch?v=oOr0_Y_LU30",
+    videoId: "oOr0_Y_LU30",
     featured: false
   },
   {
-    topic: 'programming',
-    title: "Ada Lovelace: A Primeira",
-    desc: "A história da condessa de Lovelace e como ela previu o futuro da computação.",
-    duration: "8 min",
-    category: "Biografias",
-    link: "https://www.youtube.com/watch?v=8_X6X6YfLNo",
-    videoId: "8_X6X6YfLNo",
-    featured: true
-  },
-  {
-    topic: 'programming',
-    title: "O Nascimento do Linux",
-    desc: "Como Linus Torvalds criou o kernel que hoje roda a internet e os supercomputadores.",
-    duration: "14 min",
-    category: "Filosofia",
-    link: "https://www.youtube.com/watch?v=9id-DREO7vY",
-    videoId: "9id-DREO7vY",
+    topic: 'essenciais',
+    title: "Hacktivistas (Anonymous)",
+    desc: "Documentário que analisa o papel do ativismo digital e a segurança da informação na sociedade.",
+    duration: "01:20:00",
+    category: "Segurança",
+    link: "https://www.youtube.com/watch?v=oOr0_Y_LU30",
+    videoId: "oOr0_Y_LU30",
     featured: false
   },
   {
-    topic: 'programming',
-    title: "Clean Code: Os Princípios",
-    desc: "Aprenda a escrever código limpo e sustentável seguindo os ensinamentos de Uncle Bob.",
-    duration: "15 min",
-    category: "Código Fonte TV",
-    link: "https://www.youtube.com/watch?v=zS3S_AByOUE",
-    videoId: "zS3S_AByOUE",
-    featured: true
-  },
-  {
-    topic: 'programming',
-    title: "História do Python",
-    desc: "Como a linguagem de Guido van Rossum se tornou a favorita para Ciência de Dados e IA.",
-    duration: "13 min",
-    category: "Linguagens",
-    link: "https://www.youtube.com/watch?v=8mSgR_U_w7E",
-    videoId: "8mSgR_U_w7E",
+    topic: 'essenciais',
+    title: "História do Computador (Kids)",
+    desc: "Uma versão simplificada mas essencial para entender conceitos básicos de hardware e binário.",
+    duration: "00:10:00",
+    category: "Kids / Conceito",
+    link: "https://www.youtube.com/watch?v=xxnHfwfEZ60",
+    videoId: "xxnHfwfEZ60",
     featured: false
-  },
-  {
-    topic: 'programming',
-    title: "A Evolução da IA",
-    desc: "Como saímos dos sistemas especialistas para as redes neurais generativas modernas.",
-    duration: "18 min",
-    category: "IA",
-    link: "https://www.youtube.com/watch?v=NJarxpYyoFI",
-    videoId: "NJarxpYyoFI",
-    featured: false
-  },
-  {
-    topic: 'programming',
-    title: "Lógica de Programação",
-    desc: "A base de tudo: como pensar algoritmicamente para resolver qualquer problema técnico.",
-    duration: "12 min",
-    category: "Lógica",
-    link: "https://www.youtube.com/watch?v=X6XnO_f7M-E",
-    videoId: "X6XnO_f7M-E",
-    featured: true
-  },
-
-  // TOPIC 3: COMO HARDWARE É FEITO (10 VÍDEOS REAIS PT-BR)
-  {
-    topic: 'hardware',
-    title: "Como Processadores são feitos",
-    desc: "Uma visita rara à linha de produção para entender como o silício vira inteligência pura.",
-    duration: "15 min",
-    category: "Fábrica BR",
-    link: "https://www.youtube.com/watch?v=2eW683UrS_o",
-    videoId: "2eW683UrS_o",
-    featured: true
-  },
-  {
-    topic: 'hardware',
-    title: "O Poder da ASML",
-    desc: "As máquinas de litografia UV Extremo que permitem criar chips de nanômetros. TecMundo.",
-    duration: "11 min",
-    category: "Tecnologia",
-    link: "https://www.youtube.com/watch?v=f0gMdGrVteI",
-    videoId: "f0gMdGrVteI",
-    featured: true
-  },
-  {
-    topic: 'hardware',
-    title: "Fabricação de Placas de Vídeo",
-    desc: "Veja como a soldagem de precisão e montagem transformam componentes em GPUs de elite.",
-    duration: "9 min",
-    category: "Componentes",
-    link: "https://www.youtube.com/watch?v=YpC8G_8YyD4",
-    videoId: "YpC8G_8YyD4",
-    featured: true
-  },
-  {
-    topic: 'hardware',
-    title: "Como Memória RAM é Feita",
-    desc: "Iberê mostra a produção de módulos de memória RAM em uma fábrica brasileira.",
-    duration: "8 min",
-    category: "Manufatura",
-    link: "https://www.youtube.com/watch?v=fU9H_W3mP_U",
-    videoId: "fU9H_W3mP_U",
-    featured: false
-  },
-  {
-    topic: 'hardware',
-    title: "Funcionamento do HDD",
-    desc: "Por dentro dos discos rígidos: agulhas magnéticas e discos que giram a 7200 RPM.",
-    duration: "10 min",
-    category: "Armazenamento",
-    link: "https://www.youtube.com/watch?v=3icS_m0M494",
-    videoId: "3icS_m0M494",
-    featured: false
-  },
-  {
-    topic: 'hardware',
-    title: "Criação de Placas de Circuito",
-    desc: "Entenda como os desenhos das trilhas elétricas são impressos em placas de fibra de vidro.",
-    duration: "12 min",
-    category: "Eletrônica",
-    link: "https://www.youtube.com/watch?v=4asfG69V64M",
-    videoId: "4asfG69V64M",
-    featured: false
-  },
-  {
-    topic: 'hardware',
-    title: "TSMC e a Guerra dos Chips",
-    desc: "Conheça a empresa mais importante de Taiwan e sua dominância no mercado global de chips.",
-    duration: "14 min",
-    category: "Semicondutores",
-    link: "https://www.youtube.com/watch?v=p6v6zY_H6Qk",
-    videoId: "p6v6zY_H6Qk",
-    featured: true
-  },
-  {
-    topic: 'hardware',
-    title: "A Ciência da Fibra Óptica",
-    desc: "Como fios de vidro levam internet na velocidade da luz por milhares de quilômetros.",
-    duration: "13 min",
-    category: "Infraestrutura",
-    link: "https://www.youtube.com/watch?v=Q_Vn69-P8lA",
-    videoId: "Q_Vn69-P8lA",
-    featured: false
-  },
-  {
-    topic: 'hardware',
-    title: "Supercomputadores no Brasil",
-    desc: "Conheça o Santos Dumont, o computador mais rápido da América Latina focado em ciência.",
-    duration: "16 min",
-    category: "HPC",
-    link: "https://www.youtube.com/watch?v=TfV95_o8r1U",
-    videoId: "TfV95_o8r1U",
-    featured: true
-  },
-  {
-    topic: 'hardware',
-    title: "Computação Quântica",
-    desc: "A física por trás do processamento em escala atômica explicado de forma simples. Ciência Todo Dia.",
-    duration: "10 min",
-    category: "Futurismo",
-    link: "https://www.youtube.com/watch?v=-ZNEzzDcllU",
-    videoId: "-ZNEzzDcllU",
-    featured: true
   }
 ];
 
@@ -385,18 +230,11 @@ const YouTubeThumbnail: React.FC<{ videoUrl: string; alt: string }> = ({ videoUr
       ) : (
         !isVisible && <div className="w-full h-full bg-slate-900" />
       )}
-      
-      {!videoId && isVisible && (
-        <div className="w-full h-full flex items-center justify-center bg-slate-900">
-           <Monitor size={32} className="text-slate-700" />
-        </div>
-      )}
     </div>
   );
 };
 
 const VideosObrigatorios: React.FC = () => {
-  const [activeTopic, setActiveTopic] = useState<VideoTopic>('computing');
   const [downloadedVideos, setDownloadedVideos] = useState<string[]>([]);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
@@ -437,16 +275,6 @@ const VideosObrigatorios: React.FC = () => {
     setSelectedVideoId(videoId);
   };
 
-  const filteredVideos = useMemo(() => {
-    return ALL_VIDEOS.filter(v => v.topic === activeTopic);
-  }, [activeTopic]);
-
-  const tabs = [
-    { id: 'computing' as VideoTopic, label: 'Computação', icon: History, color: 'text-red-500', bg: 'bg-red-500/10' },
-    { id: 'programming' as VideoTopic, label: 'Programação', icon: Code2, color: 'text-estacio-cyan', bg: 'bg-estacio-cyan/10' },
-    { id: 'hardware' as VideoTopic, label: 'Hardware', icon: Cpu, color: 'text-estacio-amber', bg: 'bg-estacio-amber/10' }
-  ];
-
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in bg-slate-50/40">
       <style>{`
@@ -476,40 +304,23 @@ const VideosObrigatorios: React.FC = () => {
         <header className="mb-16 md:mb-24 relative text-center md:text-left">
           <div className="flex items-center gap-6 mb-8 justify-center md:justify-start">
              <div className="w-2 h-12 bg-red-600 rounded-full"></div>
-             <h2 className="text-4xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter leading-none">
-              Vídeos <span className="text-red-600">Obrigatórios</span>
+             <h2 className="text-4xl md:text-7xl font-black text-estacio-navy italic uppercase tracking-tighter leading-none">
+              Vídeos <span className="text-red-600">Essenciais</span>
             </h2>
           </div>
-          <p className="text-lg md:text-2xl text-slate-400 font-medium max-w-4xl leading-relaxed mx-auto md:mx-0">
-            Curadoria técnica com os melhores recursos em nosso idioma. <span className="text-estacio-navy font-black italic">30 vídeos fundamentais</span> para sua formação em TI.
+          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-5xl leading-relaxed mx-auto md:mx-0 border-l-4 border-red-600/20 pl-6 italic">
+            Para um aluno de TI, entender a história e os fundamentos da tecnologia é tão importante quanto aprender a programar. Abaixo, organizei uma lista com 15 vídeos essenciais (documentários, filmes e aulas) dublados ou em português do Brasil, incluindo os itens solicitados:
           </p>
         </header>
 
-        <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-16">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTopic(tab.id)}
-              className={`flex items-center gap-4 px-8 py-5 rounded-[2rem] font-black uppercase italic tracking-widest text-[11px] transition-all duration-500 shadow-sm border ${
-                activeTopic === tab.id 
-                ? `${tab.bg} ${tab.color} border-current shadow-xl scale-105` 
-                : 'bg-white text-slate-400 border-slate-100 hover:bg-slate-50'
-              }`}
-            >
-              <tab.icon size={20} />
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-32 min-h-[600px]">
-          {filteredVideos.map((video, i) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-32">
+          {ALL_VIDEOS.map((video, i) => {
             const isDownloaded = downloadedVideos.includes(video.videoId);
             const isDownloading = downloadingId === video.videoId;
 
             return (
               <article 
-                key={`${activeTopic}-${i}`}
+                key={i}
                 className="group relative flex flex-col h-full bg-white rounded-[3.5rem] overflow-hidden shadow-sm hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] transition-all duration-700 border border-slate-100 animate-in fade-in slide-in-from-bottom-4 cursor-pointer"
                 style={{ animationDelay: `${i * 100}ms` }}
                 onClick={(e) => handleOpenPlayer(e, video.videoId)}
@@ -524,13 +335,6 @@ const VideosObrigatorios: React.FC = () => {
                             {video.category}
                         </span>
                     </div>
-
-                    {isDownloaded && (
-                      <div className="absolute top-6 right-6 flex items-center gap-2 px-3 py-1.5 bg-green-500/90 backdrop-blur-md rounded-xl shadow-lg border border-white/20 z-[15]">
-                        <CheckCircle2 size={12} className="text-white" />
-                        <span className="text-[8px] font-black uppercase text-white tracking-widest">Offline</span>
-                      </div>
-                    )}
 
                     {!isDownloaded && (
                       <button 
@@ -568,24 +372,41 @@ const VideosObrigatorios: React.FC = () => {
                     </p>
                     <div className="mt-auto flex items-center justify-between pt-8 border-t border-slate-50">
                       <div className="flex items-center gap-3 text-[10px] font-black uppercase text-red-600 tracking-[0.2em] group-hover:gap-5 transition-all">
-                          {isDownloaded ? 'ASSISTIR OFFLINE' : 'ASSISTIR NO PLAYER'} <Play size={14} fill="currentColor" />
+                          VER AGORA <Play size={14} fill="currentColor" />
                       </div>
                     </div>
                   </div>
                 </div>
-
-                {video.featured && (
-                  <div className="absolute top-0 right-0 w-2 h-full bg-red-600/30"></div>
-                )}
               </article>
             );
           })}
         </div>
 
+        {/* Concluding Section */}
+        <section className="bg-white border-2 border-slate-100 rounded-[4rem] p-12 md:p-20 shadow-2xl mb-24 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 blur-[100px] rounded-full"></div>
+          <div className="relative z-10 space-y-8">
+            <div className="flex items-center gap-4 text-red-600">
+               <CheckCircle2 size={32} />
+               <h3 className="text-2xl md:text-4xl font-black italic uppercase tracking-tighter">Visão de Mercado e Fundamentos</h3>
+            </div>
+            <div className="prose prose-lg max-w-none text-slate-600 font-medium leading-relaxed italic">
+              <p>
+                Este conteúdo ajudará a formar uma base sólida tanto em hardware e software quanto em visão de mercado.
+              </p>
+              <p className="border-l-4 border-red-600 pl-8 mt-10 text-estacio-navy font-black not-italic text-xl">
+                <a href="https://www.youtube.com/watch?v=4nPNO7Wl-9Y" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+                  Piratas do Vale do Silício
+                </a> é um dos filmes mais recomendados para estudantes de computação entenderem como a indústria moderna foi moldada pela disputa entre Apple e Microsoft.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <CoordinatorWidget tip="A curadoria de conteúdo é essencial em um mundo de excesso de informação. Estes vídeos foram selecionados por sua precisão técnica e valor histórico para qualquer engenheiro de software." />
       </div>
 
-      {/* In-App Video Player Modal */}
+      {/* Video Player Modal */}
       {selectedVideoId && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
           <div 
@@ -593,7 +414,7 @@ const VideosObrigatorios: React.FC = () => {
             onClick={() => setSelectedVideoId(null)}
           ></div>
           
-          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,191,255,0.2)] animate-in zoom-in-95 duration-500 border border-white/10">
+          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(220,38,38,0.2)] animate-in zoom-in-95 duration-500 border border-white/10">
             <button 
               onClick={() => setSelectedVideoId(null)}
               className="absolute top-6 right-6 z-50 w-12 h-12 bg-white/10 hover:bg-red-600 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-md border border-white/10"

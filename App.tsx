@@ -14,6 +14,7 @@ import GaleriaFotos from './screens/GaleriaFotos';
 import LinksEssenciais from './screens/LinksEssenciais';
 import FaleCoordenador from './screens/FaleCoordenador';
 import CuriosidadesEstacio from './screens/CuriosidadesEstacio';
+import VideosObrigatorios from './screens/VideosObrigatorios';
 
 const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>(window.location.hash || '#/home');
@@ -52,6 +53,7 @@ const App: React.FC = () => {
       case '#/empreendedorismo': return <Empreendedorismo />;
       case '#/grupos-projetos': return <GruposProjetos />;
       case '#/eventos-ti': return <EventosTI />;
+      case '#/videos-essenciais': return <VideosObrigatorios />;
       case '#/galeria-fotos': return <GaleriaFotos />;
       case '#/links-essenciais': return <LinksEssenciais />;
       case '#/fale-com-o-coordenador': return <FaleCoordenador />;

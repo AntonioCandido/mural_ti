@@ -8,6 +8,7 @@ export enum ViewType {
   EMPREENDEDOR = '#/empreendedorismo',
   PROJETOS = '#/grupos-projetos',
   EVENTOS = '#/eventos-ti',
+  VIDEOS = '#/videos-essenciais',
   GALERIA = '#/galeria-fotos',
   LINKS = '#/links-essenciais',
   COORDENADOR = '#/fale-com-o-coordenador',
