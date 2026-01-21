@@ -9,5 +9,6 @@ export enum ViewType {
   PROJETOS = '#/grupos-projetos',
   EVENTOS = '#/eventos-ti',
   GALERIA = '#/galeria-fotos',
+  LINKS = '#/links-essenciais',
   COORDENADOR = '#/fale-com-o-coordenador'
 }

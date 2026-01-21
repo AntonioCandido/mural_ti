@@ -19,6 +19,7 @@ const Home: React.FC = () => {
     'group-hover:border-orange-500': { bg: 'bg-orange-600', text: 'text-white', icon: 'text-orange-600', border: 'border-orange-400/30' },
     'group-hover:border-pink-500': { bg: 'bg-pink-600', text: 'text-white', icon: 'text-pink-600', border: 'border-pink-400/30' },
     'group-hover:border-indigo-500': { bg: 'bg-indigo-600', text: 'text-white', icon: 'text-indigo-600', border: 'border-indigo-400/30' },
+    'group-hover:border-teal-500': { bg: 'bg-teal-600', text: 'text-white', icon: 'text-teal-600', border: 'border-teal-400/30' },
     'group-hover:border-estacio-navy': { bg: 'bg-estacio-navy', text: 'text-white', icon: 'text-estacio-navy', border: 'border-white/10' },
   };
 

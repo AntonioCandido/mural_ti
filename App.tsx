@@ -11,6 +11,7 @@ import Empreendedorismo from './screens/Empreendedorismo';
 import GruposProjetos from './screens/GruposProjetos';
 import EventosTI from './screens/EventosTI';
 import GaleriaFotos from './screens/GaleriaFotos';
+import LinksEssenciais from './screens/LinksEssenciais';
 import FaleCoordenador from './screens/FaleCoordenador';
 
 const App: React.FC = () => {
@@ -51,6 +52,7 @@ const App: React.FC = () => {
       case '#/grupos-projetos': return <GruposProjetos />;
       case '#/eventos-ti': return <EventosTI />;
       case '#/galeria-fotos': return <GaleriaFotos />;
+      case '#/links-essenciais': return <LinksEssenciais />;
       case '#/fale-com-o-coordenador': return <FaleCoordenador />;
       default: return <Home />;
     }

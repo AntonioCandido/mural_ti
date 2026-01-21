@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { ChevronLeft, Mail, Linkedin, Facebook, MapPin, Clock, Monitor, Sparkles, GraduationCap, Rocket, Globe2, Briefcase } from 'lucide-react';
+import { ChevronLeft, Mail, Linkedin, Facebook, MapPin, Clock, Monitor, Sparkles, GraduationCap, Rocket, Globe2, Briefcase, TrendingUp } from 'lucide-react';
 
 const FaleCoordenador: React.FC = () => {
   const coordinatorPhoto = "https://media.licdn.com/dms/image/v2/D4D03AQH1HQJvGVGLrw/profile-displayphoto-crop_800_800/B4DZutPuDRJMAI-/0/1768138139079?e=1770249600&v=beta&t=kAVGLV8YKILR76nahJqDR6avuXQGoiuNy4kea4AMvd4";
-  const careerImg = "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200";
+  const careerImg = "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200";
 
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
@@ -18,7 +18,7 @@ const FaleCoordenador: React.FC = () => {
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Card Principal: Coordenador & Atendimento */}
         <div className="bg-white border border-slate-100 rounded-[5rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row -translate-y-1.5 transition-all">
-          {/* Perfil */}
+          {/* Perfil - Esquerda */}
           <div className="lg:w-2/5 bg-estacio-navy p-12 md:p-20 text-center text-white flex flex-col items-center justify-center relative">
             <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
             <div className="relative mb-10">
@@ -55,7 +55,7 @@ const FaleCoordenador: React.FC = () => {
             </div>
           </div>
 
-          {/* Atendimento */}
+          {/* Atendimento - Direita */}
           <div className="lg:w-3/5 p-12 md:p-20 bg-white">
             <section>
               <div className="flex items-center gap-4 mb-12">
@@ -88,74 +88,83 @@ const FaleCoordenador: React.FC = () => {
           </div>
         </div>
 
-        {/* Card Motivacional: Foco em Mercado de Trabalho */}
+        {/* Card de Carreira: Direcionamento de Mercado */}
         <section className="relative bg-slate-950 rounded-[5rem] overflow-hidden shadow-2xl -translate-y-1.5 border border-white/5 flex flex-col md:flex-row">
-          {/* Lado da Imagem: Vibe Carreira Global */}
-          <div className="md:w-1/2 relative h-80 md:h-auto overflow-hidden">
+          <div className="md:w-5/12 relative h-80 md:h-auto overflow-hidden">
             <img 
               src={careerImg} 
-              alt="Ambiente de TI Moderno" 
-              className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700"
+              alt="Engenharia de Software de Alta Performance" 
+              className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-950/40 to-slate-950"></div>
-            <div className="absolute bottom-10 left-10 z-20">
-              <div className="bg-estacio-cyan text-estacio-navy font-black text-[10px] uppercase tracking-widest px-4 py-2 rounded-full italic shadow-xl">
-                Mercado de Trabalho 2026
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-950/20 to-slate-950"></div>
+            <div className="absolute top-10 left-10 z-20">
+              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full">
+                <TrendingUp size={16} className="text-estacio-cyan" />
+                <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">Market Trends 2026</span>
               </div>
             </div>
           </div>
           
-          {/* Lado do Texto: Mentorias de Carreira */}
-          <div className="md:w-1/2 p-12 md:p-20 flex flex-col justify-center relative">
-            <div className="absolute top-10 right-10 text-estacio-cyan/10">
-              <Briefcase size={120} strokeWidth={1} />
+          <div className="md:w-7/12 p-12 md:p-20 flex flex-col justify-center relative">
+            <div className="absolute bottom-10 right-10 text-white/5 pointer-events-none">
+              <Briefcase size={280} strokeWidth={1} />
             </div>
             
-            <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase mb-12 tracking-tighter leading-none relative z-10">
-              Prepare-se para o <span className="text-estacio-cyan">Mundo Real</span>
-            </h3>
+            <header className="mb-14 relative z-10">
+              <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase mb-6 tracking-tighter leading-none">
+                Sua Carreira <span className="text-estacio-cyan">Sem Fronteiras</span>
+              </h3>
+              <p className="text-white/40 font-bold text-sm uppercase tracking-widest">Manifesto de Empregabilidade em TI</p>
+            </header>
 
-            <div className="space-y-12 relative z-10">
-              {/* Para Novatos: O Start na Carreira */}
-              <div className="group flex gap-6 items-start">
-                <div className="w-14 h-14 bg-estacio-cyan text-estacio-navy rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-estacio-cyan/20 group-hover:rotate-6 transition-transform">
-                  <Rocket size={28} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
+              {/* Mentoria Novatos */}
+              <article className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-estacio-cyan text-estacio-navy rounded-2xl flex items-center justify-center shadow-lg shadow-estacio-cyan/20">
+                    <Rocket size={24} />
+                  </div>
+                  <h4 className="font-black text-white uppercase text-[12px] tracking-widest italic">Aos Novatos</h4>
                 </div>
-                <div>
-                  <h4 className="font-black text-estacio-cyan uppercase text-[11px] tracking-widest mb-3 flex items-center gap-2">
-                    Primeiros Períodos <span className="w-1.5 h-1.5 bg-estacio-cyan rounded-full animate-ping"></span>
-                  </h4>
-                  <p className="text-white/80 text-base font-medium leading-relaxed italic">
-                    "O mercado não busca perfeição, busca fundamentos. Foque em algoritmos, Git e Inglês. Seu currículo começa no seu primeiro projeto no GitHub, não no dia da formatura."
-                  </p>
+                <p className="text-white/70 text-sm leading-relaxed italic border-l-2 border-estacio-cyan/30 pl-6">
+                  "O mercado de TI não compra diplomas, compra <strong>capacidade de execução</strong>. Comece seu portfólio no dia 1. Lógica e fundamentos de algoritmos são o que separa o programador do apertador de botões."
+                </p>
+                <div className="flex gap-2">
+                   <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-[8px] font-black text-estacio-cyan uppercase italic">Lógica</span>
+                   <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-[8px] font-black text-estacio-cyan uppercase italic">Git</span>
+                   <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-[8px] font-black text-estacio-cyan uppercase italic">Soft Skills</span>
                 </div>
-              </div>
+              </article>
 
-              {/* Para Veteranos: Carreira Global & Especialização */}
-              <div className="group flex gap-6 items-start">
-                <div className="w-14 h-14 bg-estacio-amber text-estacio-navy rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-estacio-amber/20 group-hover:-rotate-6 transition-transform">
-                  <Globe2 size={28} />
+              {/* Mentoria Veteranos */}
+              <article className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-estacio-amber text-estacio-navy rounded-2xl flex items-center justify-center shadow-lg shadow-estacio-amber/20">
+                    <GraduationCap size={24} />
+                  </div>
+                  <h4 className="font-black text-white uppercase text-[12px] tracking-widest italic">Aos Veteranos</h4>
                 </div>
-                <div>
-                  <h4 className="font-black text-estacio-amber uppercase text-[11px] tracking-widest mb-3">
-                    Reta Final & Especialização
-                  </h4>
-                  <p className="text-white/80 text-base font-medium leading-relaxed italic">
-                    "O mundo é o seu escritório. Domine arquitetura, cloud e liderança técnica. O diferencial entre um programador e um engenheiro é a capacidade de resolver problemas de negócio com código elegante."
-                  </p>
+                <p className="text-white/70 text-sm leading-relaxed italic border-l-2 border-estacio-amber/30 pl-6">
+                  "Especialize-se para ser insubstituível. O domínio de arquiteturas escaláveis e a fluência em <strong>inglês técnico</strong> abrem as portas para o trabalho remoto global em dólar e euro."
+                </p>
+                <div className="flex gap-2">
+                   <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-[8px] font-black text-estacio-amber uppercase italic">Arch</span>
+                   <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-[8px] font-black text-estacio-amber uppercase italic">Cloud</span>
+                   <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-[8px] font-black text-estacio-amber uppercase italic">Seniority</span>
                 </div>
-              </div>
+              </article>
             </div>
 
-            <div className="mt-16 pt-8 border-t border-white/10 flex items-center justify-between">
-               <div className="flex items-center gap-2 text-[10px] font-black text-white/40 uppercase tracking-widest">
-                  <Sparkles size={14} className="text-estacio-cyan" /> 
-                  Foco em Empregabilidade
+            <footer className="mt-16 pt-10 border-t border-white/5 flex flex-wrap items-center justify-between gap-6 relative z-10">
+               <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-estacio-cyan rounded-full animate-ping"></div>
+                  <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Conectado ao Mercado Real</span>
                </div>
-               <div className="text-[10px] font-black text-white italic opacity-40 uppercase">
-                  Mural TI • 2026
+               <div className="flex items-center gap-3 opacity-30">
+                  <Sparkles size={14} className="text-estacio-cyan" />
+                  <span className="text-[9px] font-black text-white uppercase italic">Mural TI Ecosystem</span>
                </div>
-            </div>
+            </footer>
           </div>
         </section>
       </div>

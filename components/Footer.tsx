@@ -1,13 +1,14 @@
 
 import React from 'react';
 import { ViewType } from '../types';
-import { ExternalLink, Linkedin, Mail, Globe, BookOpen } from 'lucide-react';
+import { ExternalLink, Linkedin, Mail, Globe, BookOpen, Camera, Link as LinkIcon, ShieldCheck } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const quickLinks = [
     { label: 'Carreira TI', href: ViewType.PROFISSIONAIS },
     { label: 'Vagas e Estágios', href: ViewType.ESTAGIOS },
     { label: 'Concursos Públicos', href: ViewType.CONCURSOS },
+    { label: 'Links Oficiais', href: ViewType.LINKS },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
@@ -37,13 +38,14 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-sm leading-relaxed mb-8 opacity-60 font-medium">
-              O hub de apoio ao estudante de tecnologia, conectando você às melhores trilhas, vagas e conhecimentos do mercado global.
+              O hub de apoio estratégico ao estudante de tecnologia, conectando você às ferramentas oficiais, trilhas de estudo e ao mercado global.
             </p>
             <div className="flex gap-4">
               <a 
                 href="https://github.com/sindresorhus/awesome" 
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Repositório Awesome"
                 className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-white hover:text-estacio-navy transition-all duration-300 border border-white/5"
               >
                 <OpenSourceIcon size={20} />
@@ -52,12 +54,14 @@ const Footer: React.FC = () => {
                 href="https://www.linkedin.com/in/antonio-candido-oliveira-filho-b2028336" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                title="LinkedIn do Coordenador"
                 className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 border border-white/5"
               >
                 <Linkedin size={20} />
               </a>
               <a 
                 href="mailto:antonio.filho@estacio.br" 
+                title="E-mail Acadêmico"
                 className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-estacio-amber hover:text-estacio-navy transition-all duration-300 border border-white/5"
               >
                 <Mail size={20} />
@@ -85,14 +89,20 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Resources & Community */}
           <div>
-            <h4 className="text-white font-black uppercase text-xs tracking-[0.2em] mb-8 italic border-l-4 border-estacio-amber pl-4">Recursos</h4>
+            <h4 className="text-white font-black uppercase text-xs tracking-[0.2em] mb-8 italic border-l-4 border-estacio-amber pl-4">Comunidade</h4>
             <ul className="space-y-5 text-[11px] font-black uppercase tracking-widest">
               <li>
-                <a href={ViewType.DESENVOLVIMENTO} onClick={(e) => handleLinkClick(e, ViewType.DESENVOLVIMENTO)} className="hover:text-estacio-amber transition-colors flex items-center gap-3 group">
+                <a href={ViewType.DESENVOLVIMENTO} onClick={(e) => handleLinkClick(e, ViewType.DESENVOLVIMENTO)} className="hover:text-estacio-cyan transition-colors flex items-center gap-3 group">
                   <BookOpen size={16} className="text-estacio-cyan" />
-                  Trilhas Awesome
+                  Trilhas de Estudo
+                </a>
+              </li>
+              <li>
+                <a href={ViewType.GALERIA} onClick={(e) => handleLinkClick(e, ViewType.GALERIA)} className="hover:text-estacio-cyan transition-colors flex items-center gap-3 group">
+                  <Camera size={16} className="text-indigo-500" />
+                  Galeria de Fotos
                 </a>
               </li>
               <li>
@@ -107,12 +117,15 @@ const Footer: React.FC = () => {
           {/* Academic Info */}
           <div className="lg:pl-8">
             <h4 className="text-white font-black uppercase text-xs tracking-[0.2em] mb-8 italic border-l-4 border-white/20 pl-4">Coordenação</h4>
-            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-3">Sistemas & Computação</p>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-3">ADS & Ciência da Computação</p>
             <p className="text-lg font-black text-white italic mb-6 tracking-tighter uppercase leading-none">
               ANTONIO CANDIDO FILHO
             </p>
             <div className="bg-white/5 p-6 rounded-[2rem] border border-white/5 backdrop-blur-sm group hover:border-estacio-cyan/30 transition-all">
-              <p className="text-[9px] font-black uppercase tracking-widest text-estacio-cyan mb-2">Suporte Acadêmico</p>
+              <div className="flex items-center gap-2 mb-2">
+                <ShieldCheck size={12} className="text-estacio-cyan" />
+                <p className="text-[9px] font-black uppercase tracking-widest text-estacio-cyan">Suporte Acadêmico</p>
+              </div>
               <p className="text-xs font-bold text-white/80 group-hover:text-white transition-colors">antonio.filho@estacio.br</p>
             </div>
           </div>
@@ -121,12 +134,17 @@ const Footer: React.FC = () => {
         {/* Bottom Section */}
         <div className="pt-12 border-t border-white/5 flex flex-col items-center">
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 text-[9px] font-black uppercase tracking-[0.3em] text-slate-600">
+             <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
+                <span>SISTEMAS ONLINE</span>
+             </div>
+             <span className="hidden md:block opacity-30">|</span>
              <span>© 2026 MURAL TI</span>
              <span className="hidden md:block opacity-30">|</span>
-             <span>DESENVOLVIDO PARA FINS ACADÊMICOS</span>
+             <span>ESTÁCIO R9 & TOM JOBIM</span>
           </div>
           <p className="text-[10px] font-bold text-slate-700 text-center leading-relaxed max-w-4xl italic">
-            "Este projeto foi desenvolvido exclusivamente para fins de estudo. A instituição Estácio de Sá não detém responsabilidade editorial sobre as informações publicadas."
+            "Portal acadêmico informativo para alunos de TI. A Estácio de Sá não detém responsabilidade editorial sobre as opiniões e links de terceiros aqui publicados."
           </p>
         </div>
       </div>
