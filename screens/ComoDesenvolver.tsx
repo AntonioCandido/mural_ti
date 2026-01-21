@@ -1,99 +1,266 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { CoordinatorWidget } from '../constants';
-import { ChevronLeft, ExternalLink, Code2, Globe, Database, Shield, Cpu, Layout, Terminal, Gamepad2, Layers } from 'lucide-react';
+import { 
+  ChevronLeft, Layers, PenTool, TestTube, Users, ShieldCheck, 
+  ExternalLink, Smartphone, Database, Terminal, CheckCircle, 
+  Search, MessageSquare, BookOpen, Sparkles, Code2, Globe, 
+  Cpu, Gamepad2, Laptop, Briefcase, Network, Activity, 
+  Cloud, Lock, FileCode, Beaker, Zap, BookMarked
+} from 'lucide-react';
 
-const CATEGORIES = [
-  { name: 'Plataformas', link: 'platforms', desc: 'Sistemas operacionais, cloud e ecossistemas.', icon: Layers, color: 'blue' },
-  { name: 'Linguagens', link: 'programming-languages', desc: 'Trilhas de JS, Python, Rust, Go e mais.', icon: Terminal, color: 'cyan' },
-  { name: 'Front-End', link: 'front-end-development', desc: 'Frameworks, ferramentas de UI e UX.', icon: Layout, color: 'emerald' },
-  { name: 'Back-End', link: 'back-end-development', desc: 'Infra, servidores e lógica de API.', icon: Database, color: 'amber' },
-  { name: 'Ciência da Computação', link: 'computer-science', desc: 'Algoritmos, estruturas e teoria.', icon: Code2, color: 'purple' },
-  { name: 'Segurança', link: 'security', desc: 'Cybersecurity, pentest e defesa digital.', icon: Shield, color: 'orange' },
-  // Fixed: Replaced the non-existent 'Pink' icon with 'Globe' for the Big Data category.
-  { name: 'Big Data', link: 'big-data', desc: 'Data Science, análise e processamento.', icon: Globe, color: 'pink' },
-  { name: 'Jogos', link: 'gaming', desc: 'Motores, design e lógica de games.', icon: Gamepad2, color: 'indigo' },
-  { name: 'Hardware', link: 'hardware', desc: 'IoT, Arduino, eletrônica e robótica.', icon: Cpu, color: 'navy' },
+interface AwesomeItem {
+  title: string;
+  desc: string;
+  url: string;
+  icon: any;
+  category: string;
+}
+
+// FIX: Move helper components above AWESOME_RESOURCES to ensure they are defined before usage.
+const Layout = ({ size, className }: { size: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="18" height="18" x="3" y="3" rx="2" />
+    <path d="M3 9h18" /><path d="M9 21V9" />
+  </svg>
+);
+
+const GraduationCap = ({ size, className }: { size: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-5" />
+  </svg>
+);
+
+const Camera = ({ size, className }: { size: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+    <circle cx="12" cy="13" r="3" />
+  </svg>
+);
+
+const Calendar = ({ size, className }: { size: number, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+    <line x1="16" x2="16" y1="2" y2="6" />
+    <line x1="8" x2="8" y1="2" y2="6" />
+    <line x1="3" x2="21" y1="10" y2="10" />
+  </svg>
+);
+
+const AWESOME_RESOURCES: AwesomeItem[] = [
+  // PLATAFORMAS & LINGUAGENS
+  { title: 'Plataformas', desc: 'Recursos para Node.js, Android, iOS e Cloud.', url: 'https://github.com/sindresorhus/awesome#platforms', icon: Globe, category: 'Base' },
+  { title: 'Linguagens', desc: 'Tudo sobre JavaScript, TypeScript, Rust, Go, Python e C#.', url: 'https://github.com/sindresorhus/awesome#programming-languages', icon: FileCode, category: 'Base' },
+  
+  // FRONT & BACK
+  { title: 'Front-End', desc: 'Ecossistema React, Vue, CSS-in-JS e Performance Web.', url: 'https://github.com/sindresorhus/awesome#front-end-development', icon: Layout, category: 'Dev' },
+  { title: 'Back-End', desc: 'Arquiteturas escaláveis em Go, Node, Elixir e Java.', url: 'https://github.com/sindresorhus/awesome#back-end-development', icon: Terminal, category: 'Dev' },
+  
+  // CIÊNCIA & DADOS
+  { title: 'Ciência da Computação', desc: 'Algoritmos, estruturas de dados e fundamentos teóricos.', url: 'https://github.com/sindresorhus/awesome#computer-science', icon: BookOpen, category: 'Academia' },
+  { title: 'Big Data', desc: 'Processamento massivo com Spark, Hadoop e Data Engineering.', url: 'https://github.com/sindresorhus/awesome#big-data', icon: Database, category: 'Academia' },
+  { title: 'Teoria', desc: 'Compiladores, linguagens formais e lógica matemática.', url: 'https://github.com/sindresorhus/awesome#theory', icon: Beaker, category: 'Academia' },
+  
+  // FERRAMENTAS & AMBIENTE
+  { title: 'Editores', desc: 'Configurações de elite para VS Code, Vim e Emacs.', url: 'https://github.com/sindresorhus/awesome#editors', icon: PenTool, category: 'Tools' },
+  { title: 'Ambiente de Dev', desc: 'Dotfiles, CLI, Shell e automação de workflow.', url: 'https://github.com/sindresorhus/awesome#development-environment', icon: Laptop, category: 'Tools' },
+  { title: 'Bancos de Dados', desc: 'Otimização de SQL, NoSQL e bases vetoriais.', url: 'https://github.com/sindresorhus/awesome#databases', icon: Database, category: 'Tools' },
+  
+  // SEGURANÇA & INFRA
+  { title: 'Segurança', desc: 'Pentesting, criptografia e segurança defensiva.', url: 'https://github.com/sindresorhus/awesome#security', icon: Lock, category: 'Segurança' },
+  { title: 'Hardware', desc: 'Arduino, Raspberry Pi e IoT (Internet das Coisas).', url: 'https://github.com/sindresorhus/awesome#hardware', icon: Cpu, category: 'Infra' },
+  { title: 'Redes', desc: 'Protocolos, infraestrutura e conectividade moderna.', url: 'https://github.com/sindresorhus/awesome#networking', icon: Network, category: 'Infra' },
+  
+  // CARREIRA & NEGÓCIOS
+  { title: 'Negócios', desc: 'SaaS, startups e gestão de produtos de software.', url: 'https://github.com/sindresorhus/awesome#business', icon: Briefcase, category: 'Business' },
+  { title: 'Trabalhar', desc: 'Vagas remotas, currículo tech e cultura de engenharia.', url: 'https://github.com/sindresorhus/awesome#work', icon: Briefcase, category: 'Business' },
+  { title: 'Eventos', desc: 'Principais conferências de tecnologia no mundo.', url: 'https://github.com/sindresorhus/awesome#events', icon: Calendar, category: 'Social' },
+  
+  // VARIADOS & ENTRETENIMENTO
+  { title: 'Jogos', desc: 'Desenvolvimento de jogos, engines e design.', url: 'https://github.com/sindresorhus/awesome#gaming', icon: Gamepad2, category: 'Misc' },
+  { title: 'Aprender', desc: 'Cursos gratuitos, tutoriais e roadmaps.', url: 'https://github.com/sindresorhus/awesome#learn', icon: GraduationCap, category: 'Misc' },
+  { title: 'Mídia', desc: 'Manipulação de áudio, vídeo e imagem via código.', url: 'https://github.com/sindresorhus/awesome#media', icon: Camera, category: 'Misc' }
 ];
 
-const colorMap: Record<string, { bg: string, text: string, border: string, iconBg: string }> = {
-  blue: { bg: 'bg-blue-600', text: 'text-white', border: 'border-blue-400/30', iconBg: 'bg-white text-blue-600' },
-  cyan: { bg: 'bg-estacio-cyan', text: 'text-estacio-navy', border: 'border-white/20', iconBg: 'bg-white text-estacio-cyan' },
-  emerald: { bg: 'bg-emerald-600', text: 'text-white', border: 'border-emerald-400/30', iconBg: 'bg-white text-emerald-600' },
-  amber: { bg: 'bg-estacio-amber', text: 'text-estacio-navy', border: 'border-white/20', iconBg: 'bg-white text-estacio-amber' },
-  purple: { bg: 'bg-purple-600', text: 'text-white', border: 'border-purple-400/30', iconBg: 'bg-white text-purple-600' },
-  orange: { bg: 'bg-orange-600', text: 'text-white', border: 'border-orange-400/30', iconBg: 'bg-white text-orange-600' },
-  pink: { bg: 'bg-pink-600', text: 'text-white', border: 'border-pink-400/30', iconBg: 'bg-white text-pink-600' },
-  indigo: { bg: 'bg-indigo-600', text: 'text-white', border: 'border-indigo-400/30', iconBg: 'bg-white text-indigo-600' },
-  navy: { bg: 'bg-estacio-navy', text: 'text-white', border: 'border-white/10', iconBg: 'bg-white text-estacio-navy' },
-};
+const TESTING_RESOURCES = [
+  { name: 'Vitest', desc: 'Test Runner ultra rápido focado em Vite.', url: 'https://vitest.dev/' },
+  { name: 'Jest', desc: 'O padrão ouro para testes unitários em JS.', url: 'https://jestjs.io/' },
+  { name: 'Playwright', desc: 'Testes E2E modernos para todos os navegadores.', url: 'https://playwright.dev/' },
+  { name: 'Cypress', desc: 'Experiência incrível para testes de integração.', url: 'https://www.cypress.io/' },
+  { name: 'Testing Library', desc: 'Foco em testar o comportamento do usuário.', url: 'https://github.com/testing-library' }
+];
 
 const ComoDesenvolver: React.FC = () => {
+  const [filter, setFilter] = useState('Todos');
+  const categories = ['Todos', ...Array.from(new Set(AWESOME_RESOURCES.map(r => r.category)))];
+
+  const filteredResources = filter === 'Todos' 
+    ? AWESOME_RESOURCES 
+    : AWESOME_RESOURCES.filter(r => r.category === filter);
+
   return (
-    <div className="container mx-auto px-6 py-8 fade-in">
+    <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
       <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest mb-16 transition-all">
-        <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-estacio-navy transition-colors">
-          <ChevronLeft size={14} />
+        <span className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center group-hover:bg-estacio-navy group-hover:text-white group-hover:border-estacio-navy shadow-sm transition-all duration-300">
+          <ChevronLeft size={18} />
         </span>
         Voltar
       </a>
 
-      <div className="max-w-6xl">
+      <div className="max-w-7xl mx-auto">
         <header className="mb-20">
-          <h2 className="text-4xl md:text-7xl font-black text-estacio-navy italic uppercase tracking-tighter mb-8 leading-none">
-            Como <span className="text-estacio-cyan">Desenvolver</span>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="bg-estacio-cyan/10 text-estacio-cyan px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-estacio-cyan/20">
+              Developer Roadmap 2026
+            </span>
+          </div>
+          <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter mb-8 leading-none">
+            Como <span className="text-estacio-cyan text-stroke-navy">Desenvolver</span>
           </h2>
-          <p className="text-xl text-slate-500 font-medium max-w-3xl leading-relaxed">
-            Estude por trilhas organizadas. Abaixo, uma curadoria inspirada no projeto <strong className="text-estacio-navy">Awesome</strong> (Sindre Sorhus), apresentada em estado de alerta máximo para o seu aprendizado.
+          <p className="text-xl md:text-3xl text-slate-500 font-medium mb-12 leading-relaxed max-w-5xl">
+            Sua jornada para a elite da TI começa com a curiosidade. Explore esta curadoria de recursos essenciais, do hardware à inteligência artificial.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {CATEGORIES.map((cat, i) => {
-            const styles = colorMap[cat.color] || colorMap.navy;
-            const Icon = cat.icon;
+        {/* Intro Section - Motivation */}
+        <section className="bg-estacio-navy p-12 md:p-20 rounded-[5rem] text-white mb-24 relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h3 className="text-3xl md:text-5xl font-black italic uppercase mb-8 tracking-tighter leading-tight">
+                O Futuro é de quem <span className="text-estacio-cyan">Constrói</span>
+              </h3>
+              <p className="text-white/70 text-lg leading-relaxed mb-8">
+                Desenvolvimento em 2026 não é sobre "decorar sintaxe". É sobre entender arquiteturas sustentáveis, garantir a segurança por design e ter a resiliência para aprender novas tecnologias semanalmente. 
+              </p>
+              <div className="flex gap-4">
+                 <div className="bg-white/10 px-6 py-4 rounded-3xl backdrop-blur-md border border-white/10 flex flex-col">
+                    <span className="text-estacio-cyan font-black text-[10px] uppercase tracking-widest">Mindset</span>
+                    <span className="font-bold text-sm italic">Continuous Learning</span>
+                 </div>
+                 <div className="bg-white/10 px-6 py-4 rounded-3xl backdrop-blur-md border border-white/10 flex flex-col">
+                    <span className="text-estacio-amber font-black text-[10px] uppercase tracking-widest">Prática</span>
+                    <span className="font-bold text-sm italic">Code Every Day</span>
+                 </div>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-white p-8 rounded-[3rem] text-estacio-navy rotate-3 shadow-2xl">
+                  <Terminal size={40} className="mb-4" />
+                  <h4 className="font-black uppercase text-xs">Terminal Master</h4>
+                </div>
+                <div className="bg-estacio-cyan p-8 rounded-[3rem] text-estacio-navy -rotate-3 shadow-2xl mt-12">
+                  <Code2 size={40} className="mb-4" />
+                  <h4 className="font-black uppercase text-xs">Software Architect</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Awesome Hub Section */}
+        <section className="mb-24">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+            <div className="flex items-center gap-4">
+              <div className="w-2 h-10 bg-estacio-cyan rounded-full"></div>
+              <h3 className="text-3xl font-black text-estacio-navy italic uppercase tracking-tight leading-none">
+                Hub de Recursos <span className="text-slate-400">Awesome</span>
+              </h3>
+            </div>
             
-            return (
+            <div className="flex flex-wrap gap-2">
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setFilter(cat)}
+                  className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                    filter === cat 
+                    ? 'bg-estacio-navy text-white shadow-lg' 
+                    : 'bg-white text-slate-400 border border-slate-100 hover:bg-slate-50'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {filteredResources.map((item, i) => (
               <a 
                 key={i} 
-                href={`https://github.com/sindresorhus/awesome#${cat.link}`} 
-                target="_blank"
+                href={item.url} 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className={`relative p-8 rounded-[3rem] border shadow-2xl shadow-slate-200/50 flex flex-col items-start transition-all duration-300 -translate-y-1 ${styles.bg} ${styles.border}`}
+                className="group bg-white p-10 rounded-[3rem] border border-slate-100 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col h-full overflow-hidden relative"
               >
-                {/* Visual Glass Shine */}
-                <div className="absolute inset-0 bg-white/10"></div>
-                
-                <div className="relative z-10 w-full flex justify-between items-start mb-6">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg rotate-[4deg] ${styles.iconBg}`}>
-                    <Icon size={28} strokeWidth={2.5} />
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">
-                    <ExternalLink size={16} />
-                  </div>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-bl-[4rem] group-hover:bg-estacio-cyan/10 transition-colors"></div>
+                <div className="relative z-10 w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-estacio-navy mb-8 group-hover:scale-110 transition-transform">
+                  <item.icon size={24} />
                 </div>
-                
-                <h4 className={`relative z-10 font-black italic uppercase text-lg mb-3 tracking-tight ${styles.text}`}>
-                  {cat.name}
-                </h4>
-                
-                <p className={`relative z-10 text-xs font-bold leading-relaxed opacity-90 ${styles.text}`}>
-                  {cat.desc}
+                <h4 className="relative z-10 font-black italic uppercase text-lg mb-3 tracking-tight group-hover:text-estacio-navy transition-colors">{item.title}</h4>
+                <p className="relative z-10 text-[11px] font-bold text-slate-400 uppercase leading-relaxed mb-8 flex-grow">
+                  {item.desc}
                 </p>
+                <div className="relative z-10 mt-auto flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-estacio-cyan opacity-60 group-hover:opacity-100 transition-opacity">
+                  Explorar Repositório <ExternalLink size={12} />
+                </div>
               </a>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        </section>
 
-        <div className="bg-slate-900 p-12 md:p-16 rounded-[4rem] text-center mb-16 border border-white/5 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-estacio-cyan/10 blur-[100px] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-          <p className="text-white/60 font-medium mb-10 text-lg relative z-10">Acesse o repositório completo com milhares de recursos gratuitos:</p>
-          <a href="https://github.com/sindresorhus/awesome" target="_blank" rel="noopener noreferrer" className="relative z-10 inline-block bg-estacio-cyan text-estacio-navy px-12 py-5 rounded-[2rem] font-black uppercase italic tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-estacio-cyan/20">
-            Ir para o Awesome Repo
-          </a>
-        </div>
+        {/* Special Section: TESTING */}
+        <section className="mb-24 bg-slate-900 p-12 md:p-20 rounded-[5rem] text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-20 opacity-10">
+            <Beaker size={300} strokeWidth={1} />
+          </div>
+          <div className="relative z-10 flex flex-col lg:flex-row gap-16">
+            <div className="lg:w-1/2">
+              <div className="flex items-center gap-3 text-estacio-cyan mb-6">
+                <Zap size={24} />
+                <span className="text-[11px] font-black uppercase tracking-[0.3em]">Quality Assurance (QA)</span>
+              </div>
+              <h3 className="text-4xl md:text-6xl font-black italic uppercase mb-8 tracking-tighter leading-none">
+                A Arte de <br/> <span className="text-estacio-cyan text-stroke-white">Testar Software</span>
+              </h3>
+              <p className="text-white/50 font-medium text-lg mb-10 leading-relaxed">
+                Um desenvolvedor medíocre entrega código que "parece funcionar". Um profissional de elite entrega código <strong className="text-white">verificado por máquinas</strong>. A confiabilidade é o seu maior trunfo em 2026.
+              </p>
+              <a 
+                href="https://github.com/sindresorhus/awesome?tab=readme-ov-file#testing" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 bg-white text-estacio-navy px-10 py-5 rounded-[2.5rem] font-black uppercase italic tracking-widest text-[11px] hover:bg-estacio-cyan hover:text-estacio-navy transition-all shadow-xl"
+              >
+                Guia Awesome de Testes <ExternalLink size={16} />
+              </a>
+            </div>
+            
+            <div className="lg:w-1/2 space-y-6">
+              {TESTING_RESOURCES.map((test, i) => (
+                <a 
+                  key={i} 
+                  href={test.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-8 bg-white/5 border border-white/10 rounded-[2.5rem] hover:bg-white hover:text-estacio-navy transition-all group"
+                >
+                  <div className="flex flex-col">
+                    <span className="font-black uppercase text-xl italic tracking-tight">{test.name}</span>
+                    <span className="text-[10px] font-bold opacity-50 uppercase tracking-widest">{test.desc}</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center group-hover:bg-estacio-navy group-hover:text-white transition-colors">
+                    <ExternalLink size={18} />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
-        <CoordinatorWidget tip="Não tente aprender tudo de uma vez. Escolha uma trilha, domine os fundamentos sólidos e construa projetos reais para validar seu aprendizado." />
+        <CoordinatorWidget tip="Software é 1% inspiração e 99% depuração. Use esses recursos não como uma lista de tarefas, mas como uma biblioteca de consulta constante. A maestria técnica vem com o hábito de ler a documentação original." />
       </div>
     </div>
   );
