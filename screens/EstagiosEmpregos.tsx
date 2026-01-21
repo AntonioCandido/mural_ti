@@ -4,16 +4,53 @@ import { CoordinatorWidget } from '../constants';
 import { 
   ChevronLeft, Rocket, Globe, Briefcase, Zap, ExternalLink, 
   Smartphone, Cpu, Code2, Database, ShieldCheck, Search, 
-  BookOpen, Target, Layout, UserCircle, Users, CheckCircle
+  BookOpen, Target, Layout, UserCircle, Users, CheckCircle,
+  CircleDollarSign
 } from 'lucide-react';
 
 const FEATURED_PROGRAMS = [
-  { name: 'Vivo 2026', link: 'https://www.estagiovivo2026.com.br/', desc: 'Focado em Tecnologia & Digital, com trilhas de aprendizado e benefícios como smartphone.', color: 'purple' },
-  { name: 'Nubank', link: 'https://estagio.nubank.com.br/', desc: 'Vagas para Engenharia de Software, Ciência de Dados e Design.', color: 'indigo' },
-  { name: 'Subsea7 (RJ)', link: 'https://app.eureca.me/', desc: 'Híbridas na região metropolitana do RJ (Rio/Niterói) para cursos de TI.', color: 'blue' },
-  { name: 'Andrade Gutierrez', link: 'https://www.ciadeestagios.com.br/vagas/andradegutierrez/', desc: 'Focado em inovação e engenharia, aceitando ADS e Computação.', color: 'emerald' },
-  { name: 'Scania 2026', link: 'https://estagioscania.com.br/', desc: 'Foco em sustentabilidade e tecnologia de transporte.', color: 'red' },
-  { name: 'Shopee', link: 'https://www.ciadeestagios.com.br/vagas/shopee/', desc: 'Inscrições abertas até fevereiro de 2026 via Cia de Estágios.', color: 'orange' },
+  { 
+    name: 'Vivo 2026', 
+    link: 'https://www.estagiovivo2026.com.br/', 
+    desc: 'Focado em Tecnologia & Digital, com trilhas de aprendizado e benefícios como smartphone.', 
+    color: 'purple',
+    salary: 'R$ 1.500 - 2.400'
+  },
+  { 
+    name: 'Nubank', 
+    link: 'https://estagio.nubank.com.br/', 
+    desc: 'Vagas para Engenharia de Software, Ciência de Dados e Design.', 
+    color: 'indigo',
+    salary: 'R$ 2.800 - 3.500'
+  },
+  { 
+    name: 'Subsea7 (RJ)', 
+    link: 'https://app.eureca.me/', 
+    desc: 'Híbridas na região metropolitana do RJ (Rio/Niterói) para cursos de TI.', 
+    color: 'blue',
+    salary: 'R$ 1.800 - 2.600'
+  },
+  { 
+    name: 'Andrade Gutierrez', 
+    link: 'https://www.ciadeestagios.com.br/vagas/andradegutierrez/', 
+    desc: 'Focado em inovação e engenharia, aceitando ADS e Computação.', 
+    color: 'emerald',
+    salary: 'R$ 1.600 - 2.200'
+  },
+  { 
+    name: 'Scania 2026', 
+    link: 'https://estagioscania.com.br/', 
+    desc: 'Foco em sustentabilidade e tecnologia de transporte.', 
+    color: 'red',
+    salary: 'R$ 1.800 - 2.700'
+  },
+  { 
+    name: 'Shopee', 
+    link: 'https://www.ciadeestagios.com.br/vagas/shopee/', 
+    desc: 'Inscrições abertas até fevereiro de 2026 via Cia de Estágios.', 
+    color: 'orange',
+    salary: 'R$ 1.800 - 2.500'
+  },
 ];
 
 const SPECIALIZED_BOARDS = [
@@ -110,7 +147,14 @@ const EstagiosEmpregos: React.FC = () => {
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 shadow-md">
                     <Rocket size={24} />
                   </div>
-                  <h4 className="font-black text-estacio-navy italic text-2xl mb-4 uppercase tracking-tight leading-none">{prog.name}</h4>
+                  <h4 className="font-black text-estacio-navy italic text-2xl mb-2 uppercase tracking-tight leading-none">{prog.name}</h4>
+                  
+                  {/* Salário Estimado */}
+                  <div className="flex items-center gap-2 mb-4 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+                    <CircleDollarSign size={14} className="text-emerald-500" />
+                    <span>Est. {prog.salary}</span>
+                  </div>
+
                   <p className="text-[11px] font-bold text-slate-500 uppercase leading-relaxed mb-8 flex-grow">
                     {prog.desc}
                   </p>
