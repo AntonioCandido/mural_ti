@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] pointer-events-none"></div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-10">
           
           {/* Brand & Social Column */}
           <div className="flex flex-col items-start">
@@ -154,9 +154,9 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer Bottom Bar - Compacted & Raised */}
-        <div className="pt-8 border-t border-white/5 flex flex-col items-center">
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 mb-8 text-[10px] font-black uppercase tracking-[0.4em]">
+        {/* Footer Bottom Bar - Extremely Compacted & Raised */}
+        <div className="pt-6 border-t border-white/5 flex flex-col items-center">
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 mb-4 text-[10px] font-black uppercase tracking-[0.4em]">
              <div className="flex items-center gap-3">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -164,8 +164,8 @@ const Footer: React.FC = () => {
                 </span>
                 <span className="text-slate-500">SYSTEMS OPERATIONAL</span>
              </div>
-             <span className="text-slate-700">© 2026 MURAL TI HUB</span>
-             <span className="text-slate-700">UNIDADES R9 & TOM JOBIM</span>
+             <span className="text-slate-600">© 2026 MURAL TI HUB</span>
+             <span className="text-slate-600">UNIDADES R9 & TOM JOBIM</span>
           </div>
           
           <div className="max-w-4xl text-center">
