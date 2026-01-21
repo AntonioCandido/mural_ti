@@ -11,8 +11,8 @@ const CURIOSITIES = [
     title: "Raízes Cariocas",
     desc: "A Estácio nasceu em 1970 em uma pequena casa no Rio de Janeiro, fundada pelo magistrado João Uchôa Cavalcanti Netto. O que começou com uma turma de Direito hoje alcança todos os cantos do Brasil.",
     icon: History,
-    color: "text-blue-600",
-    bg: "bg-blue-50"
+    color: "text-estacio-navy",
+    bg: "bg-estacio-navy/10"
   },
   {
     title: "Pioneirismo Tecnológico",
@@ -30,7 +30,7 @@ const CURIOSITIES = [
   },
   {
     title: "O Nome por Trás da Marca",
-    desc: "Nossa universidade homenageia Estácio de Sá, o militar espanhol que fundou a cidade do Rio de Janeiro em 1565. Assim como ele fundou uma cidade, nós ajudamos você a fundar sua carreira.",
+    desc: "Nossa universidade homenageia Estácio de Sá, o militar espanhol que fundou a cidade do Rio de Janeiro em 1565. Assim como ele fundou uma cidade, nós ajudamos você a arquitetar o seu legado tecnológico.",
     icon: Award,
     color: "text-estacio-amber",
     bg: "bg-estacio-amber/10"
@@ -77,16 +77,16 @@ const CuriosidadesEstacio: React.FC = () => {
         {/* Header Section */}
         <header className="mb-20">
           <div className="flex items-center gap-4 mb-6">
-            <span className="bg-teal-500/10 text-teal-600 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-teal-500/20">
+            <span className="bg-estacio-navy/10 text-estacio-navy px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-estacio-navy/20">
               Sobre Nossa Instituição
             </span>
           </div>
           <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter mb-8 leading-none">
-            Curiosidades <span className="text-teal-500 text-stroke-navy">Estácio</span>
+            Curiosidades <span className="text-estacio-cyan text-stroke-navy">Estácio</span>
           </h2>
           
           <div className="bg-white p-10 md:p-16 rounded-[4rem] border border-slate-100 shadow-2xl relative overflow-hidden group mb-16">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/5 blur-[100px] rounded-full"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-estacio-navy/5 blur-[100px] rounded-full"></div>
             <div className="relative z-10">
               <h3 className="text-2xl md:text-4xl font-black italic uppercase mb-6 text-estacio-navy tracking-tight">
                 🌟 Onde o Seu Futuro Ganha Vida
@@ -101,7 +101,7 @@ const CuriosidadesEstacio: React.FC = () => {
                 <p>
                   Desde 1970, nossa missão é democratizar o brilho. Acreditamos que o conhecimento é a única ferramenta capaz de derrubar muros e construir pontes. Aqui, você tem a estrutura da maior universidade do país e a agilidade de quem fala a língua do futuro: <strong className="text-estacio-navy">Python, IA, Cloud e Métodos Ágeis.</strong>
                 </p>
-                <p className="text-teal-600 font-black italic uppercase">
+                <p className="text-estacio-cyan font-black italic uppercase">
                   Brilha sem medo. O amanhã está sendo escrito agora, e o teclado está nas suas mãos.
                 </p>
               </div>
@@ -112,13 +112,13 @@ const CuriosidadesEstacio: React.FC = () => {
         {/* Curiosities Grid */}
         <section className="mb-24">
           <div className="flex items-center gap-4 mb-12">
-            <div className="w-2 h-8 bg-teal-500 rounded-full"></div>
+            <div className="w-2 h-8 bg-estacio-cyan rounded-full"></div>
             <h3 className="text-2xl font-black text-estacio-navy italic uppercase tracking-tight">🔍 Curiosidades que Inspiram</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {CURIOSITIES.map((item, i) => (
-              <div key={i} className="bg-white p-10 rounded-[3.5rem] border border-slate-100 shadow-xl flex flex-col items-start transition-all hover:-translate-y-2">
-                <div className={`w-14 h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mb-6 shadow-sm`}>
+              <div key={i} className="bg-white p-10 rounded-[3.5rem] border border-slate-100 shadow-xl flex flex-col items-start transition-all hover:-translate-y-2 group">
+                <div className={`w-14 h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform`}>
                   <item.icon size={28} />
                 </div>
                 <h4 className="font-black text-estacio-navy italic text-xl mb-4 leading-tight uppercase tracking-tight">{item.title}</h4>
@@ -128,35 +128,48 @@ const CuriosidadesEstacio: React.FC = () => {
           </div>
         </section>
 
-        {/* Statistics Table Section */}
+        {/* Statistics Section - Navy & Cyan Clean Style */}
         <section className="mb-24">
-          <div className="bg-slate-900 p-12 md:p-20 rounded-[5rem] text-white relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+          <div className="bg-[#003399] p-12 md:p-24 rounded-[5rem] text-white relative shadow-2xl overflow-hidden border border-white/10">
+            {/* Background Texture Overlay */}
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-cyan/10 blur-[100px] rounded-full pointer-events-none"></div>
+            
             <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-12 justify-center">
-                <BarChart3 className="text-teal-400" size={32} />
-                <h3 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter text-center">
-                  📊 Estatísticas <span className="text-teal-400">de Peso</span>
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-20">
+                <div className="flex items-center gap-4">
+                   <BarChart3 className="text-estacio-cyan" size={42} strokeWidth={2.5} />
+                   <div className="w-12 h-12 bg-white/10 rounded-xl backdrop-blur-md flex items-center justify-center border border-white/10 overflow-hidden">
+                      <img src="https://cdn-icons-png.flaticon.com/512/3590/3590050.png" alt="Stats Icon" className="w-8 h-8 opacity-90 brightness-0 invert" />
+                   </div>
+                </div>
+                <h3 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-center">
+                  ESTATÍSTICAS <span className="text-estacio-cyan">DE PESO</span>
                 </h3>
               </div>
               
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="border-b border-white/10 text-teal-400 text-[10px] font-black uppercase tracking-widest">
-                      <th className="p-6">Indicador</th>
-                      <th className="p-6">Impacto 2025/2026</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5">
-                    {STATS.map((stat, i) => (
-                      <tr key={i} className="group hover:bg-white/5 transition-colors">
-                        <td className="p-6 font-black italic uppercase tracking-tight text-xl">{stat.indicator}</td>
-                        <td className="p-6 text-white/60 font-bold uppercase text-sm">{stat.impact}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="max-w-4xl mx-auto">
+                <div className="grid grid-cols-12 gap-4 mb-10 pb-4 border-b border-white/10">
+                  <div className="col-span-5 text-[10px] font-black uppercase tracking-[0.3em] text-estacio-cyan">Indicador</div>
+                  <div className="col-span-7 text-[10px] font-black uppercase tracking-[0.3em] text-estacio-cyan">Impacto 2025/2026</div>
+                </div>
+                
+                <div className="space-y-4">
+                  {STATS.map((stat, i) => (
+                    <div key={i} className="grid grid-cols-12 gap-4 py-8 border-b border-white/5 group hover:bg-white/5 transition-colors duration-300 rounded-2xl px-4">
+                      <div className="col-span-5 flex items-center">
+                        <span className="text-white/40 font-black italic uppercase text-xs tracking-tight group-hover:text-white transition-colors">
+                          {stat.indicator}
+                        </span>
+                      </div>
+                      <div className="col-span-7 flex items-center">
+                        <span className="text-white font-black italic uppercase text-lg md:text-2xl tracking-tighter leading-none group-hover:text-estacio-cyan transition-colors">
+                          {stat.impact}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -171,7 +184,7 @@ const CuriosidadesEstacio: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {SUCCESS_TIPS.map((tip, i) => (
               <div key={i} className="bg-white p-10 rounded-[3.5rem] border border-slate-100 shadow-xl flex flex-col h-full group hover:border-estacio-amber/30 transition-all">
-                <div className="w-12 h-12 bg-estacio-amber/10 text-estacio-amber rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-estacio-amber/10 text-estacio-amber rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:rotate-12 transition-transform">
                   <tip.icon size={24} />
                 </div>
                 <h4 className="font-black text-estacio-navy italic text-lg mb-4 leading-tight uppercase tracking-tight">{tip.title}</h4>
