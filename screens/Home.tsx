@@ -74,7 +74,8 @@ const Home: React.FC = () => {
                 
                 {/* Permanent Active Icon Box */}
                 <div className={`relative w-16 h-16 md:w-20 md:h-20 rounded-[2rem] flex items-center justify-center bg-white shadow-xl mb-8 rotate-[5deg] scale-110 ${styles.icon}`}>
-                  <Icon size={32} md:size={40} strokeWidth={2.5} aria-hidden="true" />
+                  {/* Fixed: removed invalid md:size prop which caused TypeScript error */}
+                  <Icon size={32} strokeWidth={2.5} aria-hidden="true" />
                 </div>
                 
                 <h3 className={`relative z-10 font-black text-sm md:text-base leading-tight mb-3 uppercase italic tracking-tighter ${styles.text}`}>
