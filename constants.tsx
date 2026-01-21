@@ -10,7 +10,8 @@ import {
   Calendar, 
   UserCheck,
   Images,
-  Link as LinkIcon
+  Link as LinkIcon,
+  Sparkles
 } from 'lucide-react';
 import { ViewType } from './types';
 
@@ -22,6 +23,7 @@ export const CARDS_DATA = [
   { id: ViewType.EMPREENDEDOR, title: 'Empreendedorismo', desc: 'Transforme ideias em startups reais.', icon: Lightbulb, color: 'group-hover:border-purple-500' },
   { id: ViewType.PROJETOS, title: 'Grupo e Projetos', desc: 'Espaço de colaboração entre alunos.', icon: Users, color: 'group-hover:border-orange-500' },
   { id: ViewType.EVENTOS, title: 'Eventos de TI', desc: 'Calendário de conferências 2026.', icon: Calendar, color: 'group-hover:border-pink-500' },
+  { id: ViewType.CURIOSIDADES, title: 'Curiosidades Estácio', desc: 'História, números e fatos que inspiram.', icon: Sparkles, color: 'group-hover:border-teal-500' },
   { id: ViewType.GALERIA, title: 'Galeria de Fotos', desc: 'Registros de eventos e aulas práticas.', icon: Images, color: 'group-hover:border-indigo-500' },
   { id: ViewType.LINKS, title: 'Links Oficiais', desc: 'SIA, Portal, Biblioteca e Office 365.', icon: LinkIcon, color: 'group-hover:border-teal-500' },
   { id: ViewType.COORDENADOR, title: 'Fale com o coordenador', desc: 'Atendimento e suporte acadêmico.', icon: UserCheck, color: 'group-hover:border-estacio-navy' },

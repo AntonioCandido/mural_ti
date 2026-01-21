@@ -10,5 +10,6 @@ export enum ViewType {
   EVENTOS = '#/eventos-ti',
   GALERIA = '#/galeria-fotos',
   LINKS = '#/links-essenciais',
-  COORDENADOR = '#/fale-com-o-coordenador'
+  COORDENADOR = '#/fale-com-o-coordenador',
+  CURIOSIDADES = '#/curiosidades-estacio'
 }

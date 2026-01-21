@@ -13,6 +13,7 @@ import EventosTI from './screens/EventosTI';
 import GaleriaFotos from './screens/GaleriaFotos';
 import LinksEssenciais from './screens/LinksEssenciais';
 import FaleCoordenador from './screens/FaleCoordenador';
+import CuriosidadesEstacio from './screens/CuriosidadesEstacio';
 
 const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>(window.location.hash || '#/home');
@@ -54,6 +55,7 @@ const App: React.FC = () => {
       case '#/galeria-fotos': return <GaleriaFotos />;
       case '#/links-essenciais': return <LinksEssenciais />;
       case '#/fale-com-o-coordenador': return <FaleCoordenador />;
+      case '#/curiosidades-estacio': return <CuriosidadesEstacio />;
       default: return <Home />;
     }
   };
