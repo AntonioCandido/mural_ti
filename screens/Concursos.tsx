@@ -1,91 +1,234 @@
 
 import React from 'react';
 import { CoordinatorWidget } from '../constants';
-import { ChevronLeft, ExternalLink, ShieldCheck } from 'lucide-react';
+import { ChevronLeft, ExternalLink, ShieldCheck, Target, Zap, Search, Calendar, MapPin, TrendingUp, AlertCircle } from 'lucide-react';
 
-const CONCURSOS_LIST = [
-  { orgao: 'TCE-SC', status: 'Publicado', salario: 'R$ 18.984,72', local: 'Santa Catarina', link: 'https://www.estrategiaconcursos.com.br/blog/concursos-ti/', color: 'emerald' },
-  { orgao: 'FAPESP', status: 'Edital Previsto', salario: 'R$ 10.571,65', local: 'São Paulo', link: 'https://www.estrategiaconcursos.com.br/blog/concursos-ti/', color: 'amber' },
-  { orgao: 'VALEC', status: 'Comissão Formada', salario: 'R$ 8.900,00', local: 'Nacional', link: 'https://blog.grancursosonline.com.br/concursos-ti/', color: 'blue' },
-  { orgao: 'DATAPREV', status: 'Vigente', salario: 'Até R$ 9.173,62', local: 'Nacional', link: 'https://conhecimento.fgv.br/concursos/dataprev24', color: 'indigo' },
-  { orgao: 'SERPRO', status: 'Prorrogação', salario: 'R$ 9.025,73', local: 'Nacional', link: 'https://www.estrategiaconcursos.com.br/blog/concurso-serpro/', color: 'purple' },
+const OPEN_EXAMS = [
+  { 
+    orgao: 'PRODERJ (RJ)', 
+    vagas: 'Analista, Programador e Suporte', 
+    status: 'Inscrições até 04/02', 
+    salario: 'Até R$ 4.549,35', 
+    link: 'https://concursos.ibdoprojetos.org.br/',
+    prova: '22 de Março/2026',
+    color: 'emerald'
+  },
+  { 
+    orgao: 'Sefa PA', 
+    vagas: 'Analista Fazendário de TI', 
+    status: 'Inscrições até 13/02', 
+    salario: 'R$ 16.659,63', 
+    link: 'https://portalfadesp.org.br/',
+    prova: 'Abril/2026',
+    color: 'blue'
+  },
+  { 
+    orgao: 'TCE RN', 
+    vagas: 'Auditor e Analista de TI', 
+    status: 'Inscrições até 04/02', 
+    salario: 'R$ 15.553,30', 
+    link: 'https://conhecimento.fgv.br/',
+    prova: 'Março/2026',
+    color: 'indigo'
+  },
+  { 
+    orgao: 'IFRJ', 
+    vagas: 'Professor de TI e Admin', 
+    status: 'Aberto em Janeiro', 
+    salario: 'Até R$ 8.000,00', 
+    link: 'https://www.idecan.org.br/',
+    prova: 'Fevereiro/2026',
+    color: 'purple'
+  }
+];
+
+const EXPECTED_EXAMS = [
+  { 
+    orgao: 'Polícia Federal', 
+    vaga: 'Perito Criminal (TI)', 
+    destaque: 'Forense e Segurança', 
+    remuneracao: 'R$ 25.000,00+', 
+    status: 'Comissão Formada' 
+  },
+  { 
+    orgao: 'Banco do Brasil', 
+    vaga: 'Agente de Tecnologia', 
+    destaque: 'Ideal para alunos iniciais', 
+    remuneracao: 'R$ 6.000,00+', 
+    status: 'Expectativa 2026' 
+  },
+  { 
+    orgao: 'TCU / CGU', 
+    vaga: 'Auditor de TI', 
+    destaque: 'Governança e Dados', 
+    remuneracao: 'R$ 22.000,00+', 
+    status: 'Autorizado' 
+  },
+  { 
+    orgao: 'CNU 2', 
+    vaga: 'Bloco Dados e Tecnologia', 
+    destaque: '70+ Vagas Federais', 
+    remuneracao: 'Até R$ 20.000,00', 
+    status: 'Previsto 2º Semestre' 
+  }
 ];
 
 const Concursos: React.FC = () => {
   return (
-    <div className="container mx-auto px-6 py-12 fade-in">
+    <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
       <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest mb-16 transition-all">
-        <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-estacio-navy transition-colors">
-          <ChevronLeft size={14} />
+        <span className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center group-hover:bg-estacio-navy group-hover:text-white group-hover:border-estacio-navy shadow-sm transition-all duration-300">
+          <ChevronLeft size={18} />
         </span>
         Voltar
       </a>
 
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter mb-8 leading-none">
-          Concursos <span className="text-estacio-amber">Públicos</span>
-        </h2>
-        <p className="text-xl md:text-2xl text-slate-500 font-medium mb-16 leading-relaxed max-w-4xl">
-          Estabilidade, planos de carreira sólidos e remuneração competitiva. Confira as melhores oportunidades em TI para 2026.
-        </p>
-        
-        <div className="bg-estacio-navy p-10 rounded-[3rem] mb-16 flex items-start gap-6 shadow-2xl border border-white/10 relative overflow-hidden">
-          <div className="absolute inset-0 bg-white/5"></div>
-          <div className="w-12 h-12 bg-estacio-cyan rounded-2xl flex items-center justify-center text-estacio-navy shrink-0 shadow-lg relative z-10">
-            <ShieldCheck size={24} />
+        <header className="mb-20">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="bg-estacio-amber/10 text-estacio-amber px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-estacio-amber/20">
+              Radar 2026
+            </span>
           </div>
-          <div className="relative z-10">
-            <h4 className="font-black text-estacio-cyan uppercase text-[10px] tracking-widest mb-2 italic">Aviso Importante</h4>
-            <p className="text-white text-base font-medium leading-relaxed">
-              O ingresso na carreira pública exige foco em disciplinas básicas (Direito, Português) e domínio total de Engenharia de Software e Banco de Dados. Comece hoje!
-            </p>
+          <h2 className="text-5xl md:text-8xl font-black text-estacio-navy italic uppercase tracking-tighter mb-8 leading-none">
+            Concursos <span className="text-estacio-amber">Públicos TI</span>
+          </h2>
+          <p className="text-xl md:text-2xl text-slate-500 font-medium mb-12 leading-relaxed max-w-4xl">
+            O ano de 2026 consolidou-se como o período estratégico para carreiras de estado em TI. Do <strong>PRODERJ</strong> no Rio à <strong>Polícia Federal</strong>, sua estabilidade começa aqui.
+          </p>
+        </header>
+
+        {/* Seção 1: Inscrições Abertas (Cards de Alta Conversão) */}
+        <section className="mb-24">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="w-2 h-8 bg-emerald-500 rounded-full"></div>
+            <h3 className="text-2xl font-black text-estacio-navy italic uppercase tracking-tight">Inscrições Abertas & Editais</h3>
           </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-          {CONCURSOS_LIST.map((conc, i) => {
-            const colorClass = {
-              emerald: 'border-emerald-500 bg-emerald-50',
-              amber: 'border-amber-500 bg-amber-50',
-              blue: 'border-blue-500 bg-blue-50',
-              indigo: 'border-indigo-500 bg-indigo-50',
-              purple: 'border-purple-500 bg-purple-50'
-            }[conc.color];
-
-            const accentColor = {
-              emerald: 'bg-emerald-500',
-              amber: 'bg-amber-500',
-              blue: 'bg-blue-500',
-              indigo: 'bg-indigo-500',
-              purple: 'bg-purple-500'
-            }[conc.color];
-
-            return (
-              <a 
-                key={i} 
-                href={conc.link} 
-                target="_blank"
-                className={`relative p-10 rounded-[3.5rem] border-2 shadow-2xl -translate-y-1 transition-all flex flex-col sm:flex-row justify-between sm:items-center gap-6 ${colorClass}`}
-              >
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest text-white ${accentColor}`}>
-                      {conc.status}
-                    </span>
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{conc.local}</span>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {OPEN_EXAMS.map((conc, i) => {
+              const colorBase = conc.color === 'emerald' ? 'emerald' : 
+                                conc.color === 'blue' ? 'blue' : 
+                                conc.color === 'indigo' ? 'indigo' : 'purple';
+              
+              return (
+                <a 
+                  key={i} 
+                  href={conc.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`group relative p-10 rounded-[4rem] border-2 transition-all duration-500 hover:scale-[1.02] flex flex-col md:flex-row justify-between items-center gap-8 shadow-xl bg-white border-${colorBase}-500/20 hover:border-${colorBase}-500`}
+                >
+                  <div className="flex-grow w-full md:w-auto">
+                    <div className="flex flex-wrap items-center gap-3 mb-6">
+                      <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest text-white shadow-md bg-${colorBase}-500`}>
+                        {conc.status}
+                      </span>
+                      <div className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        <Calendar size={12} /> Prova: {conc.prova}
+                      </div>
+                    </div>
+                    <h4 className="font-black text-estacio-navy italic text-3xl mb-1 uppercase tracking-tighter group-hover:text-black transition-colors">{conc.orgao}</h4>
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-6 opacity-70">{conc.vagas}</p>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-[10px] font-black text-slate-400 uppercase">Remuneração:</span>
+                      <p className="text-2xl font-black text-slate-900 tracking-tighter">{conc.salario}</p>
+                    </div>
                   </div>
-                  <h4 className="font-black text-estacio-navy italic text-3xl mb-2 uppercase tracking-tight">{conc.orgao}</h4>
-                  <p className="text-xl font-black text-slate-900 tracking-tighter">{conc.salario}</p>
-                </div>
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-lg ${accentColor}`}>
-                  <ExternalLink size={24} />
-                </div>
-              </a>
-            );
-          })}
+                  <div className={`shrink-0 w-16 h-16 rounded-[1.5rem] flex items-center justify-center text-white shadow-xl transition-transform group-hover:rotate-12 bg-${colorBase}-500`}>
+                    <ExternalLink size={24} />
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Seção 2: Rio de Janeiro Especial */}
+        <div className="bg-estacio-navy p-12 md:p-20 rounded-[5rem] text-white mb-24 relative overflow-hidden shadow-2xl border border-white/10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-estacio-cyan/10 blur-[120px] rounded-full"></div>
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2">
+              <div className="flex items-center gap-3 text-estacio-cyan mb-6">
+                <MapPin size={24} />
+                <span className="text-[11px] font-black uppercase tracking-[0.3em]">Cenário Rio & Região Serrana</span>
+              </div>
+              <h3 className="text-4xl md:text-6xl font-black italic uppercase mb-8 tracking-tighter leading-none">
+                Foco Total no <br/> <span className="text-estacio-cyan text-stroke-white">PRODERJ</span>
+              </h3>
+              <p className="text-white/60 font-medium text-lg mb-10 leading-relaxed">
+                As provas serão em <strong>22 de março</strong>. É a oportunidade perfeita para alunos de ADS e Sistemas, com vagas para Programador e Analista. O conteúdo programático é 80% aderente às nossas disciplinas.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                 <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl flex flex-col">
+                    <span className="text-[9px] font-black text-estacio-cyan uppercase opacity-60">Nova Friburgo</span>
+                    <span className="text-xs font-bold">Validade prorrogada até 2028</span>
+                 </div>
+                 <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl flex flex-col">
+                    <span className="text-[9px] font-black text-estacio-cyan uppercase opacity-60">PC RJ</span>
+                    <span className="text-xs font-bold">Perito Criminal (Comissão Formada)</span>
+                 </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2 grid grid-cols-1 gap-4 w-full">
+              <div className="bg-white/5 border border-white/10 p-8 rounded-[3rem] backdrop-blur-sm">
+                <AlertCircle className="text-estacio-amber mb-4" />
+                <h5 className="font-black uppercase italic text-lg mb-2">Dica de Estudo</h5>
+                <p className="text-sm font-medium opacity-60">Foquem em <strong>Desenvolvimento Web, Segurança e Bancos de Dados</strong>. Esses temas dominam as provas da PRODERJ e são o forte da nossa grade.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <CoordinatorWidget tip="A disciplina supera o talento. Crie uma rotina de estudos constante e foque nos editais que valorizam a base teórica sólida de computação e algoritmos." />
+        {/* Seção 3: Radar Federal (Tabela de Previsão) */}
+        <section className="mb-24">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="w-2 h-8 bg-estacio-amber rounded-full"></div>
+            <h3 className="text-2xl font-black text-estacio-navy italic uppercase tracking-tight">Radar Federal 2026</h3>
+          </div>
+          
+          <div className="bg-white rounded-[4rem] border border-slate-100 shadow-2xl overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-slate-50 border-b border-slate-100">
+                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest">Órgão</th>
+                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest">Cargo / Especialidade</th>
+                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest">Status</th>
+                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest text-right">Remuneração</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {EXPECTED_EXAMS.map((item, i) => (
+                    <tr key={i} className="hover:bg-slate-50/50 transition-colors group">
+                      <td className="p-8">
+                        <span className="font-black text-estacio-navy italic text-xl uppercase tracking-tight group-hover:text-estacio-cyan transition-colors">
+                          {item.orgao}
+                        </span>
+                      </td>
+                      <td className="p-8">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-black text-slate-900 uppercase tracking-tighter">{item.vaga}</span>
+                          <span className="text-[10px] font-bold text-slate-400 uppercase">{item.destaque}</span>
+                        </div>
+                      </td>
+                      <td className="p-8">
+                        <span className="px-3 py-1 bg-estacio-amber/10 text-estacio-amber text-[9px] font-black uppercase rounded-full border border-estacio-amber/20">
+                          {item.status}
+                        </span>
+                      </td>
+                      <td className="p-8 text-right">
+                        <span className="text-xl font-black text-slate-900 tracking-tighter">{item.remuneracao}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <CoordinatorWidget tip="Alunos de ADS, o edital do PRODERJ é praticamente um resumo das nossas disciplinas. Participar desse concurso é, antes de tudo, o melhor simulado real que vocês podem ter para validar o conhecimento de sala de aula." />
       </div>
     </div>
   );
