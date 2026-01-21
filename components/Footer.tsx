@@ -25,12 +25,10 @@ const Footer: React.FC = () => {
     { label: 'SIA / Portais', href: ViewType.LINKS },
   ];
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-    if (target.startsWith('#')) {
-      e.preventDefault();
-      window.location.hash = target;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>, target: string) => {
+    e.preventDefault();
+    window.location.hash = target;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -45,7 +43,11 @@ const Footer: React.FC = () => {
           
           {/* Brand & Social Column */}
           <div className="flex flex-col items-start">
-            <div className="mb-6 group cursor-default">
+            <a 
+              href={ViewType.HOME}
+              onClick={(e) => handleLinkClick(e, ViewType.HOME)}
+              className="mb-6 group block transition-transform active:scale-95"
+            >
               <span className="text-white font-black italic uppercase tracking-tighter text-4xl leading-tight block group-hover:text-estacio-cyan transition-colors">
                 MURAL <span className="text-estacio-cyan group-hover:text-white transition-colors">TI</span>
               </span>
@@ -55,7 +57,7 @@ const Footer: React.FC = () => {
                   ESTÁCIO DE SÁ
                 </span>
               </div>
-            </div>
+            </a>
             <p className="text-[10px] leading-relaxed mb-6 opacity-60 font-bold uppercase tracking-wider max-w-xs">
               O ecossistema definitivo de inteligência e carreira para o futuro engenheiro de software.
             </p>
@@ -144,18 +146,21 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer Bottom Bar - Minimum Spacing & Raised */}
+        {/* Footer Bottom Bar - Interactive return to Home */}
         <div className="pt-4 border-t border-white/5 flex flex-col items-center">
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-2 mb-1 text-[10px] font-black uppercase tracking-[0.4em]">
+          <div 
+            onClick={(e) => handleLinkClick(e, ViewType.HOME)}
+            className="flex flex-wrap justify-center gap-x-10 gap-y-2 mb-1 text-[10px] font-black uppercase tracking-[0.4em] cursor-pointer hover:text-white transition-colors group"
+          >
              <div className="flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span className="text-slate-500">SYSTEMS OPERATIONAL</span>
+                <span className="text-slate-500 group-hover:text-estacio-cyan transition-colors">SYSTEMS OPERATIONAL</span>
              </div>
-             <span className="text-slate-700">© 2026 MURAL TI HUB</span>
-             <span className="text-slate-700">UNIDADES R9 & TOM JOBIM</span>
+             <span className="text-slate-700 group-hover:text-slate-400">© 2026 MURAL TI HUB</span>
+             <span className="text-slate-700 group-hover:text-slate-400">UNIDADES R9 & TOM JOBIM</span>
           </div>
           
           <div className="max-w-4xl text-center">
