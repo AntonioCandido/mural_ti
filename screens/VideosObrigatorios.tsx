@@ -309,7 +309,7 @@ const VideosObrigatorios: React.FC = () => {
             </h2>
           </div>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-5xl leading-relaxed mx-auto md:mx-0 border-l-4 border-red-600/20 pl-6 italic">
-            Para um aluno de TI, entender a história e os fundamentos da tecnologia é tão importante quanto aprender a programar. Abaixo, organizei uma lista com 15 vídeos essenciais (documentários, filmes e aulas) dublados ou em português do Brasil, incluindo os itens solicitados:
+            Para um aluno de TI, entender a história e os fundamentos da tecnologia é tão importante quanto aprender a programar. temos uma lista com vídeos essenciais (documentários, filmes e aulas) dublados ou em português do Brasil:
           </p>
         </header>
 
