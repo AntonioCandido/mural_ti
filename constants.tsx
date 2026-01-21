@@ -44,18 +44,18 @@ export const CoordinatorWidget: React.FC<CoordinatorWidgetProps> = ({
   const coordinatorPhoto = "https://media.licdn.com/dms/image/v2/D4D03AQH1HQJvGVGLrw/profile-displayphoto-crop_800_800/B4DZutPuDRJMAI-/0/1768138139079?e=1770249600&v=beta&t=kAVGLV8YKILR76nahJqDR6avuXQGoiuNy4kea4AMvd4";
 
   return (
-    <div className="mt-20 relative">
+    <div className="mt-12 md:mt-16 relative">
       <div className="absolute inset-0 bg-estacio-navy/5 blur-3xl rounded-full"></div>
-      <div className="relative bg-white border border-slate-100 rounded-[3.5rem] p-8 md:p-14 shadow-2xl shadow-slate-200/50 flex flex-col md:flex-row items-center gap-8 md:gap-14 max-w-5xl mx-auto overflow-hidden">
+      <div className="relative bg-white border border-slate-100 rounded-[3.5rem] p-8 pt-24 md:p-14 md:pt-14 shadow-2xl shadow-slate-200/50 flex flex-col md:flex-row items-center gap-8 md:gap-14 max-w-5xl mx-auto overflow-visible">
         
-        {/* Avatar Circle */}
-        <div className="relative shrink-0">
-          <div className="absolute inset-0 bg-estacio-cyan/10 blur-xl rounded-full scale-125"></div>
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-slate-100 flex items-center justify-center ring-8 ring-estacio-cyan/5">
+        {/* Avatar Circle - Floating Higher Effect */}
+        <div className="relative shrink-0 -mt-36 md:-mt-44 md:mb-0">
+          <div className="absolute inset-0 bg-estacio-cyan/20 blur-2xl rounded-full scale-125 animate-pulse"></div>
+          <div className="relative w-40 h-40 md:w-56 md:h-56 rounded-full border-[8px] border-white shadow-2xl overflow-hidden bg-slate-100 flex items-center justify-center ring-12 ring-estacio-cyan/5 transition-transform hover:scale-105 duration-500">
             <img 
               src={coordinatorPhoto} 
               alt="Coordenador Antônio Cândido" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover scale-105"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Antonio+Candido&background=003399&color=fff&size=256';
               }}
@@ -75,7 +75,7 @@ export const CoordinatorWidget: React.FC<CoordinatorWidgetProps> = ({
           <div className="flex flex-col md:flex-row md:items-center gap-4">
             <div className="space-y-1">
               <p className="font-black text-estacio-navy text-sm uppercase tracking-tight">ANTONIO CANDIDO DE OLIVEIRA FILHO</p>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Coordenação ADS & Ciência da Computação</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Coordenação do curso</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export const CoordinatorWidget: React.FC<CoordinatorWidgetProps> = ({
         <a 
           href="#/fale-com-o-coordenador" 
           onClick={handleNav}
-          className="shrink-0 bg-estacio-navy text-white px-10 py-5 rounded-[2rem] font-black uppercase italic tracking-widest text-[11px] hover:bg-estacio-cyan hover:text-estacio-navy hover:scale-105 transition-all shadow-xl shadow-estacio-navy/20"
+          className="shrink-0 bg-estacio-navy text-white px-10 py-5 rounded-[2rem] font-black uppercase italic tracking-widest text-[11px] hover:bg-estacio-cyan hover:text-estacio-navy hover:scale-105 transition-all shadow-xl shadow-estacio-navy/20 w-full md:w-auto text-center"
         >
           Agendar Conversa
         </a>
