@@ -73,7 +73,7 @@ const App: React.FC = () => {
         </div>
       )}
 
-      <main className="flex-grow pt-24 pb-12 transition-all duration-500">
+      <main className="flex-grow pt-24 pb-4 transition-all duration-500">
         {renderScreen()}
       </main>
       <Footer />
