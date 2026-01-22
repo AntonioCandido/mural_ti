@@ -146,7 +146,7 @@ const CuriosidadesEstacio: React.FC = () => {
                   Não é apenas um diploma. É o seu próximo grande salto. No mundo da Tecnologia da Informação, o relógio não para. E na Estácio, nós também não.
                 </p>
                 <p>
-                  Somos mais que uma sala de aula; somos o laboratório onde suas ideias ganham código, onde seu esforço se transforma em solução e onde o mercado de trabalho encontra o seu nom. 
+                  Somos mais que uma sala de aula; somos o laboratório onde suas ideias ganham código, onde seu esforço se transforma em solução e onde o mercado de trabalho encontra o seu nome. 
                 </p>
                 <p>
                   Desde 1970, nossa missão é democratizar o brilho. Acreditamos que o conhecimento é a única ferramenta capaz de derrubar muros e construir pontes. Aqui, você tem a estrutura da maior universidade do país e a agilidade de quem fala a língua do futuro: <strong className="text-estacio-navy">Python, IA, Cloud e Métodos Ágeis.</strong>
