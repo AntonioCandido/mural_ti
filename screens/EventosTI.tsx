@@ -1,13 +1,12 @@
-
 import React from 'react';
 import { CoordinatorWidget } from '../constants';
 import { 
   ChevronLeft, Globe, ExternalLink, Calendar, MapPin, 
-  Zap, Award, Users, Sparkles, BookOpen, GraduationCap 
+  Zap, Award, Users, Sparkles, BookOpen, GraduationCap,
+  Star, Handshake
 } from 'lucide-react';
 import Timeline, { EventItem } from '../components/Timeline';
 
-// Ícones Auxiliares movidos para o topo para evitar erro de escopo (TDZ)
 const MessageSquareIcon = ({ size, className }: { size: number, className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -22,12 +21,55 @@ const CheckCircleIcon = ({ size, className }: { size: number, className?: string
 );
 
 const BRAZIL_EVENTS = [
-  { name: 'Web Summit Rio', date: '08 a 11 de Junho', local: 'Rio de Janeiro', foco: 'Inovação e Startups', link: 'https://rio.websummit.com/' },
-  { name: 'CSBC 2026', date: '19 a 23 de Julho', local: 'Gramado, RS', foco: 'Acadêmico e Científico', link: 'https://csbc.sbc.org.br/2026/' },
-  { name: 'Febraban Tech', date: '24 a 26 de Agosto', local: 'São Paulo', foco: 'Fintech e Segurança', link: 'https://www.febrabantech.com.br/' },
-  { name: 'TDC (The Developer\'s Conference)', date: 'Várias Datas', local: 'SP, RJ, DF', foco: 'Desenvolvimento de Software', link: 'https://thedevconf.com/' },
-  { name: 'Futurecom', date: '06 a 08 de Outubro', local: 'São Paulo', foco: 'Telecom e Conectividade', link: 'https://www.futurecom.com.br/' },
-  { name: 'IA Conference Brasil', date: '24 de Setembro', local: 'São Paulo', foco: 'Inteligência Artificial', link: 'https://www.iaconferencebrasil.com.br/' },
+  { 
+    name: 'Campus Party Brasil', 
+    date: 'Setembro 2026', 
+    local: 'São Paulo, SP', 
+    foco: 'Inovação e Comunidade', 
+    desc: 'O maior festival de tecnologia e criatividade do mundo. Palestras, hackathons e comunidades.',
+    link: 'https://brasil.campus-party.org/',
+    special: true 
+  },
+  { 
+    name: 'Web Summit Rio', 
+    date: '08 a 11 de Junho', 
+    local: 'Rio de Janeiro, RJ', 
+    foco: 'Inovação e Startups', 
+    desc: 'Considerado o "Cannes da Tecnologia", reúne as mentes mais brilhantes e investidores globais no RJ.',
+    link: 'https://rio.websummit.com/' 
+  },
+  { 
+    name: 'CSBC 2026', 
+    date: '19 a 23 de Julho', 
+    local: 'Gramado, RS', 
+    foco: 'Acadêmico e Científico', 
+    desc: 'O principal evento da Sociedade Brasileira de Computação, focado em pesquisa, ética e futuro da TI.',
+    link: 'https://csbc.sbc.org.br/2026/' 
+  },
+  { 
+    name: 'Febraban Tech', 
+    date: '24 a 26 de Agosto', 
+    local: 'São Paulo, SP', 
+    foco: 'Fintech e Segurança', 
+    desc: 'Maior evento de tecnologia bancária da AL, focado em IA generativa, cibersegurança e economia digital.',
+    link: 'https://www.febrabantech.com.br/' 
+  },
+  { 
+    name: 'TDC (The Dev Conf)', 
+    date: 'Várias Datas', 
+    local: 'SP, RJ, DF', 
+    foco: 'Desenvolvimento', 
+    desc: 'Uma das maiores conferências de desenvolvedores do mundo, dividida em trilhas técnicas especializadas.',
+    link: 'https://thedevconf.com/' 
+  },
+  { 
+    name: 'IA Conference Brasil', 
+    date: '24 de Setembro', 
+    local: 'São Paulo, SP', 
+    foco: 'Inteligência Artificial', 
+    desc: 'Evento focado inteiramente em aplicações práticas de IA no mercado corporativo e engenharia.',
+    link: 'https://www.iaconferencebrasil.com.br/' 
+  },
 ];
 
 const INTERNATIONAL_EVENTS = [
@@ -73,60 +115,70 @@ const EventosTI: React.FC = () => {
             Eventos <span className="text-pink-600">de TI</span>
           </h2>
           <p className="text-xl md:text-2xl text-slate-500 font-medium max-w-4xl leading-relaxed">
-            A participação em eventos é um diferencial para o networking e atualização técnica. Explore o calendário 2026 focado em Inovação, IA e Desenvolvimento.
+            A participação em eventos é o combustível para sua rede de contatos e atualização técnica. Explore o calendário 2026.
           </p>
         </header>
 
-        {/* --- SEÇÃO: BRASIL (TABELA) --- */}
+        {/* --- NOVO BLOCO: CARDS BRASIL --- */}
         <section className="mb-24">
           <div className="flex items-center gap-4 mb-12">
             <div className="w-2 h-8 bg-pink-600 rounded-full"></div>
             <h3 className="text-2xl font-black text-estacio-navy italic uppercase tracking-tight">🇧🇷 Eventos no Brasil</h3>
           </div>
           
-          <div className="bg-white rounded-[4rem] border border-slate-100 shadow-2xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-slate-50 border-b border-slate-100">
-                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest">Evento</th>
-                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest">Data</th>
-                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest">Local</th>
-                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest">Foco Principal</th>
-                    <th className="p-8 text-[11px] font-black uppercase text-slate-400 tracking-widest text-right">Link</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {BRAZIL_EVENTS.map((event, i) => (
-                    <tr key={i} className="hover:bg-pink-50/30 transition-colors group">
-                      <td className="p-8">
-                        <span className="font-black text-estacio-navy italic text-xl uppercase tracking-tight group-hover:text-pink-600 transition-colors">
-                          {event.name}
-                        </span>
-                      </td>
-                      <td className="p-8">
-                        <div className="flex items-center gap-2 text-sm font-bold text-slate-900 uppercase">
-                          <Calendar size={14} className="text-pink-600" /> {event.date}
-                        </div>
-                      </td>
-                      <td className="p-8">
-                        <div className="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase">
-                          <MapPin size={14} /> {event.local}
-                        </div>
-                      </td>
-                      <td className="p-8">
-                        <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest">{event.foco}</span>
-                      </td>
-                      <td className="p-8 text-right">
-                        <a href={event.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-slate-100 text-estacio-navy rounded-2xl hover:bg-pink-600 hover:text-white transition-all shadow-sm">
-                          <ExternalLink size={18} />
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {BRAZIL_EVENTS.map((event, i) => (
+              <div 
+                key={i} 
+                className={`group relative bg-white p-8 md:p-10 rounded-[3rem] border transition-all duration-500 hover:-translate-y-2 flex flex-col h-full shadow-xl ${
+                  event.special ? 'border-estacio-amber/40 ring-1 ring-estacio-amber/20' : 'border-slate-100'
+                }`}
+              >
+                {event.special && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-estacio-amber text-estacio-navy px-4 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg flex items-center gap-2">
+                    <Star size={10} fill="currentColor" /> Destaque Aluno
+                  </div>
+                )}
+
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${event.special ? 'bg-estacio-amber/10 text-estacio-amber' : 'bg-pink-100 text-pink-600'}`}>
+                    {event.special ? <Sparkles size={24} /> : <Calendar size={24} />}
+                  </div>
+                  <div>
+                    <h4 className="font-black text-estacio-navy italic text-xl uppercase tracking-tighter group-hover:text-pink-600 transition-colors leading-tight">
+                      {event.name}
+                    </h4>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{event.date}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 mb-4 text-[10px] font-black text-slate-500 uppercase">
+                  <MapPin size={12} className="text-pink-600" /> {event.local}
+                </div>
+
+                <p className="text-[11px] font-bold text-slate-500 uppercase leading-relaxed mb-8 flex-grow">
+                  {event.desc}
+                </p>
+
+                {event.special && (
+                  <div className="mb-8 p-4 bg-estacio-amber/5 border border-estacio-amber/20 rounded-2xl">
+                    <div className="flex gap-3 items-start">
+                      <Handshake size={18} className="text-estacio-amber shrink-0 mt-0.5" />
+                      <p className="text-[10px] font-black text-estacio-navy/70 leading-normal uppercase">
+                        <span className="text-estacio-navy">Oportunidade:</span> Estudantes de TI podem se inscrever como voluntários, garantindo networking e acesso diferenciado ao ecossistema do evento.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
+                  <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest">{event.foco}</span>
+                  <a href={event.link} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-100 text-estacio-navy rounded-xl flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all shadow-sm">
+                    <ExternalLink size={16} />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -180,12 +232,12 @@ const EventosTI: React.FC = () => {
                 Congresso <br/> da <span className="text-pink-600 text-stroke-white">SBC (CSBC)</span>
               </h3>
               <p className="text-white/50 font-medium text-lg mb-10 leading-relaxed italic">
-                Tema 2026: "Transformação Digital para um Mundo em Emergência Climática". É o local definitivo para TCCs, Iniciação Científica e fóruns de coordenação.
+                O local definitivo para TCCs e Iniciação Científica. Uma oportunidade única de publicar seu primeiro artigo científico.
               </p>
               <ul className="space-y-4 mb-10">
-                <li className="flex items-center gap-3 text-sm font-bold"><CheckCircleIcon size={16} className="text-pink-500" /> Concursos de Teses e Dissertações</li>
-                <li className="flex items-center gap-3 text-sm font-bold"><CheckCircleIcon size={16} className="text-pink-500" /> Concursos de Trabalhos de Iniciação Científica (CTIC)</li>
-                <li className="flex items-center gap-3 text-sm font-bold"><CheckCircleIcon size={16} className="text-pink-500" /> Fóruns de Coordenadores de Cursos de TI</li>
+                <li className="flex items-center gap-3 text-sm font-bold"><CheckCircleIcon size={16} className="text-pink-500" /> Publicação em Anais Acadêmicos</li>
+                <li className="flex items-center gap-3 text-sm font-bold"><CheckCircleIcon size={16} className="text-pink-500" /> Networking com Pesquisadores e Mestres</li>
+                <li className="flex items-center gap-3 text-sm font-bold"><CheckCircleIcon size={16} className="text-pink-500" /> Fóruns de Discussão sobre Currículo de TI</li>
               </ul>
               <a 
                 href="https://csbc.sbc.org.br/2026/" 
@@ -203,23 +255,23 @@ const EventosTI: React.FC = () => {
                 <span className="text-[10px] font-black uppercase tracking-widest">Dica para Alunos</span>
               </div>
               <p className="text-white font-bold italic text-xl leading-relaxed mb-8">
-                "Muitos eventos como o Web Summit e Campus Party possuem programas de voluntariado. Participe gratuitamente e ganhe certificados de horas complementares!"
+                "Não apenas assista: atue. O voluntariado em eventos como Campus Party e Web Summit conta como horas complementares (AAC) e vale ouro no currículo."
               </p>
               <div className="flex gap-4">
                  <div className="bg-white/10 px-6 py-4 rounded-2xl border border-white/10 flex flex-col items-center">
-                    <span className="text-pink-500 font-black text-xl">Gratuito</span>
-                    <span className="text-[8px] font-black uppercase opacity-60">Via Voluntariado</span>
+                    <span className="text-pink-500 font-black text-xl">Certificado</span>
+                    <span className="text-[8px] font-black uppercase opacity-60">Horas AAC</span>
                  </div>
                  <div className="bg-white/10 px-6 py-4 rounded-2xl border border-white/10 flex flex-col items-center">
-                    <span className="text-estacio-cyan font-black text-xl">AAC</span>
-                    <span className="text-[8px] font-black uppercase opacity-60">Horas Válidas</span>
+                    <span className="text-estacio-cyan font-black text-xl">Experiência</span>
+                    <span className="text-[8px] font-black uppercase opacity-60">Prática Real</span>
                  </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* --- TIMELINE (PRESERVADA E ATUALIZADA) --- */}
+        {/* --- TIMELINE --- */}
         <section className="mb-24">
           <div className="flex items-center gap-4 mb-12">
             <div className="w-2 h-8 bg-slate-400 rounded-full"></div>
@@ -228,19 +280,7 @@ const EventosTI: React.FC = () => {
           <Timeline events={TIMELINE_EVENTS} />
         </section>
 
-        <div className="mt-16 text-center">
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Outros Hubs de Inovação</p>
-          <div className="flex flex-wrap justify-center gap-12">
-            <a href="https://brasil.campus-party.org/" target="_blank" rel="noopener noreferrer" className="text-estacio-navy font-black italic text-xl uppercase hover:text-pink-600 transition-colors">
-              Campus Party Brasil
-            </a>
-            <a href="https://rio.websummit.com/" target="_blank" rel="noopener noreferrer" className="text-estacio-navy font-black italic text-xl uppercase hover:text-pink-600 transition-colors">
-              Web Summit Rio
-            </a>
-          </div>
-        </div>
-
-        <CoordinatorWidget tip="Eventos são as melhores janelas para o futuro. Participe ativamente do CSBC ou busque ser voluntário no Web Summit para entender as novas tendências antes que elas virem padrão no mercado." />
+        <CoordinatorWidget tip="A tecnologia muda rápido, mas os fundamentos e as pessoas que você conhece em eventos permanecem. O voluntariado na Campus Party é a melhor forma de entrar no ecossistema sem custo e com máximo proveito." />
       </div>
     </div>
   );
