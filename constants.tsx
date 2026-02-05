@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   UserCog, 
@@ -43,7 +42,7 @@ export const CoordinatorWidget: React.FC<CoordinatorWidgetProps> = ({
     window.location.hash = ViewType.COORDENADOR;
   };
 
-  const coordinatorPhoto = "https://media.licdn.com/dms/image/v2/D4D03AQH1HQJvGVGLrw/profile-displayphoto-crop_800_800/B4DZutPuDRJMAI-/0/1768138139079?e=1770249600&v=beta&t=kAVGLV8YKILR76nahJqDR6avuXQGoiuNy4kea4AMvd4";
+  const coordinatorPhoto = "https://avatars.githubusercontent.com/u/9017112?s=400&u=14eb77bb805c4996785584f67a0544cf553042d4&v=4";
 
   return (
     <div className="mt-12 md:mt-16 relative">

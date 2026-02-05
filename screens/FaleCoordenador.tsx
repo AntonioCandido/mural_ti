@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { ChevronLeft, Mail, Linkedin, Facebook, MapPin, Clock, Monitor, Sparkles, GraduationCap, Rocket, Globe2, Briefcase, TrendingUp } from 'lucide-react';
 
 const FaleCoordenador: React.FC = () => {
-  const coordinatorPhoto = "https://media.licdn.com/dms/image/v2/D4D03AQH1HQJvGVGLrw/profile-displayphoto-crop_800_800/B4DZutPuDRJMAI-/0/1768138139079?e=1770249600&v=beta&t=kAVGLV8YKILR76nahJqDR6avuXQGoiuNy4kea4AMvd4";
+  const coordinatorPhoto = "https://avatars.githubusercontent.com/u/9017112?s=400&u=14eb77bb805c4996785584f67a0544cf553042d4&v=4";
   const careerImg = "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200";
 
   return (

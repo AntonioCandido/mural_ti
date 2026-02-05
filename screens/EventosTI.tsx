@@ -119,7 +119,7 @@ const EventosTI: React.FC = () => {
           </p>
         </header>
 
-        {/* --- NOVO BLOCO: CARDS BRASIL --- */}
+        {/* --- BLOCO DE CARDS BRASIL --- */}
         <section className="mb-24">
           <div className="flex items-center gap-4 mb-12">
             <div className="w-2 h-8 bg-pink-600 rounded-full"></div>
@@ -165,7 +165,7 @@ const EventosTI: React.FC = () => {
                     <div className="flex gap-3 items-start">
                       <Handshake size={18} className="text-estacio-amber shrink-0 mt-0.5" />
                       <p className="text-[10px] font-black text-estacio-navy/70 leading-normal uppercase">
-                        <span className="text-estacio-navy">Oportunidade:</span> Estudantes de TI podem se inscrever como voluntários, garantindo networking e acesso diferenciado ao ecossistema do evento.
+                        <span className="text-estacio-navy">Oportunidade:</span> Estudantes de TI podem se inscrever como voluntários, garantindo networking e acesso diferenciado ao ecossistema do evento arrecadando experiência prática.
                       </p>
                     </div>
                   </div>
