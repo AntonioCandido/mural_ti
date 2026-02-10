@@ -1,12 +1,12 @@
 
 import React, { useState } from 'react';
-import { CoordinatorWidget } from '../constants';
+import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
+import BackButton from '../components/BackButton.tsx';
 import { 
-  ChevronLeft, Layers, PenTool, TestTube, Users, ShieldCheck, 
-  ExternalLink, Smartphone, Database, Terminal, CheckCircle, 
-  Search, MessageSquare, BookOpen, Sparkles, Code2, Globe, 
-  Cpu, Gamepad2, Laptop, Briefcase, Network, Activity, 
-  Cloud, Lock, FileCode, Beaker, Zap, BookMarked
+  PenTool, ExternalLink, Database, Terminal, 
+  BookOpen, Code2, Globe, Cpu, Gamepad2, Laptop, 
+  Briefcase, Network, Lock, FileCode, Beaker, Zap, 
+  LayoutTemplate, GraduationCap, Camera, Calendar
 } from 'lucide-react';
 
 interface AwesomeItem {
@@ -17,66 +17,23 @@ interface AwesomeItem {
   category: string;
 }
 
-// FIX: Move helper components above AWESOME_RESOURCES to ensure they are defined before usage.
-const Layout = ({ size, className }: { size: number, className?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="18" height="18" x="3" y="3" rx="2" />
-    <path d="M3 9h18" /><path d="M9 21V9" />
-  </svg>
-);
-
-const GraduationCap = ({ size, className }: { size: number, className?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-5" />
-  </svg>
-);
-
-const Camera = ({ size, className }: { size: number, className?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-    <circle cx="12" cy="13" r="3" />
-  </svg>
-);
-
-const Calendar = ({ size, className }: { size: number, className?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-    <line x1="16" x2="16" y1="2" y2="6" />
-    <line x1="8" x2="8" y1="2" y2="6" />
-    <line x1="3" x2="21" y1="10" y2="10" />
-  </svg>
-);
-
 const AWESOME_RESOURCES: AwesomeItem[] = [
-  // PLATAFORMAS & LINGUAGENS
   { title: 'Plataformas', desc: 'Recursos para Node.js, Android, iOS e Cloud.', url: 'https://github.com/sindresorhus/awesome#platforms', icon: Globe, category: 'Base' },
   { title: 'Linguagens', desc: 'Tudo sobre JavaScript, TypeScript, Rust, Go, Python e C#.', url: 'https://github.com/sindresorhus/awesome#programming-languages', icon: FileCode, category: 'Base' },
-  
-  // FRONT & BACK
-  { title: 'Front-End', desc: 'Ecossistema React, Vue, CSS-in-JS e Performance Web.', url: 'https://github.com/sindresorhus/awesome#front-end-development', icon: Layout, category: 'Dev' },
+  { title: 'Front-End', desc: 'Ecossistema React, Vue, CSS-in-JS e Performance Web.', url: 'https://github.com/sindresorhus/awesome#front-end-development', icon: LayoutTemplate, category: 'Dev' },
   { title: 'Back-End', desc: 'Arquiteturas escaláveis em Go, Node, Elixir e Java.', url: 'https://github.com/sindresorhus/awesome#back-end-development', icon: Terminal, category: 'Dev' },
-  
-  // CIÊNCIA & DADOS
   { title: 'Ciência da Computação', desc: 'Algoritmos, estruturas de dados e fundamentos teóricos.', url: 'https://github.com/sindresorhus/awesome#computer-science', icon: BookOpen, category: 'Academia' },
   { title: 'Big Data', desc: 'Processamento massivo com Spark, Hadoop e Data Engineering.', url: 'https://github.com/sindresorhus/awesome#big-data', icon: Database, category: 'Academia' },
   { title: 'Teoria', desc: 'Compiladores, linguagens formais e lógica matemática.', url: 'https://github.com/sindresorhus/awesome#theory', icon: Beaker, category: 'Academia' },
-  
-  // FERRAMENTAS & AMBIENTE
   { title: 'Editores', desc: 'Configurações de elite para VS Code, Vim e Emacs.', url: 'https://github.com/sindresorhus/awesome#editors', icon: PenTool, category: 'Tools' },
   { title: 'Ambiente de Dev', desc: 'Dotfiles, CLI, Shell e automação de workflow.', url: 'https://github.com/sindresorhus/awesome#development-environment', icon: Laptop, category: 'Tools' },
   { title: 'Bancos de Dados', desc: 'Otimização de SQL, NoSQL e bases vetoriais.', url: 'https://github.com/sindresorhus/awesome#databases', icon: Database, category: 'Tools' },
-  
-  // SEGURANÇA & INFRA
   { title: 'Segurança', desc: 'Pentesting, criptografia e segurança defensiva.', url: 'https://github.com/sindresorhus/awesome#security', icon: Lock, category: 'Segurança' },
   { title: 'Hardware', desc: 'Arduino, Raspberry Pi e IoT (Internet das Coisas).', url: 'https://github.com/sindresorhus/awesome#hardware', icon: Cpu, category: 'Infra' },
   { title: 'Redes', desc: 'Protocolos, infraestrutura e conectividade moderna.', url: 'https://github.com/sindresorhus/awesome#networking', icon: Network, category: 'Infra' },
-  
-  // CARREIRA & NEGÓCIOS
   { title: 'Negócios', desc: 'SaaS, startups e gestão de produtos de software.', url: 'https://github.com/sindresorhus/awesome#business', icon: Briefcase, category: 'Business' },
   { title: 'Trabalhar', desc: 'Vagas remotas, currículo tech e cultura de engenharia.', url: 'https://github.com/sindresorhus/awesome#work', icon: Briefcase, category: 'Business' },
   { title: 'Eventos', desc: 'Principais conferências de tecnologia no mundo.', url: 'https://github.com/sindresorhus/awesome#events', icon: Calendar, category: 'Social' },
-  
-  // VARIADOS & ENTRETENIMENTO
   { title: 'Jogos', desc: 'Desenvolvimento de jogos, engines e design.', url: 'https://github.com/sindresorhus/awesome#gaming', icon: Gamepad2, category: 'Misc' },
   { title: 'Aprender', desc: 'Cursos gratuitos, tutoriais e roadmaps.', url: 'https://github.com/sindresorhus/awesome#learn', icon: GraduationCap, category: 'Misc' },
   { title: 'Mídia', desc: 'Manipulação de áudio, vídeo e imagem via código.', url: 'https://github.com/sindresorhus/awesome#media', icon: Camera, category: 'Misc' }
@@ -100,12 +57,7 @@ const ComoDesenvolver: React.FC = () => {
 
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
-      <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest mb-16 transition-all">
-        <span className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center group-hover:bg-estacio-navy group-hover:text-white group-hover:border-estacio-navy shadow-sm transition-all duration-300">
-          <ChevronLeft size={18} />
-        </span>
-        Voltar
-      </a>
+      <BackButton />
 
       <div className="max-w-7xl mx-auto">
         <header className="mb-20">
@@ -122,7 +74,6 @@ const ComoDesenvolver: React.FC = () => {
           </p>
         </header>
 
-        {/* Intro Section - Motivation */}
         <section className="bg-estacio-navy p-12 md:p-20 rounded-[5rem] text-white mb-24 relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -159,7 +110,6 @@ const ComoDesenvolver: React.FC = () => {
           </div>
         </section>
 
-        {/* Awesome Hub Section */}
         <section className="mb-24">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
             <div className="flex items-center gap-4">
@@ -211,7 +161,6 @@ const ComoDesenvolver: React.FC = () => {
           </div>
         </section>
 
-        {/* Special Section: TESTING */}
         <section className="mb-24 bg-slate-900 p-12 md:p-20 rounded-[5rem] text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 p-20 opacity-10">
             <Beaker size={300} strokeWidth={1} />

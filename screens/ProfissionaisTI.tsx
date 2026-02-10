@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { CoordinatorWidget } from '../constants';
+import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
+import BackButton from '../components/BackButton.tsx';
 import { 
-  ChevronLeft, ChevronRight, Zap, DollarSign, Award, 
-  Code2, Brain, Briefcase, Heart, ShieldCheck, Globe, 
-  Cpu, MessageSquare, GraduationCap, Github, Laptop, 
-  CheckCircle2, AlertCircle, TrendingUp
+  ChevronRight, Zap, Award, 
+  Code2, Brain, Heart, ShieldCheck, 
+  CheckCircle2, TrendingUp
 } from 'lucide-react';
 
 const ProfissionaisTI: React.FC = () => {
@@ -17,12 +17,7 @@ const ProfissionaisTI: React.FC = () => {
 
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in bg-slate-50/30">
-      <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest mb-16 transition-all">
-        <span className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center group-hover:bg-estacio-navy group-hover:text-white group-hover:border-estacio-navy shadow-sm transition-all duration-300">
-          <ChevronLeft size={18} />
-        </span>
-        Voltar
-      </a>
+      <BackButton />
 
       <div className="max-w-6xl mx-auto">
         <header className="mb-20">
@@ -35,14 +30,11 @@ const ProfissionaisTI: React.FC = () => {
             Profissionais <span className="text-estacio-cyan text-stroke-navy">de TI</span>
           </h2>
           <p className="text-xl md:text-2xl text-slate-500 font-medium max-w-4xl leading-relaxed">
-            O mercado de Tecnologia da Informação é dinâmico e exige uma combinação equilibrada entre <strong className="text-estacio-navy">conhecimento técnico profundo</strong> e <strong className="text-estacio-navy">habilidades comportamentais refinadas</strong>.
+            O mercado de Tecnologia da Informação é dinâmico e exige uma combination equilibrada entre <strong className="text-estacio-navy">conhecimento técnico profundo</strong> e <strong className="text-estacio-navy">habilidades comportamentais refinadas</strong>.
           </p>
         </header>
 
-        {/* --- NOVO CONTEÚDO: PILARES DA EXCELÊNCIA --- */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
-          
-          {/* 1. Hard Skills */}
           <div className="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-xl relative overflow-hidden group hover:border-blue-500/30 transition-all">
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-[5rem]"></div>
             <h3 className="text-2xl font-black text-estacio-navy italic uppercase mb-8 flex items-center gap-4">
@@ -64,14 +56,9 @@ const ProfissionaisTI: React.FC = () => {
                 <CheckCircle2 size={18} className="text-blue-600 shrink-0 mt-1" />
                 <p className="text-sm font-bold text-slate-600"><span className="text-estacio-navy">Cybersecurity & LGPD:</span> Conhecer segurança e privacidade é indispensável hoje.</p>
               </li>
-              <li className="flex gap-4">
-                <CheckCircle2 size={18} className="text-blue-600 shrink-0 mt-1" />
-                <p className="text-sm font-bold text-slate-600"><span className="text-estacio-navy">Cloud & DevOps:</span> AWS, Azure e CI/CD são diferenciais competitivos reais.</p>
-              </li>
             </ul>
           </div>
 
-          {/* 2. Soft Skills */}
           <div className="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-xl relative overflow-hidden group hover:border-estacio-cyan/30 transition-all">
             <div className="absolute top-0 right-0 w-32 h-32 bg-estacio-cyan/5 rounded-bl-[5rem]"></div>
             <h3 className="text-2xl font-black text-estacio-navy italic uppercase mb-8 flex items-center gap-4">
@@ -93,14 +80,9 @@ const ProfissionaisTI: React.FC = () => {
                 <CheckCircle2 size={18} className="text-estacio-cyan shrink-0 mt-1" />
                 <p className="text-sm font-bold text-slate-600"><span className="text-estacio-navy">Lifelong Learning:</span> Reserve tempo semanal para estudar novas ferramentas.</p>
               </li>
-              <li className="flex gap-4">
-                <CheckCircle2 size={18} className="text-estacio-cyan shrink-0 mt-1" />
-                <p className="text-sm font-bold text-slate-600"><span className="text-estacio-navy">Inteligência Emocional:</span> Saiba lidar com prazos e erros sem esgotamento.</p>
-              </li>
             </ul>
           </div>
 
-          {/* 3. Gestão de Carreira */}
           <div className="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-xl relative overflow-hidden group hover:border-purple-500/30 transition-all">
             <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-bl-[5rem]"></div>
             <h3 className="text-2xl font-black text-estacio-navy italic uppercase mb-8 flex items-center gap-4">
@@ -116,16 +98,11 @@ const ProfissionaisTI: React.FC = () => {
               </li>
               <li className="flex gap-4">
                 <CheckCircle2 size={18} className="text-purple-600 shrink-0 mt-1" />
-                <p className="text-sm font-bold text-slate-600"><span className="text-estacio-navy">Networking Genuíno:</span> Participe de meetups; compartilhar é ser notado.</p>
-              </li>
-              <li className="flex gap-4">
-                <CheckCircle2 size={18} className="text-purple-600 shrink-0 mt-1" />
                 <p className="text-sm font-bold text-slate-600"><span className="text-estacio-navy">Inglês Técnico:</span> O domínio do idioma abre as portas para o mercado global.</p>
               </li>
             </ul>
           </div>
 
-          {/* 4. Saúde e Bem-estar */}
           <div className="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-xl relative overflow-hidden group hover:border-red-500/30 transition-all">
             <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-bl-[5rem]"></div>
             <h3 className="text-2xl font-black text-estacio-navy italic uppercase mb-8 flex items-center gap-4">
@@ -147,7 +124,6 @@ const ProfissionaisTI: React.FC = () => {
           </div>
         </section>
 
-        {/* --- CONTEÚDO EXISTENTE: POR QUE TI VALE A PENA? --- */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           <div className="lg:col-span-2 bg-estacio-navy p-12 md:p-16 rounded-[4rem] text-white shadow-2xl relative overflow-hidden">
             <div className="absolute inset-0 bg-white/5"></div>
@@ -193,7 +169,6 @@ const ProfissionaisTI: React.FC = () => {
           </div>
         </div>
 
-        {/* --- PORTAIS DE REFERÊNCIA --- */}
         <section className="mb-24">
           <div className="flex items-center gap-4 mb-12">
             <div className="w-2 h-8 bg-estacio-cyan rounded-full"></div>
