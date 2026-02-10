@@ -1,7 +1,7 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { Analytics } from '@vercel/analytics/react';
 
 // Service Worker Registration for PWA/APK
 if ('serviceWorker' in navigator) {
@@ -19,6 +19,7 @@ if (rootElement) {
   root.render(
     <React.StrictMode>
       <App />
+      <Analytics />
     </React.StrictMode>
   );
 } else {
