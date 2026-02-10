@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './screens/Home';
@@ -62,8 +62,6 @@ const App: React.FC = () => {
     }
   };
 
-  
-
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
@@ -78,7 +76,9 @@ const App: React.FC = () => {
       )}
 
       <main className="flex-grow pt-24 pb-4 transition-all duration-500">
-        {renderScreen()}
+        <Suspense fallback={<div className="flex items-center justify-center p-20"><div className="w-10 h-10 border-4 border-estacio-cyan border-t-transparent rounded-full animate-spin"></div></div>}>
+          {renderScreen()}
+        </Suspense>
       </main>
       <Footer />
     </div>

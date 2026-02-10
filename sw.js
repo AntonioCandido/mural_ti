@@ -1,25 +1,29 @@
 
-const CACHE_NAME = 'muralti-v3-offline';
+const CACHE_NAME = 'muralti-v4-offline';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/candido.png',
-  'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'
+  '/favicon.ico',
+  '/index.tsx',
+  '/App.tsx',
+  // Pre-cache fonts and icons
+  'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
+  'https://fonts.gstatic.com/s/montserrat/v26/JTUSjIg1_i6t8kCHKm4df9O7CxNEqj59.woff2'
 ];
 
-// Instalação: Cacheia os recursos estáticos principais
+// Installation: Cache core static assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Pre-caching assets');
-      return cache.addAll(STATIC_ASSETS);
+      console.log('Pre-caching core assets');
+      return cache.addAll(STATIC_ASSETS).catch(err => console.warn('Some assets failed to pre-cache', err));
     })
   );
   self.skipWaiting();
 });
 
-// Ativação: Limpa caches antigos
+// Activation: Clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -31,27 +35,44 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Interceptação de requisições: Stale-While-Revalidate
-// Ideal para thumbnails do YouTube e metadados
+// Interception: Dynamic caching strategy
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) return;
+  const { request } = event;
 
-  event.respondWith(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.match(event.request).then((cachedResponse) => {
-        const fetchPromise = fetch(event.request).then((networkResponse) => {
-          // Armazena cópia no cache para uso futuro offline
+  // Only handle GET requests and exclude internal tools
+  if (request.method !== 'GET' || !request.url.startsWith('http')) return;
+
+  // Strategy: Network First for API/Dynamic content, Cache First for Static/Media
+  const isStatic = STATIC_ASSETS.some(asset => request.url.includes(asset)) || 
+                   request.url.includes('unsplash.com') || 
+                   request.url.includes('lucide-react');
+
+  if (isStatic) {
+    // Cache-First with Network Fallback
+    event.respondWith(
+      caches.match(request).then((cachedResponse) => {
+        if (cachedResponse) return cachedResponse;
+        return fetch(request).then((networkResponse) => {
           if (networkResponse.status === 200) {
-            cache.put(event.request, networkResponse.clone());
+            const cacheCopy = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, cacheCopy));
           }
           return networkResponse;
-        }).catch(() => {
-          // Fallback silencioso para o que estiver em cache
-          return cachedResponse;
         });
-
-        return cachedResponse || fetchPromise;
-      });
-    })
-  );
+      })
+    );
+  } else {
+    // Network-First with Cache Fallback for dynamic content (API-like resources)
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse.status === 200) {
+            const cacheCopy = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, cacheCopy));
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(request))
+    );
+  }
 });
