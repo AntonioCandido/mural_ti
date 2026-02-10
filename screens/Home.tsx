@@ -35,13 +35,23 @@ const Home: React.FC = () => {
               CAMPUS
             </span>
             <div className="flex items-center gap-2 md:gap-4 px-2">
-              <span className="text-[10px] md:text-[13px] font-bold text-slate-500 uppercase tracking-tight flex-shrink-0">
+              <a 
+                href="https://estacio.br/a-estacio/unidades/r9-taquara?srsltid=AfmBOoqcsaTOyXeOB3BtTrlOKjVGrsYbeWdTHUooZE3yupt7DByrmnOY"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[10px] md:text-[13px] font-bold text-slate-500 uppercase tracking-tight flex-shrink-0 hover:text-estacio-navy transition-colors cursor-pointer"
+              >
                 R9 <span className="text-estacio-navy font-black">TAQUARA</span>
-              </span>
+              </a>
               <span className="w-1.5 h-1.5 bg-slate-300 rounded-full flex-shrink-0"></span>
-              <span className="text-[10px] md:text-[13px] font-bold text-slate-500 uppercase tracking-tight flex-shrink-0">
+              <a 
+                href="https://estacio.br/a-estacio/unidades/barra-da-tijuca-tom-jobim?srsltid=AfmBOor3sJB4t0q3CER_SPvfZbKbzk5Bq5ty-vFvygywxzu-D5K01QvW" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[10px] md:text-[13px] font-bold text-slate-500 uppercase tracking-tight flex-shrink-0 hover:text-estacio-navy transition-colors cursor-pointer"
+              >
                 TOM JOBIM <span className="text-estacio-cyan font-black">BARRA</span>
-              </span>
+              </a>
             </div>
           </div>
         </div>
