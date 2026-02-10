@@ -11,6 +11,7 @@ export enum ViewType {
   VIDEOS = '#/videos-essenciais',
   GALERIA = '#/galeria-fotos',
   LINKS = '#/links-essenciais',
+  CURRICULO = '#/novo-curriculo-2026',
   COORDENADOR = '#/fale-com-o-coordenador',
   CURIOSIDADES = '#/curiosidades-estacio'
 }

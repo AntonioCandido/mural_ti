@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './screens/Home';
@@ -15,6 +15,7 @@ import LinksEssenciais from './screens/LinksEssenciais';
 import FaleCoordenador from './screens/FaleCoordenador';
 import CuriosidadesEstacio from './screens/CuriosidadesEstacio';
 import VideosObrigatorios from './screens/VideosObrigatorios';
+import NovoCurriculo from './screens/NovoCurriculo';
 
 const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>(window.location.hash || '#/home');
@@ -56,6 +57,7 @@ const App: React.FC = () => {
       case '#/videos-essenciais': return <VideosObrigatorios />;
       case '#/galeria-fotos': return <GaleriaFotos />;
       case '#/links-essenciais': return <LinksEssenciais />;
+      case '#/novo-curriculo-2026': return <NovoCurriculo />;
       case '#/fale-com-o-coordenador': return <FaleCoordenador />;
       case '#/curiosidades-estacio': return <CuriosidadesEstacio />;
       default: return <Home />;
