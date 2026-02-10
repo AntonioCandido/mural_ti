@@ -12,6 +12,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+
 const rootElement = document.getElementById('root');
 
 if (rootElement) {

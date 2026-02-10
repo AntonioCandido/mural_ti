@@ -9,6 +9,7 @@ const Home: React.FC = () => {
     window.location.hash = target;
   };
 
+
   // Mapeamento de cores sólidas e vibrantes (antigos estados de hover agora são padrão)
   const colorMap: Record<string, { bg: string, text: string, icon: string, border: string }> = {
     'group-hover:border-blue-500': { bg: 'bg-blue-600', text: 'text-white', icon: 'text-blue-600', border: 'border-blue-400/30' },
