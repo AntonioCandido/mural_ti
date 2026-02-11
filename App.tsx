@@ -16,6 +16,7 @@ import FaleCoordenador from './screens/FaleCoordenador';
 import CuriosidadesEstacio from './screens/CuriosidadesEstacio';
 import VideosObrigatorios from './screens/VideosObrigatorios';
 import NovoCurriculo from './screens/NovoCurriculo';
+import Avisos from './screens/Avisos';
 
 const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>(window.location.hash || '#/home');
@@ -60,6 +61,7 @@ const App: React.FC = () => {
       case '#/novo-curriculo-2026': return <NovoCurriculo />;
       case '#/fale-com-o-coordenador': return <FaleCoordenador />;
       case '#/curiosidades-estacio': return <CuriosidadesEstacio />;
+      case '#/avisos-da-coordenacao': return <Avisos />;
       default: return <Home />;
     }
   };

@@ -13,5 +13,6 @@ export enum ViewType {
   LINKS = '#/links-essenciais',
   CURRICULO = '#/novo-curriculo-2026',
   COORDENADOR = '#/fale-com-o-coordenador',
-  CURIOSIDADES = '#/curiosidades-estacio'
+  CURIOSIDADES = '#/curiosidades-estacio',
+  AVISOS = '#/avisos-da-coordenacao'
 }

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ViewType } from '../types';
 import { 
@@ -45,7 +46,7 @@ const Header: React.FC = () => {
   const menuItems = [
     { label: 'Início', href: ViewType.HOME, icon: Home },
     { label: 'Vagas & Estágios TI', href: ViewType.ESTAGIOS, icon: Briefcase },
-    { label: 'Avisos da Coordenação', href: ViewType.HOME, icon: Megaphone },
+    { label: 'Avisos da Coordenação', href: ViewType.AVISOS, icon: Megaphone },
     { label: 'Fale com o Coordenador', href: ViewType.COORDENADOR, icon: MessageCircle },
     { label: 'Eventos & Workshops', href: ViewType.EVENTOS, icon: Calendar },
     { label: 'Links Úteis (SIA/Portal)', href: ViewType.LINKS, icon: LinkIcon },
