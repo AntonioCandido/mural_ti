@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { ChevronLeft, Camera, ExternalLink } from 'lucide-react';
-import { CoordinatorWidget } from '../constants';
+// Correct import path and use default import for CoordinatorWidget
+import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
 
 const PHOTOS = [
   {

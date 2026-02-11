@@ -1,8 +1,8 @@
 import React from 'react';
-import { CoordinatorWidget } from '../constants';
-// Added CheckCircle2 to the imports from lucide-react
+import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
+import BackButton from '../components/BackButton.tsx';
 import { 
-  ChevronLeft, History, Tablet, Users, Award, 
+  History, Tablet, Users, Award, 
   Zap, Target, Briefcase,
   GraduationCap, Star, TrendingUp, Globe, CheckCircle2
 } from 'lucide-react';
@@ -116,12 +116,7 @@ const SUCCESS_TIPS = [
 const CuriosidadesEstacio: React.FC = () => {
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in bg-slate-50/30">
-      <a href="#/home" className="group inline-flex items-center gap-3 text-slate-400 hover:text-estacio-navy font-black uppercase text-[10px] tracking-widest mb-16 transition-all">
-        <span className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center group-hover:bg-estacio-navy group-hover:text-white group-hover:border-estacio-navy shadow-sm transition-all duration-300">
-          <ChevronLeft size={18} />
-        </span>
-        Voltar
-      </a>
+      <BackButton />
 
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
@@ -178,7 +173,7 @@ const CuriosidadesEstacio: React.FC = () => {
           </div>
         </section>
 
-        {/* Dashboard Section - ESTATÍSTICAS DE PESO (Updated to Soft Colors) */}
+        {/* Dashboard Section */}
         <section className="mb-24">
           <div className="bg-white p-10 md:p-16 rounded-[4rem] shadow-2xl border border-slate-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/50 blur-[120px] rounded-full -mr-20 -mt-20"></div>
@@ -220,21 +215,6 @@ const CuriosidadesEstacio: React.FC = () => {
                 </div>
               ))}
             </div>
-
-            <footer className="relative z-10 mt-16 flex justify-center">
-              <div className="bg-slate-50 border border-slate-100 px-8 py-4 rounded-3xl flex items-center gap-6 shadow-inner">
-                 <div className="flex -space-x-3">
-                    {[1,2,3,4].map(n => (
-                      <div key={n} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
-                        <img src={`https://ui-avatars.com/api/?name=User+${n}&background=random`} alt="User" />
-                      </div>
-                    ))}
-                 </div>
-                 <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">
-                    Junte-se a <span className="text-estacio-navy">800.000+</span> acadêmicos brilhando agora.
-                 </p>
-              </div>
-            </footer>
           </div>
         </section>
 
@@ -253,7 +233,6 @@ const CuriosidadesEstacio: React.FC = () => {
                 <h4 className="font-black text-estacio-navy italic text-lg mb-4 leading-tight uppercase tracking-tight">{tip.title}</h4>
                 <p className="text-[11px] font-bold text-slate-500 uppercase leading-relaxed mb-6 flex-grow">{tip.desc}</p>
                 <div className="mt-auto pt-6 border-t border-slate-50 flex items-center gap-2 text-[9px] font-black text-estacio-amber uppercase tracking-widest">
-                  {/* Fixed: CheckCircle2 is now imported above */}
                   <CheckCircle2 size={14} /> Recomendação Acadêmica
                 </div>
               </div>

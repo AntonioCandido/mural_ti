@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CoordinatorWidget } from '../constants';
+import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
 import { ChevronLeft, ExternalLink, ShieldCheck, Target, Zap, Search, Calendar, MapPin, TrendingUp, AlertCircle } from 'lucide-react';
 
 const OPEN_EXAMS = [

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CoordinatorWidget } from '../constants';
+import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
 import { 
   ChevronLeft, Rocket, Building, Globe, Zap, ShieldCheck, 
   Leaf, Cpu, Target, CheckCircle2, BarChart3, Users, 
@@ -50,7 +50,7 @@ const TRENDS = [
 
 const ROADMAP_STEPS = [
   { id: 1, title: "Encontre a Dor Real", desc: "Observe processos manuais frustrantes. O erro é criar a solução antes do problema." },
-  { id: 2, title: "MVP (Mínimo Viável)", desc: "Use low-code ou cloud-native para lançar rápido. O foco é resolver o problema principal." },
+  { id: 2, title: "MVP (Mínimo Viável)", desc: "Use low-code or cloud-native para lançar rápido. O foco é resolver o problema principal." },
   { id: 3, title: "Círculo Interno", desc: "Valide com parceiros estratégicos. Feedback direto vale mais que métricas de vaidade." },
   { id: 4, title: "Escalabilidade (Day 1)", desc: "Automatize o onboarding e suporte. Pense em atender 1.000 clientes sem inchar a equipe." }
 ];

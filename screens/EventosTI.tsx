@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { CoordinatorWidget } from '../constants';
+import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
 import { 
   ChevronLeft, Globe, ExternalLink, Calendar, MapPin, 
   Zap, Award, Users, Sparkles, BookOpen, GraduationCap,

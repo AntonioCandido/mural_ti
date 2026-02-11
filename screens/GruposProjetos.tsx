@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CoordinatorWidget } from '../constants';
+import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
 import { 
   ChevronLeft, Users2, GitBranch, MessageSquare, 
   HeartHandshake, Kanban, FileText, Share2, 
