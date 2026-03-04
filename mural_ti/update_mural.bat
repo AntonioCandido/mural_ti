@@ -1,4 +1,4 @@
-@echo off
+//@echo off
 :: --- CONFIGURAÇÃO DE CAMINHO ---
 :: Ajuste o caminho abaixo se houver qualquer mudança na pasta local
 set REPO_PATH=C:\Users\olive\OneDrive\Documentos\Clientes\Estacio de Sá\Mural\2026\Aplicativo\mural_ti
