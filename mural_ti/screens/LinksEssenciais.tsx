@@ -7,7 +7,7 @@ import BackButton from '../components/BackButton.tsx';
 const OFFICIAL_LINKS = [
   {
     id: 'sia',
-    title: 'SIA - Sistema Acadêmico ',
+    title: 'SIA - Sistema Acadêmico',
     desc: 'O coração da vida do aluno. Consulta de notas, histórico, boletos, requerimentos e agendamento de provas.',
     url: 'https://sia.estacio.br/',
     icon: ShieldCheck,
@@ -34,7 +34,7 @@ const OFFICIAL_LINKS = [
   },
   {
     id: 'carreiras',
-    title: 'Estácio Carreiras',
+    title: 'Estácio Carreiras ',
     desc: 'Portal exclusivo para alunos e egressos. Vagas e ferramentas para construção de currículo.',
     url: 'https://estacio.br/guia-de-carreiras',
     icon: Globe,

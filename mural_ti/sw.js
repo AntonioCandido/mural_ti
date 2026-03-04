@@ -76,3 +76,24 @@ self.addEventListener('fetch', (event) => {
     );
   }
 });
+
+// Notificações: Lidar com o clique na notificação
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+
+  // Tentar focar na janela aberta ou abrir uma nova
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+      if (clientList.length > 0) {
+        let client = clientList[0];
+        for (let i = 0; i < clientList.length; i++) {
+          if (clientList[i].focused) {
+            client = clientList[i];
+          }
+        }
+        return client.focus();
+      }
+      return clients.openWindow('/');
+    })
+  );
+});

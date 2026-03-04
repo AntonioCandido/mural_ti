@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton.tsx';
 import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
+import { NotificationService } from '../NotificationService';
 import { 
   Megaphone, 
   AlertTriangle, 
@@ -10,7 +11,9 @@ import {
   Clock, 
   Filter,
   ArrowRight,
-  Bell
+  Bell,
+  BellOff,
+  Send
 } from 'lucide-react';
 
 interface Notice {
@@ -59,6 +62,31 @@ const NOTICES: Notice[] = [
 
 const Avisos: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'urgent' | 'academic' | 'event'>('all');
+  const [hasNotificationPermission, setHasNotificationPermission] = useState(false);
+
+  useEffect(() => {
+    setHasNotificationPermission(NotificationService.hasPermission());
+  }, []);
+
+  const handleEnableNotifications = async () => {
+    const granted = await NotificationService.requestPermission();
+    setHasNotificationPermission(granted);
+    if (granted) {
+      NotificationService.sendNotification('Notificações Ativadas!', {
+        body: 'Você agora receberá alertas importantes da coordenação.',
+        tag: 'welcome'
+      });
+    }
+  };
+
+  const triggerUrgentNotification = (notice: Notice) => {
+    NotificationService.sendNotification(`URGENTE: ${notice.title}`, {
+      body: notice.content,
+      tag: `notice-${notice.id}`,
+      requireInteraction: true,
+      vibrate: [200, 100, 200]
+    } as any);
+  };
 
   const filteredNotices = filter === 'all' 
     ? NOTICES 
@@ -80,27 +108,41 @@ const Avisos: React.FC = () => {
             Avisos da <span className="text-estacio-cyan text-stroke-navy">Coordenação</span>
           </h2>
           
-          {/* Filtros */}
-          <div className="flex flex-wrap gap-3 mt-12">
-            {[
-              { id: 'all', label: 'Todos', icon: Megaphone },
-              { id: 'urgent', label: 'Urgente', icon: AlertTriangle },
-              { id: 'academic', label: 'Acadêmico', icon: Info },
-              { id: 'event', label: 'Eventos', icon: Calendar },
-            ].map((btn) => (
-              <button
-                key={btn.id}
-                onClick={() => setFilter(btn.id as any)}
-                className={`flex items-center gap-3 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                  filter === btn.id 
-                  ? 'bg-estacio-navy text-white shadow-xl shadow-navy/20' 
-                  : 'bg-white text-slate-400 border border-slate-200 hover:bg-slate-50'
-                }`}
-              >
-                <btn.icon size={14} />
-                {btn.label}
-              </button>
-            ))}
+          {/* Filtros e Notificações */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mt-12">
+            <div className="flex flex-wrap gap-3">
+              {[
+                { id: 'all', label: 'Todos', icon: Megaphone },
+                { id: 'urgent', label: 'Urgente', icon: AlertTriangle },
+                { id: 'academic', label: 'Acadêmico', icon: Info },
+                { id: 'event', label: 'Eventos', icon: Calendar },
+              ].map((btn) => (
+                <button
+                  key={btn.id}
+                  onClick={() => setFilter(btn.id as any)}
+                  className={`flex items-center gap-3 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                    filter === btn.id 
+                    ? 'bg-estacio-navy text-white shadow-xl shadow-navy/20' 
+                    : 'bg-white text-slate-400 border border-slate-200 hover:bg-slate-50'
+                  }`}
+                >
+                  <btn.icon size={14} />
+                  {btn.label}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={handleEnableNotifications}
+              className={`flex items-center gap-3 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                hasNotificationPermission 
+                ? 'bg-green-500/10 text-green-600 border border-green-500/20' 
+                : 'bg-estacio-amber text-estacio-navy shadow-lg shadow-amber-500/20 hover:scale-105 active:scale-95'
+              }`}
+            >
+              {hasNotificationPermission ? <Bell size={14} /> : <BellOff size={14} />}
+              {hasNotificationPermission ? 'Notificações Ativas' : 'Ativar Notificações Push'}
+            </button>
           </div>
         </header>
 
@@ -142,8 +184,17 @@ const Avisos: React.FC = () => {
                   </div>
                   
                   {isUrgent && (
-                    <div className="bg-red-500/10 text-red-600 px-6 py-2 rounded-full text-[9px] font-black uppercase tracking-widest animate-pulse border border-red-500/20">
-                      Ação Requerida Imediata
+                    <div className="flex items-center gap-3">
+                      <button 
+                        onClick={() => triggerUrgentNotification(notice)}
+                        className="bg-red-500 text-white p-2 rounded-xl hover:bg-red-600 transition-colors shadow-lg shadow-red-500/20"
+                        title="Disparar Notificação Push"
+                      >
+                        <Send size={16} />
+                      </button>
+                      <div className="bg-red-500/10 text-red-600 px-6 py-2 rounded-full text-[9px] font-black uppercase tracking-widest animate-pulse border border-red-500/20">
+                        Ação Requerida Imediata
+                      </div>
                     </div>
                   )}
                 </div>
