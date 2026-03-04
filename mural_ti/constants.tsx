@@ -12,7 +12,8 @@ import {
   Link as LinkIcon,
   Sparkles,
   Play,
-  GraduationCap
+  GraduationCap,
+  Bell
 } from 'lucide-react';
 import { ViewType } from './types';
 
@@ -29,5 +30,6 @@ export const CARDS_DATA = [
   { id: ViewType.LINKS, title: 'Links Oficiais', desc: 'SIA, Portal, Biblioteca e Office 365.', icon: LinkIcon, color: 'group-hover:border-teal-500' },
   { id: ViewType.CURIOSIDADES, title: 'Curiosidades Estácio', desc: 'História, números e fatos que inspiram.', icon: Sparkles, color: 'group-hover:border-estacio-cyan' },
   { id: ViewType.CURRICULO, title: 'Novo Currículo 2026', desc: 'O novo modelo acadêmico inovador da Estácio.', icon: GraduationCap, color: 'group-hover:border-estacio-amber' },
+  { id: ViewType.AVISOS, title: 'Avisos Coordenação', desc: 'Feed oficial de comunicados e alertas.', icon: Bell, color: 'group-hover:border-red-500' },
   { id: ViewType.COORDENADOR, title: 'Fale com o coordenador', desc: 'Atendimento e suporte acadêmico.', icon: UserCheck, color: 'group-hover:border-estacio-navy' },
 ];

@@ -158,7 +158,7 @@ const Footer: React.FC = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span className="text-slate-500">SYSTEMS OPERATIONAL • LAST UPDATE: 02/03/2026</span>
+                <span className="text-slate-500">SYSTEMS OPERATIONAL • LAST UPDATE: 04/03/2026</span>
              </div>
              <span className="text-slate-700">© 2026 MURAL TI HUB</span>
              <span className="text-slate-700">UNIDADES R9 & TOM JOBIM</span>

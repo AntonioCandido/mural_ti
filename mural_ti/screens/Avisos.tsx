@@ -143,7 +143,7 @@ const Avisos: React.FC = () => {
                   
                   {isUrgent && (
                     <div className="bg-red-500/10 text-red-600 px-6 py-2 rounded-full text-[9px] font-black uppercase tracking-widest animate-pulse border border-red-500/20">
-                      Ação Requerida Imadiata
+                      Ação Requerida Imediata
                     </div>
                   )}
                 </div>

@@ -78,7 +78,7 @@ const Home: React.FC = () => {
           return (
             <article key={card.id} className="h-full relative">
               {/* Badge de Novidade para itens específicos */}
-              {(card.id === ViewType.CURRICULO || card.id === ViewType.VIDEOS) && (
+              {(card.id === ViewType.CURRICULO || card.id === ViewType.VIDEOS || card.id === ViewType.AVISOS) && (
                 <div className="absolute -top-2 -right-2 z-20 bg-brand-red text-white text-[9px] font-black px-3 py-1 rounded-full shadow-lg animate-bounce uppercase tracking-widest italic">
                   New
                 </div>
