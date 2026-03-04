@@ -1,11 +1,13 @@
-import React from 'react';
-import { ChevronLeft, ExternalLink, ShieldCheck, MessageSquare, Book, Globe, Lightbulb, Mail, Info, BookOpen } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronLeft, ExternalLink, ShieldCheck, MessageSquare, Book, Globe, Lightbulb, Mail, Info, BookOpen, Loader2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import CoordinatorWidget from '../components/CoordinatorWidget.tsx';
 import BackButton from '../components/BackButton.tsx';
 
 const OFFICIAL_LINKS = [
   {
-    title: 'SIA - Sistema Acadêmico',
+    id: 'sia',
+    title: 'SIA - Sistema Acadêmico ',
     desc: 'O coração da vida do aluno. Consulta de notas, histórico, boletos, requerimentos e agendamento de provas.',
     url: 'https://sia.estacio.br/',
     icon: ShieldCheck,
@@ -13,6 +15,7 @@ const OFFICIAL_LINKS = [
     tag: 'Gestão & Financeiro'
   },
   {
+    id: 'sava',
     title: 'SAVA - Sala de Aula',
     desc: 'Plataforma de ensino para disciplinas digitais e online. Videoaulas, conteúdos interativos e fóruns.',
     url: 'https://estudante.estacio.br/',
@@ -21,6 +24,7 @@ const OFFICIAL_LINKS = [
     tag: 'Aprendizagem'
   },
   {
+    id: 'biblioteca',
     title: 'Bibliotecas Virtuais',
     desc: 'Acesso a milhares de títulos (Pearson e Grupo A) através da Minha Biblioteca. Estude de qualquer lugar.',
     url: 'https://estacio.br/biblioteca',
@@ -29,6 +33,7 @@ const OFFICIAL_LINKS = [
     tag: 'Pesquisa'
   },
   {
+    id: 'carreiras',
     title: 'Estácio Carreiras',
     desc: 'Portal exclusivo para alunos e egressos. Vagas e ferramentas para construção de currículo.',
     url: 'https://estacio.br/guia-de-carreiras',
@@ -37,6 +42,7 @@ const OFFICIAL_LINKS = [
     tag: 'Empregabilidade'
   },
   {
+    id: 'vaga',
     title: 'Encontre Sua Vaga',
     desc: 'Hub de oportunidades diretas e parcerias com o mercado de trabalho regional e nacional.',
     url: 'https://www.encontresuavaga.com.br/',
@@ -45,6 +51,7 @@ const OFFICIAL_LINKS = [
     tag: 'Empregabilidade'
   },
   {
+    id: 'office',
     title: 'Microsoft Office 365',
     desc: 'Word, Excel e 1TB de nuvem grátis para alunos ativos. Login com seu e-mail acadêmico.',
     url: 'https://www.office.com/',
@@ -53,6 +60,7 @@ const OFFICIAL_LINKS = [
     tag: 'Benefícios'
   },
   {
+    id: 'guia',
     title: 'Guia Prático Estácio',
     desc: 'Repositório de tutoriais para tirar todas as dúvidas sobre o uso dos sistemas da instituição.',
     url: 'http://alunodigital.estacio.br/guiapratico/',
@@ -61,6 +69,7 @@ const OFFICIAL_LINKS = [
     tag: 'Suporte'
   },
   {
+    id: 'cursos',
     title: 'Estácio Cursos Livres',
     desc: 'Plataforma para horas complementares (AAC) e especializações rápidas para turbinar o currículo.',
     url: 'https://app.online.estacio.br/',
@@ -71,6 +80,16 @@ const OFFICIAL_LINKS = [
 ];
 
 const LinksEssenciais: React.FC = () => {
+  const [loadingId, setLoadingId] = useState<string | null>(null);
+
+  const handleLinkClick = (id: string) => {
+    setLoadingId(id);
+    // Simulate a loading state for 3 seconds to provide visual feedback
+    setTimeout(() => {
+      setLoadingId(null);
+    }, 3000);
+  };
+
   return (
     <div className="container mx-auto px-6 py-12 md:py-20 fade-in">
       <BackButton />
@@ -92,13 +111,41 @@ const LinksEssenciais: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {OFFICIAL_LINKS.map((link, i) => (
-            <a 
-              key={i} 
+            <motion.a 
+              key={link.id} 
               href={link.url} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className={`group relative p-10 rounded-[3.5rem] border border-slate-100 shadow-2xl transition-all hover:-translate-y-2 flex flex-col items-start ${link.color}`}
+              onClick={() => handleLinkClick(link.id)}
+              whileHover={{ y: -8, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className={`group relative p-10 rounded-[3.5rem] border border-slate-100 shadow-2xl transition-all flex flex-col items-start overflow-hidden ${link.color}`}
             >
+              <AnimatePresence>
+                {loadingId === link.id && (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 z-20 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center text-white"
+                  >
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                    >
+                      <Loader2 size={48} />
+                    </motion.div>
+                    <motion.span 
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      className="mt-4 font-black uppercase tracking-widest text-[10px]"
+                    >
+                      Abrindo Portal...
+                    </motion.span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-xl">
                 <link.icon size={32} className={link.color.replace('bg-', 'text-')} />
@@ -113,7 +160,7 @@ const LinksEssenciais: React.FC = () => {
               <div className="mt-auto flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-white border-t border-white/10 pt-6 w-full">
                 Acessar Portal <ExternalLink size={12} />
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
 

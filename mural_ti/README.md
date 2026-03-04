@@ -9,7 +9,7 @@ Portal modular de recursos e informações para alunos de Tecnologia da Informa�
 - `constants.tsx`: Dados centralizados e componentes auxiliares.
 
 ## Como Executar Localmente
-1. Certifique-se de ter um ambiente de desenvolvimento web.
+1. Certifique-se de ter um ambiente de desenvolvimento web..
 2. Clone o repositório.
 3. Abra o projeto em seu editor favorito.
 4. Execute `npm install` e `npm start` (se estiver usando o ambiente de desenvolvimento padrão do projeto).

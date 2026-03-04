@@ -11,19 +11,12 @@ const Home: React.FC = () => {
   };
 
 
-  // Mapeamento de cores sólidas e vibrantes (antigos estados de hover agora são padrão)
+  // Mapeamento de cores sólidas e vibrantes baseadas na paleta Estácio
   const colorMap: Record<string, { bg: string, text: string, icon: string, border: string }> = {
-    'group-hover:border-blue-500': { bg: 'bg-blue-600', text: 'text-white', icon: 'text-blue-600', border: 'border-blue-400/30' },
-    'group-hover:border-estacio-cyan': { bg: 'bg-estacio-cyan', text: 'text-estacio-navy', icon: 'text-estacio-cyan', border: 'border-white/20' },
-    'group-hover:border-emerald-500': { bg: 'bg-emerald-600', text: 'text-white', icon: 'text-emerald-600', border: 'border-emerald-400/30' },
-    'group-hover:border-estacio-amber': { bg: 'bg-estacio-amber', text: 'text-estacio-navy', icon: 'text-estacio-amber', border: 'border-white/20' },
-    'group-hover:border-purple-500': { bg: 'bg-purple-600', text: 'text-white', icon: 'text-purple-600', border: 'border-purple-400/30' },
-    'group-hover:border-orange-500': { bg: 'bg-orange-600', text: 'text-white', icon: 'text-orange-600', border: 'border-orange-400/30' },
-    'group-hover:border-pink-500': { bg: 'bg-pink-600', text: 'text-white', icon: 'text-pink-600', border: 'border-pink-400/30' },
-    'group-hover:border-indigo-500': { bg: 'bg-indigo-600', text: 'text-white', icon: 'text-indigo-600', border: 'border-indigo-400/30' },
-    'group-hover:border-teal-500': { bg: 'bg-teal-600', text: 'text-white', icon: 'text-teal-600', border: 'border-teal-400/30' },
-    'group-hover:border-estacio-navy': { bg: 'bg-estacio-navy', text: 'text-white', icon: 'text-estacio-navy', border: 'border-white/10' },
-    'group-hover:border-red-500': { bg: 'bg-brand-red', text: 'text-white', icon: 'text-brand-red', border: 'border-brand-red/30' },
+    'estacio-navy': { bg: 'bg-estacio-navy', text: 'text-white', icon: 'text-estacio-navy', border: 'border-white/10' },
+    'estacio-cyan': { bg: 'bg-estacio-cyan', text: 'text-estacio-navy', icon: 'text-estacio-cyan', border: 'border-white/20' },
+    'estacio-amber': { bg: 'bg-estacio-amber', text: 'text-estacio-navy', icon: 'text-estacio-amber', border: 'border-white/20' },
+    'brand-red': { bg: 'bg-brand-red', text: 'text-white', icon: 'text-brand-red', border: 'border-white/10' },
   };
 
   return (
