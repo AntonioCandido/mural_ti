@@ -1,0 +1,29 @@
+# --- Segurança e Chaves de API ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# --- Configurações de Editor e IDE ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Ficheiros de Sistema e Temporários ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Backups e Compactados ---
+*.zip
+*.rar
+*.7z
+mural_ti_old/
+muralti/
+
+# --- Dependências e Build ---
+node_modules/
+dist/
+build/
