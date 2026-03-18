@@ -15,9 +15,6 @@ Portal modular de recursos e informações para alunos de Tecnologia da Informa�
 4. Execute `npm install` e `npm start` (se estiver usando o ambiente de desenvolvimento padrão do projeto).
 5. O portal estará disponível em `http://localhost:3000`.
 
-## Imagem do Coordenador
-Adicione o arquivo real `candido.png` na pasta raiz do projeto (conforme referenciado no código como `/candido.png`).
-
 ## Deploy na Vercel
 1. Conecte seu repositório GitHub à Vercel.
 2. O arquivo `vercel.json` já está configurado para o deploy estático.
